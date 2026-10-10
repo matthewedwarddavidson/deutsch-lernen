@@ -546,3 +546,150 @@ export const alsOb: GrammarTopic = {
     },
   ],
 }
+
+export const adjektiveMitPraepositionen: GrammarTopic = {
+  id: 'adjektive-mit-praepositionen',
+  title: 'Adjektive mit Präpositionen',
+  english: 'Adjectives with fixed prepositions',
+  level: 'B1',
+  summary:
+    'Like verbs, many adjectives take a fixed preposition, and you must learn it with the adjective: **stolz auf** + Akk, **zufrieden mit** + Dat. Two-way prepositions (auf, an, in, über) have a fixed case here too. To refer back to a thing, use **da(r)- + preposition**: Ich bin stolz **darauf**.',
+  sections: [
+    {
+      heading: 'The most useful ones',
+      body: ['Learn them in a short sentence, not as pairs on a list.'],
+      table: {
+        head: ['Adjective', 'Preposition', 'Example'],
+        rows: [
+          ['stolz', 'auf + A', 'Ich bin stolz auf dich.'],
+          ['neugierig', 'auf + A', 'Ich bin neugierig auf das Ergebnis.'],
+          ['böse / sauer', 'auf + A', 'Bist du sauer auf mich?'],
+          ['zufrieden', 'mit + D', 'Sind Sie mit dem Zimmer zufrieden?'],
+          ['fertig', 'mit + D', 'Bist du schon fertig mit der Arbeit?'],
+          ['einverstanden', 'mit + D', 'Ich bin mit dem Vorschlag einverstanden.'],
+          ['interessiert', 'an + D', 'Er ist sehr an Politik interessiert.'],
+          ['froh / glücklich', 'über + A', 'Ich bin froh über deine Hilfe.'],
+          ['traurig / enttäuscht', 'über + A', 'Sie ist enttäuscht über das Ergebnis.'],
+          ['verantwortlich', 'für + A', 'Wer ist für die Kasse verantwortlich?'],
+          ['bekannt', 'für + A', 'Die Stadt ist für ihr Bier bekannt.'],
+          ['abhängig', 'von + D', 'Das ist abhängig vom Wetter.'],
+          ['überzeugt', 'von + D', 'Ich bin von der Idee überzeugt.'],
+          ['verliebt', 'in + A', 'Er ist in seine Kollegin verliebt.'],
+          ['gut / schlecht', 'in + D', 'Sie ist gut in Mathe.'],
+          ['bereit', 'zu + D', 'Bist du zu einem Kompromiss bereit?'],
+        ],
+      },
+    },
+    {
+      heading: 'darauf, damit, worüber …',
+      body: [
+        'For things, replace preposition + noun with **da-** + preposition (**dar-** before a vowel): darauf, damit, darüber, dafür, davon, daran.',
+        'For people, keep the preposition and use a pronoun: stolz auf **ihn**, not darauf.',
+        'A whole clause can follow: Ich bin froh **darüber**, **dass** du da bist.',
+        'Questions about things use **wo(r)-**: **Worauf** bist du stolz? About people: **Auf wen** bist du stolz?',
+      ],
+      examples: [
+        {
+          de: 'Bist du mit dem Hotel zufrieden? – Ja, ich bin sehr **damit** zufrieden.',
+          en: 'Are you happy with the hotel? – Yes, very.',
+        },
+        { de: 'Ich bin **davon** überzeugt, **dass** wir es schaffen.', en: "I'm convinced we'll make it." },
+        { de: '**Worüber** bist du so froh?', en: 'What are you so happy about?' },
+      ],
+    },
+  ],
+  mistakes: [
+    { wrong: 'Ich bin stolz von dir.', right: 'Ich bin stolz auf dich.', why: 'stolz takes auf + Akkusativ.' },
+    {
+      wrong: 'Ich bin interessiert in Kunst.',
+      right: 'Ich bin an Kunst interessiert.',
+      why: 'interessiert takes an + Dativ (English "in" misleads).',
+    },
+    {
+      wrong: 'Das Auto? Ich bin sehr zufrieden mit ihm.',
+      right: 'Das Auto? Ich bin sehr zufrieden damit.',
+      why: 'For things use da- + preposition; mit ihm suggests a person.',
+    },
+    {
+      wrong: 'Auf was bist du stolz?',
+      right: 'Worauf bist du stolz?',
+      why: 'In writing, use wo(r)- + preposition for things.',
+    },
+  ],
+  exercises: [
+    {
+      kind: 'gap',
+      prompt: 'Meine Eltern sind sehr stolz ___ mich.',
+      answers: ['auf'],
+      explanation: 'stolz auf + Akkusativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Sind Sie ___ Ihrer neuen Wohnung zufrieden?',
+      answers: ['mit'],
+      explanation: 'zufrieden mit + Dativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Er ist sehr ___ Geschichte interessiert.',
+      answers: ['an'],
+      explanation: 'interessiert an + Dativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Wir sind froh ___ die gute Nachricht.',
+      answers: ['über'],
+      explanation: 'froh über + Akkusativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Die Region ist ___ ihren Wein bekannt.',
+      answers: ['für'],
+      explanation: 'bekannt für + Akkusativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Der Preis ist ___ der Saison abhängig.',
+      answers: ['von'],
+      explanation: 'abhängig von + Dativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Bist du immer noch sauer ___ mich?',
+      answers: ['auf'],
+      explanation: 'sauer auf + Akkusativ.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Freust du dich auf den Urlaub? – Ja, ich bin schon ganz neugierig ___.',
+      answers: ['darauf'],
+      explanation: 'neugierig auf → darauf for a thing.',
+    },
+    {
+      kind: 'gap',
+      prompt: '___ bist du so enttäuscht? (about what)',
+      answers: ['Worüber'],
+      explanation: 'enttäuscht über → worüber.',
+    },
+    {
+      kind: 'gap',
+      prompt: 'Ich bin ___ überzeugt, dass das richtig ist.',
+      answers: ['davon'],
+      explanation: 'überzeugt von → davon + dass-clause.',
+    },
+    {
+      kind: 'choice',
+      prompt: 'Sie ist in ihren Nachbarn verliebt. – In ___ ?',
+      options: ['wen', 'was', 'worin'],
+      answer: 0,
+      explanation: 'For a person: preposition + wen.',
+    },
+    {
+      kind: 'choice',
+      prompt: 'Bist du ___ einverstanden?',
+      options: ['damit', 'davon', 'darauf'],
+      answer: 0,
+      explanation: 'einverstanden mit → damit.',
+    },
+  ],
+}
