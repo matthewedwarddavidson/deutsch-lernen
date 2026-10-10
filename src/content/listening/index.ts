@@ -1,11 +1,11 @@
 import { RECORDED_VOICES, type RecordedVoice } from '../../lib/speechText'
 import type { ListeningText } from '../types'
 import { SCRIPTS } from './scripts'
-import { SCRIPTS_C1 } from './scripts-c1'
+import { SCRIPTS_ADVANCED } from './scripts-advanced'
 import { SCRIPTS_EXAM } from './scripts-exam'
 import { SCRIPTS_MORE } from './scripts-more'
 
-export const LISTENING_TEXTS: ListeningText[] = [...SCRIPTS, ...SCRIPTS_MORE, ...SCRIPTS_EXAM, ...SCRIPTS_C1]
+export const LISTENING_TEXTS: ListeningText[] = [...SCRIPTS, ...SCRIPTS_MORE, ...SCRIPTS_EXAM, ...SCRIPTS_ADVANCED]
 
 /** The voice for a speaker: as set in the script, otherwise the speakers take the voices in turn. */
 export function voiceForSpeaker(text: ListeningText, speaker: string): RecordedVoice {
