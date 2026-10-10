@@ -8,6 +8,7 @@ import { Learn } from './pages/Learn'
 import { Dictation, ListeningList, ListeningPage } from './pages/Listening'
 import { Progress } from './pages/Progress'
 import { ReadingList, ReadingPage } from './pages/Reading'
+import { Reference } from './pages/Reference'
 import { Review } from './pages/Review'
 import { Settings } from './pages/Settings'
 import { SpeedRound } from './pages/SpeedRound'
@@ -48,6 +49,12 @@ function Sidebar() {
           {item.to === '/' && due > 0 && <span className="nav-badge">{due}</span>}
         </NavLink>
       ))}
+      <NavLink to="/reference" className="nav-link desktop-only">
+        <span className="row" style={{ gap: 10 }}>
+          <Icon name="words" />
+          Reference
+        </span>
+      </NavLink>
       <div className="nav-spacer" />
       <NavLink to="/settings" className="nav-link">
         <span className="row" style={{ gap: 10 }}>
@@ -88,6 +95,7 @@ export default function App() {
             <Route path="/writing" element={<WritingList />} />
             <Route path="/writing/:taskId" element={<WritingPage />} />
             <Route path="/progress" element={<Progress />} />
+            <Route path="/reference" element={<Reference />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<Today />} />
           </Routes>

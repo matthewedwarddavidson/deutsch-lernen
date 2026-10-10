@@ -1773,3 +1773,31 @@ table.grammar-table {
     grid-template-columns: 1fr;
   }
 }
+
+/* Reference */
+
+.reference-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.reference-grid > .card + .card {
+  margin-top: 0;
+}
+
+@media (max-width: 500px) {
+  .reference-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.verb-table td {
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .desktop-only {
+    display: none !important;
+  }
+}

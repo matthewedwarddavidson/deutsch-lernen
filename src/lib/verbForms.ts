@@ -27,3 +27,10 @@ export function isIrregular(word: Word): boolean {
   if (stem === preterite) return true
   return !(infinitive.endsWith(`${stem}en`) || infinitive.endsWith(`${stem}n`))
 }
+
+/** What is read aloud for a verb's forms: "fahren, fährt, fuhr, ist gefahren". */
+export function verbFormsSpeech(word: Word): string {
+  const forms = verbForms(word)
+  if (!forms) return word.german
+  return `${word.german.replace(/^sich /, '')}, ${forms.present}, ${forms.preterite}, ${forms.perfect}`
+}

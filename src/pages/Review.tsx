@@ -12,7 +12,7 @@ import type { Word } from '../content/types'
 import { gradeCard, recordActivity, suspendCard } from '../lib/actions'
 import { dueCards, type CardRef } from '../lib/cards'
 import { checkAnswer, type CheckResult, type Verdict } from '../lib/check'
-import { verbForms } from '../lib/verbForms'
+import { verbForms, verbFormsSpeech } from '../lib/verbForms'
 import { checkWord, suggestedGrade } from '../lib/grading'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
@@ -389,7 +389,7 @@ function FormsCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; 
       checked[field.key] = checkAnswer(withoutPronoun(values[field.key]), [forms[field.key]])
     }
     setResults(checked)
-    speak(`${word.german.replace(/^sich /, '')}, ${forms.present}, ${forms.preterite}, ${forms.perfect}`)
+    speak(verbFormsSpeech(word))
   }
 
   function handleKey(event: KeyboardEvent<HTMLInputElement>, index: number) {

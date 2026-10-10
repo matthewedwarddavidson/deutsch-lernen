@@ -5,12 +5,14 @@
  * Usage: npx tsx scripts/collect-speech.ts > audio-build/requests.json
  */
 import { createHash } from 'node:crypto'
+import coreVerbs from '../src/content/coreVerbs'
 import { GRAMMAR_TOPICS } from '../src/content/grammar'
 import { LISTENING_TEXTS, voiceForSpeaker } from '../src/content/listening'
 import { displayGerman } from '../src/content/parseWords'
 import { READING_TEXTS } from '../src/content/reading'
 import { BUILT_IN_WORDS } from '../src/content/words'
 import { solvedSentence } from '../src/lib/grading'
+import { isIrregular, verbFormsSpeech } from '../src/lib/verbForms'
 import { cleanForSpeech, DEFAULT_VOICE, KEY_LENGTH, recordingSource, type RecordedVoice } from '../src/lib/speechText'
 
 interface Request {
@@ -31,6 +33,7 @@ function add(text: string, voice: RecordedVoice = DEFAULT_VOICE) {
 for (const word of BUILT_IN_WORDS) {
   add(displayGerman(word))
   add(word.example)
+  if (isIrregular(word)) add(verbFormsSpeech(word))
 }
 
 for (const topic of GRAMMAR_TOPICS) {
@@ -50,5 +53,10 @@ for (const text of LISTENING_TEXTS) {
 }
 
 add('Guten Tag! Wie geht es Ihnen heute?')
+
+for (const line of coreVerbs.trim().split('\n')) {
+  const [german, forms] = line.split('|').map((part) => part.trim())
+  add(`${german}, ${forms}`)
+}
 
 process.stdout.write(JSON.stringify([...requests.values()], null, 1))

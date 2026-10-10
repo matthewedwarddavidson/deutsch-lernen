@@ -37,6 +37,7 @@ export function GrammarList() {
           Each topic explains the rule, shows the usual mistakes, then gives you practice. After you finish a topic, its
           exercises come back in your daily review, mixed with other topics.
         </p>
+        <Link to="/reference">Reference tables: cases, endings, prepositions, irregular verbs →</Link>
       </div>
       {recommended && (
         <Link className="card card-link" to={`/grammar/${recommended.id}`} style={{ marginBottom: 28 }}>
