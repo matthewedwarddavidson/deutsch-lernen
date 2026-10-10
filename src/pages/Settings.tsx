@@ -185,7 +185,9 @@ export function Settings() {
       <div className="card stack">
         <h3>Your data</h3>
         <p className="muted small" style={{ margin: 0 }}>
-          Progress lives in this browser. Download a backup now and then, or to move to another computer.
+          Everything (progress, your writing, your words and any API key) is stored only in this browser. The app has no
+          server and no accounts, so nobody else can see it, even though the app itself is public. Download a backup now
+          and then, or to move to another computer or browser.
         </p>
         <div className="row">
           <button className="btn" onClick={download}>

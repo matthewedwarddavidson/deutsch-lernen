@@ -36,7 +36,11 @@ Use Chrome, Edge or Safari for listening. On macOS, install a better German voic
 | **Writing** | Goethe-style tasks (A2–C1) with useful phrases, live word and connector counts, model answers, and corrections from Claude. |
 | **Progress** | Words known by level, recall rate, review forecast, study time, grammar mastery. |
 
-Progress is stored in the browser (localStorage), separately for the hosted app and a local copy. Back it up from Settings to move between them.
+## Privacy
+
+The hosted app is a static site with no server and no accounts. Progress, writing, your own words and any API key are stored only in your browser's localStorage, so nobody else visiting the site can see them. Nothing leaves the browser except what you send to Claude yourself (pasted into claude.ai, or sent to Anthropic's API if you add a key).
+
+Storage is per browser and per address, so the hosted app and a local copy keep separate progress. Use Settings → Download backup / Restore to move between them.
 
 ## Claude, at no extra cost
 
