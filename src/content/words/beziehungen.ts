@@ -49,4 +49,12 @@ ADJ | traurig | trauriger, am traurigsten | | sad | Warum bist du so {traurig}? 
 ADJ | glücklich | glücklicher, am glücklichsten | | happy | Die beiden sehen sehr {glücklich} aus. | The two of them look very happy.
 ADJ | nervös | nervöser, am nervösesten | | nervous | Vor Prüfungen bin ich immer {nervös}. | I'm always nervous before exams.
 N | die Angst | Ängste | | fear | Ich habe {Angst} vor Spinnen. | I'm scared of spiders.
+
+# B2
+V | sich auseinanderleben | lebt sich auseinander, lebte sich auseinander, hat sich auseinandergelebt | | to drift apart | Nach dem Umzug haben wir uns {auseinandergelebt}. | After the move we drifted apart.
+N | die Geborgenheit | – | | (sense of) security, warmth | Kinder brauchen vor allem {Geborgenheit}. | Children need security above all.
+ADJ | nachtragend | – | | resentful, unforgiving | Sei nicht so {nachtragend}! | Don't hold a grudge!
+V | sich anvertrauen | vertraut sich an, vertraute sich an, hat sich anvertraut | D | to confide in | Sie hat sich ihrer Schwester {anvertraut}. | She confided in her sister.
+N | der Kompromiss | Kompromisse | | compromise | In einer Beziehung muss man {Kompromisse} eingehen. | In a relationship you have to make compromises.
+ADJ | verständnisvoll | verständnisvoller, am verständnisvollsten | | understanding | Mein Chef war sehr {verständnisvoll}. | My boss was very understanding.
 `

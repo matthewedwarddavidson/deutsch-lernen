@@ -56,4 +56,9 @@ N | die Freiheit | Freiheiten | | freedom | Die {Freiheit} der Presse ist ein wi
 V | protestieren | protestiert, protestierte, hat protestiert | gegen + A | to protest | Tausende {protestieren} gegen die Reform. | Thousands are protesting against the reform.
 N | die Generation | Generationen | | generation | Die junge {Generation} denkt anders über Arbeit. | The young generation thinks differently about work.
 ADJ | sozial | – | | social | Sie arbeitet in einem {sozialen} Beruf. | She works in a caring profession.
+
+# B2
+V | ausgrenzen | grenzt aus, grenzte aus, hat ausgegrenzt | | to exclude, marginalise | Niemand darf wegen seiner Herkunft {ausgegrenzt} werden. | No one may be excluded because of their background.
+N | die Wertschätzung | – | | appreciation | Pflegekräfte verdienen mehr {Wertschätzung}. | Care workers deserve more appreciation.
+ADJ | gesellschaftlich | – | | social, societal | Das ist ein {gesellschaftliches} Problem. | That's a social problem.
 `

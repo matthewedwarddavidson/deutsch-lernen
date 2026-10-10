@@ -52,4 +52,11 @@ N | die Bühne | Bühnen | | stage | Als sie auf die {Bühne} kam, wurde es stil
 N | der Eintrittspreis | Eintrittspreise | | admission price | Die {Eintrittspreise} sind gestiegen. | Admission prices have gone up.
 ADJ | aktiv | aktiver, am aktivsten | | active | Im Ruhestand ist er sehr {aktiv}. | He's very active in retirement.
 N | der Feiertag | Feiertage | | public holiday | Am Montag ist {Feiertag}, die Geschäfte sind zu. | Monday is a public holiday; the shops are closed.
+
+# B2
+N | der Ausgleich | – | | balance, counterbalance | Sport ist ein guter {Ausgleich} zur Arbeit. | Sport is a good counterbalance to work.
+V | sich begeistern | begeistert sich, begeisterte sich, hat sich begeistert | für + A | to be enthusiastic about | Sie {begeistert} sich für Oper. | She's passionate about opera.
+ADJ | abwechslungsreich | abwechslungsreicher, am abwechslungsreichsten | | varied | Das Programm war sehr {abwechslungsreich}. | The programme was very varied.
+N | die Muße | – | | leisure, idleness | Zum Lesen fehlt mir oft die {Muße}. | I often lack the leisure to read.
+V | nachgehen | geht nach, ging nach, ist nachgegangen | D | to pursue (a hobby) | In der Rente will er endlich seinen Hobbys {nachgehen}. | In retirement he finally wants to pursue his hobbies.
 `

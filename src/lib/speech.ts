@@ -93,11 +93,26 @@ async function recordingUrl(voice: RecordedVoice, text: string): Promise<string 
 
 let currentAudio: HTMLAudioElement | undefined
 let playback = 0
+/** When browser speech for the current line started, and how long it should take, for progress estimates. */
+let browserLine: { startedAt: number; estimatedMs: number } | undefined
+
+/** Browser voices manage roughly 14 characters a second at rate 1. */
+const BROWSER_CHARS_PER_SECOND = 14
+
+/** How far through the current line playback is, from 0 to 1. */
+export function currentLineProgress(): number {
+  if (currentAudio && Number.isFinite(currentAudio.duration) && currentAudio.duration > 0) {
+    return Math.min(1, currentAudio.currentTime / currentAudio.duration)
+  }
+  if (browserLine) return Math.min(0.95, (Date.now() - browserLine.startedAt) / browserLine.estimatedMs)
+  return 0
+}
 
 export function stopSpeaking() {
   playback++
   currentAudio?.pause()
   currentAudio = undefined
+  browserLine = undefined
   if ('speechSynthesis' in window) window.speechSynthesis.cancel()
 }
 
@@ -119,6 +134,10 @@ function speakWithBrowser(text: string, rate: number, browserVoice?: SpeechSynth
     utterance.lang = 'de-DE'
     utterance.rate = rate
     if (browserVoice) utterance.voice = browserVoice
+    currentAudio = undefined
+    utterance.onstart = () => {
+      browserLine = { startedAt: Date.now(), estimatedMs: (text.length / BROWSER_CHARS_PER_SECOND / rate) * 1000 }
+    }
     utterance.onend = () => resolve()
     utterance.onerror = () => resolve()
     window.speechSynthesis.speak(utterance)
@@ -177,6 +196,8 @@ export async function speakDialogue(
   const token = playback
   for (const [index, line] of lines.entries()) {
     if (token !== playback) return
+    currentAudio = undefined
+    browserLine = undefined
     options.onLine?.(index)
     await playLine(line.text, line.voice ?? DEFAULT_VOICE, options.slow ?? false, token)
   }

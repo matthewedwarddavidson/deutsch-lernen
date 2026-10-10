@@ -47,4 +47,11 @@ N | die Schüssel | Schüsseln | | bowl | Gib mir bitte die große {Schüssel}. 
 N | das Mehl | – | | flour | Für das Brot brauchst du 500 Gramm {Mehl}. | For the bread you need 500 grams of flour.
 ADJ | süß | süßer, am süßesten | | sweet | Der Kuchen ist mir zu {süß}. | The cake is too sweet for me.
 ADJ | sauer | saurer, am sauersten | | sour | Die Äpfel sind noch {sauer}. | The apples are still sour.
+
+# B2
+ADJ | bekömmlich | bekömmlicher, am bekömmlichsten | | easy to digest | Dieses Brot ist besonders {bekömmlich}. | This bread is especially easy to digest.
+N | die Massentierhaltung | – | | factory farming | Viele lehnen {Massentierhaltung} ab. | Many people reject factory farming.
+V | verzehren | verzehrt, verzehrte, hat verzehrt | | to consume (formal) | Bitte innerhalb von drei Tagen {verzehren}. | Please consume within three days.
+N | der Verzehr | – | | consumption | Nicht zum {Verzehr} geeignet. | Not suitable for consumption.
+ADJ | saisonal | – | | seasonal | Wir kochen nur mit {saisonalen} Zutaten. | We only cook with seasonal ingredients.
 `

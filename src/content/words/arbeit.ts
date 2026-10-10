@@ -65,4 +65,13 @@ N | der Lohn | Löhne | | wage | Der {Lohn} wird am Ende des Monats gezahlt. | T
 N | die Gewerkschaft | Gewerkschaften | | trade union | Die {Gewerkschaft} hat zum Streik aufgerufen. | The union has called a strike.
 ADJ | flexibel | flexibler, am flexibelsten | | flexible | Ich habe {flexible} Arbeitszeiten. | I have flexible working hours.
 N | die Fortbildung | Fortbildungen | | training course | Nächste Woche bin ich auf einer {Fortbildung}. | Next week I'm on a training course.
+
+# B2
+N | die Kündigungsfrist | Kündigungsfristen | | notice period | Die {Kündigungsfrist} beträgt drei Monate. | The notice period is three months.
+V | sich durchsetzen | setzt sich durch, setzte sich durch, hat sich durchgesetzt | | to assert oneself; to catch on | Mit ihrem Vorschlag hat sie sich {durchgesetzt}. | She got her proposal accepted.
+N | die Zuständigkeit | Zuständigkeiten | | responsibility, remit | Das fällt nicht in meine {Zuständigkeit}. | That's not my responsibility.
+V | vertreten | vertritt, vertrat, hat vertreten | | to stand in for; to represent | Während meines Urlaubs {vertritt} mich Frau Meyer. | Ms Meyer is covering for me while I'm on holiday.
+N | der Fachkräftemangel | – | | skills shortage | Viele Betriebe leiden unter dem {Fachkräftemangel}. | Many firms are suffering from the skills shortage.
+ADJ | ausgebrannt | – | | burnt out | Nach zwei Jahren ohne Urlaub war er völlig {ausgebrannt}. | After two years without a holiday he was completely burnt out.
+N | die Vergütung | Vergütungen | | pay, remuneration | Die {Vergütung} erfolgt nach Tarif. | Pay is according to the collective agreement.
 `

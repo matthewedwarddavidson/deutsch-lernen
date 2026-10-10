@@ -48,4 +48,11 @@ N | die Post | – | | post office; post | Ich muss noch zur {Post}. | I still n
 N | die Briefmarke | Briefmarken | | stamp | Wie viel kostet eine {Briefmarke} nach England? | How much is a stamp to England?
 N | die Geburtsurkunde | Geburtsurkunden | | birth certificate | Für die Heirat brauchen Sie Ihre {Geburtsurkunde}. | You need your birth certificate to get married.
 N | die Unterschrift | Unterschriften | | signature | Hier fehlt noch Ihre {Unterschrift}. | Your signature is still missing here.
+
+# B2
+N | die Genehmigung | Genehmigungen | | permit, approval | Für den Umbau brauchen Sie eine {Genehmigung}. | You need a permit for the conversion.
+V | genehmigen | genehmigt, genehmigte, hat genehmigt | | to approve | Der Antrag wurde nicht {genehmigt}. | The application was not approved.
+N | der Nachweis | Nachweise | | proof, evidence | Bitte legen Sie einen {Nachweis} über Ihr Einkommen vor. | Please provide proof of your income.
+V | vorlegen | legt vor, legte vor, hat vorgelegt | | to present, submit | Sie müssen Ihren Pass im Original {vorlegen}. | You must present your original passport.
+ADJ | verbindlich | verbindlicher, am verbindlichsten | | binding | Die Anmeldung ist {verbindlich}. | Registration is binding.
 `

@@ -12,7 +12,7 @@ import { completeListening, recordActivity, recordDictation } from '../lib/actio
 import { diffScore, diffWords, type TokenDiff } from '../lib/check'
 import { dictationSentences, type DictationSentence } from '../lib/dictation'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
-import { speak, speakDialogue, speechSupported, stopSpeaking } from '../lib/speech'
+import { currentLineProgress, speak, speakDialogue, speechSupported, stopSpeaking } from '../lib/speech'
 import { getState, useAppState } from '../lib/store'
 
 export function ListeningList() {
@@ -151,7 +151,7 @@ export function ListeningPage() {
         </button>
         <div className="player-status">
           {playing !== undefined ? (
-            <ProgressBar value={(playing + 1) / text.lines.length} label="Playback" />
+            <PlaybackProgress lines={text.lines.map((line) => line.text)} playing={playing} />
           ) : (
             <span className="small muted">
               {plays === 0 ? 'In the exam you hear most texts twice.' : `Played ${plays}×`}
@@ -368,4 +368,22 @@ function DictationItem({ sentence, onNext }: { sentence: DictationSentence; onNe
       )}
     </div>
   )
+}
+
+/** Progress through a dialogue, weighted by line length and updated every frame so it moves smoothly. */
+function PlaybackProgress({ lines, playing }: { lines: string[]; playing: number }) {
+  const [lineFraction, setLineFraction] = useState(0)
+
+  useEffect(() => {
+    let frame = requestAnimationFrame(function tick() {
+      setLineFraction(currentLineProgress())
+      frame = requestAnimationFrame(tick)
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
+  const total = lines.reduce((sum, line) => sum + line.length, 0)
+  const done = lines.slice(0, playing).reduce((sum, line) => sum + line.length, 0)
+  const value = (done + (lines[playing]?.length ?? 0) * lineFraction) / total
+  return <ProgressBar value={value} label="Playback" smooth />
 }

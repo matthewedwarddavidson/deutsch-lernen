@@ -60,4 +60,11 @@ N | die Erledigung | Erledigungen | | errand | Ich habe heute noch ein paar {Erl
 ADJ | müde | müder, am müdesten | | tired | Ich bin heute total {müde}. | I'm really tired today.
 ADV | unterwegs | – | | on the way, out and about | Ich bin gerade {unterwegs}, ich rufe später an. | I'm out at the moment; I'll call later.
 ADV | zwischendurch | – | | in between, now and again | {Zwischendurch} esse ich gern einen Apfel. | In between I like to eat an apple.
+
+# B2
+V | sich verabschieden | verabschiedet sich, verabschiedete sich, hat sich verabschiedet | von + D | to say goodbye | Ich muss mich noch von den Kollegen {verabschieden}. | I still have to say goodbye to my colleagues.
+N | die Routine | Routinen | | routine | Nach dem Urlaub fällt es mir schwer, wieder in die {Routine} zu finden. | After the holiday I find it hard to get back into the routine.
+ADJ | überfordert | – | mit + D | overwhelmed | Mit Job und Kindern bin ich manchmal völlig {überfordert}. | With work and the kids I'm sometimes completely overwhelmed.
+V | vernachlässigen | vernachlässigt, vernachlässigte, hat vernachlässigt | | to neglect | In der Prüfungszeit habe ich meine Freunde {vernachlässigt}. | During exams I neglected my friends.
+N | die Vereinbarkeit | – | | compatibility, balance | Die {Vereinbarkeit} von Beruf und Familie ist oft schwierig. | Balancing work and family is often difficult.
 `

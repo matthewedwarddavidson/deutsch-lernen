@@ -50,4 +50,10 @@ N | die Geldbörse | Geldbörsen | | purse, wallet | Ich habe meine {Geldbörse}
 N | die Geheimzahl | Geheimzahlen | | PIN | Geben Sie bitte Ihre {Geheimzahl} ein. | Please enter your PIN.
 ADJ | teuer | teurer, am teuersten | | expensive | Das Leben in München ist sehr {teuer}. | Living in Munich is very expensive.
 ADJ | geöffnet | – | | open | Der Supermarkt ist bis 20 Uhr {geöffnet}. | The supermarket is open until 8 pm.
+
+# B2
+N | das Preis-Leistungs-Verhältnis | – | | value for money | Das {Preis-Leistungs-Verhältnis} stimmt. | It's good value for money.
+ADJ | mangelhaft | – | | defective, poor | Die Ware war {mangelhaft}. | The goods were defective.
+N | der Mangel | Mängel | | defect; shortage | Bitte melden Sie {Mängel} innerhalb von zwei Wochen. | Please report defects within two weeks.
+N | die Kaufentscheidung | Kaufentscheidungen | | purchasing decision | Bewertungen beeinflussen unsere {Kaufentscheidung}. | Reviews influence our decision to buy.
 `

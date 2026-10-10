@@ -48,4 +48,11 @@ N | die Pflanze | Pflanzen | | plant | Ich habe viele {Pflanzen} auf dem Balkon.
 V | gießen | gießt, goss, hat gegossen | | to water | Kannst du im Urlaub meine Blumen {gießen}? | Can you water my flowers while I'm on holiday?
 N | das Klima | – | | climate | Das {Klima} in Norddeutschland ist mild. | The climate in northern Germany is mild.
 ADJ | sonnig | sonniger, am sonnigsten | | sunny | Morgen wird es {sonnig} und warm. | Tomorrow will be sunny and warm.
+
+# B2
+N | die Emission | Emissionen | | emission | Der Verkehr verursacht hohe {Emissionen}. | Transport causes high emissions.
+V | verursachen | verursacht, verursachte, hat verursacht | | to cause | Der Sturm hat große Schäden {verursacht}. | The storm caused major damage.
+ADJ | klimaneutral | – | | carbon neutral | Die Stadt will bis 2035 {klimaneutral} sein. | The city aims to be carbon neutral by 2035.
+N | die Artenvielfalt | – | | biodiversity | Pestizide bedrohen die {Artenvielfalt}. | Pesticides threaten biodiversity.
+V | eindämmen | dämmt ein, dämmte ein, hat eingedämmt | | to curb, contain | Man muss den Plastikverbrauch {eindämmen}. | We must curb plastic consumption.
 `

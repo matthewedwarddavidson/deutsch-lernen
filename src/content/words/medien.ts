@@ -51,4 +51,11 @@ V | posten | postet, postete, hat gepostet | | to post (online) | Sie {postet} j
 N | die Zeitung | Zeitungen | | newspaper | Ich lese die {Zeitung} meistens online. | I mostly read the paper online.
 N | der Empfang | – | | reception (signal) | Im Keller habe ich keinen {Empfang}. | I've no reception in the cellar.
 ADJ | kostenlos | – | | free of charge | Die App ist {kostenlos}. | The app is free.
+
+# B2
+N | die Desinformation | – | | disinformation | Soziale Netzwerke müssen gegen {Desinformation} vorgehen. | Social networks must act against disinformation.
+V | recherchieren | recherchiert, recherchierte, hat recherchiert | | to research | Die Journalistin hat monatelang {recherchiert}. | The journalist researched for months.
+ADJ | einseitig | einseitiger, am einseitigsten | | one-sided | Der Bericht war sehr {einseitig}. | The report was very one-sided.
+N | die Meinungsfreiheit | – | | freedom of expression | Die {Meinungsfreiheit} ist im Grundgesetz geschützt. | Freedom of expression is protected by the constitution.
+V | manipulieren | manipuliert, manipulierte, hat manipuliert | | to manipulate | Das Foto wurde {manipuliert}. | The photo was manipulated.
 `

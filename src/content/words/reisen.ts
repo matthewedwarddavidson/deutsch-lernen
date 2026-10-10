@@ -54,4 +54,11 @@ N | die Reiseversicherung | Reiseversicherungen | | travel insurance | Hast du e
 N | der Zoll | – | | customs | Am {Zoll} wurde mein Koffer kontrolliert. | My case was checked at customs.
 N | das Visum | Visa | | visa | Für die Reise brauchen Sie ein {Visum}. | You need a visa for the trip.
 ADJ | direkt | – | | direct | Gibt es einen {direkten} Zug nach Wien? | Is there a direct train to Vienna?
+
+# B2
+N | der Massentourismus | – | | mass tourism | Venedig leidet unter dem {Massentourismus}. | Venice suffers from mass tourism.
+ADJ | abgelegen | – | | remote | Das Hotel liegt sehr {abgelegen}. | The hotel is very remote.
+V | sich erkundigen | erkundigt sich, erkundigte sich, hat sich erkundigt | nach + D | to enquire | Ich habe mich nach den Abfahrtszeiten {erkundigt}. | I asked about the departure times.
+N | die Anreise | Anreisen | | journey there, arrival | Die {Anreise} erfolgt mit dem Zug. | You travel there by train.
+N | die Pauschalreise | Pauschalreisen | | package holiday | Eine {Pauschalreise} ist oft günstiger. | A package holiday is often cheaper.
 `

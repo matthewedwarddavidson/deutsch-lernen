@@ -59,4 +59,10 @@ N | die Grippe | – | | flu | Er liegt mit {Grippe} im Bett. | He's in bed with
 N | das Krankenhaus | Krankenhäuser | | hospital | Sie musste drei Tage im {Krankenhaus} bleiben. | She had to stay in hospital for three days.
 N | die Operation | Operationen | | operation | Die {Operation} ist gut verlaufen. | The operation went well.
 ADJ | gesund | gesünder, am gesündesten | | healthy | Radfahren ist {gesünder} als Autofahren. | Cycling is healthier than driving.
+
+# B2
+V | vorbeugen | beugt vor, beugte vor, hat vorgebeugt | D | to prevent | Bewegung kann vielen Krankheiten {vorbeugen}. | Exercise can prevent many illnesses.
+N | die Diagnose | Diagnosen | | diagnosis | Die Ärztin hat eine klare {Diagnose} gestellt. | The doctor made a clear diagnosis.
+ADJ | erblich | – | | hereditary | Die Krankheit ist {erblich}. | The illness is hereditary.
+N | die Beschwerden | – | | complaints, symptoms (plural) | Seit wann haben Sie diese {Beschwerden}? | How long have you had these symptoms?
 `

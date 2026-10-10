@@ -741,6 +741,10 @@ label.field {
   transition: width 0.3s;
 }
 
+.progress.smooth > span {
+  transition: none;
+}
+
 .stat-value {
   font-size: 1.9rem;
   font-weight: 700;

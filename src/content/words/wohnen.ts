@@ -62,4 +62,10 @@ V | lüften | lüftet, lüftete, hat gelüftet | | to air (a room) | Man sollte 
 N | die Wohnungsbesichtigung | Wohnungsbesichtigungen | | flat viewing | Zur {Wohnungsbesichtigung} kamen dreißig Leute. | Thirty people came to the viewing.
 N | der Auszug | Auszüge | | moving out | Beim {Auszug} gibt es eine Übergabe mit dem Vermieter. | When you move out there's a handover with the landlord.
 ADJ | renovierungsbedürftig | – | | in need of renovation | Das Haus ist günstig, aber {renovierungsbedürftig}. | The house is cheap but needs work.
+
+# B2
+N | die Gentrifizierung | – | | gentrification | Die {Gentrifizierung} verdrängt alte Bewohner. | Gentrification is pushing out long-term residents.
+V | verdrängen | verdrängt, verdrängte, hat verdrängt | | to displace, push out | Viele Familien wurden an den Stadtrand {verdrängt}. | Many families were pushed out to the edge of town.
+N | der Leerstand | – | | vacancy (empty property) | In manchen Dörfern gibt es viel {Leerstand}. | In some villages many properties are empty.
+ADJ | sanierungsbedürftig | – | | in need of renovation | Das Gebäude ist stark {sanierungsbedürftig}. | The building badly needs renovating.
 `

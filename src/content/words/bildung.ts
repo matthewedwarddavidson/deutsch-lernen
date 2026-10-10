@@ -46,4 +46,11 @@ N | die Vorlesung | Vorlesungen | | lecture | Die {Vorlesung} beginnt um zehn na
 V | üben | übt, übte, hat geübt | | to practise | Du musst mehr {üben}. | You need to practise more.
 N | der Test | Tests | | test | Wie ist dein {Test} gelaufen? | How did your test go?
 ADJ | fleißig | fleißiger, am fleißigsten | | hard-working | Sie ist eine sehr {fleißige} Studentin. | She's a very hard-working student.
+
+# B2
+N | die Chancengerechtigkeit | – | | fair opportunities | Das Schulsystem soll mehr {Chancengerechtigkeit} schaffen. | The school system is supposed to create fairer opportunities.
+V | vermitteln | vermittelt, vermittelte, hat vermittelt | | to convey, teach; to arrange | Die Lehrerin {vermittelt} den Stoff sehr anschaulich. | The teacher gets the material across very clearly.
+N | die Kompetenz | Kompetenzen | | skill, competence | Digitale {Kompetenzen} werden immer wichtiger. | Digital skills are becoming ever more important.
+ADJ | anspruchsvoll | anspruchsvoller, am anspruchsvollsten | | demanding | Der Kurs ist sehr {anspruchsvoll}. | The course is very demanding.
+N | die Leistungsbereitschaft | – | | willingness to perform | Die Firma erwartet hohe {Leistungsbereitschaft}. | The firm expects a strong work ethic.
 `
