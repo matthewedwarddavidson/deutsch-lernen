@@ -8,7 +8,17 @@ const reply = {
   genre: 'blog',
   paragraphs: ['Wir sind nach Wien gefahren.'],
   glossary: [{ term: 'gefahren', english: 'travelled' }],
-  questions: [{ kind: 'truefalse', text: 'Sie waren in Wien.', options: [], correctOption: 0, isTrue: true, explanation: '', modelAnswer: '' }],
+  questions: [
+    {
+      kind: 'truefalse',
+      text: 'Sie waren in Wien.',
+      options: [],
+      correctOption: 0,
+      isTrue: true,
+      explanation: '',
+      modelAnswer: '',
+    },
+  ],
 }
 
 describe('manual route', () => {

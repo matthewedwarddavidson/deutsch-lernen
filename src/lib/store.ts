@@ -23,6 +23,16 @@ export interface WritingFeedback {
   nextStep: string
 }
 
+/** An error from your own writing, kept for spaced practice. */
+export interface Mistake {
+  id: string
+  category: string
+  original: string
+  correction: string
+  explanation: string
+  createdAt: string
+}
+
 export interface WritingAttempt {
   id: string
   taskId: string
@@ -31,7 +41,8 @@ export interface WritingAttempt {
   feedback?: WritingFeedback
 }
 
-export type ActivityKind = 'review' | 'learn' | 'grammar' | 'reading' | 'listening' | 'dictation' | 'writing' | 'fluency'
+export type ActivityKind =
+  'review' | 'learn' | 'grammar' | 'reading' | 'listening' | 'dictation' | 'writing' | 'fluency'
 
 export interface Activity {
   at: string
@@ -56,6 +67,7 @@ export interface AppState {
   /** Word id → when it was first learned. */
   wordsLearned: Record<string, string>
   customWords: Word[]
+  mistakes: Mistake[]
   grammar: Record<string, { studiedAt: string }>
   reading: Record<string, Completion>
   listening: Record<string, Completion>
@@ -76,6 +88,7 @@ export function initialState(): AppState {
     log: [],
     wordsLearned: {},
     customWords: [],
+    mistakes: [],
     grammar: {},
     reading: {},
     listening: {},

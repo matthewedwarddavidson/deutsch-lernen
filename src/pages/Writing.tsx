@@ -6,7 +6,7 @@ import { ViaClaudeAi } from '../components/ViaClaudeAi'
 import { writingTasks } from '../content/library'
 import { themeById } from '../content/themes'
 import { LEVELS, type WritingTask } from '../content/types'
-import { deleteGenerated, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
+import { addMistake, deleteGenerated, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
 import { diffWords } from '../lib/check'
 import { ClaudeError, correctWriting } from '../lib/claude'
 import { feedbackJob } from '../lib/generation'
@@ -23,9 +23,36 @@ const FORMAT_LABELS: Record<WritingTask['format'], string> = {
 }
 
 const CONNECTORS = [
-  'weil', 'dass', 'obwohl', 'deshalb', 'deswegen', 'trotzdem', 'außerdem', 'denn', 'wenn', 'als', 'damit',
-  'nachdem', 'während', 'sondern', 'aber', 'bevor', 'sobald', 'falls', 'ob', 'darum', 'sonst', 'zwar',
-  'einerseits', 'andererseits', 'jedoch', 'allerdings', 'dennoch', 'folglich', 'indem', 'sodass',
+  'weil',
+  'dass',
+  'obwohl',
+  'deshalb',
+  'deswegen',
+  'trotzdem',
+  'außerdem',
+  'denn',
+  'wenn',
+  'als',
+  'damit',
+  'nachdem',
+  'während',
+  'sondern',
+  'aber',
+  'bevor',
+  'sobald',
+  'falls',
+  'ob',
+  'darum',
+  'sonst',
+  'zwar',
+  'einerseits',
+  'andererseits',
+  'jedoch',
+  'allerdings',
+  'dennoch',
+  'folglich',
+  'indem',
+  'sodass',
 ]
 
 function countWords(text: string): number {
@@ -288,12 +315,20 @@ function WritingEditor({ task }: { task: WritingTask }) {
               <div className="stack" style={{ gap: 6 }}>
                 {attempts.map((attempt) => (
                   <div key={attempt.id} className="row between attempt-row">
-                    <button className="btn ghost small" onClick={() => openAttempt(attempt)} disabled={attempt.id === attemptId}>
+                    <button
+                      className="btn ghost small"
+                      onClick={() => openAttempt(attempt)}
+                      disabled={attempt.id === attemptId}
+                    >
                       {new Date(attempt.savedAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })} ·{' '}
                       {countWords(attempt.text)} words
                       {attempt.feedback && ` · ${attempt.feedback.estimatedLevel}`}
                     </button>
-                    <button className="btn ghost small" aria-label="Delete version" onClick={() => deleteWriting(attempt.id)}>
+                    <button
+                      className="btn ghost small"
+                      aria-label="Delete version"
+                      onClick={() => deleteWriting(attempt.id)}
+                    >
                       <Icon name="trash" size={14} />
                     </button>
                   </div>
@@ -339,7 +374,11 @@ function WritingEditor({ task }: { task: WritingTask }) {
               <li>Every point answered, in its own sentence or paragraph?</li>
               <li>Verb second in main clauses, last in weil/dass/wenn clauses?</li>
               <li>Articles and adjective endings checked?</li>
-              <li>{task.format === 'formal-email' ? 'Sie throughout, formal greeting and closing?' : 'Right tone for the reader?'}</li>
+              <li>
+                {task.format === 'formal-email'
+                  ? 'Sie throughout, formal greeting and closing?'
+                  : 'Right tone for the reader?'}
+              </li>
               <li>Nouns capitalised?</li>
             </ul>
           </div>
@@ -366,6 +405,13 @@ function FeedbackPanel({ original, feedback }: { original: string; feedback: Wri
           </span>
         </div>
         <hr className="divider" style={{ margin: '4px 0' }} />
+        {feedback.errors.length > 1 && (
+          <div>
+            <button className="btn small" onClick={() => feedback.errors.forEach((error) => addMistake(error))}>
+              Practise all {feedback.errors.length} in reviews
+            </button>
+          </div>
+        )}
         {feedback.errors.length > 0 ? (
           <div className="stack" style={{ gap: 12 }}>
             {feedback.errors.map((error, index) => (
@@ -374,9 +420,11 @@ function FeedbackPanel({ original, feedback }: { original: string; feedback: Wri
                   {error.category}
                 </div>
                 <div className="de">
-                  <span className="error-original">{error.original}</span> → <strong className="error-fix">{error.correction}</strong>
+                  <span className="error-original">{error.original}</span> →{' '}
+                  <strong className="error-fix">{error.correction}</strong>
                 </div>
                 <div className="small muted">{error.explanation}</div>
+                <MistakeButton error={error} />
               </div>
             ))}
           </div>
@@ -416,3 +464,18 @@ function FeedbackPanel({ original, feedback }: { original: string; feedback: Wri
   )
 }
 
+function MistakeButton({ error }: { error: WritingFeedback['errors'][number] }) {
+  const { mistakes } = useAppState()
+  const added = mistakes.some(
+    (mistake) => mistake.original === error.original && mistake.correction === error.correction,
+  )
+  return added ? (
+    <span className="small pill good" style={{ marginTop: 6, display: 'inline-block' }}>
+      In your reviews
+    </span>
+  ) : (
+    <button className="btn small" style={{ marginTop: 6 }} onClick={() => addMistake(error)}>
+      Practise this in reviews
+    </button>
+  )
+}

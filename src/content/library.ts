@@ -33,7 +33,5 @@ export function suggest<T extends { id: string; level: Level }>(
   done: Record<string, unknown>,
   target: Level,
 ): T | undefined {
-  return items
-    .filter((item) => !(item.id in done))
-    .sort((a, b) => rank(a.level, target) - rank(b.level, target))[0]
+  return items.filter((item) => !(item.id in done)).sort((a, b) => rank(a.level, target) - rank(b.level, target))[0]
 }

@@ -25,15 +25,7 @@ export interface Theme {
   english: string
 }
 
-export type WordKind =
-  | 'noun'
-  | 'verb'
-  | 'adjective'
-  | 'adverb'
-  | 'phrase'
-  | 'preposition'
-  | 'conjunction'
-  | 'other'
+export type WordKind = 'noun' | 'verb' | 'adjective' | 'adverb' | 'phrase' | 'preposition' | 'conjunction' | 'other'
 
 export type Gender = 'der' | 'die' | 'das'
 
@@ -115,16 +107,7 @@ export type Question =
   | { kind: 'open'; question: string; model: string }
 
 export type TextGenre =
-  | 'blog'
-  | 'article'
-  | 'email'
-  | 'forum'
-  | 'story'
-  | 'notice'
-  | 'interview'
-  | 'dialogue'
-  | 'announcement'
-  | 'report'
+  'blog' | 'article' | 'email' | 'forum' | 'story' | 'notice' | 'interview' | 'dialogue' | 'announcement' | 'report'
 
 export interface ReadingText {
   id: string

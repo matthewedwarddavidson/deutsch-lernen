@@ -151,8 +151,8 @@ export function Settings() {
           <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">
             console.anthropic.com
           </a>
-          . API use is billed separately from a Pro or Max plan, per request (a correction costs a few cents). The key is
-          stored only in this browser and sent only to Anthropic.
+          . API use is billed separately from a Pro or Max plan, per request (a correction costs a few cents). The key
+          is stored only in this browser and sent only to Anthropic.
         </p>
         <div className="row">
           <input

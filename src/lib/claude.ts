@@ -27,15 +27,18 @@ export async function runJob<Result>(apiKey: string, job: Job<Result>): Promise<
       messages: [{ role: 'user', content: job.prompt }],
       output_config: { effort: job.effort, format: betaZodOutputFormat(job.schema) },
     })
-    if (response.stop_reason === 'refusal') throw new ClaudeError('Claude declined this request. Try a different topic.')
+    if (response.stop_reason === 'refusal')
+      throw new ClaudeError('Claude declined this request. Try a different topic.')
     if (response.stop_reason === 'max_tokens') throw new ClaudeError('The response was cut off. Try again.')
     if (!response.parsed_output) throw new ClaudeError('Could not read the response. Try again.')
     return job.finish(response.parsed_output)
   } catch (error) {
     if (error instanceof ClaudeError) throw error
-    if (error instanceof Anthropic.AuthenticationError) throw new ClaudeError('The API key was rejected. Check it in Settings.')
+    if (error instanceof Anthropic.AuthenticationError)
+      throw new ClaudeError('The API key was rejected. Check it in Settings.')
     if (error instanceof Anthropic.RateLimitError) throw new ClaudeError('Rate limited. Wait a minute and try again.')
-    if (error instanceof Anthropic.APIError) throw new ClaudeError(`Claude API error ${error.status ?? ''}: ${error.message}`)
+    if (error instanceof Anthropic.APIError)
+      throw new ClaudeError(`Claude API error ${error.status ?? ''}: ${error.message}`)
     throw new ClaudeError('Could not reach Claude. Check your connection.')
   }
 }

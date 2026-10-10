@@ -84,7 +84,5 @@ export function clozeParts(example: string): { text: string; gap: boolean }[] {
   return example
     .split(/(\{[^}]+\})/)
     .filter(Boolean)
-    .map((part) =>
-      part.startsWith('{') ? { text: part.slice(1, -1), gap: true } : { text: part, gap: false },
-    )
+    .map((part) => (part.startsWith('{') ? { text: part.slice(1, -1), gap: true } : { text: part, gap: false }))
 }

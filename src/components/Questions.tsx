@@ -91,7 +91,9 @@ export function Questions({ questions, onFinish }: { questions: Question[]; onFi
                   <button
                     className="btn small"
                     style={{ marginTop: 6 }}
-                    onClick={() => setOpenRevealed(openRevealed.map((value, other) => (other === index ? true : value)))}
+                    onClick={() =>
+                      setOpenRevealed(openRevealed.map((value, other) => (other === index ? true : value)))
+                    }
                   >
                     Show model answer
                   </button>

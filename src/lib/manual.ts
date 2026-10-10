@@ -32,11 +32,14 @@ export function extractJson(reply: string): unknown {
   const candidate = fenced ? fenced[1] : reply
   const start = candidate.indexOf('{')
   const end = candidate.lastIndexOf('}')
-  if (start < 0 || end <= start) throw new ReplyError("Couldn't find any JSON in that reply. Paste Claude's whole answer.")
+  if (start < 0 || end <= start)
+    throw new ReplyError("Couldn't find any JSON in that reply. Paste Claude's whole answer.")
   try {
     return JSON.parse(candidate.slice(start, end + 1))
   } catch {
-    throw new ReplyError('The reply was cut off or is not valid JSON. Ask Claude to "continue" or to send the JSON again.')
+    throw new ReplyError(
+      'The reply was cut off or is not valid JSON. Ask Claude to "continue" or to send the JSON again.',
+    )
   }
 }
 
@@ -47,7 +50,9 @@ export function parseReply<Result>(job: Job<Result>, reply: string): Result {
   } catch (error) {
     if (error instanceof z.ZodError) {
       const fields = [...new Set(error.issues.map((issue) => issue.path.join('.') || 'reply'))].slice(0, 4)
-      throw new ReplyError(`The reply is missing or has the wrong type for: ${fields.join(', ')}. Ask Claude to fix the JSON.`)
+      throw new ReplyError(
+        `The reply is missing or has the wrong type for: ${fields.join(', ')}. Ask Claude to fix the JSON.`,
+      )
     }
     throw error
   }

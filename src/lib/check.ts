@@ -119,10 +119,7 @@ export function checkNoun(given: string, article: string, noun: string): CheckRe
 
   const nounResult = compareOne(rest.join(' '), noun)
   if (typedArticle !== article) {
-    const note =
-      nounResult.verdict === 'wrong'
-        ? undefined
-        : `Wrong gender: it's ${expected}.`
+    const note = nounResult.verdict === 'wrong' ? undefined : `Wrong gender: it's ${expected}.`
     return { verdict: 'wrong', expected, note }
   }
   return { ...nounResult, expected }
@@ -139,9 +136,7 @@ export interface TokenDiff {
 
 function tokenise(text: string, keepPunctuation: boolean): string[] {
   const tokens = text.normalize('NFC').replace(/[–—]/g, '-').split(/\s+/)
-  const cleaned = keepPunctuation
-    ? tokens
-    : tokens.map((token) => token.replace(/^[„"“»«(]+|[.,!?;:"“”»«)]+$/g, ''))
+  const cleaned = keepPunctuation ? tokens : tokens.map((token) => token.replace(/^[„"“»«(]+|[.,!?;:"“”»«)]+$/g, ''))
   return cleaned.filter(Boolean)
 }
 

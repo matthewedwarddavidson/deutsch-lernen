@@ -13,7 +13,6 @@ interface ExerciseViewProps {
   onAnswered: (verdict: Verdict) => void
 }
 
-
 export function ExerciseView({ exercise, onAnswered }: ExerciseViewProps) {
   switch (exercise.kind) {
     case 'gap':
@@ -103,7 +102,13 @@ function GapExercise({ exercise, onAnswered }: { exercise: GapExerciseData; onAn
 
 type ChoiceExerciseData = Extract<GrammarExercise, { kind: 'choice' }>
 
-function ChoiceExercise({ exercise, onAnswered }: { exercise: ChoiceExerciseData; onAnswered: (verdict: Verdict) => void }) {
+function ChoiceExercise({
+  exercise,
+  onAnswered,
+}: {
+  exercise: ChoiceExerciseData
+  onAnswered: (verdict: Verdict) => void
+}) {
   const [chosen, setChosen] = useState<number>()
   const answered = chosen !== undefined
   const result: CheckResult | undefined = answered
@@ -121,13 +126,7 @@ function ChoiceExercise({ exercise, onAnswered }: { exercise: ChoiceExerciseData
       <GapPrompt prompt={exercise.prompt} filled={answered ? exercise.options[chosen] : undefined} />
       <div className="choice-grid">
         {exercise.options.map((option, index) => {
-          const state = !answered
-            ? ''
-            : index === exercise.answer
-              ? 'correct'
-              : index === chosen
-                ? 'wrong'
-                : 'dimmed'
+          const state = !answered ? '' : index === exercise.answer ? 'correct' : index === chosen ? 'wrong' : 'dimmed'
           return (
             <button key={option} className={`choice de ${state}`} onClick={() => choose(index)} disabled={answered}>
               <span className="kbd">{index + 1}</span> {option}
@@ -142,7 +141,15 @@ function ChoiceExercise({ exercise, onAnswered }: { exercise: ChoiceExerciseData
 }
 
 /** Number keys pick an option. */
-function ChoiceKeys({ count, onChoose, active }: { count: number; onChoose: (index: number) => void; active: boolean }) {
+function ChoiceKeys({
+  count,
+  onChoose,
+  active,
+}: {
+  count: number
+  onChoose: (index: number) => void
+  active: boolean
+}) {
   useKeyHandler(active, (key) => {
     const number = Number(key)
     if (number >= 1 && number <= count) {
@@ -168,7 +175,13 @@ function shuffled(words: string[]): string[] {
   return indexes.map((index) => words[index])
 }
 
-function OrderExercise({ exercise, onAnswered }: { exercise: OrderExerciseData; onAnswered: (verdict: Verdict) => void }) {
+function OrderExercise({
+  exercise,
+  onAnswered,
+}: {
+  exercise: OrderExerciseData
+  onAnswered: (verdict: Verdict) => void
+}) {
   // Tiles keep their position in the shuffled list so duplicates ("ich", "ich") work.
   const tiles = useMemo(() => shuffled(exercise.words), [exercise])
   const [picked, setPicked] = useState<number[]>([])

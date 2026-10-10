@@ -6,10 +6,28 @@ import { useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
 
 const STRANDS: { id: string; label: string; description: string; kinds: ActivityKind[]; color: string }[] = [
-  { id: 'input', label: 'Input', description: 'reading and listening', kinds: ['reading', 'listening'], color: 'var(--series-1)' },
+  {
+    id: 'input',
+    label: 'Input',
+    description: 'reading and listening',
+    kinds: ['reading', 'listening'],
+    color: 'var(--series-1)',
+  },
   { id: 'output', label: 'Output', description: 'writing', kinds: ['writing'], color: 'var(--series-2)' },
-  { id: 'study', label: 'Study', description: 'words, grammar, dictation', kinds: ['review', 'learn', 'grammar', 'dictation'], color: 'var(--series-3)' },
-  { id: 'fluency', label: 'Fluency', description: 'fast practice with known material', kinds: ['fluency'], color: 'var(--series-4)' },
+  {
+    id: 'study',
+    label: 'Study',
+    description: 'words, grammar, dictation',
+    kinds: ['review', 'learn', 'grammar', 'dictation'],
+    color: 'var(--series-3)',
+  },
+  {
+    id: 'fluency',
+    label: 'Fluency',
+    description: 'fast practice with known material',
+    kinds: ['fluency'],
+    color: 'var(--series-4)',
+  },
 ]
 
 function greeting(now: Date): string {
@@ -135,9 +153,13 @@ export function Today() {
 
 function reviewBreakdown(due: ReturnType<typeof dueCards>): string {
   if (due.length === 0) return 'Come back tomorrow, or learn something new.'
-  const words = due.filter((card) => card.kind !== 'grammar').length
-  const grammar = due.length - words
-  return [words && `${words} words`, grammar && `${grammar} grammar`].filter(Boolean).join(' · ')
+  const count = (kinds: string[]) => due.filter((card) => kinds.includes(card.kind)).length
+  const words = count(['recognise', 'produce'])
+  const grammar = count(['grammar'])
+  const mistakes = count(['mistake'])
+  return [words && `${words} words`, grammar && `${grammar} grammar`, mistakes && `${mistakes} of your mistakes`]
+    .filter(Boolean)
+    .join(' · ')
 }
 
 function PlanCard({
@@ -197,7 +219,11 @@ function StrandBalance({ state }: { state: AppState }) {
       <div className="strand-bar" aria-hidden="true">
         {totals.map((strand) =>
           strand.minutes > 0 ? (
-            <span key={strand.id} style={{ flex: strand.minutes, background: strand.color }} title={`${strand.label}: ${strand.minutes} min`} />
+            <span
+              key={strand.id}
+              style={{ flex: strand.minutes, background: strand.color }}
+              title={`${strand.label}: ${strand.minutes} min`}
+            />
           ) : null,
         )}
       </div>

@@ -25,7 +25,6 @@ function topicProgress(state: AppState, topic: GrammarTopic) {
   }
 }
 
-
 export function GrammarList() {
   const state = useAppState()
   const recommended = nextTopic(state)

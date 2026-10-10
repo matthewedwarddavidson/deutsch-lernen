@@ -83,13 +83,20 @@ export function Progress() {
       <div className="page-header">
         <div className="eyebrow">Fortschritt</div>
         <h1>Progress</h1>
-        <p>What you can actually do, not points. A word counts as known once you have recalled it with at least three weeks between reviews.</p>
+        <p>
+          What you can actually do, not points. A word counts as known once you have recalled it with at least three
+          weeks between reviews.
+        </p>
       </div>
 
       <div className="grid three">
         <Stat value={knownWords} label="words known" detail={`${learningWords} more in progress`} />
         <Stat value={topicsStudied.length} label="grammar topics studied" detail={`of ${GRAMMAR_TOPICS.length}`} />
-        <Stat value={textsRead + listened} label="texts read or heard" detail={`${textsRead} read · ${listened} heard`} />
+        <Stat
+          value={textsRead + listened}
+          label="texts read or heard"
+          detail={`${textsRead} read · ${listened} heard`}
+        />
         <Stat value={state.writing.length} label="pieces written" detail={latestLevel(state)} />
         <Stat
           value={retention ? `${Math.round(retention.rate * 100)}%` : '–'}
@@ -109,9 +116,15 @@ export function Progress() {
                 {row.known} known · {row.learning} learning · {row.total} words
               </span>
             </div>
-            <div className="stacked-bar" role="img" aria-label={`${row.level}: ${row.known} known, ${row.learning} learning, ${row.total} total`}>
+            <div
+              className="stacked-bar"
+              role="img"
+              aria-label={`${row.level}: ${row.known} known, ${row.learning} learning, ${row.total} total`}
+            >
               {row.known > 0 && <span className="known" style={{ width: `${(row.known / row.total) * 100}%` }} />}
-              {row.learning > 0 && <span className="learning" style={{ width: `${(row.learning / row.total) * 100}%` }} />}
+              {row.learning > 0 && (
+                <span className="learning" style={{ width: `${(row.learning / row.total) * 100}%` }} />
+              )}
             </div>
           </div>
         ))}
@@ -123,7 +136,11 @@ export function Progress() {
             <span className="legend-swatch" style={{ background: 'var(--almost)' }} /> Learning
           </span>
           <span className="row small" style={{ gap: 6 }}>
-            <span className="legend-swatch" style={{ background: 'var(--surface-muted)', border: '1px solid var(--border)' }} /> Not started
+            <span
+              className="legend-swatch"
+              style={{ background: 'var(--surface-muted)', border: '1px solid var(--border)' }}
+            />{' '}
+            Not started
           </span>
         </div>
       </div>
@@ -144,7 +161,9 @@ export function Progress() {
           <p className="small muted">Minutes per day, last 4 weeks.</p>
           <BarChart
             values={activity}
-            labels={activity.map((_, index) => (index === activity.length - 1 ? 'heute' : dayLabel(index - activity.length + 1)))}
+            labels={activity.map((_, index) =>
+              index === activity.length - 1 ? 'heute' : dayLabel(index - activity.length + 1),
+            )}
             unit="min"
             caption="Minutes studied per day, last 28 days"
             sparseLabels
@@ -165,7 +184,9 @@ export function Progress() {
                 <span className="pill">{topic.level}</span>
                 <span className="topic-name">{topic.title}</span>
                 <span style={{ flex: 1 }}>
-                  {studied ? <ProgressBar value={mastered / topic.exercises.length} label={`${topic.title} mastery`} /> : null}
+                  {studied ? (
+                    <ProgressBar value={mastered / topic.exercises.length} label={`${topic.title} mastery`} />
+                  ) : null}
                 </span>
                 <span className="small muted" style={{ minWidth: 90, textAlign: 'right' }}>
                   {studied ? `${mastered}/${topic.exercises.length} mastered` : 'not started'}
@@ -198,7 +219,11 @@ function Stat({ value, label, detail }: { value: number | string; label: string;
     <div className="card">
       <div className="stat-value">{value}</div>
       <div className="stat-label">{label}</div>
-      {detail && <div className="faint small" style={{ marginTop: 4 }}>{detail}</div>}
+      {detail && (
+        <div className="faint small" style={{ marginTop: 4 }}>
+          {detail}
+        </div>
+      )}
     </div>
   )
 }
@@ -275,7 +300,16 @@ function LevelReadiness({ state }: { state: AppState }) {
       texts.length ? textsDone / texts.length : undefined,
     ].filter((part): part is number => part !== undefined)
     const coverage = parts.length ? parts.reduce((sum, part) => sum + part, 0) / parts.length : 0
-    return { level, coverage, knownWords, words: words.length, topicsDone, topics: topics.length, textsDone, texts: texts.length }
+    return {
+      level,
+      coverage,
+      knownWords,
+      words: words.length,
+      topicsDone,
+      topics: topics.length,
+      textsDone,
+      texts: texts.length,
+    }
   })
 
   return (
@@ -287,7 +321,8 @@ function LevelReadiness({ state }: { state: AppState }) {
             <div className="level-label">
               <strong>{row.level}</strong>
               <span className="small muted">
-                {row.knownWords}/{row.words} words known · {row.topicsDone}/{row.topics} topics · {row.textsDone}/{row.texts} texts
+                {row.knownWords}/{row.words} words known · {row.topicsDone}/{row.topics} topics · {row.textsDone}/
+                {row.texts} texts
               </span>
             </div>
             <ProgressBar value={row.coverage} label={`${row.level} coverage`} />

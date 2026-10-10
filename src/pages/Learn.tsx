@@ -18,10 +18,7 @@ import { checkWord, suggestedGrade } from '../lib/grading'
 
 const BATCH_SIZE = 5
 
-type Step =
-  | { kind: 'study'; index: number }
-  | { kind: 'quiz'; queue: Word[]; firstTry: boolean }
-  | { kind: 'done' }
+type Step = { kind: 'study'; index: number } | { kind: 'quiz'; queue: Word[]; firstTry: boolean } | { kind: 'done' }
 
 /**
  * Introduces new words in batches: study each word, then recall the batch
@@ -33,7 +30,8 @@ export function Learn() {
   const [words] = useState(() => {
     const state = getState()
     const remainingToday = Math.max(0, state.settings.newWordsPerDay - newWordsLearnedToday(state, new Date()))
-    const count = searchParams.get('more') ? BATCH_SIZE * 2 : remainingToday
+    const requested = Number(searchParams.get('count'))
+    const count = requested > 0 ? requested : searchParams.get('more') ? BATCH_SIZE * 2 : remainingToday
     return nextNewWords(state, count, theme ?? undefined)
   })
   const [batchStart, setBatchStart] = useState(0)
@@ -48,7 +46,9 @@ export function Learn() {
       <div className="page narrow">
         <div className="card empty">
           <h2>{theme ? `No new words left in ${themeById(theme).title}` : "You've reached today's new words"}</h2>
-          <p>New words are spread over days so reviews stay manageable. You can still learn more if you have the energy.</p>
+          <p>
+            New words are spread over days so reviews stay manageable. You can still learn more if you have the energy.
+          </p>
           <div className="row" style={{ justifyContent: 'center' }}>
             <Link className="btn primary" to="/review">
               Review
@@ -130,7 +130,10 @@ export function Learn() {
       {step.kind === 'done' && (
         <div className="card empty">
           <h2>{words.length} new words</h2>
-          <p>They will come back for review tomorrow, then at growing intervals. Typing them in German starts from tomorrow.</p>
+          <p>
+            They will come back for review tomorrow, then at growing intervals. Typing them in German starts from
+            tomorrow.
+          </p>
           <div className="row" style={{ justifyContent: 'center' }}>
             <Link className="btn primary" to="/">
               Back to today
@@ -182,7 +185,9 @@ function StudyCard({
         </button>
         <button
           className="btn ghost"
-          onClick={() => speak(word.example.replace(/[{}]/g, ''), { rate: settings.speechRate * 0.7, voiceURI: settings.voiceURI })}
+          onClick={() =>
+            speak(word.example.replace(/[{}]/g, ''), { rate: settings.speechRate * 0.7, voiceURI: settings.voiceURI })
+          }
         >
           Hear the example slowly
         </button>

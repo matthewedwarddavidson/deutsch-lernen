@@ -32,8 +32,8 @@ export function ListeningList() {
           <div className="eyebrow">Hören</div>
           <h1>Listening</h1>
           <p>
-            Read the questions first, then listen without the transcript, as in the exam. The transcript appears once you
-            have answered.
+            Read the questions first, then listen without the transcript, as in the exam. The transcript appears once
+            you have answered.
           </p>
         </div>
         <GenerateButton kind="listening" />
@@ -230,7 +230,9 @@ function Transcript({ text, activeLine }: { text: ListeningText; activeLine?: nu
         <div key={index} className={`transcript-line ${activeLine === index ? 'speaking' : ''}`}>
           <SpeakButton text={line.text} />
           <div>
-            {showSpeakers && <div className={`speaker speaker-${speakers.indexOf(line.speaker) % 2}`}>{line.speaker}</div>}
+            {showSpeakers && (
+              <div className={`speaker speaker-${speakers.indexOf(line.speaker) % 2}`}>{line.speaker}</div>
+            )}
             <div className="de">{line.text}</div>
           </div>
         </div>
@@ -261,7 +263,10 @@ export function Dictation() {
       <div className="page narrow">
         <div className="card empty">
           <h2>{Math.round(average * 100)}% of words right</h2>
-          <p>Words you miss in dictation are usually short, unstressed ones: articles, endings, prepositions. Those are exactly what to listen for.</p>
+          <p>
+            Words you miss in dictation are usually short, unstressed ones: articles, endings, prepositions. Those are
+            exactly what to listen for.
+          </p>
           <div className="row" style={{ justifyContent: 'center' }}>
             <Link className="btn primary" to="/listening/dictation" reloadDocument>
               Another 10
@@ -306,7 +311,10 @@ function DictationItem({ sentence, onNext }: { sentence: DictationSentence; onNe
   const [diff, setDiff] = useState<TokenDiff[]>()
 
   const play = (slow = false) =>
-    speak(sentence.german, { rate: slow ? settings.speechRate * 0.7 : settings.speechRate, voiceURI: settings.voiceURI })
+    speak(sentence.german, {
+      rate: slow ? settings.speechRate * 0.7 : settings.speechRate,
+      voiceURI: settings.voiceURI,
+    })
 
   useEffect(() => {
     const timer = setTimeout(() => play(), 300)
@@ -340,7 +348,13 @@ function DictationItem({ sentence, onNext }: { sentence: DictationSentence; onNe
           <Icon name="slow" /> Slowly
         </button>
       </div>
-      <AnswerInput value={value} onChange={setValue} onSubmit={check} disabled={!!diff} placeholder="Schreib den Satz…" />
+      <AnswerInput
+        value={value}
+        onChange={setValue}
+        onSubmit={check}
+        disabled={!!diff}
+        placeholder="Schreib den Satz…"
+      />
       {!diff ? (
         <div>
           <button className="btn primary" onClick={check}>
@@ -353,7 +367,11 @@ function DictationItem({ sentence, onNext }: { sentence: DictationSentence; onNe
             <div className="feedback-title">{Math.round(score * 100)}% of words</div>
             <div className="diff de">
               {diff.map((token, tokenIndex) => (
-                <span key={tokenIndex} className={`token ${token.status}`} title={token.typed ? `You wrote: ${token.typed}` : undefined}>
+                <span
+                  key={tokenIndex}
+                  className={`token ${token.status}`}
+                  title={token.typed ? `You wrote: ${token.typed}` : undefined}
+                >
                   {token.text}
                   {token.typed && <span className="typed">{token.typed}</span>}
                 </span>

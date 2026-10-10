@@ -21,9 +21,7 @@ describe('built-in word lists', () => {
   })
 
   it('give every verb its principal parts', () => {
-    const bad = BUILT_IN_WORDS.filter(
-      (word) => word.kind === 'verb' && (word.forms ?? '').split(',').length !== 3,
-    )
+    const bad = BUILT_IN_WORDS.filter((word) => word.kind === 'verb' && (word.forms ?? '').split(',').length !== 3)
     expect(bad.map((word) => word.german)).toEqual([])
   })
 

@@ -16,8 +16,7 @@ import { checkWord, suggestedGrade } from '../lib/grading'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
 import { Rating, type Grade, type StoredCard } from '../lib/srs'
-import { getState, useAppState } from '../lib/store'
-
+import { getState, useAppState, type Mistake } from '../lib/store'
 
 export function Review() {
   // The queue is fixed when the session starts; cards failed again come back at the end.
@@ -106,6 +105,7 @@ interface CardProps {
 export function ReviewCard({ card, stored, onGrade }: CardProps) {
   if (card.kind === 'recognise') return <RecogniseCard word={card.word} stored={stored} onGrade={onGrade} />
   if (card.kind === 'produce') return <ProduceCard word={card.word} stored={stored} onGrade={onGrade} />
+  if (card.kind === 'mistake') return <MistakeCard mistake={card.mistake} stored={stored} onGrade={onGrade} />
   return <GrammarCard card={card} stored={stored} onGrade={onGrade} />
 }
 
@@ -144,7 +144,7 @@ function RecogniseCard({ word, stored, onGrade }: { word: Word; stored: StoredCa
       ) : (
         <>
           <WordView word={word} />
-          <GradeButtons card={stored} onGrade={onGrade} />
+          <GradeButtons card={stored} suggested={Rating.Good} onGrade={onGrade} />
         </>
       )}
     </div>
@@ -160,7 +160,6 @@ function ProduceCard({ word, stored, onGrade }: { word: Word; stored: StoredCard
     <TranslateCard word={word} stored={stored} onGrade={onGrade} />
   )
 }
-
 
 function TranslateCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; onGrade: (grade: Grade) => void }) {
   const [value, setValue] = useState('')
@@ -288,6 +287,57 @@ function GrammarCard({
       </div>
       <ExerciseView exercise={card.exercise} onAnswered={setVerdict} />
       {verdict && <GradeButtons card={stored} suggested={suggestedGrade(verdict)} onGrade={onGrade} />}
+    </div>
+  )
+}
+
+/** An error from your own writing: correct it from memory. */
+function MistakeCard({
+  mistake,
+  stored,
+  onGrade,
+}: {
+  mistake: Mistake
+  stored: StoredCard
+  onGrade: (grade: Grade) => void
+}) {
+  const [value, setValue] = useState('')
+  const [result, setResult] = useState<CheckResult>()
+
+  function submit() {
+    if (result) return
+    setResult(checkAnswer(value, [mistake.correction]))
+  }
+
+  return (
+    <div className="stack">
+      <div className="eyebrow">Your mistake · {mistake.category}</div>
+      <div className="muted small">You once wrote this. Write it correctly.</div>
+      <p className="de review-prompt" style={{ color: 'var(--bad)' }}>
+        {mistake.original}
+      </p>
+      <AnswerInput value={value} onChange={setValue} onSubmit={submit} verdict={result?.verdict} disabled={!!result} />
+      {!result ? (
+        <div className="row">
+          <button className="btn primary" onClick={submit}>
+            Check <span className="kbd">Enter</span>
+          </button>
+          <button className="btn ghost" onClick={() => setResult({ verdict: 'wrong', expected: mistake.correction })}>
+            Show me
+          </button>
+        </div>
+      ) : (
+        <>
+          <Feedback verdict={result.verdict}>
+            <div className="de">
+              <strong>{mistake.correction}</strong>
+            </div>
+            <div className="small">{mistake.explanation}</div>
+            {result.note && <div className="small">{result.note}</div>}
+          </Feedback>
+          <GradeButtons card={stored} suggested={suggestedGrade(result.verdict)} onGrade={onGrade} />
+        </>
+      )}
     </div>
   )
 }

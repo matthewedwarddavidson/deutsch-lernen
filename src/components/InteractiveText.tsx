@@ -25,9 +25,7 @@ export function lookUpWord(surface: string, words: Word[]): Word | undefined {
   return words.find((word) => {
     const lemma = word.german.toLowerCase()
     return (
-      lemma === form ||
-      word.plural?.toLowerCase() === form ||
-      (lemma.startsWith('sich ') && lemma.slice(5) === form)
+      lemma === form || word.plural?.toLowerCase() === form || (lemma.startsWith('sich ') && lemma.slice(5) === form)
     )
   })
 }
@@ -89,7 +87,12 @@ function segment(paragraph: string, glossary: Record<string, string>): Segment[]
       : undefined
     if (key) {
       flushPlain(index)
-      segments.push({ text: paragraph.slice(index, index + key.length), start: index, kind: 'gloss', gloss: glossary[key] })
+      segments.push({
+        text: paragraph.slice(index, index + key.length),
+        start: index,
+        kind: 'gloss',
+        gloss: glossary[key],
+      })
       index += key.length
       plainStart = index
     } else {
@@ -108,7 +111,12 @@ interface InteractiveTextProps {
 }
 
 /** A German text where every word can be tapped for its meaning and saved for practice. */
-export function InteractiveText({ paragraphs, glossary, activeParagraph, showGlossHints = true }: InteractiveTextProps) {
+export function InteractiveText({
+  paragraphs,
+  glossary,
+  activeParagraph,
+  showGlossHints = true,
+}: InteractiveTextProps) {
   const [selection, setSelection] = useState<Selection>()
   const segmented = useMemo(() => paragraphs.map((paragraph) => segment(paragraph, glossary)), [paragraphs, glossary])
 
@@ -199,13 +207,22 @@ function WordPopover({ selection, onClose }: { selection: Selection; onClose: ()
   return (
     <>
       <div className="popover-backdrop" onClick={onClose} />
-      <div className="popover" style={{ left, top: Math.min(selection.y, window.innerHeight - 260), width }} role="dialog">
+      <div
+        className="popover"
+        style={{ left, top: Math.min(selection.y, window.innerHeight - 260), width }}
+        role="dialog"
+      >
         <div className="row between">
           {word ? <GermanWord word={word} /> : <strong>{selection.surface}</strong>}
           <button
             className="btn ghost icon"
             aria-label="Listen"
-            onClick={() => speak(word ? displayGerman(word) : selection.surface, { rate: state.settings.speechRate, voiceURI: state.settings.voiceURI })}
+            onClick={() =>
+              speak(word ? displayGerman(word) : selection.surface, {
+                rate: state.settings.speechRate,
+                voiceURI: state.settings.voiceURI,
+              })
+            }
           >
             <Icon name="speaker" />
           </button>

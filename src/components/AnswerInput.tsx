@@ -67,7 +67,13 @@ export function AnswerInput({
       {!disabled && (
         <div className="umlauts" aria-label="Special letters">
           {SPECIAL_LETTERS.map((letter) => (
-            <button key={letter} type="button" tabIndex={-1} onMouseDown={(event) => event.preventDefault()} onClick={() => insert(letter)}>
+            <button
+              key={letter}
+              type="button"
+              tabIndex={-1}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => insert(letter)}
+            >
               {letter}
             </button>
           ))}

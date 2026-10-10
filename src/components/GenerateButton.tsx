@@ -86,19 +86,31 @@ export function GenerateButton({ kind }: { kind: Kind }) {
       </label>
       <div className="chips" aria-label="Level">
         {LEVELS.map((item) => (
-          <button type="button" key={item} className={`chip ${level === item ? 'active' : ''}`} onClick={() => setLevel(item)} disabled={busy}>
+          <button
+            type="button"
+            key={item}
+            className={`chip ${level === item ? 'active' : ''}`}
+            onClick={() => setLevel(item)}
+            disabled={busy}
+          >
             {item}
           </button>
         ))}
       </div>
-      <div className="small muted">Free with your Claude plan: copy the prompt to claude.ai, then paste the reply here.</div>
+      <div className="small muted">
+        Free with your Claude plan: copy the prompt to claude.ai, then paste the reply here.
+      </div>
       <ViaClaudeAi job={() => jobFor(kind, level, topic.trim())} onResult={save} disabled={busy} />
       {settings.apiKey && (
         <div className="row">
           <button className="btn small" onClick={generateWithApi} disabled={busy}>
             {busy ? 'Writing… (about 30 seconds)' : 'Or generate with your API key (paid per use)'}
           </button>
-          {error && <span className="small" style={{ color: 'var(--bad)' }}>{error}</span>}
+          {error && (
+            <span className="small" style={{ color: 'var(--bad)' }}>
+              {error}
+            </span>
+          )}
         </div>
       )}
     </div>

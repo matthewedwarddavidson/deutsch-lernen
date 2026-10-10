@@ -2,13 +2,14 @@ import { GRAMMAR_TOPICS } from '../content/grammar'
 import type { GrammarExercise, GrammarTopic, Level, Word } from '../content/types'
 import { LEVELS } from '../content/types'
 import { BUILT_IN_WORDS } from '../content/words'
-import type { AppState } from './store'
+import type { AppState, Mistake } from './store'
 import { isDue, newCard, type StoredCard } from './srs'
 
 export type CardRef =
   | { id: string; kind: 'recognise'; word: Word }
   | { id: string; kind: 'produce'; word: Word }
   | { id: string; kind: 'grammar'; topic: GrammarTopic; exercise: GrammarExercise }
+  | { id: string; kind: 'mistake'; mistake: Mistake }
 
 const ONE_DAY = 24 * 60 * 60 * 1000
 
@@ -61,6 +62,10 @@ export function buildCardIndex(state: AppState): Map<string, CardRef> {
       index.set(id, { id, kind: 'grammar', topic, exercise })
     }
   }
+  for (const mistake of state.mistakes) {
+    const id = `m:${mistake.id}`
+    index.set(id, { id, kind: 'mistake', mistake })
+  }
   return index
 }
 
@@ -92,7 +97,7 @@ export function dueCards(state: AppState, now: Date): CardRef[] {
 }
 
 function siblingKey(card: CardRef): string {
-  return card.kind === 'grammar' ? card.id : card.word.id
+  return card.kind === 'grammar' || card.kind === 'mistake' ? card.id : card.word.id
 }
 
 function separateSiblings(cards: CardRef[]): CardRef[] {
@@ -119,10 +124,11 @@ export function isWordLearned(state: AppState, word: Word): boolean {
 /** Words not yet learned, up to the target level, easiest level first, themes interleaved. */
 export function nextNewWords(state: AppState, count: number, theme?: string): Word[] {
   const target = levelIndex(state.settings.level)
+  // Your own words are always available, whatever their level.
   const candidates = allWords(state).filter(
     (word) =>
       !isWordLearned(state, word) &&
-      levelIndex(word.level) <= target &&
+      (levelIndex(word.level) <= target || word.theme === 'eigene') &&
       (!theme || word.theme === theme),
   )
   const byLevel = [...candidates].sort((a, b) => levelIndex(a.level) - levelIndex(b.level))

@@ -9,7 +9,11 @@ export const TASKS: WritingTask[] = [
     format: 'informal-email',
     instructions:
       'Ihre Freundin Clara hat Sie zu ihrer Geburtstagsparty am Samstag eingeladen. Sie können leider nicht kommen. Schreiben Sie Clara eine E-Mail.',
-    points: ['Bedanken Sie sich für die Einladung.', 'Erklären Sie, warum Sie nicht kommen können.', 'Machen Sie einen Vorschlag für ein anderes Treffen.'],
+    points: [
+      'Bedanken Sie sich für die Einladung.',
+      'Erklären Sie, warum Sie nicht kommen können.',
+      'Machen Sie einen Vorschlag für ein anderes Treffen.',
+    ],
     minWords: 40,
     phrases: [
       { de: 'Vielen Dank für deine Einladung!', en: 'Thanks a lot for your invitation!' },
@@ -57,7 +61,11 @@ export const TASKS: WritingTask[] = [
     format: 'forum',
     instructions:
       'In einer Sendung im Fernsehen wurde über das Thema „Handyverbot an Schulen" diskutiert. Im Online-Gästebuch der Sendung finden Sie die Meinung von Petra: „Handys haben in der Schule nichts zu suchen. Die Kinder sollen lernen und sich unterhalten, nicht auf einen Bildschirm starren." Schreiben Sie Ihre Meinung (circa 80 Wörter).',
-    points: ['Sagen Sie, ob Sie Petra zustimmen.', 'Nennen Sie mindestens zwei Argumente.', 'Geben Sie ein Beispiel aus Ihrer Erfahrung.'],
+    points: [
+      'Sagen Sie, ob Sie Petra zustimmen.',
+      'Nennen Sie mindestens zwei Argumente.',
+      'Geben Sie ein Beispiel aus Ihrer Erfahrung.',
+    ],
     minWords: 80,
     phrases: [
       { de: 'Ich stimme Petra (nicht) zu, weil …', en: "I (don't) agree with Petra because …" },
@@ -85,7 +93,10 @@ export const TASKS: WritingTask[] = [
       { de: 'Sehr geehrte Frau Dr. Schneider,', en: 'Dear Dr Schneider,' },
       { de: 'leider muss ich unseren Termin am … absagen.', en: 'unfortunately I have to cancel our appointment on …' },
       { de: 'Ich bitte um Ihr Verständnis.', en: 'I hope you will understand.' },
-      { de: 'Wäre es möglich, einen neuen Termin zu vereinbaren?', en: 'Would it be possible to arrange a new appointment?' },
+      {
+        de: 'Wäre es möglich, einen neuen Termin zu vereinbaren?',
+        en: 'Would it be possible to arrange a new appointment?',
+      },
       { de: 'Mit freundlichen Grüßen', en: 'Yours sincerely' },
     ],
     model:
@@ -99,10 +110,18 @@ export const TASKS: WritingTask[] = [
     format: 'formal-email',
     instructions:
       'Sie sind seit drei Monaten Mitglied im Fitnessstudio „FitPoint". Seit Wochen sind viele Geräte kaputt, und die Duschen sind oft kalt. Schreiben Sie eine Beschwerde an die Leitung des Studios (circa 80 Wörter).',
-    points: ['Beschreiben Sie die Probleme.', 'Erklären Sie, warum Sie verärgert sind.', 'Sagen Sie, was Sie erwarten.', 'Nennen Sie eine Konsequenz, falls sich nichts ändert.'],
+    points: [
+      'Beschreiben Sie die Probleme.',
+      'Erklären Sie, warum Sie verärgert sind.',
+      'Sagen Sie, was Sie erwarten.',
+      'Nennen Sie eine Konsequenz, falls sich nichts ändert.',
+    ],
     minWords: 80,
     phrases: [
-      { de: 'ich schreibe Ihnen, weil ich mit … nicht zufrieden bin.', en: "I'm writing to you because I'm not satisfied with …" },
+      {
+        de: 'ich schreibe Ihnen, weil ich mit … nicht zufrieden bin.',
+        en: "I'm writing to you because I'm not satisfied with …",
+      },
       { de: 'Seit mehreren Wochen …', en: 'For several weeks …' },
       { de: 'Das ist besonders ärgerlich, weil …', en: 'This is especially annoying because …' },
       { de: 'Ich erwarte, dass …', en: 'I expect that …' },
@@ -120,7 +139,12 @@ export const TASKS: WritingTask[] = [
     format: 'story',
     instructions:
       'Ihr Kollege möchte wissen, wie Ihr letzter Urlaub war. Erzählen Sie in einer E-Mail von einer Reise, bei der etwas Unerwartetes passiert ist (circa 100 Wörter). Benutzen Sie das Präteritum für die Erzählung.',
-    points: ['Wohin sind Sie gereist und mit wem?', 'Was ist Unerwartetes passiert?', 'Wie haben Sie reagiert?', 'Wie fanden Sie die Reise insgesamt?'],
+    points: [
+      'Wohin sind Sie gereist und mit wem?',
+      'Was ist Unerwartetes passiert?',
+      'Wie haben Sie reagiert?',
+      'Wie fanden Sie die Reise insgesamt?',
+    ],
     minWords: 100,
     phrases: [
       { de: 'Letzten Sommer fuhren wir nach …', en: 'Last summer we went to …' },
@@ -153,7 +177,10 @@ export const TASKS: WritingTask[] = [
       { de: 'Dem lässt sich entgegenhalten, dass …', en: 'Against this one can argue that …' },
       { de: 'Nicht zu unterschätzen ist …', en: 'Not to be underestimated is …' },
       { de: 'Hinzu kommt, dass …', en: 'On top of that …' },
-      { de: 'Aus meiner Sicht überwiegen die Vorteile, da …', en: 'In my view the advantages outweigh the disadvantages, since …' },
+      {
+        de: 'Aus meiner Sicht überwiegen die Vorteile, da …',
+        en: 'In my view the advantages outweigh the disadvantages, since …',
+      },
       { de: 'Zwar …, doch …', en: 'Admittedly …, but …' },
       { de: 'Abschließend möchte ich betonen, dass …', en: 'Finally, I would like to stress that …' },
     ],
@@ -168,7 +195,12 @@ export const TASKS: WritingTask[] = [
     format: 'formal-email',
     instructions:
       'Sie haben bei einem Online-Möbelhaus einen Schreibtisch bestellt. Er wurde zwei Wochen zu spät geliefert, ein Bein war beschädigt, und die Montageanleitung fehlte. Der Kundenservice ist telefonisch nicht erreichbar. Schreiben Sie eine E-Mail (circa 100 Wörter).',
-    points: ['Schildern Sie die Mängel sachlich.', 'Erläutern Sie die Folgen für Sie.', 'Formulieren Sie konkrete Forderungen.', 'Setzen Sie eine Frist.'],
+    points: [
+      'Schildern Sie die Mängel sachlich.',
+      'Erläutern Sie die Folgen für Sie.',
+      'Formulieren Sie konkrete Forderungen.',
+      'Setzen Sie eine Frist.',
+    ],
     minWords: 100,
     phrases: [
       { de: 'Bezug nehmend auf meine Bestellung Nr. … vom …', en: 'With reference to my order no. … of …' },
@@ -197,8 +229,14 @@ export const TASKS: WritingTask[] = [
     ],
     minWords: 200,
     phrases: [
-      { de: 'Die Debatte um … hat in jüngster Zeit an Fahrt aufgenommen.', en: 'The debate on … has recently gathered pace.' },
-      { de: 'Was auf den ersten Blick überzeugend klingt, erweist sich bei näherer Betrachtung als …', en: 'What sounds convincing at first glance turns out on closer inspection to be …' },
+      {
+        de: 'Die Debatte um … hat in jüngster Zeit an Fahrt aufgenommen.',
+        en: 'The debate on … has recently gathered pace.',
+      },
+      {
+        de: 'Was auf den ersten Blick überzeugend klingt, erweist sich bei näherer Betrachtung als …',
+        en: 'What sounds convincing at first glance turns out on closer inspection to be …',
+      },
       { de: 'Es wäre jedoch verkürzt, … ', en: 'It would, however, be simplistic to …' },
       { de: 'Nicht von der Hand zu weisen ist, dass …', en: 'It cannot be denied that …' },
       { de: 'Unterm Strich …', en: 'All things considered …' },

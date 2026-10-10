@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { THEMES } from '../content/themes'
-import type { Level, ListeningText, Question, ReadingText, ThemeId, WritingTask } from '../content/types'
+import { slugify } from '../content/parseWords'
+import type { Level, ListeningText, Question, ReadingText, ThemeId, Word, WritingTask } from '../content/types'
 import type { WritingFeedback } from './store'
 
 /**
@@ -199,8 +200,12 @@ export function writingTaskJob(level: Level, topic: string): Job<WritingTask> {
 }
 
 const feedbackSchema = z.object({
-  correctedText: z.string().describe("The learner's text with errors corrected, keeping their words and ideas where possible"),
-  summary: z.string().describe('Two or three sentences in English: what works, and the most important thing to improve'),
+  correctedText: z
+    .string()
+    .describe("The learner's text with errors corrected, keeping their words and ideas where possible"),
+  summary: z
+    .string()
+    .describe('Two or three sentences in English: what works, and the most important thing to improve'),
   estimatedLevel: z.string().describe('CEFR estimate for this text, e.g. "B1" or "A2+"'),
   pointsCovered: z.array(z.object({ point: z.string(), covered: z.boolean() })),
   errors: z
@@ -233,5 +238,69 @@ export function feedbackJob(task: WritingTask, text: string): Job<WritingFeedbac
     schema: feedbackSchema,
     effort: 'high',
     finish: (reply) => feedbackSchema.parse(reply),
+  }
+}
+
+const importedWordSchema = z.object({
+  kind: choiceOf(['noun', 'verb', 'adjective', 'adverb', 'phrase', 'preposition', 'conjunction', 'other']),
+  german: z.string().describe('Dictionary form without article; reflexive verbs start with "sich"'),
+  gender: z.string().describe('For nouns: der, die or das. Empty string otherwise'),
+  plural: z.string().describe('For nouns: the full plural form without article, or empty if none'),
+  forms: z
+    .string()
+    .describe(
+      'For verbs: "3rd person present, Präteritum, Perfekt", e.g. "fährt, fuhr, ist gefahren". Empty otherwise',
+    ),
+  usage: z.string().describe('Fixed preposition or case, e.g. "auf + A". Empty if none'),
+  english: z.string().describe('Short English meaning'),
+  example: z
+    .string()
+    .describe(
+      "A natural example sentence at the learner's level, with the form of the word that appears wrapped in {curly braces}; separable prefixes get their own braces",
+    ),
+  exampleEnglish: z.string(),
+})
+
+const wordImportSchema = z.object({ words: z.array(importedWordSchema) })
+
+const WORD_KINDS = ['noun', 'verb', 'adjective', 'adverb', 'phrase', 'preposition', 'conjunction', 'other'] as const
+const GENDERS = ['der', 'die', 'das'] as const
+
+/** Turns a word list from a course or textbook into complete flashcards. */
+export function wordImportJob(list: string, level: Level): Job<Word[]> {
+  return {
+    system: `You prepare vocabulary flashcards for a German learning app. ${LEARNER_CONTEXT}`,
+    prompt: [
+      `Below is a list of German words or phrases from the learner's course (level ${level}). It may be messy: copied from a book, with or without articles, translations or page numbers.`,
+      'Make one card for each German word or phrase. Correct obvious typos. Skip anything that is not German vocabulary. Keep the order.',
+      'Every example must contain the word, with the inflected form wrapped in {braces}, e.g. "Wir {ziehen} nächste Woche {um}."',
+      '',
+      list,
+    ].join('\n'),
+    schema: wordImportSchema,
+    effort: 'medium',
+    finish: (reply) =>
+      wordImportSchema.parse(reply).words.map((entry) => {
+        const kind = oneOf(entry.kind, WORD_KINDS, 'other')
+        const gender = oneOf(entry.gender, [...GENDERS, ''] as const, '')
+        const example = entry.example.includes('{') ? entry.example : `{${entry.german}}. ${entry.example}`
+        const word: Word = {
+          id: `eigene-${slugify(entry.german)}-${kind}`,
+          kind,
+          german: entry.german.replace(/^(der|die|das)\s+/i, ''),
+          english: entry.english,
+          example,
+          exampleEnglish: entry.exampleEnglish,
+          theme: 'eigene',
+          level,
+        }
+        if (kind === 'noun' && gender) {
+          word.gender = gender
+          word.plural = entry.plural
+        }
+        if (entry.forms) word.forms = entry.forms
+        if (entry.usage) word.usage = entry.usage
+        return word
+      }),
   }
 }

@@ -75,7 +75,8 @@ describe('grammar topics', () => {
     const bad: string[] = []
     for (const topic of GRAMMAR_TOPICS) {
       for (const exercise of topic.exercises) {
-        if (exercise.kind === 'choice' && !exercise.options[exercise.answer]) bad.push(`${topic.id}: ${exercise.prompt}`)
+        if (exercise.kind === 'choice' && !exercise.options[exercise.answer])
+          bad.push(`${topic.id}: ${exercise.prompt}`)
         if ((exercise.kind === 'gap' || exercise.kind === 'transform') && exercise.answers.length === 0) {
           bad.push(`${topic.id}: ${exercise.prompt}`)
         }

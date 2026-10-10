@@ -54,7 +54,13 @@ export function ViaClaudeAi<Result>({ job, onResult, disabled = false }: ViaClau
         </div>
         <div className="small muted">Paste it into a new chat on claude.ai.</div>
         {showPrompt && (
-          <textarea className="textarea" style={{ minHeight: 120, fontSize: '0.8rem', fontFamily: 'monospace' }} readOnly value={showPrompt} onFocus={(event) => event.target.select()} />
+          <textarea
+            className="textarea"
+            style={{ minHeight: 120, fontSize: '0.8rem', fontFamily: 'monospace' }}
+            readOnly
+            value={showPrompt}
+            onFocus={(event) => event.target.select()}
+          />
         )}
       </li>
       <li>
@@ -70,7 +76,11 @@ export function ViaClaudeAi<Result>({ job, onResult, disabled = false }: ViaClau
           <button type="button" className="btn primary" onClick={importReply} disabled={!reply.trim()}>
             Import reply
           </button>
-          {error && <span className="small" style={{ color: 'var(--bad)' }}>{error}</span>}
+          {error && (
+            <span className="small" style={{ color: 'var(--bad)' }}>
+              {error}
+            </span>
+          )}
         </div>
       </li>
     </ol>

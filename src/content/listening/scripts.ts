@@ -9,17 +9,49 @@ export const SCRIPTS: ListeningText[] = [
     genre: 'announcement',
     situation: 'You are at Frankfurt Hauptbahnhof waiting for a train to Cologne. Listen to three announcements.',
     lines: [
-      { speaker: 'Durchsage', text: 'Gleis 9, bitte Vorsicht bei der Einfahrt. Es fährt ein: ICE 527 nach Köln Hauptbahnhof über Mainz und Koblenz. Planmäßige Abfahrt 14:12 Uhr.' },
-      { speaker: 'Durchsage', text: 'Information zu ICE 527 nach Köln. Dieser Zug hat heute etwa 15 Minuten Verspätung. Grund dafür ist eine Reparatur am Zug. Wir bitten um Entschuldigung.' },
-      { speaker: 'Durchsage', text: 'Achtung an Gleis 9. Der ICE 527 nach Köln fährt heute in umgekehrter Wagenreihung. Die Wagen der ersten Klasse halten im Abschnitt E. Die Wagen der zweiten Klasse halten in den Abschnitten A bis D.' },
-      { speaker: 'Durchsage', text: 'Und noch eine Information für Reisende nach Bonn: Der Regionalexpress nach Bonn fällt heute aus. Bitte nutzen Sie den ICE 527 bis Köln und steigen Sie dort in die S-Bahn um.' },
+      {
+        speaker: 'Durchsage',
+        text: 'Gleis 9, bitte Vorsicht bei der Einfahrt. Es fährt ein: ICE 527 nach Köln Hauptbahnhof über Mainz und Koblenz. Planmäßige Abfahrt 14:12 Uhr.',
+      },
+      {
+        speaker: 'Durchsage',
+        text: 'Information zu ICE 527 nach Köln. Dieser Zug hat heute etwa 15 Minuten Verspätung. Grund dafür ist eine Reparatur am Zug. Wir bitten um Entschuldigung.',
+      },
+      {
+        speaker: 'Durchsage',
+        text: 'Achtung an Gleis 9. Der ICE 527 nach Köln fährt heute in umgekehrter Wagenreihung. Die Wagen der ersten Klasse halten im Abschnitt E. Die Wagen der zweiten Klasse halten in den Abschnitten A bis D.',
+      },
+      {
+        speaker: 'Durchsage',
+        text: 'Und noch eine Information für Reisende nach Bonn: Der Regionalexpress nach Bonn fällt heute aus. Bitte nutzen Sie den ICE 527 bis Köln und steigen Sie dort in die S-Bahn um.',
+      },
     ],
     questions: [
-      { kind: 'choice', question: 'Wie viel Verspätung hat der ICE?', options: ['5 Minuten', '15 Minuten', '50 Minuten'], answer: 1 },
-      { kind: 'choice', question: 'Warum hat der Zug Verspätung?', options: ['wegen des Wetters', 'wegen einer Reparatur', 'wegen eines Streiks'], answer: 1 },
-      { kind: 'truefalse', statement: 'Die erste Klasse hält heute im Abschnitt A.', answer: false, explanation: 'Im Abschnitt E – die Wagenreihung ist umgekehrt.' },
+      {
+        kind: 'choice',
+        question: 'Wie viel Verspätung hat der ICE?',
+        options: ['5 Minuten', '15 Minuten', '50 Minuten'],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Warum hat der Zug Verspätung?',
+        options: ['wegen des Wetters', 'wegen einer Reparatur', 'wegen eines Streiks'],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Die erste Klasse hält heute im Abschnitt A.',
+        answer: false,
+        explanation: 'Im Abschnitt E – die Wagenreihung ist umgekehrt.',
+      },
       { kind: 'truefalse', statement: 'Der Regionalexpress nach Bonn fährt heute nicht.', answer: true },
-      { kind: 'choice', question: 'Wie kommen Reisende heute nach Bonn?', options: ['mit dem ICE bis Köln, dann mit der S-Bahn', 'mit dem Bus', 'mit dem ICE direkt nach Bonn'], answer: 0 },
+      {
+        kind: 'choice',
+        question: 'Wie kommen Reisende heute nach Bonn?',
+        options: ['mit dem ICE bis Köln, dann mit der S-Bahn', 'mit dem Bus', 'mit dem ICE direkt nach Bonn'],
+        answer: 0,
+      },
     ],
   },
   {
@@ -28,19 +60,52 @@ export const SCRIPTS: ListeningText[] = [
     level: 'A2',
     theme: 'gesundheit',
     genre: 'announcement',
-    situation: 'You come home and there is a message on your answerphone from your doctor\'s surgery.',
+    situation: "You come home and there is a message on your answerphone from your doctor's surgery.",
     lines: [
-      { speaker: 'Praxis', text: 'Guten Tag, hier ist die Praxis Dr. Hoffmann, mein Name ist Frau Yilmaz. Ich rufe wegen Ihres Termins am Donnerstag an.' },
-      { speaker: 'Praxis', text: 'Leider ist Frau Dr. Hoffmann am Donnerstag nicht in der Praxis. Wir müssen Ihren Termin deshalb verschieben.' },
-      { speaker: 'Praxis', text: 'Wir können Ihnen zwei Termine anbieten: am Freitag um halb neun oder am Montag um Viertel nach drei.' },
-      { speaker: 'Praxis', text: 'Bitte rufen Sie uns bis morgen Mittag zurück und sagen Sie uns, welcher Termin Ihnen besser passt. Unsere Telefonnummer ist 0 6 9 – 4 4 7 2 1 0.' },
-      { speaker: 'Praxis', text: 'Und bitte denken Sie daran: Bringen Sie zum Termin Ihre Versichertenkarte und die Ergebnisse vom Labor mit. Vielen Dank und auf Wiederhören.' },
+      {
+        speaker: 'Praxis',
+        text: 'Guten Tag, hier ist die Praxis Dr. Hoffmann, mein Name ist Frau Yilmaz. Ich rufe wegen Ihres Termins am Donnerstag an.',
+      },
+      {
+        speaker: 'Praxis',
+        text: 'Leider ist Frau Dr. Hoffmann am Donnerstag nicht in der Praxis. Wir müssen Ihren Termin deshalb verschieben.',
+      },
+      {
+        speaker: 'Praxis',
+        text: 'Wir können Ihnen zwei Termine anbieten: am Freitag um halb neun oder am Montag um Viertel nach drei.',
+      },
+      {
+        speaker: 'Praxis',
+        text: 'Bitte rufen Sie uns bis morgen Mittag zurück und sagen Sie uns, welcher Termin Ihnen besser passt. Unsere Telefonnummer ist 0 6 9 – 4 4 7 2 1 0.',
+      },
+      {
+        speaker: 'Praxis',
+        text: 'Und bitte denken Sie daran: Bringen Sie zum Termin Ihre Versichertenkarte und die Ergebnisse vom Labor mit. Vielen Dank und auf Wiederhören.',
+      },
     ],
     questions: [
       { kind: 'truefalse', statement: 'Der Termin am Donnerstag findet nicht statt.', answer: true },
-      { kind: 'choice', question: 'Welche Termine bietet die Praxis an?', options: ['Freitag 8:30 oder Montag 15:15', 'Freitag 9:30 oder Montag 15:45', 'Donnerstag 8:30 oder Freitag 15:15'], answer: 0 },
-      { kind: 'choice', question: 'Bis wann soll man zurückrufen?', options: ['bis heute Abend', 'bis morgen Mittag', 'bis Donnerstag'], answer: 1 },
-      { kind: 'open', question: 'Was soll man zum Termin mitbringen?', model: 'Die Versichertenkarte und die Laborergebnisse.' },
+      {
+        kind: 'choice',
+        question: 'Welche Termine bietet die Praxis an?',
+        options: [
+          'Freitag 8:30 oder Montag 15:15',
+          'Freitag 9:30 oder Montag 15:45',
+          'Donnerstag 8:30 oder Freitag 15:15',
+        ],
+        answer: 0,
+      },
+      {
+        kind: 'choice',
+        question: 'Bis wann soll man zurückrufen?',
+        options: ['bis heute Abend', 'bis morgen Mittag', 'bis Donnerstag'],
+        answer: 1,
+      },
+      {
+        kind: 'open',
+        question: 'Was soll man zum Termin mitbringen?',
+        model: 'Die Versichertenkarte und die Laborergebnisse.',
+      },
     ],
   },
   {
@@ -49,25 +114,78 @@ export const SCRIPTS: ListeningText[] = [
     level: 'B1',
     theme: 'wohnen',
     genre: 'dialogue',
-    situation: 'Two friends, Lukas and Mira, have just been to see a flat together. They are discussing whether to take it.',
+    situation:
+      'Two friends, Lukas and Mira, have just been to see a flat together. They are discussing whether to take it.',
     lines: [
       { speaker: 'Lukas', text: 'Und? Was sagst du? Ich fand die Wohnung eigentlich ganz schön.' },
-      { speaker: 'Mira', text: 'Ja, die Zimmer sind hell und schön groß. Und der Balkon ist ein Traum. Aber hast du gesehen, wie alt das Bad ist?' },
-      { speaker: 'Lukas', text: 'Na ja, das stimmt. Aber der Vermieter hat gesagt, dass er das Bad nächstes Jahr renovieren lassen will.' },
-      { speaker: 'Mira', text: 'Das sagen Vermieter immer. Ich glaube das erst, wenn ich es sehe. Und die Miete ist auch nicht gerade günstig: 1.200 Euro warm.' },
-      { speaker: 'Lukas', text: 'Für zwei Personen und diese Lage finde ich das okay. Wir wären in zehn Minuten mit dem Rad in der Uni. Jetzt brauche ich fast eine Stunde mit der S-Bahn.' },
-      { speaker: 'Mira', text: 'Stimmt, die Lage ist super. Was mich wirklich stört, ist die Straße. Hast du gehört, wie laut es war, als wir das Fenster aufgemacht haben?' },
+      {
+        speaker: 'Mira',
+        text: 'Ja, die Zimmer sind hell und schön groß. Und der Balkon ist ein Traum. Aber hast du gesehen, wie alt das Bad ist?',
+      },
+      {
+        speaker: 'Lukas',
+        text: 'Na ja, das stimmt. Aber der Vermieter hat gesagt, dass er das Bad nächstes Jahr renovieren lassen will.',
+      },
+      {
+        speaker: 'Mira',
+        text: 'Das sagen Vermieter immer. Ich glaube das erst, wenn ich es sehe. Und die Miete ist auch nicht gerade günstig: 1.200 Euro warm.',
+      },
+      {
+        speaker: 'Lukas',
+        text: 'Für zwei Personen und diese Lage finde ich das okay. Wir wären in zehn Minuten mit dem Rad in der Uni. Jetzt brauche ich fast eine Stunde mit der S-Bahn.',
+      },
+      {
+        speaker: 'Mira',
+        text: 'Stimmt, die Lage ist super. Was mich wirklich stört, ist die Straße. Hast du gehört, wie laut es war, als wir das Fenster aufgemacht haben?',
+      },
       { speaker: 'Lukas', text: 'Ja, aber die Schlafzimmer gehen nach hinten raus, zum Hof. Da ist es ruhig.' },
-      { speaker: 'Mira', text: 'Okay, das ist ein Argument. Und die Kaution? Drei Monatsmieten haben wir im Moment nicht.' },
-      { speaker: 'Lukas', text: 'Ich habe ihn gefragt. Wir können die Kaution in drei Raten zahlen. Das ist gesetzlich so erlaubt.' },
-      { speaker: 'Mira', text: 'Gut. Weißt du was? Lass uns noch eine Nacht darüber schlafen. Morgen früh rufen wir ihn an und sagen ihm Bescheid.' },
+      {
+        speaker: 'Mira',
+        text: 'Okay, das ist ein Argument. Und die Kaution? Drei Monatsmieten haben wir im Moment nicht.',
+      },
+      {
+        speaker: 'Lukas',
+        text: 'Ich habe ihn gefragt. Wir können die Kaution in drei Raten zahlen. Das ist gesetzlich so erlaubt.',
+      },
+      {
+        speaker: 'Mira',
+        text: 'Gut. Weißt du was? Lass uns noch eine Nacht darüber schlafen. Morgen früh rufen wir ihn an und sagen ihm Bescheid.',
+      },
     ],
     questions: [
       { kind: 'truefalse', statement: 'Mira gefällt der Balkon.', answer: true },
-      { kind: 'choice', question: 'Was sagt der Vermieter über das Bad?', options: ['Es wurde gerade renoviert.', 'Er will es nächstes Jahr renovieren lassen.', 'Die Mieter müssen es selbst renovieren.'], answer: 1 },
-      { kind: 'choice', question: 'Wie lange braucht Lukas im Moment zur Uni?', options: ['zehn Minuten', 'eine halbe Stunde', 'fast eine Stunde'], answer: 2 },
-      { kind: 'truefalse', statement: 'Die Schlafzimmer liegen zur lauten Straße.', answer: false, explanation: 'Sie gehen nach hinten raus, zum Hof.' },
-      { kind: 'choice', question: 'Was haben die beiden am Ende entschieden?', options: ['Sie nehmen die Wohnung sofort.', 'Sie wollen noch eine Nacht darüber nachdenken.', 'Sie nehmen die Wohnung nicht.'], answer: 1 },
+      {
+        kind: 'choice',
+        question: 'Was sagt der Vermieter über das Bad?',
+        options: [
+          'Es wurde gerade renoviert.',
+          'Er will es nächstes Jahr renovieren lassen.',
+          'Die Mieter müssen es selbst renovieren.',
+        ],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Wie lange braucht Lukas im Moment zur Uni?',
+        options: ['zehn Minuten', 'eine halbe Stunde', 'fast eine Stunde'],
+        answer: 2,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Die Schlafzimmer liegen zur lauten Straße.',
+        answer: false,
+        explanation: 'Sie gehen nach hinten raus, zum Hof.',
+      },
+      {
+        kind: 'choice',
+        question: 'Was haben die beiden am Ende entschieden?',
+        options: [
+          'Sie nehmen die Wohnung sofort.',
+          'Sie wollen noch eine Nacht darüber nachdenken.',
+          'Sie nehmen die Wohnung nicht.',
+        ],
+        answer: 1,
+      },
     ],
   },
   {
@@ -78,23 +196,64 @@ export const SCRIPTS: ListeningText[] = [
     genre: 'interview',
     situation: 'A local radio programme interviews Gerd, a volunteer at a repair café.',
     lines: [
-      { speaker: 'Moderatorin', text: 'Herzlich willkommen zu „Menschen in unserer Stadt". Heute ist Gerd Lehmann bei mir im Studio. Herr Lehmann, Sie arbeiten ehrenamtlich in einem Repair-Café. Was genau passiert da?' },
-      { speaker: 'Gerd', text: 'Also, jeden ersten Samstag im Monat treffen wir uns im Gemeindezentrum. Die Leute bringen kaputte Sachen mit: Toaster, Lampen, Fahrräder, manchmal auch Kleidung. Und wir versuchen dann, die Sachen gemeinsam zu reparieren.' },
+      {
+        speaker: 'Moderatorin',
+        text: 'Herzlich willkommen zu „Menschen in unserer Stadt". Heute ist Gerd Lehmann bei mir im Studio. Herr Lehmann, Sie arbeiten ehrenamtlich in einem Repair-Café. Was genau passiert da?',
+      },
+      {
+        speaker: 'Gerd',
+        text: 'Also, jeden ersten Samstag im Monat treffen wir uns im Gemeindezentrum. Die Leute bringen kaputte Sachen mit: Toaster, Lampen, Fahrräder, manchmal auch Kleidung. Und wir versuchen dann, die Sachen gemeinsam zu reparieren.',
+      },
       { speaker: 'Moderatorin', text: 'Gemeinsam heißt: Die Besucher helfen mit?' },
-      { speaker: 'Gerd', text: 'Genau, das ist uns wichtig. Wir reparieren nicht einfach für die Leute, sondern wir zeigen ihnen, wie es geht. Viele sind überrascht, wie einfach manche Reparaturen sind.' },
+      {
+        speaker: 'Gerd',
+        text: 'Genau, das ist uns wichtig. Wir reparieren nicht einfach für die Leute, sondern wir zeigen ihnen, wie es geht. Viele sind überrascht, wie einfach manche Reparaturen sind.',
+      },
       { speaker: 'Moderatorin', text: 'Und wie sind Sie selbst dazu gekommen?' },
-      { speaker: 'Gerd', text: 'Ich war vierzig Jahre Elektriker. Als ich in Rente gegangen bin, war mir schnell langweilig. Meine Tochter hat mir dann von dem Repair-Café erzählt. Seitdem bin ich jeden Monat dabei, und das seit fast sechs Jahren.' },
+      {
+        speaker: 'Gerd',
+        text: 'Ich war vierzig Jahre Elektriker. Als ich in Rente gegangen bin, war mir schnell langweilig. Meine Tochter hat mir dann von dem Repair-Café erzählt. Seitdem bin ich jeden Monat dabei, und das seit fast sechs Jahren.',
+      },
       { speaker: 'Moderatorin', text: 'Wie viel kostet so eine Reparatur?' },
-      { speaker: 'Gerd', text: 'Gar nichts. Wir freuen uns aber über eine kleine Spende für Werkzeug und Ersatzteile. Und es gibt immer Kaffee und Kuchen – den backen auch Ehrenamtliche.' },
+      {
+        speaker: 'Gerd',
+        text: 'Gar nichts. Wir freuen uns aber über eine kleine Spende für Werkzeug und Ersatzteile. Und es gibt immer Kaffee und Kuchen – den backen auch Ehrenamtliche.',
+      },
       { speaker: 'Moderatorin', text: 'Was ist für Sie das Schönste an dieser Arbeit?' },
-      { speaker: 'Gerd', text: 'Wenn eine alte Dame mit ihrem Radio kommt, das sie schon seit fünfzig Jahren hat, und es funktioniert wieder – dieses Lächeln, das ist unbezahlbar. Und natürlich, dass weniger im Müll landet.' },
+      {
+        speaker: 'Gerd',
+        text: 'Wenn eine alte Dame mit ihrem Radio kommt, das sie schon seit fünfzig Jahren hat, und es funktioniert wieder – dieses Lächeln, das ist unbezahlbar. Und natürlich, dass weniger im Müll landet.',
+      },
     ],
     questions: [
-      { kind: 'choice', question: 'Wann findet das Repair-Café statt?', options: ['jeden Samstag', 'jeden ersten Samstag im Monat', 'jeden ersten Sonntag im Monat'], answer: 1 },
-      { kind: 'truefalse', statement: 'Im Repair-Café reparieren die Ehrenamtlichen die Sachen allein, ohne die Besucher.', answer: false },
-      { kind: 'choice', question: 'Was war Gerd von Beruf?', options: ['Mechaniker', 'Elektriker', 'Lehrer'], answer: 1 },
-      { kind: 'truefalse', statement: 'Eine Reparatur kostet 5 Euro.', answer: false, explanation: 'Sie kostet nichts; man kann aber spenden.' },
-      { kind: 'open', question: 'Was gefällt Gerd an seiner Arbeit am meisten?', model: 'Die Freude der Leute, wenn ihre alten Sachen wieder funktionieren – und dass weniger weggeworfen wird.' },
+      {
+        kind: 'choice',
+        question: 'Wann findet das Repair-Café statt?',
+        options: ['jeden Samstag', 'jeden ersten Samstag im Monat', 'jeden ersten Sonntag im Monat'],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Im Repair-Café reparieren die Ehrenamtlichen die Sachen allein, ohne die Besucher.',
+        answer: false,
+      },
+      {
+        kind: 'choice',
+        question: 'Was war Gerd von Beruf?',
+        options: ['Mechaniker', 'Elektriker', 'Lehrer'],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Eine Reparatur kostet 5 Euro.',
+        answer: false,
+        explanation: 'Sie kostet nichts; man kann aber spenden.',
+      },
+      {
+        kind: 'open',
+        question: 'Was gefällt Gerd an seiner Arbeit am meisten?',
+        model: 'Die Freude der Leute, wenn ihre alten Sachen wieder funktionieren – und dass weniger weggeworfen wird.',
+      },
     ],
   },
   {
@@ -105,25 +264,67 @@ export const SCRIPTS: ListeningText[] = [
     genre: 'dialogue',
     situation: 'Ms Novak calls an online shop because there is a problem with a washing machine she ordered.',
     lines: [
-      { speaker: 'Kundenservice', text: 'Elektro-Versand Müller, Kundenservice, mein Name ist Bauer. Was kann ich für Sie tun?' },
-      { speaker: 'Frau Novak', text: 'Guten Tag, Novak hier. Ich habe vor zwei Wochen bei Ihnen eine Waschmaschine bestellt. Die Bestellnummer ist 4 8 2 7 7 1.' },
-      { speaker: 'Kundenservice', text: 'Einen Moment bitte … Ja, ich habe die Bestellung. Die Waschmaschine wurde am Dienstag geliefert. Gibt es ein Problem?' },
-      { speaker: 'Frau Novak', text: 'Ja, leider. Seit gestern schleudert sie nicht mehr. Die Wäsche bleibt ganz nass. Und sie macht beim Waschen sehr laute Geräusche.' },
-      { speaker: 'Kundenservice', text: 'Das tut mir leid. Haben Sie schon geprüft, ob die Transportsicherungen entfernt wurden? Das ist oft die Ursache für laute Geräusche.' },
+      {
+        speaker: 'Kundenservice',
+        text: 'Elektro-Versand Müller, Kundenservice, mein Name ist Bauer. Was kann ich für Sie tun?',
+      },
+      {
+        speaker: 'Frau Novak',
+        text: 'Guten Tag, Novak hier. Ich habe vor zwei Wochen bei Ihnen eine Waschmaschine bestellt. Die Bestellnummer ist 4 8 2 7 7 1.',
+      },
+      {
+        speaker: 'Kundenservice',
+        text: 'Einen Moment bitte … Ja, ich habe die Bestellung. Die Waschmaschine wurde am Dienstag geliefert. Gibt es ein Problem?',
+      },
+      {
+        speaker: 'Frau Novak',
+        text: 'Ja, leider. Seit gestern schleudert sie nicht mehr. Die Wäsche bleibt ganz nass. Und sie macht beim Waschen sehr laute Geräusche.',
+      },
+      {
+        speaker: 'Kundenservice',
+        text: 'Das tut mir leid. Haben Sie schon geprüft, ob die Transportsicherungen entfernt wurden? Das ist oft die Ursache für laute Geräusche.',
+      },
       { speaker: 'Frau Novak', text: 'Ja, das hat der Techniker bei der Lieferung gemacht. Daran liegt es nicht.' },
-      { speaker: 'Kundenservice', text: 'In Ordnung. Dann ist das ein Garantiefall. Ich kann Ihnen zwei Möglichkeiten anbieten: Entweder kommt ein Techniker zu Ihnen und repariert die Maschine, oder wir tauschen sie gegen ein neues Gerät um.' },
-      { speaker: 'Frau Novak', text: 'Ehrlich gesagt hätte ich lieber eine neue. Die Maschine ist ja erst zwei Wochen alt.' },
-      { speaker: 'Kundenservice', text: 'Das verstehe ich. Wir können die alte Maschine am Freitag abholen und die neue gleichzeitig liefern. Passt Ihnen Freitag zwischen acht und zwölf Uhr?' },
+      {
+        speaker: 'Kundenservice',
+        text: 'In Ordnung. Dann ist das ein Garantiefall. Ich kann Ihnen zwei Möglichkeiten anbieten: Entweder kommt ein Techniker zu Ihnen und repariert die Maschine, oder wir tauschen sie gegen ein neues Gerät um.',
+      },
+      {
+        speaker: 'Frau Novak',
+        text: 'Ehrlich gesagt hätte ich lieber eine neue. Die Maschine ist ja erst zwei Wochen alt.',
+      },
+      {
+        speaker: 'Kundenservice',
+        text: 'Das verstehe ich. Wir können die alte Maschine am Freitag abholen und die neue gleichzeitig liefern. Passt Ihnen Freitag zwischen acht und zwölf Uhr?',
+      },
       { speaker: 'Frau Novak', text: 'Am Vormittag arbeite ich leider. Geht es auch nachmittags?' },
-      { speaker: 'Kundenservice', text: 'Dann Montag zwischen 13 und 17 Uhr. Sie bekommen noch eine Bestätigung per E-Mail.' },
+      {
+        speaker: 'Kundenservice',
+        text: 'Dann Montag zwischen 13 und 17 Uhr. Sie bekommen noch eine Bestätigung per E-Mail.',
+      },
       { speaker: 'Frau Novak', text: 'Montagnachmittag passt. Vielen Dank für Ihre Hilfe!' },
     ],
     questions: [
       { kind: 'truefalse', statement: 'Die Waschmaschine wurde vor zwei Wochen bestellt.', answer: true },
-      { kind: 'choice', question: 'Welches Problem hat die Maschine?', options: ['Sie nimmt kein Wasser.', 'Sie schleudert nicht und ist laut.', 'Die Tür geht nicht auf.'], answer: 1 },
+      {
+        kind: 'choice',
+        question: 'Welches Problem hat die Maschine?',
+        options: ['Sie nimmt kein Wasser.', 'Sie schleudert nicht und ist laut.', 'Die Tür geht nicht auf.'],
+        answer: 1,
+      },
       { kind: 'truefalse', statement: 'Die Transportsicherungen waren noch in der Maschine.', answer: false },
-      { kind: 'choice', question: 'Was möchte Frau Novak?', options: ['eine Reparatur', 'eine neue Maschine', 'ihr Geld zurück'], answer: 1 },
-      { kind: 'choice', question: 'Wann wird die neue Maschine geliefert?', options: ['Freitag vormittags', 'Montag nachmittags', 'Dienstag nachmittags'], answer: 1 },
+      {
+        kind: 'choice',
+        question: 'Was möchte Frau Novak?',
+        options: ['eine Reparatur', 'eine neue Maschine', 'ihr Geld zurück'],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Wann wird die neue Maschine geliefert?',
+        options: ['Freitag vormittags', 'Montag nachmittags', 'Dienstag nachmittags'],
+        answer: 1,
+      },
     ],
   },
   {
@@ -134,21 +335,68 @@ export const SCRIPTS: ListeningText[] = [
     genre: 'interview',
     situation: 'A health podcast talks to a sleep researcher. Listen for her main claims and recommendations.',
     lines: [
-      { speaker: 'Host', text: 'Willkommen zurück bei „Gesund leben". Mein Gast heute ist Dr. Sabine Roth, sie leitet ein Schlaflabor in Freiburg. Frau Roth, schlafen wir tatsächlich weniger als früher?' },
-      { speaker: 'Dr. Roth', text: 'Im Durchschnitt ja, wenn auch nicht so dramatisch, wie manchmal behauptet wird. Das eigentliche Problem ist weniger die Dauer als die Regelmäßigkeit. Viele Menschen gehen unter der Woche spät ins Bett, stehen früh auf und versuchen dann am Wochenende, den Schlaf nachzuholen. Das bringt die innere Uhr durcheinander – wir sprechen von einem sozialen Jetlag.' },
+      {
+        speaker: 'Host',
+        text: 'Willkommen zurück bei „Gesund leben". Mein Gast heute ist Dr. Sabine Roth, sie leitet ein Schlaflabor in Freiburg. Frau Roth, schlafen wir tatsächlich weniger als früher?',
+      },
+      {
+        speaker: 'Dr. Roth',
+        text: 'Im Durchschnitt ja, wenn auch nicht so dramatisch, wie manchmal behauptet wird. Das eigentliche Problem ist weniger die Dauer als die Regelmäßigkeit. Viele Menschen gehen unter der Woche spät ins Bett, stehen früh auf und versuchen dann am Wochenende, den Schlaf nachzuholen. Das bringt die innere Uhr durcheinander – wir sprechen von einem sozialen Jetlag.',
+      },
       { speaker: 'Host', text: 'Und das Smartphone im Bett? Ist das wirklich so schädlich, wie man hört?' },
-      { speaker: 'Dr. Roth', text: 'Das blaue Licht spielt eine Rolle, aber sie wird überschätzt. Viel entscheidender ist, was wir auf dem Bildschirm machen. Wer kurz vor dem Einschlafen noch berufliche E-Mails liest oder sich über Nachrichten aufregt, ist schlicht zu aufgewühlt, um abzuschalten.' },
+      {
+        speaker: 'Dr. Roth',
+        text: 'Das blaue Licht spielt eine Rolle, aber sie wird überschätzt. Viel entscheidender ist, was wir auf dem Bildschirm machen. Wer kurz vor dem Einschlafen noch berufliche E-Mails liest oder sich über Nachrichten aufregt, ist schlicht zu aufgewühlt, um abzuschalten.',
+      },
       { speaker: 'Host', text: 'Was empfehlen Sie konkret?' },
-      { speaker: 'Dr. Roth', text: 'Erstens: möglichst jeden Tag zur gleichen Zeit aufstehen, auch am Wochenende. Zweitens: tagsüber ins Tageslicht gehen, am besten morgens. Und drittens: das Bett nur zum Schlafen nutzen. Wer nachts länger als zwanzig Minuten wach liegt, sollte lieber aufstehen und etwas Ruhiges tun, statt sich im Bett hin und her zu wälzen.' },
+      {
+        speaker: 'Dr. Roth',
+        text: 'Erstens: möglichst jeden Tag zur gleichen Zeit aufstehen, auch am Wochenende. Zweitens: tagsüber ins Tageslicht gehen, am besten morgens. Und drittens: das Bett nur zum Schlafen nutzen. Wer nachts länger als zwanzig Minuten wach liegt, sollte lieber aufstehen und etwas Ruhiges tun, statt sich im Bett hin und her zu wälzen.',
+      },
       { speaker: 'Host', text: 'Und Schlaftabletten?' },
-      { speaker: 'Dr. Roth', text: 'Allenfalls kurzfristig und nur nach ärztlicher Beratung. Langfristig ist eine Verhaltenstherapie gegen Schlafstörungen deutlich wirksamer – das ist inzwischen gut belegt.' },
+      {
+        speaker: 'Dr. Roth',
+        text: 'Allenfalls kurzfristig und nur nach ärztlicher Beratung. Langfristig ist eine Verhaltenstherapie gegen Schlafstörungen deutlich wirksamer – das ist inzwischen gut belegt.',
+      },
     ],
     questions: [
-      { kind: 'choice', question: 'Was ist laut Dr. Roth das Hauptproblem?', options: ['dass wir viel weniger schlafen als früher', 'dass unser Schlaf unregelmäßig ist', 'dass wir zu viel schlafen'], answer: 1 },
-      { kind: 'truefalse', statement: 'Dr. Roth hält das blaue Licht des Smartphones für den wichtigsten Faktor.', answer: false, explanation: 'Sie sagt, seine Rolle werde überschätzt; wichtiger ist, was man liest.' },
-      { kind: 'choice', question: 'Was soll man tun, wenn man nachts lange wach liegt?', options: ['im Bett bleiben und die Augen schließen', 'aufstehen und etwas Ruhiges tun', 'eine Schlaftablette nehmen'], answer: 1 },
-      { kind: 'truefalse', statement: 'Langfristig hilft Verhaltenstherapie besser als Schlaftabletten.', answer: true },
-      { kind: 'open', question: 'Was versteht Dr. Roth unter „sozialem Jetlag"?', model: 'Wenn man unter der Woche wenig schläft und am Wochenende nachholt, gerät die innere Uhr durcheinander – wie bei einer Zeitverschiebung.' },
+      {
+        kind: 'choice',
+        question: 'Was ist laut Dr. Roth das Hauptproblem?',
+        options: [
+          'dass wir viel weniger schlafen als früher',
+          'dass unser Schlaf unregelmäßig ist',
+          'dass wir zu viel schlafen',
+        ],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Dr. Roth hält das blaue Licht des Smartphones für den wichtigsten Faktor.',
+        answer: false,
+        explanation: 'Sie sagt, seine Rolle werde überschätzt; wichtiger ist, was man liest.',
+      },
+      {
+        kind: 'choice',
+        question: 'Was soll man tun, wenn man nachts lange wach liegt?',
+        options: [
+          'im Bett bleiben und die Augen schließen',
+          'aufstehen und etwas Ruhiges tun',
+          'eine Schlaftablette nehmen',
+        ],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Langfristig hilft Verhaltenstherapie besser als Schlaftabletten.',
+        answer: true,
+      },
+      {
+        kind: 'open',
+        question: 'Was versteht Dr. Roth unter „sozialem Jetlag"?',
+        model:
+          'Wenn man unter der Woche wenig schläft und am Wochenende nachholt, gerät die innere Uhr durcheinander – wie bei einer Zeitverschiebung.',
+      },
     ],
   },
   {
@@ -159,20 +407,58 @@ export const SCRIPTS: ListeningText[] = [
     genre: 'dialogue',
     situation: 'Two guests on a radio debate argue about a speed limit on German motorways.',
     lines: [
-      { speaker: 'Moderator', text: 'Deutschland ist eines der wenigen Länder ohne generelles Tempolimit auf Autobahnen. Frau Krüger, Sie fordern 130 km/h. Warum?' },
-      { speaker: 'Frau Krüger', text: 'Aus drei Gründen. Erstens der Klimaschutz: Ein Tempolimit würde jedes Jahr mehrere Millionen Tonnen CO2 einsparen, und zwar sofort und praktisch ohne Kosten. Zweitens die Sicherheit: Bei hohen Geschwindigkeiten sind Unfälle deutlich schwerer. Und drittens fließt der Verkehr gleichmäßiger, wenn alle ungefähr gleich schnell fahren.' },
+      {
+        speaker: 'Moderator',
+        text: 'Deutschland ist eines der wenigen Länder ohne generelles Tempolimit auf Autobahnen. Frau Krüger, Sie fordern 130 km/h. Warum?',
+      },
+      {
+        speaker: 'Frau Krüger',
+        text: 'Aus drei Gründen. Erstens der Klimaschutz: Ein Tempolimit würde jedes Jahr mehrere Millionen Tonnen CO2 einsparen, und zwar sofort und praktisch ohne Kosten. Zweitens die Sicherheit: Bei hohen Geschwindigkeiten sind Unfälle deutlich schwerer. Und drittens fließt der Verkehr gleichmäßiger, wenn alle ungefähr gleich schnell fahren.',
+      },
       { speaker: 'Moderator', text: 'Herr Schäfer, Sie sehen das anders.' },
-      { speaker: 'Herr Schäfer', text: 'Ja. Ich bestreite nicht, dass ein Tempolimit etwas CO2 spart. Aber im Verhältnis zu den gesamten Emissionen des Verkehrs ist das ein kleiner Beitrag. Und die deutschen Autobahnen gehören schon heute zu den sichersten Straßen der Welt – ohne generelles Limit. Auf vielen Abschnitten gibt es ohnehin Beschränkungen.' },
-      { speaker: 'Frau Krüger', text: 'Ein kleiner Beitrag ist immer noch ein Beitrag. Wir diskutieren über teure Maßnahmen wie neue Heizungen, aber eine Maßnahme, die nichts kostet, lehnen wir ab? Das ist nicht konsequent.' },
-      { speaker: 'Herr Schäfer', text: 'Es geht auch um Freiheit. Wenn die Straße frei ist und die Bedingungen gut sind, sollten erwachsene Menschen selbst entscheiden dürfen, wie schnell sie fahren.' },
+      {
+        speaker: 'Herr Schäfer',
+        text: 'Ja. Ich bestreite nicht, dass ein Tempolimit etwas CO2 spart. Aber im Verhältnis zu den gesamten Emissionen des Verkehrs ist das ein kleiner Beitrag. Und die deutschen Autobahnen gehören schon heute zu den sichersten Straßen der Welt – ohne generelles Limit. Auf vielen Abschnitten gibt es ohnehin Beschränkungen.',
+      },
+      {
+        speaker: 'Frau Krüger',
+        text: 'Ein kleiner Beitrag ist immer noch ein Beitrag. Wir diskutieren über teure Maßnahmen wie neue Heizungen, aber eine Maßnahme, die nichts kostet, lehnen wir ab? Das ist nicht konsequent.',
+      },
+      {
+        speaker: 'Herr Schäfer',
+        text: 'Es geht auch um Freiheit. Wenn die Straße frei ist und die Bedingungen gut sind, sollten erwachsene Menschen selbst entscheiden dürfen, wie schnell sie fahren.',
+      },
       { speaker: 'Frau Krüger', text: 'Freiheit endet dort, wo sie andere gefährdet. Das gilt auch auf der Autobahn.' },
-      { speaker: 'Moderator', text: 'Umfragen zeigen übrigens, dass inzwischen eine knappe Mehrheit der Deutschen ein Tempolimit befürwortet. Wir bleiben gespannt.' },
+      {
+        speaker: 'Moderator',
+        text: 'Umfragen zeigen übrigens, dass inzwischen eine knappe Mehrheit der Deutschen ein Tempolimit befürwortet. Wir bleiben gespannt.',
+      },
     ],
     questions: [
-      { kind: 'choice', question: 'Welches Argument nennt Frau Krüger NICHT?', options: ['Klimaschutz', 'Sicherheit', 'niedrigere Benzinpreise'], answer: 2 },
-      { kind: 'truefalse', statement: 'Herr Schäfer bestreitet, dass ein Tempolimit CO2 einspart.', answer: false, explanation: 'Er bestreitet es nicht, hält den Beitrag aber für klein.' },
-      { kind: 'choice', question: 'Was wirft Frau Krüger der Politik vor?', options: ['Sie ist nicht konsequent.', 'Sie gibt zu viel Geld aus.', 'Sie ignoriert die Autofahrer.'], answer: 0 },
-      { kind: 'choice', question: 'Mit welchem Wert argumentiert Herr Schäfer zum Schluss?', options: ['Wirtschaft', 'Freiheit', 'Tradition'], answer: 1 },
+      {
+        kind: 'choice',
+        question: 'Welches Argument nennt Frau Krüger NICHT?',
+        options: ['Klimaschutz', 'Sicherheit', 'niedrigere Benzinpreise'],
+        answer: 2,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Herr Schäfer bestreitet, dass ein Tempolimit CO2 einspart.',
+        answer: false,
+        explanation: 'Er bestreitet es nicht, hält den Beitrag aber für klein.',
+      },
+      {
+        kind: 'choice',
+        question: 'Was wirft Frau Krüger der Politik vor?',
+        options: ['Sie ist nicht konsequent.', 'Sie gibt zu viel Geld aus.', 'Sie ignoriert die Autofahrer.'],
+        answer: 0,
+      },
+      {
+        kind: 'choice',
+        question: 'Mit welchem Wert argumentiert Herr Schäfer zum Schluss?',
+        options: ['Wirtschaft', 'Freiheit', 'Tradition'],
+        answer: 1,
+      },
       { kind: 'truefalse', statement: 'Laut Umfragen ist eine knappe Mehrheit für ein Tempolimit.', answer: true },
     ],
   },

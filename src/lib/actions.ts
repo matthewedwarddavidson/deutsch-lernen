@@ -1,7 +1,7 @@
 import type { GrammarTopic, ListeningText, ReadingText, Word, WritingTask } from '../content/types'
 import { cardsForNewWord, cardsForTopic } from './cards'
-import { reviewCard, type Grade } from './srs'
-import { update, type ActivityKind, type Settings, type WritingFeedback } from './store'
+import { newCard, reviewCard, type Grade } from './srs'
+import { update, type ActivityKind, type Mistake, type Settings, type WritingFeedback } from './store'
 
 export function recordActivity(kind: ActivityKind, seconds: number) {
   if (seconds < 5) return
@@ -105,6 +105,23 @@ export function addCustomWord(word: Word) {
   update((state) => ({ ...state, customWords: [...state.customWords.filter((w) => w.id !== word.id), word] }))
 }
 
+/** Adds imported words, skipping any already in the list. Returns how many were new. */
+export function addCustomWords(words: Word[]): number {
+  let added = 0
+  update((state) => {
+    const seen = new Set(state.customWords.map((word) => word.id))
+    const fresh: Word[] = []
+    for (const word of words) {
+      if (seen.has(word.id)) continue
+      seen.add(word.id)
+      fresh.push(word)
+    }
+    added = fresh.length
+    return { ...state, customWords: [...state.customWords, ...fresh] }
+  })
+  return added
+}
+
 export function removeCustomWord(word: Word) {
   forgetWord(word)
   update((state) => ({ ...state, customWords: state.customWords.filter((w) => w.id !== word.id) }))
@@ -137,4 +154,30 @@ export function deleteGenerated(kind: 'reading' | 'listening' | 'writing', id: s
 
 export function updateSettings(changes: Partial<Settings>) {
   update((state) => ({ ...state, settings: { ...state.settings, ...changes } }))
+}
+
+/** Turns an error from a correction into a review card, due tomorrow. */
+export function addMistake(error: Omit<Mistake, 'id' | 'createdAt'>) {
+  const now = new Date()
+  const id = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`
+  update((state) => {
+    if (
+      state.mistakes.some((mistake) => mistake.original === error.original && mistake.correction === error.correction)
+    ) {
+      return state
+    }
+    return {
+      ...state,
+      mistakes: [...state.mistakes, { ...error, id, createdAt: now.toISOString() }],
+      cards: { ...state.cards, [`m:${id}`]: newCard(now, 24 * 60 * 60 * 1000) },
+    }
+  })
+}
+
+export function removeMistake(id: string) {
+  update((state) => {
+    const cards = { ...state.cards }
+    delete cards[`m:${id}`]
+    return { ...state, cards, mistakes: state.mistakes.filter((mistake) => mistake.id !== id) }
+  })
 }
