@@ -42,7 +42,7 @@ P | Ich bin dafür / dagegen | | | I'm for / against it | Ehrlich gesagt {bin} i
 P | Einerseits … andererseits | | | on the one hand … on the other | {Einerseits} ist das praktisch, {andererseits} ist es teuer. | On the one hand it's practical; on the other it's expensive.
 P | Vielen Dank für deine Nachricht | | | thanks for your message | {Vielen Dank für deine Nachricht}, ich habe mich sehr gefreut. | Thanks for your message, I was really pleased.
 P | Sehr geehrte Damen und Herren | | | Dear Sir or Madam | {Sehr geehrte Damen und Herren}, ich schreibe Ihnen wegen … | Dear Sir or Madam, I am writing to you about …
-P | Mit freundlichen Grüßen | | | Yours sincerely / faithfully | {Mit freundlichen Grüßen}, Anna Schmidt | Yours sincerely, Anna Schmidt
+P | Mit freundlichen Grüßen | | | Yours sincerely / faithfully | Formelle Briefe enden mit „{Mit freundlichen Grüßen}“, ohne Komma. | Formal letters end with "Mit freundlichen Grüßen", without a comma.
 P | Liebe Grüße | | | love, best wishes (informal) | {Liebe Grüße} und bis bald! | Best wishes and see you soon!
 P | Ich würde mich freuen, wenn … | | | I would be pleased if … | Ich {würde} mich {freuen}, wenn du zu meiner Party kommst. | I'd be pleased if you came to my party.
 P | Es tut mir leid, dass … | | | I'm sorry that … | Es {tut} mir {leid}, dass ich nicht kommen kann. | I'm sorry that I can't come.
