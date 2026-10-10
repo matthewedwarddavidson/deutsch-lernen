@@ -30,3 +30,11 @@ test('dictation shows a word-by-word comparison', async ({ page }) => {
   await page.keyboard.press('Enter')
   await expect(page.locator('.diff')).toBeVisible()
 })
+
+test('matching: all correct answers score full marks', async ({ page }) => {
+  await page.goto('/#/reading/match/zuordnung-wohnen')
+  const answers = ['1', '4', '2', '0', 'none', '5']
+  for (const [index, answer] of answers.entries()) await page.locator('select').nth(index).selectOption(answer)
+  await page.getByRole('button', { name: 'Check' }).click()
+  await expect(page.getByRole('heading', { name: '6 / 6' })).toBeVisible()
+})

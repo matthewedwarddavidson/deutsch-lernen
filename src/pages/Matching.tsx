@@ -40,6 +40,11 @@ export function MatchingPage() {
     setChecked(true)
   }
 
+  /** The ad picked in a dropdown, shown under it so you can compare without scrolling back. */
+  function chosenAd(choice: string) {
+    return choice === '' || choice === NONE ? undefined : task!.ads[Number(choice)]
+  }
+
   function choose(personIndex: number, value: string) {
     setChoices(choices.map((choice, index) => (index === personIndex ? value : choice)))
   }
@@ -93,6 +98,7 @@ export function MatchingPage() {
                 ))}
                 <option value={NONE}>0: keine Anzeige passt</option>
               </select>
+              {chosenAd(choices[index]) && <div className="small muted de">{chosenAd(choices[index])!.text}</div>}
               {checked && (
                 <div className={isCorrect(choices[index], person.answer) ? 'feedback correct' : 'feedback wrong'}>
                   <div className="feedback-title">
