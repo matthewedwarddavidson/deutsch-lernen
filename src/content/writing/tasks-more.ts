@@ -150,4 +150,62 @@ export const TASKS_MORE: WritingTask[] = [
     model:
       'Der Text befasst sich mit der Frage, welchen Wert Langeweile in einer Zeit ständiger digitaler Ablenkung hat. Der Autor vertritt die These, dass wir mit der Langeweile etwas Wertvolles verlieren, weil wir jede Lücke im Alltag sofort mit dem Smartphone füllen.\n\nZur Begründung führt er zwei Argumente an. Erstens sei das Gehirn in Phasen des Nichtstuns keineswegs untätig, sondern verarbeite Erlebtes und verknüpfe Gedanken, was kreative Ideen begünstige. Zweitens sei Langeweile ein Signal, dass eine Tätigkeit uns nicht erfülle; wer es ständig übertöne, weiche letztlich sich selbst aus.\n\nDaraus leitet er nicht ab, auf Smartphones zu verzichten, sondern empfiehlt, Leerlauf bewusst zuzulassen, etwa bei Bahnfahrten oder Spaziergängen.\n\nDem ist insofern zuzustimmen, als viele Menschen tatsächlich kaum noch Momente ohne Ablenkung erleben. Allerdings blendet der Text aus, dass Langeweile für manche – etwa Menschen in eintönigen Jobs – keine Wahl, sondern eine Belastung ist. Bewusster Leerlauf ist daher vor allem ein Privileg derer, die sonst zu viel zu tun haben.',
   },
+  {
+    id: 'eroerterung-grundeinkommen-c1',
+    title: 'Erörterung: Bedingungsloses Grundeinkommen',
+    level: 'C1',
+    theme: 'gesellschaft',
+    format: 'essay',
+    instructions:
+      'Hören Sie zuerst das Streitgespräch zum Grundeinkommen im Bereich Hören. Schreiben Sie dann eine Erörterung: Sollte Deutschland ein bedingungsloses Grundeinkommen einführen? (circa 250 Wörter)',
+    points: [
+      'Führen Sie in das Thema ein.',
+      'Wägen Sie Argumente dafür und dagegen ab.',
+      'Belegen Sie Ihre Argumente mit Beispielen.',
+      'Ziehen Sie ein begründetes Fazit.',
+    ],
+    minWords: 250,
+    phrases: [
+      {
+        de: 'Kaum eine sozialpolitische Idee wird so kontrovers diskutiert wie …',
+        en: 'Few social policy ideas are as controversial as …',
+      },
+      { de: 'Befürworter führen ins Feld, dass …', en: 'Supporters argue that …' },
+      { de: 'Dem lässt sich entgegenhalten, dass …', en: 'Against this one can argue that …' },
+      { de: 'Nicht von der Hand zu weisen ist, dass …', en: 'It cannot be denied that …' },
+      { de: 'Wägt man die Argumente gegeneinander ab, …', en: 'Weighing up the arguments, …' },
+      { de: 'Alles in allem bin ich der Auffassung, dass …', en: 'All in all I take the view that …' },
+    ],
+    model:
+      'Kaum eine sozialpolitische Idee wird so kontrovers diskutiert wie das bedingungslose Grundeinkommen. Die Vorstellung, dass jeder Mensch monatlich einen festen Betrag erhält, ohne dafür etwas leisten zu müssen, fasziniert die einen und empört die anderen.\n\nBefürworter führen ins Feld, dass ein Grundeinkommen den bürokratischen Aufwand des heutigen Sozialsystems drastisch verringern würde. Zudem müssten Menschen nicht länger um Leistungen bitten, die ihnen zustehen. Nicht von der Hand zu weisen ist auch, dass die Automatisierung viele Arbeitsplätze verändern wird und eine verlässliche Grundsicherung Ängste nehmen könnte.\n\nDem lässt sich entgegenhalten, dass ein Grundeinkommen für alle enorme Summen kostet. Auch wenn Wohlhabende über höhere Steuern einen Teil zurückzahlen, bleibt fraglich, ob das Geld nicht in Pflege, Bildung oder Wohnungsbau besser angelegt wäre. Hinzu kommt die Sorge, Arbeitgeber könnten Löhne mit Verweis auf das Grundeinkommen drücken. Und schließlich sind die bisherigen Versuche zu klein und zu kurz, um verlässliche Aussagen über eine ganze Volkswirtschaft zu treffen.\n\nWägt man die Argumente gegeneinander ab, so scheint mir ein sofortiges Grundeinkommen für alle zu riskant. Die Kritik am heutigen System ist jedoch berechtigt. Alles in allem bin ich der Auffassung, dass Deutschland zunächst die bestehende Grundsicherung vereinfachen und von demütigenden Kontrollen befreien sollte. Parallel könnten größere und längere Modellversuche zeigen, ob das Grundeinkommen hält, was es verspricht.',
+  },
+  {
+    id: 'stellungnahme-park-c1',
+    title: 'Formeller Brief: Stellungnahme an die Stadt',
+    level: 'C1',
+    theme: 'wohnen',
+    format: 'formal-email',
+    instructions:
+      'Die Stadt plant, den Park in Ihrem Viertel teilweise zu bebauen, um 120 neue Wohnungen zu schaffen. Bürgerinnen und Bürger können bis Monatsende schriftlich Stellung nehmen. Schreiben Sie an das Stadtplanungsamt (circa 220 Wörter).',
+    points: [
+      'Stellen Sie sich kurz vor und nennen Sie den Anlass.',
+      'Erkennen Sie das Ziel des Projekts an.',
+      'Äußern Sie Ihre Bedenken und begründen Sie sie.',
+      'Machen Sie einen konkreten Gegenvorschlag.',
+    ],
+    minWords: 220,
+    phrases: [
+      { de: 'Bezug nehmend auf Ihre Bekanntmachung vom …', en: 'With reference to your announcement of …' },
+      { de: 'Grundsätzlich begrüße ich …', en: 'In principle I welcome …' },
+      {
+        de: 'Gleichwohl habe ich erhebliche Bedenken hinsichtlich …',
+        en: 'Nevertheless I have serious concerns regarding …',
+      },
+      { de: 'Ich gebe zu bedenken, dass …', en: 'I would point out that …' },
+      { de: 'Ich möchte daher anregen, …', en: 'I would therefore suggest …' },
+      { de: 'Für Rückfragen stehe ich Ihnen gern zur Verfügung.', en: 'I am happy to answer any questions.' },
+    ],
+    model:
+      'Sehr geehrte Damen und Herren,\n\nBezug nehmend auf Ihre Bekanntmachung vom 3. März möchte ich als Anwohnerin des Lindenviertels zu den Plänen für den Stadtpark Stellung nehmen.\n\nGrundsätzlich begrüße ich, dass die Stadt angesichts des Wohnungsmangels neuen Wohnraum schaffen will. Gerade Familien und Menschen mit geringem Einkommen finden in unserem Viertel kaum noch eine bezahlbare Wohnung.\n\nGleichwohl habe ich erhebliche Bedenken hinsichtlich des gewählten Standorts. Der Park ist die einzige größere Grünfläche im Viertel. Er wird von Kindern, älteren Menschen und Sportgruppen intensiv genutzt und trägt im Sommer spürbar zur Abkühlung der umliegenden Straßen bei. Ich gebe zu bedenken, dass die Hitzebelastung in dicht bebauten Vierteln in den kommenden Jahren eher zunehmen wird. Eine verlorene Grünfläche lässt sich zudem kaum zurückgewinnen.\n\nIch möchte daher anregen, zunächst andere Flächen zu prüfen. Der seit Jahren leer stehende Parkplatz an der Bahnhofstraße etwa böte Platz für eine vergleichbare Zahl an Wohnungen, ohne dass Grün verloren ginge. Denkbar wäre auch, bestehende Gebäude aufzustocken.\n\nIch würde mich freuen, wenn meine Anregungen in die weitere Planung einfließen. Für Rückfragen stehe ich Ihnen gern zur Verfügung.\n\nMit freundlichen Grüßen\nJana Weber',
+  },
 ]
