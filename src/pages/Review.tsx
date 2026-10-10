@@ -13,8 +13,8 @@ import { gradeCard, recordActivity, suspendCard } from '../lib/actions'
 import { dueCards, type CardRef } from '../lib/cards'
 import { checkAnswer, type CheckResult, type Verdict } from '../lib/check'
 import { verbForms, verbFormsSpeech } from '../lib/verbForms'
-import { checkWord, suggestedGrade } from '../lib/grading'
-import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
+import { checkMeaning, checkWord, suggestedGrade } from '../lib/grading'
+import { useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
 import { Rating, type Grade, type StoredCard } from '../lib/srs'
 import { getState, useAppState, type Mistake } from '../lib/store'
@@ -134,41 +134,55 @@ export function ReviewCard({ card, stored, onGrade }: CardProps) {
   return <GrammarCard card={card} stored={stored} onGrade={onGrade} />
 }
 
+/** German to English. A typed meaning that doesn't match may still be a synonym, so you can grade yourself. */
 function RecogniseCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; onGrade: (grade: Grade) => void }) {
-  const [revealed, setRevealed] = useState(false)
+  const [value, setValue] = useState('')
+  const [result, setResult] = useState<CheckResult>()
 
-  function reveal() {
-    setRevealed(true)
+  function submit() {
+    if (result) return
+    setResult(checkMeaning(word, value))
     speak(displayGerman(word))
   }
 
-  useKeyHandler(!revealed, (key) => {
-    if (key === 'Enter' || key === ' ') {
-      reveal()
-      return true
-    }
-    return false
-  })
-
   return (
     <div className="stack">
-      <div className="eyebrow">What does it mean?</div>
-      {!revealed ? (
-        <>
-          <div className="row" style={{ gap: 6 }}>
-            <span className="review-prompt">{displayGerman(word)}</span>
-            <SpeakButton text={displayGerman(word)} />
-          </div>
-          <div>
-            <button className="btn primary" onClick={reveal}>
-              Show answer <span className="kbd">Space</span>
-            </button>
-          </div>
-        </>
+      <div className="eyebrow">What does it mean? In English</div>
+      <div className="row" style={{ gap: 6 }}>
+        <span className="review-prompt">{displayGerman(word)}</span>
+        <SpeakButton text={displayGerman(word)} />
+      </div>
+      <AnswerInput
+        value={value}
+        onChange={setValue}
+        onSubmit={submit}
+        verdict={result?.verdict === 'wrong' ? undefined : result?.verdict}
+        disabled={!!result}
+        label="Meaning in English"
+      />
+      {!result ? (
+        <div className="row">
+          <button className="btn primary" onClick={submit}>
+            Check <span className="kbd">Enter</span>
+          </button>
+          <button className="btn ghost" onClick={() => setResult({ verdict: 'wrong', expected: word.english })}>
+            I don't know
+          </button>
+        </div>
       ) : (
         <>
+          {result.verdict === 'wrong' ? (
+            value.trim() !== '' && (
+              <div className="muted small">
+                Not one of the listed meanings. If yours means the same, pick <strong>Good</strong>.
+              </div>
+            )
+          ) : (
+            <Feedback verdict={result.verdict}>{result.note && <div className="small">{result.note}</div>}</Feedback>
+          )}
+          <hr className="divider" />
           <WordView word={word} />
-          <GradeButtons card={stored} suggested={Rating.Good} onGrade={onGrade} />
+          <GradeButtons card={stored} suggested={suggestedGrade(result.verdict)} onGrade={onGrade} />
         </>
       )}
     </div>

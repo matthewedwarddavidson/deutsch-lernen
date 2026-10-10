@@ -23,6 +23,29 @@ export function checkWord(word: Word, typed: string): CheckResult {
   return result
 }
 
+/** Drops words that don't change the meaning, so "to recognise" matches "recognise". */
+function withoutFillers(text: string): string {
+  return text
+    .trim()
+    .replace(/^(to|a|an|the)\s+/i, '')
+    .replace(/\s*\.\.\.|\s*…/g, '')
+    .trim()
+}
+
+/** Each separate meaning in an English gloss such as "to lock; to complete (sth)". */
+export function englishMeanings(english: string): string[] {
+  const withoutBrackets = english.replace(/\([^)]*\)/g, '')
+  return withoutBrackets
+    .split(/[;,/]/)
+    .map(withoutFillers)
+    .filter((meaning) => meaning !== '')
+}
+
+/** Checks a typed English meaning against the gloss. A miss may still be a valid synonym. */
+export function checkMeaning(word: Word, typed: string): CheckResult {
+  return checkAnswer(withoutFillers(typed), englishMeanings(word.english))
+}
+
 /** The first topic not yet studied, at or below the target level. */
 export function nextTopic(state: AppState): GrammarTopic | undefined {
   const target = levelIndex(state.settings.level)
