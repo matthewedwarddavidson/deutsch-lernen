@@ -40,4 +40,15 @@ N | die Quelle | Quellen | | source | Nenne bitte immer deine {Quellen}. | Pleas
 N | die Digitalisierung | – | | digitalisation | Die {Digitalisierung} verändert die Arbeitswelt. | Digitalisation is changing the world of work.
 N | die künstliche Intelligenz | – | | artificial intelligence | {Künstliche Intelligenz} wird schon in vielen Bereichen eingesetzt. | Artificial intelligence is already used in many areas.
 V | beeinflussen | beeinflusst, beeinflusste, hat beeinflusst | | to influence | Werbung {beeinflusst} unser Kaufverhalten stärker, als wir denken. | Advertising influences our buying more than we think.
+# B1
+N | der Drucker | Drucker | | printer | Der {Drucker} hat kein Papier mehr. | The printer is out of paper.
+V | drucken | druckt, druckte, hat gedruckt | | to print | Kannst du mir das Ticket {drucken}? | Can you print the ticket for me?
+N | das Netz | Netze | | network; the web | Hier gibt es kein {Netz}. | There's no signal here.
+V | aktualisieren | aktualisiert, aktualisierte, hat aktualisiert | | to update | Du musst die App {aktualisieren}. | You need to update the app.
+N | die Einstellung | Einstellungen | | setting; attitude | Das kannst du in den {Einstellungen} ändern. | You can change that in the settings.
+N | der Kommentar | Kommentare | | comment | Unter dem Artikel gibt es viele {Kommentare}. | There are lots of comments under the article.
+V | posten | postet, postete, hat gepostet | | to post (online) | Sie {postet} jeden Tag Fotos von ihrem Essen. | She posts photos of her food every day.
+N | die Zeitung | Zeitungen | | newspaper | Ich lese die {Zeitung} meistens online. | I mostly read the paper online.
+N | der Empfang | – | | reception (signal) | Im Keller habe ich keinen {Empfang}. | I've no reception in the cellar.
+ADJ | kostenlos | – | | free of charge | Die App ist {kostenlos}. | The app is free.
 `

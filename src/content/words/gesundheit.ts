@@ -46,4 +46,17 @@ V | leiden | leidet, litt, hat gelitten | an + D / unter + D | to suffer | Viele
 N | die Behandlung | Behandlungen | | treatment | Die {Behandlung} hat sofort angeschlagen. | The treatment worked straight away.
 ADJ | ansteckend | – | | contagious | Keine Sorge, ich bin nicht mehr {ansteckend}. | Don't worry, I'm not contagious any more.
 N | die Pflege | – | | care, nursing | Die {Pflege} älterer Menschen wird immer teurer. | Caring for older people is getting ever more expensive.
+# B1
+N | der Zahnarzt | Zahnärzte | | dentist | Ich habe Angst vor dem {Zahnarzt}. | I'm scared of the dentist.
+N | der Facharzt | Fachärzte | | specialist | Auf einen Termin beim {Facharzt} wartet man oft Wochen. | You often wait weeks for a specialist appointment.
+N | die Tablette | Tabletten | | tablet, pill | Nehmen Sie zwei {Tabletten} vor dem Schlafen. | Take two tablets before bed.
+N | der Husten | – | | cough | Seit einer Woche habe ich {Husten}. | I've had a cough for a week.
+N | der Schnupfen | – | | runny nose, cold | Ich habe nur einen leichten {Schnupfen}. | I've only got a slight cold.
+ADJ | schwindlig | – | D | dizzy | Mir ist plötzlich {schwindlig} geworden. | I suddenly felt dizzy.
+V | husten | hustet, hustete, hat gehustet | | to cough | Das Kind hat die ganze Nacht {gehustet}. | The child coughed all night.
+V | sich erkälten | erkältet sich, erkältete sich, hat sich erkältet | | to catch a cold | Zieh dich warm an, sonst {erkältest} du dich! | Wrap up warm or you'll catch a cold!
+N | die Grippe | – | | flu | Er liegt mit {Grippe} im Bett. | He's in bed with flu.
+N | das Krankenhaus | Krankenhäuser | | hospital | Sie musste drei Tage im {Krankenhaus} bleiben. | She had to stay in hospital for three days.
+N | die Operation | Operationen | | operation | Die {Operation} ist gut verlaufen. | The operation went well.
+ADJ | gesund | gesünder, am gesündesten | | healthy | Radfahren ist {gesünder} als Autofahren. | Cycling is healthier than driving.
 `

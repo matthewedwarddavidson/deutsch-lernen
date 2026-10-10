@@ -35,4 +35,16 @@ ADJ | ausgewogen | – | | balanced | Eine {ausgewogene} Ernährung ist das A un
 N | der Zusatzstoff | Zusatzstoffe | | additive | Fertiggerichte enthalten oft viele {Zusatzstoffe}. | Ready meals often contain lots of additives.
 ADJ | verderblich | – | | perishable | Frischer Fisch ist leicht {verderblich}. | Fresh fish is highly perishable.
 N | die Unverträglichkeit | Unverträglichkeiten | | intolerance | Sie hat eine {Unverträglichkeit} gegen Laktose. | She has a lactose intolerance.
+# B1
+N | das Gewürz | Gewürze | | spice | Welche {Gewürze} brauche ich für das Curry? | Which spices do I need for the curry?
+N | der Topf | Töpfe | | pot, saucepan | Stell den {Topf} auf den Herd. | Put the pot on the stove.
+N | die Pfanne | Pfannen | | frying pan | Das Öl in der {Pfanne} ist zu heiß. | The oil in the pan is too hot.
+N | der Herd | Herde | | cooker | Hast du den {Herd} ausgemacht? | Did you turn the cooker off?
+N | der Backofen | Backöfen | | oven | Den Kuchen 40 Minuten im {Backofen} backen. | Bake the cake in the oven for 40 minutes.
+V | schälen | schält, schälte, hat geschält | | to peel | Kannst du die Kartoffeln {schälen}? | Can you peel the potatoes?
+V | mischen | mischt, mischte, hat gemischt | | to mix | Mehl und Zucker in einer Schüssel {mischen}. | Mix the flour and sugar in a bowl.
+N | die Schüssel | Schüsseln | | bowl | Gib mir bitte die große {Schüssel}. | Pass me the big bowl, please.
+N | das Mehl | – | | flour | Für das Brot brauchst du 500 Gramm {Mehl}. | For the bread you need 500 grams of flour.
+ADJ | süß | süßer, am süßesten | | sweet | Der Kuchen ist mir zu {süß}. | The cake is too sweet for me.
+ADJ | sauer | saurer, am sauersten | | sour | Die Äpfel sind noch {sauer}. | The apples are still sour.
 `

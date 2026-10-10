@@ -42,4 +42,16 @@ N | das Verkehrsmittel | Verkehrsmittel | | means of transport | Öffentliche {V
 V | erstatten | erstattet, erstattete, hat erstattet | | to refund | Der Fahrpreis wird Ihnen vollständig {erstattet}. | Your fare will be refunded in full.
 N | der Reiseveranstalter | Reiseveranstalter | | tour operator | Der {Reiseveranstalter} hat die Reise kurzfristig abgesagt. | The tour operator cancelled the trip at short notice.
 ADJ | kurzfristig | – | | at short notice | Wir mussten den Urlaub {kurzfristig} verschieben. | We had to postpone the holiday at short notice.
+# B1
+N | der Flughafen | Flughäfen | | airport | Wir müssen zwei Stunden vor dem Abflug am {Flughafen} sein. | We need to be at the airport two hours before departure.
+N | der Abflug | Abflüge | | departure (flight) | Der {Abflug} verzögert sich um eine Stunde. | The departure is delayed by an hour.
+N | das Handgepäck | – | | hand luggage | Flüssigkeiten im {Handgepäck} sind begrenzt. | Liquids in hand luggage are limited.
+N | der Koffer | Koffer | | suitcase | Mein {Koffer} ist in Frankfurt geblieben. | My suitcase stayed behind in Frankfurt.
+V | packen | packt, packte, hat gepackt | | to pack | Hast du schon deinen Koffer {gepackt}? | Have you packed your case yet?
+V | landen | landet, landete, ist gelandet | | to land | Das Flugzeug ist pünktlich {gelandet}. | The plane landed on time.
+V | abholen | holt ab, holte ab, hat abgeholt | | to pick up | Kannst du mich vom Bahnhof {abholen}? | Can you pick me up from the station?
+N | die Reiseversicherung | Reiseversicherungen | | travel insurance | Hast du eine {Reiseversicherung} abgeschlossen? | Have you taken out travel insurance?
+N | der Zoll | – | | customs | Am {Zoll} wurde mein Koffer kontrolliert. | My case was checked at customs.
+N | das Visum | Visa | | visa | Für die Reise brauchen Sie ein {Visum}. | You need a visa for the trip.
+ADJ | direkt | – | | direct | Gibt es einen {direkten} Zug nach Wien? | Is there a direct train to Vienna?
 `

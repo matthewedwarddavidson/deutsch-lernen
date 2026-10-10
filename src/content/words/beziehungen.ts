@@ -38,4 +38,15 @@ V | sich auseinandersetzen | setzt sich auseinander, setzte sich auseinander, ha
 ADJ | rücksichtsvoll | – | | considerate | Sei bitte etwas {rücksichtsvoller}! | Please be a bit more considerate!
 N | die Erwartung | Erwartungen | | expectation | Meine {Erwartungen} wurden nicht erfüllt. | My expectations were not met.
 V | sich versöhnen | versöhnt sich, versöhnte sich, hat sich versöhnt | mit + D | to make up, reconcile | Nach dem Streit haben sie sich schnell wieder {versöhnt}. | After the argument they quickly made up.
+# B1
+N | der Partner | Partner | | partner | Lebst du mit deinem {Partner} zusammen? | Do you live with your partner?
+N | die Ehe | Ehen | | marriage | Ihre {Ehe} hält schon dreißig Jahre. | Their marriage has lasted thirty years.
+N | die Scheidung | Scheidungen | | divorce | Nach der {Scheidung} ist er umgezogen. | After the divorce he moved.
+V | sich kennenlernen | lernt sich kennen, lernte sich kennen, hat sich kennengelernt | | to get to know each other, meet | Wir haben uns im Urlaub {kennengelernt}. | We met on holiday.
+V | vermissen | vermisst, vermisste, hat vermisst | | to miss | Ich {vermisse} meine Familie sehr. | I miss my family a lot.
+V | umarmen | umarmt, umarmte, hat umarmt | | to hug | Sie hat mich zur Begrüßung {umarmt}. | She hugged me hello.
+ADJ | traurig | trauriger, am traurigsten | | sad | Warum bist du so {traurig}? | Why are you so sad?
+ADJ | glücklich | glücklicher, am glücklichsten | | happy | Die beiden sehen sehr {glücklich} aus. | The two of them look very happy.
+ADJ | nervös | nervöser, am nervösesten | | nervous | Vor Prüfungen bin ich immer {nervös}. | I'm always nervous before exams.
+N | die Angst | Ängste | | fear | Ich habe {Angst} vor Spinnen. | I'm scared of spiders.
 `

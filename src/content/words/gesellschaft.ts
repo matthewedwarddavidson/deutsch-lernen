@@ -45,4 +45,15 @@ N | die Maßnahme | Maßnahmen | | measure | Die Regierung hat neue {Maßnahmen}
 N | die Teilhabe | – | | participation, inclusion | Barrierefreiheit ermöglicht gesellschaftliche {Teilhabe}. | Accessibility enables participation in society.
 ADJ | umstritten | – | | controversial | Das neue Gesetz ist politisch höchst {umstritten}. | The new law is politically highly controversial.
 N | der Wandel | – | | change, transformation | Wir erleben einen tiefgreifenden demografischen {Wandel}. | We are experiencing profound demographic change.
+# B1
+N | der Bürgermeister | Bürgermeister | | mayor | Der {Bürgermeister} hat das neue Schwimmbad eröffnet. | The mayor opened the new swimming pool.
+N | die Kirche | Kirchen | | church | Viele Menschen treten aus der {Kirche} aus. | Many people are leaving the church.
+N | die Religion | Religionen | | religion | In der Schule gibt es {Religion} als Fach. | Religion is a school subject.
+N | der Ausländer | Ausländer | | foreigner | In Frankfurt leben viele {Ausländer}. | Many foreigners live in Frankfurt.
+N | die Staatsbürgerschaft | Staatsbürgerschaften | | citizenship | Sie hat die deutsche {Staatsbürgerschaft} beantragt. | She has applied for German citizenship.
+N | die Kriminalität | – | | crime | Die {Kriminalität} ist in der Stadt gesunken. | Crime has fallen in the city.
+N | die Freiheit | Freiheiten | | freedom | Die {Freiheit} der Presse ist ein wichtiges Recht. | Freedom of the press is an important right.
+V | protestieren | protestiert, protestierte, hat protestiert | gegen + A | to protest | Tausende {protestieren} gegen die Reform. | Thousands are protesting against the reform.
+N | die Generation | Generationen | | generation | Die junge {Generation} denkt anders über Arbeit. | The young generation thinks differently about work.
+ADJ | sozial | – | | social | Sie arbeitet in einem {sozialen} Beruf. | She works in a caring profession.
 `

@@ -44,4 +44,20 @@ V | bewältigen | bewältigt, bewältigte, hat bewältigt | | to cope with, mana
 N | der Tagesablauf | Tagesabläufe | | daily routine | Mein {Tagesablauf} ist ziemlich durchgeplant. | My daily routine is pretty tightly planned.
 ADJ | zeitaufwendig | – | | time-consuming | Die Steuererklärung ist sehr {zeitaufwendig}. | The tax return is very time-consuming.
 V | aufschieben | schiebt auf, schob auf, hat aufgeschoben | | to put off | Ich {schiebe} unangenehme Aufgaben gern {auf}. | I tend to put off unpleasant tasks.
+# B1
+N | der Wecker | Wecker | | alarm clock | Mein {Wecker} klingelt jeden Tag um sechs. | My alarm goes off at six every day.
+V | klingeln | klingelt, klingelte, hat geklingelt | | to ring | Es hat an der Tür {geklingelt}. | Someone rang the doorbell.
+V | sich anziehen | zieht sich an, zog sich an, hat sich angezogen | | to get dressed | Ich {ziehe} mich schnell {an} und komme. | I'll get dressed quickly and come.
+V | sich umziehen | zieht sich um, zog sich um, hat sich umgezogen | | to get changed | Nach der Arbeit {ziehe} ich mich erst mal {um}. | After work I get changed first.
+V | aufhören | hört auf, hörte auf, hat aufgehört | mit + D | to stop | Hör endlich {auf}, so laut zu sein! | Stop being so loud!
+V | anfangen | fängt an, fing an, hat angefangen | mit + D | to start | Wann {fängt} der Film {an}? | When does the film start?
+V | sich ausschlafen | schläft sich aus, schlief sich aus, hat sich ausgeschlafen | | to have a lie-in | Am Sonntag {schlafe} ich mich richtig {aus}. | On Sunday I have a proper lie-in.
+N | die Wäsche | – | | laundry, washing | Ich muss noch die {Wäsche} aufhängen. | I still need to hang up the washing.
+V | bügeln | bügelt, bügelte, hat gebügelt | | to iron | Ich {bügle} nur, wenn es unbedingt sein muss. | I only iron when I absolutely have to.
+N | der Staubsauger | Staubsauger | | vacuum cleaner | Der {Staubsauger} ist zu laut. | The vacuum cleaner is too loud.
+V | putzen | putzt, putzte, hat geputzt | | to clean | Wir {putzen} jeden Freitag die Wohnung. | We clean the flat every Friday.
+N | die Erledigung | Erledigungen | | errand | Ich habe heute noch ein paar {Erledigungen} zu machen. | I've got a few errands to run today.
+ADJ | müde | müder, am müdesten | | tired | Ich bin heute total {müde}. | I'm really tired today.
+ADV | unterwegs | – | | on the way, out and about | Ich bin gerade {unterwegs}, ich rufe später an. | I'm out at the moment; I'll call later.
+ADV | zwischendurch | – | | in between, now and again | {Zwischendurch} esse ich gern einen Apfel. | In between I like to eat an apple.
 `

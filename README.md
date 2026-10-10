@@ -29,7 +29,7 @@ Built-in words, examples, grammar sentences, texts and dialogues come with recor
 | Area | What it does |
 | --- | --- |
 | **Today** | Reviews due, new words, the next grammar topic, a text to read and listen to, a writing task, and how your week splits across input, output, study and fluency. |
-| **Words** | ~720 words across 16 themes, A2–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own, or import a course word list. A timed speed round on known words trains fluency. |
+| **Words** | ~870 words across 16 themes, A2–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own, or import a course word list. A timed speed round on known words trains fluency. |
 | **Reviews** | One FSRS queue for everything: recognition (German → English), production (English → German, typed, with article; alternates with gap-fills in context), irregular verb forms, grammar exercises and your own writing mistakes. Marking forgives typos but not wrong endings or auxiliaries. |
 | **Grammar** | 30 topics from A2 review to C1: explanation, tables, examples, common mistakes, then exercises (gap, choice, word order, transformation). Finished topics feed their exercises into reviews. |
 | **Reading** | 16 graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |

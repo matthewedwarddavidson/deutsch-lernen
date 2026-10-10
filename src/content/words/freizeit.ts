@@ -39,4 +39,17 @@ N | die Leidenschaft | Leidenschaften | | passion | Kochen ist meine große {Lei
 V | sich widmen | widmet sich, widmete sich, hat sich gewidmet | D | to devote oneself to | Im Ruhestand will er sich ganz der Musik {widmen}. | In retirement he wants to devote himself entirely to music.
 N | die Inszenierung | Inszenierungen | | production, staging | Die neue {Inszenierung} des Faust ist sehr modern. | The new production of Faust is very modern.
 ADJ | sehenswert | – | | worth seeing | Der Film ist absolut {sehenswert}. | The film is definitely worth seeing.
+# B1
+N | das Konzert | Konzerte | | concert | Wir haben Karten für das {Konzert} am Freitag. | We've got tickets for the concert on Friday.
+N | das Museum | Museen | | museum | Am Sonntag ist der Eintritt ins {Museum} frei. | Entry to the museum is free on Sundays.
+N | der Spaziergang | Spaziergänge | | walk | Nach dem Essen machen wir einen {Spaziergang}. | After the meal we go for a walk.
+N | das Fitnessstudio | Fitnessstudios | | gym | Ich gehe dreimal pro Woche ins {Fitnessstudio}. | I go to the gym three times a week.
+V | joggen | joggt, joggte, ist gejoggt | | to jog | Morgens {jogge} ich im Park. | I jog in the park in the mornings.
+V | zelten | zeltet, zeltete, hat gezeltet | | to camp | Im Sommer {zelten} wir am Meer. | In summer we camp by the sea.
+V | malen | malt, malte, hat gemalt | | to paint | Meine Oma {malt} wunderschöne Bilder. | My gran paints beautiful pictures.
+N | das Instrument | Instrumente | | instrument | Spielst du ein {Instrument}? | Do you play an instrument?
+N | die Bühne | Bühnen | | stage | Als sie auf die {Bühne} kam, wurde es still. | When she came on stage it went quiet.
+N | der Eintrittspreis | Eintrittspreise | | admission price | Die {Eintrittspreise} sind gestiegen. | Admission prices have gone up.
+ADJ | aktiv | aktiver, am aktivsten | | active | Im Ruhestand ist er sehr {aktiv}. | He's very active in retirement.
+N | der Feiertag | Feiertage | | public holiday | Am Montag ist {Feiertag}, die Geschäfte sind zu. | Monday is a public holiday; the shops are closed.
 `

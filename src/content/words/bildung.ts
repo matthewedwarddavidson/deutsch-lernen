@@ -37,4 +37,13 @@ V | sich aneignen | eignet sich an, eignete sich an, hat sich angeeignet | D + A
 N | der Abschluss | Abschlüsse | | qualification; completion | Ohne {Abschluss} ist es schwer, eine Stelle zu finden. | Without a qualification it's hard to find a job.
 ADJ | lebenslang | – | | lifelong | {Lebenslanges} Lernen ist heute selbstverständlich. | Lifelong learning is taken for granted today.
 N | die Lernstrategie | Lernstrategien | | learning strategy | Jeder braucht eigene {Lernstrategien}. | Everyone needs their own learning strategies.
+# B1
+N | der Kindergarten | Kindergärten | | nursery, kindergarten | Unser Sohn geht seit Mai in den {Kindergarten}. | Our son has been going to nursery since May.
+N | der Schüler | Schüler | | pupil | Die {Schüler} schreiben morgen einen Test. | The pupils have a test tomorrow.
+N | die Klasse | Klassen | | class; year group | In meiner {Klasse} sind 25 Kinder. | There are 25 children in my class.
+N | die Universität | Universitäten | | university | Sie studiert an der {Universität} Hamburg. | She studies at the University of Hamburg.
+N | die Vorlesung | Vorlesungen | | lecture | Die {Vorlesung} beginnt um zehn nach zehn. | The lecture starts at ten past ten.
+V | üben | übt, übte, hat geübt | | to practise | Du musst mehr {üben}. | You need to practise more.
+N | der Test | Tests | | test | Wie ist dein {Test} gelaufen? | How did your test go?
+ADJ | fleißig | fleißiger, am fleißigsten | | hard-working | Sie ist eine sehr {fleißige} Studentin. | She's a very hard-working student.
 `

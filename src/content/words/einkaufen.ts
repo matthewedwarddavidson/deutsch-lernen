@@ -39,4 +39,15 @@ N | das Widerrufsrecht | – | | right of withdrawal | Bei Online-Käufen gilt e
 N | die Ratenzahlung | Ratenzahlungen | | payment in instalments | Der Kauf ist auch per {Ratenzahlung} möglich. | You can also pay in instalments.
 V | sich verschulden | verschuldet sich, verschuldete sich, hat sich verschuldet | | to get into debt | Viele junge Leute {verschulden} sich durch Online-Shopping. | Many young people get into debt through online shopping.
 N | der Konsum | – | | consumption | Wir müssen unseren {Konsum} einschränken. | We have to reduce our consumption.
+# B1
+N | der Laden | Läden | | shop | Der kleine {Laden} an der Ecke hat bis 22 Uhr offen. | The little shop on the corner is open until 10 pm.
+N | die Filiale | Filialen | | branch | Die Bank hat ihre {Filiale} geschlossen. | The bank has closed its branch.
+N | die Tüte | Tüten | | bag | Brauchen Sie eine {Tüte}? | Do you need a bag?
+N | der Preis | Preise | | price | Die {Preise} für Lebensmittel sind gestiegen. | Food prices have gone up.
+V | kosten | kostet, kostete, hat gekostet | | to cost | Wie viel {kostet} das? | How much does that cost?
+N | das Sonderangebot | Sonderangebote | | special offer | Kaffee ist diese Woche im {Sonderangebot}. | Coffee is on special offer this week.
+N | die Geldbörse | Geldbörsen | | purse, wallet | Ich habe meine {Geldbörse} zu Hause vergessen. | I've left my purse at home.
+N | die Geheimzahl | Geheimzahlen | | PIN | Geben Sie bitte Ihre {Geheimzahl} ein. | Please enter your PIN.
+ADJ | teuer | teurer, am teuersten | | expensive | Das Leben in München ist sehr {teuer}. | Living in Munich is very expensive.
+ADJ | geöffnet | – | | open | Der Supermarkt ist bis 20 Uhr {geöffnet}. | The supermarket is open until 8 pm.
 `

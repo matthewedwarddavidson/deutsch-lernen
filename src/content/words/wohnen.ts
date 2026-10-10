@@ -49,4 +49,17 @@ ADJ | bezahlbar | – | | affordable | {Bezahlbarer} Wohnraum ist in Großstädt
 N | der Wohnraum | – | | living space, housing | Die Stadt will mehr {Wohnraum} schaffen. | The city wants to create more housing.
 V | sanieren | saniert, sanierte, hat saniert | | to refurbish (a building) | Das Altbauhaus wurde komplett {saniert}. | The old building was completely refurbished.
 N | die Untermiete | – | | subletting | Ich wohne zur {Untermiete} bei einer älteren Dame. | I'm subletting from an elderly lady.
+# B1
+N | der Grundriss | Grundrisse | | floor plan | Der {Grundriss} der Wohnung ist sehr praktisch. | The flat's layout is very practical.
+N | die Etage | Etagen | | floor, storey | Die Wohnung liegt in der vierten {Etage}. | The flat is on the fourth floor.
+N | der Keller | Keller | | cellar, basement | Die Fahrräder stehen im {Keller}. | The bikes are in the cellar.
+N | der Dachboden | Dachböden | | attic | Auf dem {Dachboden} liegen alte Kisten. | There are old boxes in the attic.
+N | die Steckdose | Steckdosen | | (power) socket | Im Schlafzimmer gibt es nur eine {Steckdose}. | There's only one socket in the bedroom.
+V | tapezieren | tapeziert, tapezierte, hat tapeziert | | to wallpaper | Wir haben das Kinderzimmer neu {tapeziert}. | We've re-wallpapered the children's room.
+V | streichen | streicht, strich, hat gestrichen | | to paint | Die Wände müssen beim Auszug weiß {gestrichen} werden. | The walls have to be painted white when you move out.
+N | der Schimmel | – | | mould | Im Bad ist {Schimmel} an der Decke. | There's mould on the bathroom ceiling.
+V | lüften | lüftet, lüftete, hat gelüftet | | to air (a room) | Man sollte mehrmals am Tag {lüften}. | You should air the rooms several times a day.
+N | die Wohnungsbesichtigung | Wohnungsbesichtigungen | | flat viewing | Zur {Wohnungsbesichtigung} kamen dreißig Leute. | Thirty people came to the viewing.
+N | der Auszug | Auszüge | | moving out | Beim {Auszug} gibt es eine Übergabe mit dem Vermieter. | When you move out there's a handover with the landlord.
+ADJ | renovierungsbedürftig | – | | in need of renovation | Das Haus ist günstig, aber {renovierungsbedürftig}. | The house is cheap but needs work.
 `

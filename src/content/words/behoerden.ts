@@ -40,4 +40,12 @@ N | der Bescheid | Bescheide | | official notice, decision | Den {Bescheid} beko
 V | Widerspruch einlegen | legt Widerspruch ein, legte Widerspruch ein, hat Widerspruch eingelegt | gegen + A | to lodge an objection | Gegen den Bescheid können Sie {Widerspruch einlegen}. | You can lodge an objection to the decision.
 ADJ | beglaubigt | – | | certified | Wir brauchen eine {beglaubigte} Kopie Ihres Zeugnisses. | We need a certified copy of your certificate.
 N | die Bürokratie | – | | bureaucracy | Die deutsche {Bürokratie} ist legendär. | German bureaucracy is legendary.
+# B1
+N | die Polizei | – | | police | Ruf sofort die {Polizei}! | Call the police at once!
+N | der Diebstahl | Diebstähle | | theft | Den {Diebstahl} haben wir sofort gemeldet. | We reported the theft straight away.
+V | melden | meldet, meldete, hat gemeldet | | to report | Sie müssen den Schaden innerhalb einer Woche {melden}. | You must report the damage within a week.
+N | die Post | – | | post office; post | Ich muss noch zur {Post}. | I still need to go to the post office.
+N | die Briefmarke | Briefmarken | | stamp | Wie viel kostet eine {Briefmarke} nach England? | How much is a stamp to England?
+N | die Geburtsurkunde | Geburtsurkunden | | birth certificate | Für die Heirat brauchen Sie Ihre {Geburtsurkunde}. | You need your birth certificate to get married.
+N | die Unterschrift | Unterschriften | | signature | Hier fehlt noch Ihre {Unterschrift}. | Your signature is still missing here.
 `

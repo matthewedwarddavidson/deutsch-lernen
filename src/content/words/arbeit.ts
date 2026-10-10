@@ -52,4 +52,17 @@ N | die Arbeitsbedingungen | – | | working conditions (plural) | Die Gewerksch
 # C1
 N | die Führungskraft | Führungskräfte | | manager, executive | Viele {Führungskräfte} klagen über Zeitdruck. | Many managers complain of time pressure.
 V | delegieren | delegiert, delegierte, hat delegiert | | to delegate | Wer alles selbst macht, hat nicht gelernt zu {delegieren}. | Anyone who does everything themselves hasn't learnt to delegate.
+# B1
+N | das Praktikum | Praktika | | internship | Im Sommer mache ich ein {Praktikum} bei einer Zeitung. | In the summer I'm doing an internship at a newspaper.
+N | der Arbeitsvertrag | Arbeitsverträge | | employment contract | Ich habe den {Arbeitsvertrag} heute unterschrieben. | I signed the employment contract today.
+N | die Probezeit | Probezeiten | | probation period | Die {Probezeit} dauert sechs Monate. | The probation period lasts six months.
+N | die Schicht | Schichten | | shift | Meine {Schicht} beginnt um sechs Uhr morgens. | My shift starts at six in the morning.
+N | der Termindruck | – | | deadline pressure | Wir arbeiten ständig unter {Termindruck}. | We're constantly working under deadline pressure.
+N | das Team | Teams | | team | Unser {Team} besteht aus acht Leuten. | Our team consists of eight people.
+N | die Rückmeldung | Rückmeldungen | | feedback, reply | Ich warte noch auf eine {Rückmeldung} vom Chef. | I'm still waiting for feedback from the boss.
+V | leiten | leitet, leitete, hat geleitet | | to lead, manage | Sie {leitet} ein Team von zwölf Personen. | She leads a team of twelve.
+N | der Lohn | Löhne | | wage | Der {Lohn} wird am Ende des Monats gezahlt. | The wage is paid at the end of the month.
+N | die Gewerkschaft | Gewerkschaften | | trade union | Die {Gewerkschaft} hat zum Streik aufgerufen. | The union has called a strike.
+ADJ | flexibel | flexibler, am flexibelsten | | flexible | Ich habe {flexible} Arbeitszeiten. | I have flexible working hours.
+N | die Fortbildung | Fortbildungen | | training course | Nächste Woche bin ich auf einer {Fortbildung}. | Next week I'm on a training course.
 `
