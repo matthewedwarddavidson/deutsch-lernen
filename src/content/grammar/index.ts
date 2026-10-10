@@ -9,6 +9,7 @@ import {
   partizipialattribute,
   passivErsatz,
 } from './b2'
+import { alsOb, dativAkkusativ, perfekt, praepositionenKasus } from './grundlagen'
 import { konjunktiv2 } from './konjunktiv2'
 import { passiv } from './passiv'
 import { adjektivdeklination, genitiv, nDeklination, verbenMitPraepositionen, wechselpraepositionen } from './kasus'
@@ -20,6 +21,9 @@ import { konnektoren, plusquamperfekt, praeteritum, temporaleNebensaetze } from 
 
 const BASE_TOPICS: GrammarTopic[] = [
   // A2 review
+  perfekt,
+  dativAkkusativ,
+  praepositionenKasus,
   modalverben,
   reflexiveVerben,
   komparativ,
@@ -51,6 +55,7 @@ const BASE_TOPICS: GrammarTopic[] = [
   modalverbenSubjektiv,
   konnektorenB2,
   modalpartikeln,
+  alsOb,
   // C1
   funktionsverbgefuege,
 ]

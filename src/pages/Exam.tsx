@@ -134,7 +134,7 @@ export function Exam() {
           <Link className="card card-link" to="/reading">
             <h3>Lesen</h3>
             <div className="small muted">
-              Blogs, articles, forum opinions and notices at {level}, with exam-style questions.
+              Blogs, articles, notices and ad matching at {level}, with exam-style questions.
             </div>
           </Link>
           <Link className="card card-link" to="/listening">
