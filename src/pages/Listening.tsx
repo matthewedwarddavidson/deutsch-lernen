@@ -6,6 +6,7 @@ import { Icon } from '../components/Icon'
 import { ProgressBar } from '../components/ProgressBar'
 import { Questions } from '../components/Questions'
 import { SpeakButton } from '../components/SpeakButton'
+import { voiceForSpeaker } from '../content/listening'
 import { listeningTexts } from '../content/library'
 import { themeById } from '../content/themes'
 import { LEVELS, type ListeningText } from '../content/types'
@@ -117,7 +118,7 @@ export function ListeningPage() {
     )
   }
 
-  function play(rate: number) {
+  function play(slow: boolean) {
     if (!text) return
     if (playing !== undefined) {
       stopSpeaking()
@@ -126,9 +127,9 @@ export function ListeningPage() {
     }
     setPlays(plays + 1)
     setPlaying(0)
-    speakDialogue(text.lines, {
-      rate,
-      voiceURI: state.settings.voiceURI,
+    const lines = text.lines.map((line) => ({ text: line.text, voice: voiceForSpeaker(text, line.speaker) }))
+    speakDialogue(lines, {
+      slow,
       onLine: setPlaying,
       onEnd: () => setPlaying(undefined),
     })
@@ -148,11 +149,11 @@ export function ListeningPage() {
       </div>
 
       <div className="card player">
-        <button className="btn primary player-button" onClick={() => play(state.settings.speechRate)}>
+        <button className="btn primary player-button" onClick={() => play(false)}>
           <Icon name={playing !== undefined ? 'stop' : 'speaker'} />
           {playing !== undefined ? 'Stop' : plays === 0 ? 'Play' : 'Play again'}
         </button>
-        <button className="btn" onClick={() => play(state.settings.speechRate * 0.75)} disabled={playing !== undefined}>
+        <button className="btn" onClick={() => play(true)} disabled={playing !== undefined}>
           Slower
         </button>
         <div className="player-status">
@@ -306,15 +307,10 @@ export function Dictation() {
 }
 
 function DictationItem({ sentence, onNext }: { sentence: DictationSentence; onNext: (score: number) => void }) {
-  const { settings } = useAppState()
   const [value, setValue] = useState('')
   const [diff, setDiff] = useState<TokenDiff[]>()
 
-  const play = (slow = false) =>
-    speak(sentence.german, {
-      rate: slow ? settings.speechRate * 0.7 : settings.speechRate,
-      voiceURI: settings.voiceURI,
-    })
+  const play = (slow = false) => speak(sentence.german, { slow })
 
   useEffect(() => {
     const timer = setTimeout(() => play(), 300)

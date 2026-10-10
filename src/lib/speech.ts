@@ -1,23 +1,49 @@
-/** Text-to-speech using the browser's built-in German voices. */
+/**
+ * Speech for German text. Built-in content has natural recordings made with a
+ * neural voice; anything else (generated texts, your own words) falls back to
+ * the browser's built-in German voices.
+ */
+import {
+  cleanForSpeech,
+  DEFAULT_VOICE,
+  KEY_LENGTH,
+  RECORDED_VOICES,
+  recordingSource,
+  toHex,
+  type RecordedVoice,
+} from './speechText'
+import { getState } from './store'
 
-const PREFERRED_VOICE_NAMES = ['Anna', 'Petra', 'Markus', 'Yannick', 'Helena', 'Google Deutsch', 'Katja', 'Conrad']
+const PREFERRED_VOICE_NAMES = [
+  'Katja',
+  'Conrad',
+  'Amala',
+  'Killian',
+  'Google Deutsch',
+  'Anna',
+  'Petra',
+  'Markus',
+  'Yannick',
+  'Helena',
+]
 
 export function speechSupported(): boolean {
-  return typeof window !== 'undefined' && 'speechSynthesis' in window
+  return typeof window !== 'undefined' && ('speechSynthesis' in window || 'Audio' in window)
 }
 
 export function germanVoices(): SpeechSynthesisVoice[] {
-  if (!speechSupported()) return []
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return []
   return window.speechSynthesis.getVoices().filter((voice) => voice.lang.toLowerCase().startsWith('de'))
 }
 
+/** Edge's online "Natural" voices and macOS Premium voices sound far better than the defaults. */
 function voiceQuality(voice: SpeechSynthesisVoice): number {
   let score = 0
-  if (/premium|enhanced|natural|neural/i.test(voice.name)) score += 10
+  if (/natural|neural|online/i.test(voice.name)) score += 20
+  if (/premium|enhanced/i.test(voice.name)) score += 10
   if (voice.lang === 'de-DE') score += 3
   const preferredIndex = PREFERRED_VOICE_NAMES.findIndex((name) => voice.name.includes(name))
   if (preferredIndex >= 0) score += 5 - preferredIndex * 0.1
-  if (voice.localService) score += 1
   return score
 }
 
@@ -25,10 +51,15 @@ export function bestGermanVoices(): SpeechSynthesisVoice[] {
   return [...germanVoices()].sort((a, b) => voiceQuality(b) - voiceQuality(a))
 }
 
+/** True when the browser offers one of the good-sounding voices. */
+export function hasNaturalBrowserVoice(): boolean {
+  return germanVoices().some((voice) => /natural|neural|online|premium|enhanced/i.test(voice.name))
+}
+
 /** Voices load asynchronously in some browsers. Resolves once they are available. */
 export function whenVoicesReady(): Promise<SpeechSynthesisVoice[]> {
   return new Promise((resolve) => {
-    if (!speechSupported()) return resolve([])
+    if (!('speechSynthesis' in window)) return resolve([])
     const voices = germanVoices()
     if (voices.length > 0) return resolve(voices)
     const finish = () => resolve(germanVoices())
@@ -37,61 +68,117 @@ export function whenVoicesReady(): Promise<SpeechSynthesisVoice[]> {
   })
 }
 
-export interface SpeakOptions {
-  rate?: number
-  voiceURI?: string
-  onEnd?: () => void
+// Recordings
+
+let manifest: Promise<Set<string>> | undefined
+
+function loadManifest(): Promise<Set<string>> {
+  manifest ??= fetch('audio/manifest.json')
+    .then((response) => (response.ok ? response.json() : []))
+    .then((keys: string[]) => new Set(keys))
+    .catch(() => new Set<string>())
+  return manifest
 }
 
-function chooseVoice(voiceURI?: string): SpeechSynthesisVoice | undefined {
+async function recordingUrl(voice: RecordedVoice, text: string): Promise<string | undefined> {
+  if (!getState().settings.useRecordings || !crypto.subtle) return undefined
+  const keys = await loadManifest()
+  if (keys.size === 0) return undefined
+  const digest = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(recordingSource(voice, text)))
+  const key = toHex(digest).slice(0, KEY_LENGTH)
+  return keys.has(key) ? `audio/${key}.m4a` : undefined
+}
+
+// Playback
+
+let currentAudio: HTMLAudioElement | undefined
+let playback = 0
+
+export function stopSpeaking() {
+  playback++
+  currentAudio?.pause()
+  currentAudio = undefined
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel()
+}
+
+function playRecording(url: string, rate: number): Promise<void> {
+  return new Promise((resolve) => {
+    const audio = new Audio(url)
+    audio.playbackRate = rate
+    audio.onended = () => resolve()
+    audio.onerror = () => resolve()
+    currentAudio = audio
+    audio.play().catch(() => resolve())
+  })
+}
+
+function speakWithBrowser(text: string, rate: number, browserVoice?: SpeechSynthesisVoice): Promise<void> {
+  return new Promise((resolve) => {
+    if (!('speechSynthesis' in window)) return resolve()
+    const utterance = new SpeechSynthesisUtterance(text)
+    utterance.lang = 'de-DE'
+    utterance.rate = rate
+    if (browserVoice) utterance.voice = browserVoice
+    utterance.onend = () => resolve()
+    utterance.onerror = () => resolve()
+    window.speechSynthesis.speak(utterance)
+  })
+}
+
+function chosenBrowserVoice(): SpeechSynthesisVoice | undefined {
+  const { voiceURI } = getState().settings
   const voices = bestGermanVoices()
   return voices.find((voice) => voice.voiceURI === voiceURI) ?? voices[0]
 }
 
-export function stopSpeaking() {
-  if (speechSupported()) window.speechSynthesis.cancel()
+/** A different browser voice for each recorded voice, so dialogues keep distinct speakers in the fallback too. */
+function browserVoiceFor(voice: RecordedVoice): SpeechSynthesisVoice | undefined {
+  const main = chosenBrowserVoice()
+  const others = bestGermanVoices().filter((candidate) => candidate !== main)
+  const index = RECORDED_VOICES.indexOf(voice)
+  if (index === 0 || others.length === 0) return main
+  return others[(index - 1) % others.length]
+}
+
+async function playLine(text: string, voice: RecordedVoice, slow: boolean, token: number): Promise<void> {
+  const clean = cleanForSpeech(text)
+  const rate = getState().settings.speechRate * (slow ? 0.75 : 1)
+  const url = await recordingUrl(voice, clean)
+  if (token !== playback) return
+  if (url) return playRecording(url, rate)
+  return speakWithBrowser(clean, rate, browserVoiceFor(voice))
+}
+
+export interface SpeakOptions {
+  slow?: boolean
+  voice?: RecordedVoice
+  onEnd?: () => void
 }
 
 export function speak(text: string, options: SpeakOptions = {}) {
-  if (!speechSupported()) return
   stopSpeaking()
-  const utterance = new SpeechSynthesisUtterance(text)
-  utterance.lang = 'de-DE'
-  utterance.rate = options.rate ?? 0.95
-  const voice = chooseVoice(options.voiceURI)
-  if (voice) utterance.voice = voice
-  if (options.onEnd) utterance.onend = options.onEnd
-  window.speechSynthesis.speak(utterance)
+  const token = playback
+  playLine(text, options.voice ?? DEFAULT_VOICE, options.slow ?? false, token).then(() => {
+    if (token === playback) options.onEnd?.()
+  })
 }
 
-/**
- * Speaks lines one after another, giving each speaker their own voice where
- * more than one German voice is installed.
- */
-export function speakDialogue(
-  lines: { speaker: string; text: string }[],
-  options: SpeakOptions & { onLine?: (index: number) => void } = {},
-) {
-  if (!speechSupported()) return
-  stopSpeaking()
-  const voices = bestGermanVoices()
-  const main = chooseVoice(options.voiceURI)
-  const speakers = [...new Set(lines.map((line) => line.speaker))]
-  const voiceFor = (speaker: string) => {
-    const index = speakers.indexOf(speaker)
-    if (index === 0 || voices.length < 2) return main
-    const others = voices.filter((voice) => voice !== main)
-    return others[(index - 1) % others.length]
-  }
+export interface DialogueLine {
+  text: string
+  voice?: RecordedVoice
+}
 
-  lines.forEach((line, index) => {
-    const utterance = new SpeechSynthesisUtterance(line.text)
-    utterance.lang = 'de-DE'
-    utterance.rate = options.rate ?? 0.95
-    const voice = voiceFor(line.speaker)
-    if (voice) utterance.voice = voice
-    utterance.onstart = () => options.onLine?.(index)
-    if (index === lines.length - 1 && options.onEnd) utterance.onend = options.onEnd
-    window.speechSynthesis.speak(utterance)
-  })
+/** Plays lines one after another. Stopping or starting other speech cancels the rest. */
+export async function speakDialogue(
+  lines: DialogueLine[],
+  options: { slow?: boolean; onLine?: (index: number) => void; onEnd?: () => void } = {},
+) {
+  stopSpeaking()
+  const token = playback
+  for (const [index, line] of lines.entries()) {
+    if (token !== playback) return
+    options.onLine?.(index)
+    await playLine(line.text, line.voice ?? DEFAULT_VOICE, options.slow ?? false, token)
+  }
+  if (token === playback) options.onEnd?.()
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import { LEVELS, type Level } from '../content/types'
 import { updateSettings } from '../lib/actions'
-import { bestGermanVoices, speak, whenVoicesReady } from '../lib/speech'
+import { bestGermanVoices, hasNaturalBrowserVoice, speak, whenVoicesReady } from '../lib/speech'
 import { exportState, importState, resetState, useAppState } from '../lib/store'
 
 const LEVEL_DESCRIPTIONS: Record<Level, string> = {
@@ -97,11 +97,34 @@ export function Settings() {
       </div>
 
       <div className="card stack">
-        <h3>Voice</h3>
+        <h3>Voices</h3>
+        <label className="row" style={{ gap: 10, alignItems: 'flex-start' }}>
+          <input
+            type="checkbox"
+            checked={settings.useRecordings}
+            onChange={(event) => updateSettings({ useRecordings: event.target.checked })}
+            style={{ marginTop: 4 }}
+          />
+          <span>
+            <strong>Natural recorded voices</strong>
+            <span className="small muted" style={{ display: 'block' }}>
+              Built-in words, examples, texts and dialogues come with recordings made by a neural voice. Recommended.
+            </span>
+          </span>
+        </label>
+        <div className="small muted">
+          Generated texts and your own words use a browser voice.{' '}
+          {voices.length > 0 && !hasNaturalBrowserVoice() && (
+            <>
+              Yours sound robotic. For much better ones, open the app in <strong>Microsoft Edge</strong>, which has free
+              natural German voices (Katja, Conrad), or on macOS download a Premium voice (Anna or Petra) under System
+              Settings → Accessibility → Spoken Content → Manage voices.
+            </>
+          )}
+        </div>
         {voices.length === 0 ? (
           <p className="muted small" style={{ margin: 0 }}>
-            No German voice found. On macOS, add one under System Settings → Accessibility → Spoken Content → System
-            voice → Manage voices (Anna or Petra, ideally the Premium versions).
+            This browser has no German voice. Try Microsoft Edge or Chrome.
           </p>
         ) : (
           <div className="row">
@@ -109,7 +132,7 @@ export function Settings() {
               className="select"
               value={settings.voiceURI ?? voices[0]?.voiceURI}
               onChange={(event) => updateSettings({ voiceURI: event.target.value })}
-              aria-label="German voice"
+              aria-label="Browser voice"
             >
               {voices.map((voice) => (
                 <option key={voice.voiceURI} value={voice.voiceURI}>
@@ -117,13 +140,11 @@ export function Settings() {
                 </option>
               ))}
             </select>
-            <button
-              className="btn"
-              onClick={() =>
-                speak('Guten Tag! Wie geht es Ihnen heute?', { rate: settings.speechRate, voiceURI: settings.voiceURI })
-              }
-            >
-              Test
+            <button className="btn" onClick={() => speak('Ich habe heute leider keine Zeit, aber morgen gern.')}>
+              Test browser voice
+            </button>
+            <button className="btn" onClick={() => speak('Guten Tag! Wie geht es Ihnen heute?')}>
+              Test recorded voice
             </button>
           </div>
         )}

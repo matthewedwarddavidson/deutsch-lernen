@@ -7,7 +7,7 @@ import { GradeButtons } from '../components/GradeButtons'
 import { ProgressBar } from '../components/ProgressBar'
 import { SpeakButton } from '../components/SpeakButton'
 import { WordView } from '../components/WordView'
-import { clozeParts, displayGerman, plainExample } from '../content/parseWords'
+import { clozeParts, displayGerman } from '../content/parseWords'
 import type { Word } from '../content/types'
 import { gradeCard, recordActivity } from '../lib/actions'
 import { dueCards, type CardRef } from '../lib/cards'
@@ -111,11 +111,10 @@ export function ReviewCard({ card, stored, onGrade }: CardProps) {
 
 function RecogniseCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; onGrade: (grade: Grade) => void }) {
   const [revealed, setRevealed] = useState(false)
-  const { settings } = useAppState()
 
   function reveal() {
     setRevealed(true)
-    speak(displayGerman(word), { rate: settings.speechRate, voiceURI: settings.voiceURI })
+    speak(displayGerman(word))
   }
 
   useKeyHandler(!revealed, (key) => {
@@ -164,12 +163,11 @@ function ProduceCard({ word, stored, onGrade }: { word: Word; stored: StoredCard
 function TranslateCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; onGrade: (grade: Grade) => void }) {
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult>()
-  const { settings } = useAppState()
 
   function submit() {
     if (result) return
     setResult(checkWord(word, value))
-    speak(displayGerman(word), { rate: settings.speechRate, voiceURI: settings.voiceURI })
+    speak(displayGerman(word))
   }
 
   return (
@@ -209,12 +207,11 @@ function ClozeCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; 
     .join(' ')
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult>()
-  const { settings } = useAppState()
 
   function submit() {
     if (result) return
     setResult(checkAnswer(value, [expected]))
-    speak(plainExample(word.example), { rate: settings.speechRate, voiceURI: settings.voiceURI })
+    speak(word.example)
   }
 
   const gapCount = parts.filter((part) => part.gap).length

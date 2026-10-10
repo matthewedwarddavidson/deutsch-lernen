@@ -58,6 +58,8 @@ export interface Settings {
   speechRate: number
   apiKey: string
   name: string
+  /** Prefer the recorded neural voices where available. */
+  useRecordings: boolean
 }
 
 export interface AppState {
@@ -96,7 +98,7 @@ export function initialState(): AppState {
     writing: [],
     activity: [],
     generated: { reading: [], listening: [], writing: [] },
-    settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, apiKey: '', name: '' },
+    settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, apiKey: '', name: '', useRecordings: true },
   }
 }
 

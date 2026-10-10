@@ -41,9 +41,9 @@ export const finalsaetze: GrammarTopic = {
       ],
     },
     {
-      heading: 'No modal verb in purpose clauses',
+      heading: 'Modal verbs in purpose clauses',
       body: [
-        'Don\'t add wollen or können to an um-clause: the purpose is already in "um". Not *um arbeiten zu können* when you simply mean "to work". (With damit, können is common: damit sie studieren können.)',
+        'Don\'t use **wollen** or **möchten** in a purpose clause: the wish is already in "um" and "damit". **können** is fine when you mean "be able to": Ich lerne Deutsch, um in Berlin arbeiten **zu können**. … damit sie studieren **können**.',
       ],
     },
   ],

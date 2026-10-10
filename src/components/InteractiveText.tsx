@@ -217,12 +217,7 @@ function WordPopover({ selection, onClose }: { selection: Selection; onClose: ()
           <button
             className="btn ghost icon"
             aria-label="Listen"
-            onClick={() =>
-              speak(word ? displayGerman(word) : selection.surface, {
-                rate: state.settings.speechRate,
-                voiceURI: state.settings.voiceURI,
-              })
-            }
+            onClick={() => speak(word ? displayGerman(word) : selection.surface)}
           >
             <Icon name="speaker" />
           </button>

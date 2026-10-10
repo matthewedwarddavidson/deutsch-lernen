@@ -7,6 +7,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'A2',
     theme: 'reisen',
     genre: 'announcement',
+    voices: { Durchsage: 'kerstin' },
     situation: 'You are at Frankfurt Hauptbahnhof waiting for a train to Cologne. Listen to three announcements.',
     lines: [
       {
@@ -60,6 +61,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'A2',
     theme: 'gesundheit',
     genre: 'announcement',
+    voices: { Praxis: 'kerstin' },
     situation: "You come home and there is a message on your answerphone from your doctor's surgery.",
     lines: [
       {
@@ -114,6 +116,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'B1',
     theme: 'wohnen',
     genre: 'dialogue',
+    voices: { Lukas: 'thorsten', Mira: 'kerstin' },
     situation:
       'Two friends, Lukas and Mira, have just been to see a flat together. They are discussing whether to take it.',
     lines: [
@@ -194,6 +197,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'B1',
     theme: 'gesellschaft',
     genre: 'interview',
+    voices: { Moderatorin: 'kerstin', Gerd: 'thorsten' },
     situation: 'A local radio programme interviews Gerd, a volunteer at a repair café.',
     lines: [
       {
@@ -262,6 +266,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'B1',
     theme: 'einkaufen',
     genre: 'dialogue',
+    voices: { Kundenservice: 'thorsten', 'Frau Novak': 'kerstin' },
     situation: 'Ms Novak calls an online shop because there is a problem with a washing machine she ordered.',
     lines: [
       {
@@ -333,6 +338,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'B2',
     theme: 'gesundheit',
     genre: 'interview',
+    voices: { Host: 'thorsten', 'Dr. Roth': 'kerstin' },
     situation: 'A health podcast talks to a sleep researcher. Listen for her main claims and recommendations.',
     lines: [
       {
@@ -405,6 +411,7 @@ export const SCRIPTS: ListeningText[] = [
     level: 'B2',
     theme: 'umwelt',
     genre: 'dialogue',
+    voices: { Moderator: 'thorsten-emotional', 'Frau Krüger': 'kerstin', 'Herr Schäfer': 'thorsten' },
     situation: 'Two guests on a radio debate argue about a speed limit on German motorways.',
     lines: [
       {

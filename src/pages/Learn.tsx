@@ -13,7 +13,7 @@ import type { CheckResult } from '../lib/check'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
 import { Rating } from '../lib/srs'
-import { getState, useAppState } from '../lib/store'
+import { getState } from '../lib/store'
 import { checkWord, suggestedGrade } from '../lib/grading'
 
 const BATCH_SIZE = 5
@@ -161,7 +161,6 @@ function StudyCard({
   onNext: () => void
   onKnown: () => void
 }) {
-  const { settings } = useAppState()
   useKeyHandler(true, (key) => {
     if (key === 'Enter' || key === ' ') {
       onNext()
@@ -183,12 +182,7 @@ function StudyCard({
         <button className="btn" onClick={onKnown}>
           I already know this
         </button>
-        <button
-          className="btn ghost"
-          onClick={() =>
-            speak(word.example.replace(/[{}]/g, ''), { rate: settings.speechRate * 0.7, voiceURI: settings.voiceURI })
-          }
-        >
+        <button className="btn ghost" onClick={() => speak(word.example, { slow: true })}>
           Hear the example slowly
         </button>
       </div>
@@ -199,13 +193,12 @@ function StudyCard({
 function QuizCard({ word, onAnswer }: { word: Word; onAnswer: (word: Word, result: CheckResult) => void }) {
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult>()
-  const { settings } = useAppState()
 
   function submit() {
     if (result) return
     const checked = checkWord(word, value)
     setResult(checked)
-    speak(displayGerman(word), { rate: settings.speechRate, voiceURI: settings.voiceURI })
+    speak(displayGerman(word))
   }
 
   useKeyHandler(!!result, (key) => {

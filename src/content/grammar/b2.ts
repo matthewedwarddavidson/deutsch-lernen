@@ -139,7 +139,7 @@ export const passivErsatz: GrammarTopic = {
           ['sein + zu + Inf.', 'must / can be done', 'Der Antrag **ist** bis Freitag **einzureichen**.'],
           ['sich lassen + Inf.', 'can be done', 'Das Problem **lässt sich** leicht **lösen**.'],
           ['-bar', 'can be done', 'Das Problem ist **lösbar**.'],
-          ['-lich', 'can be done (some verbs)', 'Die Schrift ist kaum **lesbar** / **verständlich**.'],
+          ['-lich', 'can be done (some verbs)', 'Seine Erklärung ist kaum **verständlich**.'],
         ],
       },
       examples: [

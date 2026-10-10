@@ -138,6 +138,8 @@ export interface ListeningText {
   /** What the learner is told before listening. */
   situation: string
   lines: ListeningLine[]
+  /** Recorded voice per speaker; speakers without one get voices in turn. */
+  voices?: Record<string, 'thorsten' | 'kerstin' | 'thorsten-emotional'>
   questions: Question[]
   generated?: boolean
 }

@@ -329,11 +329,6 @@ export const genitiv: GrammarTopic = {
       why: 'Spoken German often uses the Dativ, but written German expects the Genitiv.',
     },
     { wrong: "Anna's Auto", right: 'Annas Auto', why: 'No apostrophe for the genitive -s in German.' },
-    {
-      wrong: 'des Kollegen Auto (in speech)',
-      right: 'das Auto des Kollegen',
-      why: 'The genitive normally follows the noun it describes.',
-    },
   ],
   exercises: [
     {

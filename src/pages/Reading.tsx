@@ -113,13 +113,13 @@ export function ReadingPage() {
       setSpeaking(undefined)
       return
     }
-    const paragraphs = text.body.map((paragraph) => ({ speaker: 'Erzähler', text: paragraph.replace(/\*\*/g, '') }))
-    speakDialogue([{ speaker: 'Erzähler', text: text.title }, ...paragraphs], {
-      rate: state.settings.speechRate,
-      voiceURI: state.settings.voiceURI,
-      onLine: (index) => setSpeaking(index - 1),
-      onEnd: () => setSpeaking(undefined),
-    })
+    speakDialogue(
+      [text.title, ...text.body].map((paragraph) => ({ text: paragraph })),
+      {
+        onLine: (index) => setSpeaking(index - 1),
+        onEnd: () => setSpeaking(undefined),
+      },
+    )
     setSpeaking(-1)
   }
 
