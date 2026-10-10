@@ -1,22 +1,5 @@
-import type { AppState } from '../lib/store'
-import { LISTENING_TEXTS } from './listening'
-import { READING_TEXTS } from './reading'
-import type { Level, ListeningText, ReadingText, WritingTask } from './types'
+import type { Level } from './types'
 import { LEVELS } from './types'
-import { WRITING_TASKS } from './writing'
-
-/** Built-in texts plus ones generated with Claude. */
-export function readingTexts(state: AppState): ReadingText[] {
-  return [...READING_TEXTS, ...state.generated.reading]
-}
-
-export function listeningTexts(state: AppState): ListeningText[] {
-  return [...LISTENING_TEXTS, ...state.generated.listening]
-}
-
-export function writingTasks(state: AppState): WritingTask[] {
-  return [...WRITING_TASKS, ...state.generated.writing]
-}
 
 function rank(level: Level, target: Level): number {
   // Prefer the target level, then the one below, then anything else.

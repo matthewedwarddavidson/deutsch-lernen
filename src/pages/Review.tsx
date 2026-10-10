@@ -97,7 +97,7 @@ export function Review() {
 
 function SessionSummary({ results }: { results: Grade[] }) {
   const firstTry = results.filter((grade) => grade !== Rating.Again).length
-  const stillDue = dueCards(getState(), new Date()).length
+  const [stillDue] = useState(() => dueCards(getState(), new Date()).length)
   return (
     <div className="page narrow">
       <div className="card empty">

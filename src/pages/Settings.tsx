@@ -16,7 +16,6 @@ export function Settings() {
   const { settings } = useAppState()
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([])
   const [message, setMessage] = useState('')
-  const [showKey, setShowKey] = useState(false)
   const fileInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -105,7 +104,7 @@ export function Settings() {
           </span>
         </label>
         <div className="small muted">
-          Generated texts and your own words use a browser voice.{' '}
+          Your own words use a browser voice.{' '}
           {voices.length > 0 && !hasNaturalBrowserVoice() && (
             <>
               Yours sound robotic. For much better ones, open the app in <strong>Microsoft Edge</strong>, which has free
@@ -154,33 +153,17 @@ export function Settings() {
       </div>
 
       <div className="card stack">
-        <h3>Claude</h3>
-        <p className="muted small" style={{ margin: 0 }}>
-          Writing corrections and new texts work through claude.ai at no extra cost: the app copies a prompt, you paste
-          Claude's reply back. You don't need anything here for that.
-        </p>
-        <p className="muted small" style={{ margin: 0 }}>
-          Optional, for one-click use: an API key from{' '}
-          <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">
-            console.anthropic.com
-          </a>
-          . API use is billed separately from a Pro or Max plan, per request (a correction costs a few cents). The key
-          is stored only in this browser and sent only to Anthropic.
-        </p>
-        <div className="row">
-          <input
-            className="input"
-            type={showKey ? 'text' : 'password'}
-            value={settings.apiKey}
-            onChange={(event) => updateSettings({ apiKey: event.target.value.trim() })}
-            placeholder="sk-ant-…"
-            aria-label="Claude API key"
-            style={{ flex: 1 }}
-            autoComplete="off"
-          />
-          <button className="btn" onClick={() => setShowKey(!showKey)}>
-            {showKey ? 'Hide' : 'Show'}
-          </button>
+        <h3>Appearance</h3>
+        <div className="chips">
+          {(['system', 'light', 'dark'] as const).map((theme) => (
+            <button
+              key={theme}
+              className={`chip ${settings.theme === theme ? 'active' : ''}`}
+              onClick={() => updateSettings({ theme })}
+            >
+              {theme === 'system' ? 'Match system' : theme === 'light' ? 'Light' : 'Dark'}
+            </button>
+          ))}
         </div>
       </div>
 

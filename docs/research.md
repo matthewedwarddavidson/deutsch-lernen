@@ -67,7 +67,7 @@ Sources: [Dictation and listening (TESL Canada)](https://teslcanadajournal.ca/in
 
 Meta-analyses find written corrective feedback improves accuracy over time. Direct correction and metalinguistic explanation both work. Focusing on a few error types works better than marking everything.
 
-**In the app:** writing tasks follow the Goethe B1 format (informal email, forum post, formal message) with a model answer and checklist. With an optional Claude API key, the app returns corrections grouped into at most five error types, each with the rule explained.
+**In the app:** writing tasks follow the Goethe B1 format (informal email, forum post, formal message) with a model answer and checklist. You compare your text with the model and note your errors; each becomes a review card, so feedback stays focused on the errors you actually make.
 
 Sources: [WCF Bayesian meta-analysis](https://todoele.net/node/271041), [Metalinguistic knowledge and WCF](https://nau.edu/wp-content/uploads/sites/117/Metalinguistic_Knowledge_Corrective_Feedback.pdf).
 
@@ -77,7 +77,7 @@ All content is tagged with a CEFR level (A2, B1, B2, C1). You set your current l
 
 Exam formats shape the writing tasks: Goethe B1 Schreiben has an informal email, a forum post and a short formal message. B2 has an argumentative forum post (about 150 words) and a formal email. Speaking is out of scope.
 
-Built-in content runs out eventually. With a Claude API key, the app generates new reading texts, listening scripts and writing tasks at your level on topics you choose, so it stays useful after B1.
+Your own words, imported from a course or saved from reading, keep the app useful beyond its built-in content.
 
 Source: [Goethe B1 Durchführungsbestimmungen](https://www.goethe.de/resources/files/pdf325/durchfuehrungsbestimmungen_b1-1.pdf).
 

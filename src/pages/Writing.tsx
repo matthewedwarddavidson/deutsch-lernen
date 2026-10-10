@@ -1,16 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, useParams } from 'react-router'
-import { GenerateButton } from '../components/GenerateButton'
 import { Icon } from '../components/Icon'
-import { ViaClaudeAi } from '../components/ViaClaudeAi'
-import { writingTasks } from '../content/library'
+import { WRITING_TASKS } from '../content/writing'
 import { themeById } from '../content/themes'
 import { LEVELS, type WritingTask } from '../content/types'
-import { addMistake, deleteGenerated, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
-import { diffWords } from '../lib/check'
-import { feedbackJob } from '../lib/generation'
+import { addMistake, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
 import { useTimeOnPage } from '../lib/hooks'
-import { useAppState, type WritingAttempt, type WritingFeedback } from '../lib/store'
+import { useAppState, type WritingAttempt } from '../lib/store'
 
 const FORMAT_LABELS: Record<WritingTask['format'], string> = {
   'informal-email': 'Informal email',
@@ -65,7 +61,7 @@ function connectorsUsed(text: string): string[] {
 
 export function WritingList() {
   const state = useAppState()
-  const tasks = writingTasks(state)
+  const tasks = WRITING_TASKS
   return (
     <div className="page">
       <div className="page-header row between" style={{ alignItems: 'flex-end' }}>
@@ -73,11 +69,10 @@ export function WritingList() {
           <div className="eyebrow">Schreiben</div>
           <h1>Writing</h1>
           <p>
-            Exam-style tasks. Write first, then compare with the model answer. Claude can correct your text: a corrected
-            version plus the few error types that matter most. That works free through your claude.ai plan.
+            Exam-style tasks. Write first, then compare with the model answer and note your mistakes: they come back in
+            your reviews.
           </p>
         </div>
-        <GenerateButton kind="writing" />
       </div>
       {LEVELS.map((level) => {
         const atLevel = tasks.filter((task) => task.level === level)
@@ -93,7 +88,6 @@ export function WritingList() {
                     <div className="row between" style={{ alignItems: 'flex-start' }}>
                       <div className="eyebrow">
                         {FORMAT_LABELS[task.format]} · {task.minWords} words
-                        {task.generated && ' · generated'}
                       </div>
                       {attempts.length > 0 && <span className="pill good">Written</span>}
                     </div>
@@ -114,8 +108,7 @@ export function WritingList() {
 
 export function WritingPage() {
   const { taskId } = useParams()
-  const state = useAppState()
-  const task = writingTasks(state).find((item) => item.id === taskId)
+  const task = WRITING_TASKS.find((item) => item.id === taskId)
   if (!task) {
     return (
       <div className="page narrow">
@@ -137,9 +130,7 @@ function WritingEditor({ task }: { task: WritingTask }) {
   const current = state.writing.find((attempt) => attempt.id === attemptId)
   const [text, setText] = useState(current?.text ?? '')
   const [showModel, setShowModel] = useState(false)
-  const [busy, setBusy] = useState(false)
-  const [correcting, setCorrecting] = useState(false)
-  const [error, setError] = useState('')
+  const [notingMistake, setNotingMistake] = useState(false)
   const textarea = useRef<HTMLTextAreaElement>(null)
   useTimeOnPage((seconds) => recordActivity('writing', seconds))
 
@@ -173,21 +164,6 @@ function WritingEditor({ task }: { task: WritingTask }) {
     })
   }
 
-  async function getFeedback() {
-    setBusy(true)
-    setError('')
-    try {
-      // Loaded on demand: only API-key users need the SDK.
-      const { correctWriting } = await import('../lib/claude')
-      const feedback = await correctWriting(state.settings.apiKey, task, text)
-      saveWriting(attemptId, task.id, text, feedback)
-      setCorrecting(false)
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Something went wrong.')
-    }
-    setBusy(false)
-  }
-
   function startNew() {
     setAttemptId(newAttemptId())
     setText('')
@@ -198,9 +174,6 @@ function WritingEditor({ task }: { task: WritingTask }) {
     setAttemptId(attempt.id)
     setText(attempt.text)
   }
-
-  const feedback = current?.feedback && current.text === text ? current.feedback : undefined
-  const staleFeedback = current?.feedback && current.text !== text
 
   return (
     <div className="page">
@@ -221,12 +194,7 @@ function WritingEditor({ task }: { task: WritingTask }) {
             </p>
             <ul className="task-points de">
               {task.points.map((point) => {
-                const covered = feedback?.pointsCovered.find((item) => item.point === point)?.covered
-                return (
-                  <li key={point} className={covered === undefined ? '' : covered ? 'covered' : 'missing'}>
-                    {point}
-                  </li>
-                )
+                return <li key={point}>{point}</li>
               })}
             </ul>
           </div>
@@ -254,11 +222,11 @@ function WritingEditor({ task }: { task: WritingTask }) {
           </div>
 
           <div className="row" style={{ marginTop: 14 }}>
-            <button className="btn primary" onClick={() => setCorrecting(!correcting)} disabled={words < 10}>
-              <Icon name="sparkle" /> {feedback ? 'Check again' : 'Get corrections'}
-            </button>
-            <button className="btn" onClick={() => setShowModel(!showModel)}>
+            <button className="btn primary" onClick={() => setShowModel(!showModel)}>
               {showModel ? 'Hide model answer' : 'Model answer'}
+            </button>
+            <button className="btn" onClick={() => setNotingMistake(!notingMistake)}>
+              Note a mistake
             </button>
             {text && (
               <button className="btn ghost" onClick={startNew}>
@@ -266,38 +234,6 @@ function WritingEditor({ task }: { task: WritingTask }) {
               </button>
             )}
           </div>
-          {correcting && (
-            <div className="card stack" style={{ marginTop: 14 }}>
-              <div className="small muted">
-                Free with your Claude plan: copy the prompt (it includes your text) to claude.ai, then paste the reply
-                here.
-              </div>
-              <ViaClaudeAi
-                job={() => feedbackJob(task, text)}
-                onResult={(result) => {
-                  saveWriting(attemptId, task.id, text, result)
-                  setCorrecting(false)
-                }}
-              />
-              {state.settings.apiKey && (
-                <div>
-                  <button className="btn small" onClick={getFeedback} disabled={busy}>
-                    {busy ? 'Reading your text…' : 'Or correct with your API key (paid per use)'}
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-          {error && (
-            <div className="feedback wrong">
-              <div className="small">{error}</div>
-            </div>
-          )}
-          {staleFeedback && !busy && (
-            <p className="small muted" style={{ marginTop: 10 }}>
-              You have changed the text since the last correction.
-            </p>
-          )}
 
           {showModel && (
             <div className="card model-text" style={{ marginTop: 20 }}>
@@ -308,7 +244,7 @@ function WritingEditor({ task }: { task: WritingTask }) {
             </div>
           )}
 
-          {feedback && <FeedbackPanel original={text} feedback={feedback} />}
+          {notingMistake && <MistakeForm onDone={() => setNotingMistake(false)} />}
 
           {attempts.length > 1 && (
             <div className="section">
@@ -323,7 +259,6 @@ function WritingEditor({ task }: { task: WritingTask }) {
                     >
                       {new Date(attempt.savedAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' })} ·{' '}
                       {countWords(attempt.text)} words
-                      {attempt.feedback && ` · ${attempt.feedback.estimatedLevel}`}
                     </button>
                     <button
                       className="btn ghost small"
@@ -336,21 +271,6 @@ function WritingEditor({ task }: { task: WritingTask }) {
                 ))}
               </div>
             </div>
-          )}
-
-          {task.generated && (
-            <button
-              className="btn small ghost"
-              style={{ marginTop: 24 }}
-              onClick={() => {
-                if (window.confirm('Delete this generated task?')) {
-                  deleteGenerated('writing', task.id)
-                  history.back()
-                }
-              }}
-            >
-              <Icon name="trash" size={14} /> Delete this generated task
-            </button>
           )}
         </div>
 
@@ -393,90 +313,65 @@ function newAttemptId(): string {
   return `w-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`
 }
 
-function FeedbackPanel({ original, feedback }: { original: string; feedback: WritingFeedback }) {
-  const diff = useMemo(() => diffWords(original, feedback.correctedText, true), [original, feedback.correctedText])
-  return (
-    <div className="section">
-      <div className="section-title">Corrections</div>
-      <div className="card stack">
-        <div className="row between">
-          <p style={{ margin: 0, flex: 1 }}>{feedback.summary}</p>
-          <span className="pill accent" title="Estimated level of this text">
-            ≈ {feedback.estimatedLevel}
-          </span>
-        </div>
-        <hr className="divider" style={{ margin: '4px 0' }} />
-        {feedback.errors.length > 1 && (
-          <div>
-            <button className="btn small" onClick={() => feedback.errors.forEach((error) => addMistake(error))}>
-              Practise all {feedback.errors.length} in reviews
-            </button>
-          </div>
-        )}
-        {feedback.errors.length > 0 ? (
-          <div className="stack" style={{ gap: 12 }}>
-            {feedback.errors.map((error, index) => (
-              <div key={index} className="error-item">
-                <div className="eyebrow" style={{ marginBottom: 2 }}>
-                  {error.category}
-                </div>
-                <div className="de">
-                  <span className="error-original">{error.original}</span> →{' '}
-                  <strong className="error-fix">{error.correction}</strong>
-                </div>
-                <div className="small muted">{error.explanation}</div>
-                <MistakeButton error={error} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="muted">No significant errors.</p>
-        )}
-        <div className="feedback almost" style={{ marginTop: 4 }}>
-          <div className="feedback-title">Next step</div>
-          <div className="small">{feedback.nextStep}</div>
-        </div>
-      </div>
-      <div className="card" style={{ marginTop: 12 }}>
-        <div className="eyebrow">Corrected text · changes highlighted</div>
-        <div className="corrected de">
-          {diff.map((token, index) =>
-            token.status === 'ok' ? (
-              <span key={index}>{token.text} </span>
-            ) : token.status === 'extra' ? (
-              <span key={index} className="removed">
-                {token.text}{' '}
-              </span>
-            ) : (
-              <span key={index} className="changed" title={token.typed ? `You wrote: ${token.typed}` : 'Added'}>
-                {token.text}{' '}
-              </span>
-            ),
-          )}
-        </div>
-        <details style={{ marginTop: 12 }}>
-          <summary className="small muted">Plain corrected text</summary>
-          <div className="de" style={{ whiteSpace: 'pre-wrap', marginTop: 8 }}>
-            {feedback.correctedText}
-          </div>
-        </details>
-      </div>
-    </div>
-  )
-}
+/**
+ * Comparing your text with the model answer, write down what you got wrong.
+ * It becomes a review card: you see your version and write the correct one.
+ */
+function MistakeForm({ onDone }: { onDone: () => void }) {
+  const [original, setOriginal] = useState('')
+  const [correction, setCorrection] = useState('')
+  const [explanation, setExplanation] = useState('')
 
-function MistakeButton({ error }: { error: WritingFeedback['errors'][number] }) {
-  const { mistakes } = useAppState()
-  const added = mistakes.some(
-    (mistake) => mistake.original === error.original && mistake.correction === error.correction,
-  )
-  return added ? (
-    <span className="small pill good" style={{ marginTop: 6, display: 'inline-block' }}>
-      In your reviews
-    </span>
-  ) : (
-    <button className="btn small" style={{ marginTop: 6 }} onClick={() => addMistake(error)}>
-      Practise this in reviews
-    </button>
+  function save(event: FormEvent) {
+    event.preventDefault()
+    if (!original.trim() || !correction.trim()) return
+    addMistake({
+      category: 'Writing',
+      original: original.trim(),
+      correction: correction.trim(),
+      explanation: explanation.trim() || 'From your writing.',
+    })
+    onDone()
+  }
+
+  return (
+    <form className="card stack" style={{ marginTop: 16 }} onSubmit={save}>
+      <h3 style={{ margin: 0 }}>Note a mistake</h3>
+      <p className="small muted" style={{ margin: 0 }}>
+        It comes back in your reviews: you see what you wrote and type the correct version.
+      </p>
+      <label className="field">
+        What you wrote
+        <input
+          className="input de"
+          value={original}
+          onChange={(event) => setOriginal(event.target.value)}
+          lang="de"
+          required
+        />
+      </label>
+      <label className="field">
+        Correct version
+        <input
+          className="input de"
+          value={correction}
+          onChange={(event) => setCorrection(event.target.value)}
+          lang="de"
+          required
+        />
+      </label>
+      <label className="field">
+        Rule or note (optional)
+        <input className="input" value={explanation} onChange={(event) => setExplanation(event.target.value)} />
+      </label>
+      <div className="row">
+        <button className="btn primary" type="submit">
+          Add to reviews
+        </button>
+        <button className="btn ghost" type="button" onClick={onDone}>
+          Cancel
+        </button>
+      </div>
+    </form>
   )
 }

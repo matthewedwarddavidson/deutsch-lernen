@@ -1,7 +1,7 @@
-import type { GrammarTopic, ListeningText, ReadingText, Word, WritingTask } from '../content/types'
+import type { GrammarTopic, ListeningText, ReadingText, Word } from '../content/types'
 import { cardsForNewWord, cardsForTopic, missingCards } from './cards'
 import { newCard, reviewCard, type Grade } from './srs'
-import { update, type ActivityKind, type Mistake, type Settings, type WritingFeedback } from './store'
+import { update, type ActivityKind, type Mistake, type Settings } from './store'
 
 export function recordActivity(kind: ActivityKind, seconds: number) {
   if (seconds < 5) return
@@ -103,16 +103,12 @@ export function recordDictation(score: number) {
   }))
 }
 
-export function saveWriting(id: string, taskId: string, text: string, feedback?: WritingFeedback) {
+export function saveWriting(id: string, taskId: string, text: string) {
   update((state) => {
     const others = state.writing.filter((attempt) => attempt.id !== id)
-    const existing = state.writing.find((attempt) => attempt.id === id)
     return {
       ...state,
-      writing: [
-        ...others,
-        { id, taskId, text, savedAt: new Date().toISOString(), feedback: feedback ?? existing?.feedback },
-      ],
+      writing: [...others, { id, taskId, text, savedAt: new Date().toISOString() }],
     }
   })
 }
@@ -125,51 +121,9 @@ export function addCustomWord(word: Word) {
   update((state) => ({ ...state, customWords: [...state.customWords.filter((w) => w.id !== word.id), word] }))
 }
 
-/** Adds imported words, skipping any already in the list. Returns how many were new. */
-export function addCustomWords(words: Word[]): number {
-  let added = 0
-  update((state) => {
-    const seen = new Set(state.customWords.map((word) => word.id))
-    const fresh: Word[] = []
-    for (const word of words) {
-      if (seen.has(word.id)) continue
-      seen.add(word.id)
-      fresh.push(word)
-    }
-    added = fresh.length
-    return { ...state, customWords: [...state.customWords, ...fresh] }
-  })
-  return added
-}
-
 export function removeCustomWord(word: Word) {
   forgetWord(word)
   update((state) => ({ ...state, customWords: state.customWords.filter((w) => w.id !== word.id) }))
-}
-
-export function saveGeneratedReading(text: ReadingText) {
-  update((state) => ({ ...state, generated: { ...state.generated, reading: [...state.generated.reading, text] } }))
-}
-
-export function saveGeneratedListening(text: ListeningText) {
-  update((state) => ({
-    ...state,
-    generated: { ...state.generated, listening: [...state.generated.listening, text] },
-  }))
-}
-
-export function saveGeneratedWriting(task: WritingTask) {
-  update((state) => ({ ...state, generated: { ...state.generated, writing: [...state.generated.writing, task] } }))
-}
-
-export function deleteGenerated(kind: 'reading' | 'listening' | 'writing', id: string) {
-  update((state) => ({
-    ...state,
-    generated: {
-      ...state.generated,
-      [kind]: (state.generated[kind] as { id: string }[]).filter((item) => item.id !== id),
-    },
-  }))
 }
 
 export function updateSettings(changes: Partial<Settings>) {

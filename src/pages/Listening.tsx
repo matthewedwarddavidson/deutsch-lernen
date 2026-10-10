@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { AnswerInput } from '../components/AnswerInput'
-import { GenerateButton } from '../components/GenerateButton'
 import { Icon } from '../components/Icon'
 import { ProgressBar } from '../components/ProgressBar'
 import { Questions } from '../components/Questions'
 import { SpeakButton } from '../components/SpeakButton'
-import { voiceForSpeaker } from '../content/listening'
-import { listeningTexts } from '../content/library'
+import { LISTENING_TEXTS, voiceForSpeaker } from '../content/listening'
 import { themeById } from '../content/themes'
 import { LEVELS, type ListeningText } from '../content/types'
-import { completeListening, deleteGenerated, recordActivity, recordDictation } from '../lib/actions'
+import { completeListening, recordActivity, recordDictation } from '../lib/actions'
 import { diffScore, diffWords, type TokenDiff } from '../lib/check'
 import { dictationSentences, type DictationSentence } from '../lib/dictation'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
@@ -19,7 +17,7 @@ import { getState, useAppState } from '../lib/store'
 
 export function ListeningList() {
   const state = useAppState()
-  const texts = listeningTexts(state)
+  const texts = LISTENING_TEXTS
   const recentDictations = state.dictations.slice(-20)
   const dictationAverage =
     recentDictations.length > 0
@@ -37,7 +35,6 @@ export function ListeningList() {
             you have answered.
           </p>
         </div>
-        <GenerateButton kind="listening" />
       </div>
       {!speechSupported() && (
         <div className="feedback almost" style={{ marginBottom: 20 }}>
@@ -76,10 +73,7 @@ export function ListeningList() {
                 return (
                   <Link key={text.id} to={`/listening/${text.id}`} className="card card-link">
                     <div className="row between" style={{ alignItems: 'flex-start' }}>
-                      <div className="eyebrow">
-                        {themeById(text.theme).title}
-                        {text.generated && ' · generated'}
-                      </div>
+                      <div className="eyebrow">{themeById(text.theme).title}</div>
                       {done && <span className="pill good">{Math.round(done.score * 100)}%</span>}
                     </div>
                     <h3 className="de" style={{ marginBottom: 4 }}>
@@ -99,8 +93,7 @@ export function ListeningList() {
 
 export function ListeningPage() {
   const { textId } = useParams()
-  const state = useAppState()
-  const text = listeningTexts(state).find((item) => item.id === textId)
+  const text = LISTENING_TEXTS.find((item) => item.id === textId)
   const [playing, setPlaying] = useState<number>()
   const [plays, setPlays] = useState(0)
   const [score, setScore] = useState<number>()
@@ -203,21 +196,6 @@ export function ListeningPage() {
         </div>
         {showTranscript && <Transcript text={text} activeLine={playing} />}
       </div>
-
-      {text.generated && (
-        <button
-          className="btn small ghost"
-          style={{ marginTop: 20 }}
-          onClick={() => {
-            if (window.confirm('Delete this generated listening text?')) {
-              deleteGenerated('listening', text.id)
-              history.back()
-            }
-          }}
-        >
-          <Icon name="trash" size={14} /> Delete this generated text
-        </button>
-      )}
     </div>
   )
 }

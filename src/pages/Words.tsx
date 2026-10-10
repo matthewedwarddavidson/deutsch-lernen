@@ -6,9 +6,7 @@ import { GermanWord, WordView } from '../components/WordView'
 import { displayGerman, slugify } from '../content/parseWords'
 import { THEMES } from '../content/themes'
 import { LEVELS, type Gender, type Level, type ThemeId, type Word, type WordKind } from '../content/types'
-import { ViaClaudeAi } from '../components/ViaClaudeAi'
-import { addCustomWord, addCustomWords, forgetWord, learnWord, removeCustomWord, unsuspendCards } from '../lib/actions'
-import { wordImportJob } from '../lib/generation'
+import { addCustomWord, forgetWord, learnWord, removeCustomWord, unsuspendCards } from '../lib/actions'
 import { allWords, isWordLearned, produceId, recogniseId } from '../lib/cards'
 import { isMature, Rating, retrievability } from '../lib/srs'
 import { useNow } from '../lib/hooks'
@@ -33,7 +31,6 @@ export function Words() {
   const [query, setQuery] = useState(searchParams.get('q') ?? '')
   const [openId, setOpenId] = useState<string>()
   const [adding, setAdding] = useState(false)
-  const [importing, setImporting] = useState(false)
 
   const words = allWords(state)
   const filtered = useMemo(() => {
@@ -63,23 +60,8 @@ export function Words() {
           </p>
         </div>
         <div className="row">
-          <button
-            className="btn"
-            onClick={() => {
-              setImporting(!importing)
-              setAdding(false)
-            }}
-          >
-            <Icon name="sparkle" /> Import a list
-          </button>
-          <button
-            className="btn"
-            onClick={() => {
-              setAdding(!adding)
-              setImporting(false)
-            }}
-          >
-            <Icon name="plus" /> Add one
+          <button className="btn" onClick={() => setAdding(!adding)}>
+            <Icon name="plus" /> Add a word
           </button>
           <Link className="btn" to="/words/speed">
             Speed round
@@ -91,7 +73,6 @@ export function Words() {
       </div>
 
       {adding && <AddWordForm onDone={() => setAdding(false)} />}
-      {importing && <ImportWords onClose={() => setImporting(false)} />}
 
       <div className="card stack" style={{ marginBottom: 16 }}>
         <input
@@ -342,75 +323,4 @@ function AddWordForm({ onDone }: { onDone: () => void }) {
 
 function escapeRegExp(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
-/** Turns a word list from a course into full cards via claude.ai: free with a Claude plan. */
-function ImportWords({ onClose }: { onClose: () => void }) {
-  const { settings } = useAppState()
-  const [list, setList] = useState('')
-  const [level, setLevel] = useState<Level>(settings.level)
-  const [imported, setImported] = useState<number>()
-
-  return (
-    <div className="card stack" style={{ marginBottom: 16 }}>
-      <div className="row between">
-        <h3 style={{ margin: 0 }}>Import words from your course</h3>
-        <button className="btn ghost small" onClick={onClose}>
-          Close
-        </button>
-      </div>
-      <p className="muted small" style={{ margin: 0 }}>
-        Paste a word list in any format: from your course book, a handout, your notes. Claude adds articles, plurals,
-        verb forms and an example sentence for each. Free through claude.ai.
-      </p>
-      <textarea
-        className="textarea"
-        style={{ minHeight: 140, fontSize: '1rem' }}
-        placeholder={'die Kündigung\nsich bewerben um\nder Lebenslauf, -läufe\nbefristet …'}
-        value={list}
-        onChange={(event) => setList(event.target.value)}
-        lang="de"
-        aria-label="Word list"
-      />
-      <div className="chips" aria-label="Level">
-        {LEVELS.map((item) => (
-          <button
-            type="button"
-            key={item}
-            className={`chip ${level === item ? 'active' : ''}`}
-            onClick={() => setLevel(item)}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-      {imported === undefined ? (
-        <ViaClaudeAi
-          job={() => wordImportJob(list.trim(), level)}
-          onResult={(words) => setImported(addCustomWords(words))}
-          disabled={!list.trim()}
-        />
-      ) : (
-        <div className="feedback correct">
-          <div className="feedback-title">{imported} new words added to Meine Wörter</div>
-          <div className="row" style={{ marginTop: 8 }}>
-            {imported > 0 && (
-              <Link className="btn primary small" to={`/words/learn?theme=eigene&count=${imported}`}>
-                Learn them now
-              </Link>
-            )}
-            <button
-              className="btn small"
-              onClick={() => {
-                setList('')
-                setImported(undefined)
-              }}
-            >
-              Import another list
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  )
 }

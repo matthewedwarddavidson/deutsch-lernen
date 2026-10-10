@@ -121,7 +121,6 @@ export interface ReadingText {
   /** Surface form in text (case-insensitive) → English gloss. */
   glossary: Record<string, string>
   questions: Question[]
-  generated?: boolean
 }
 
 export interface ListeningLine {
@@ -141,7 +140,6 @@ export interface ListeningText {
   /** Recorded voice per speaker; speakers without one get voices in turn. */
   voices?: Record<string, 'thorsten' | 'kerstin' | 'thorsten-emotional'>
   questions: Question[]
-  generated?: boolean
 }
 
 export type WritingFormat = 'informal-email' | 'formal-email' | 'forum' | 'essay' | 'story' | 'summary'
@@ -159,5 +157,15 @@ export interface WritingTask {
   minWords: number
   phrases: { de: string; en: string }[]
   model: string
-  generated?: boolean
+}
+
+/** Exam-style matching (Goethe B1 Lesen Teil 3): people to adverts; some people match none. */
+export interface MatchingTask {
+  id: string
+  title: string
+  level: Level
+  theme: ThemeId
+  instructions: string
+  people: { situation: string; answer: number | null; explanation: string }[]
+  ads: { title: string; text: string }[]
 }

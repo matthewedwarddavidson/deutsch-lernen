@@ -1,6 +1,9 @@
 import { Link } from 'react-router'
 import { Icon, type IconName } from '../components/Icon'
-import { listeningTexts, readingTexts, suggest, writingTasks } from '../content/library'
+import { suggest } from '../content/library'
+import { LISTENING_TEXTS } from '../content/listening'
+import { READING_TEXTS } from '../content/reading'
+import { WRITING_TASKS } from '../content/writing'
 import { dueCards, newWordsLearnedToday, nextNewWords } from '../lib/cards'
 import { updateSettings } from '../lib/actions'
 import { backupDue, downloadBackup } from '../lib/backup'
@@ -58,10 +61,10 @@ export function Today() {
   const availableNew = nextNewWords(state, newLeft).length
   const topic = nextTopic(state)
   const target = state.settings.level
-  const reading = suggest(readingTexts(state), state.reading, target)
-  const listening = suggest(listeningTexts(state), state.listening, target)
+  const reading = suggest(READING_TEXTS, state.reading, target)
+  const listening = suggest(LISTENING_TEXTS, state.listening, target)
   const writtenTaskIds = Object.fromEntries(state.writing.map((attempt) => [attempt.taskId, true]))
-  const writing = suggest(writingTasks(state), writtenTaskIds, target)
+  const writing = suggest(WRITING_TASKS, writtenTaskIds, target)
   const dateLabel = now.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })
 
   return (
@@ -135,7 +138,7 @@ export function Today() {
         <PlanCard
           icon="reading"
           title="Read"
-          detail={reading ? `${reading.title} · ${reading.level}` : 'All texts read. Generate a new one.'}
+          detail={reading ? `${reading.title} · ${reading.level}` : 'All texts read.'}
           to={reading ? `/reading/${reading.id}` : '/reading'}
           action="Read"
         />
@@ -149,7 +152,7 @@ export function Today() {
         <PlanCard
           icon="writing"
           title="Write"
-          detail={writing ? `${writing.title} · ${writing.level}` : 'All tasks written. Generate a new one.'}
+          detail={writing ? `${writing.title} · ${writing.level}` : 'All tasks written.'}
           to={writing ? `/writing/${writing.id}` : '/writing'}
           action="Write"
         />
@@ -291,7 +294,7 @@ function Welcome({ level }: { level: Level }) {
           understand.
         </li>
         <li>
-          <strong>Writing</strong>, twice a week. Get corrections, then send the mistakes to your reviews.
+          <strong>Writing</strong>, twice a week. Compare with the model answer and note your mistakes for review.
         </li>
       </ol>
       <div className="row" style={{ marginTop: 8 }}>

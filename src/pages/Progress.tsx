@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
 import { ProgressBar } from '../components/ProgressBar'
 import { GRAMMAR_TOPICS } from '../content/grammar'
-import { listeningTexts, readingTexts } from '../content/library'
+import { LISTENING_TEXTS } from '../content/listening'
+import { READING_TEXTS } from '../content/reading'
 import { LEVELS, type Level } from '../content/types'
 import { allWords, grammarCardId, isWordLearned, recogniseId } from '../lib/cards'
 import { isMature, Rating } from '../lib/srs'
@@ -97,7 +98,7 @@ export function Progress() {
           label="texts read or heard"
           detail={`${textsRead} read · ${listened} heard`}
         />
-        <Stat value={state.writing.length} label="pieces written" detail={latestLevel(state)} />
+        <Stat value={state.writing.length} label="pieces written" />
         <Stat
           value={retention ? `${Math.round(retention.rate * 100)}%` : '–'}
           label="recall in reviews"
@@ -202,13 +203,6 @@ export function Progress() {
   )
 }
 
-function latestLevel(state: AppState): string {
-  const withFeedback = [...state.writing]
-    .filter((attempt) => attempt.feedback)
-    .sort((a, b) => b.savedAt.localeCompare(a.savedAt))
-  return withFeedback[0] ? `latest estimate ${withFeedback[0].feedback!.estimatedLevel}` : 'with corrections: none yet'
-}
-
 function formatMinutes(minutes: number): string {
   if (minutes < 60) return `${minutes} min`
   return `${Math.floor(minutes / 60)} h ${minutes % 60} min`
@@ -292,7 +286,7 @@ function LevelReadiness({ state }: { state: AppState }) {
     }).length
     const topics = GRAMMAR_TOPICS.filter((topic) => topic.level === level)
     const topicsDone = topics.filter((topic) => topic.id in state.grammar).length
-    const texts = [...readingTexts(state), ...listeningTexts(state)].filter((text) => text.level === level)
+    const texts = [...READING_TEXTS, ...LISTENING_TEXTS].filter((text) => text.level === level)
     const textsDone = texts.filter((text) => text.id in state.reading || text.id in state.listening).length
     const parts = [
       words.length ? knownWords / words.length : undefined,

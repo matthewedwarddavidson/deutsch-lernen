@@ -145,7 +145,7 @@ export function Exam() {
           </Link>
           <Link className="card card-link" to="/writing">
             <h3>Schreiben</h3>
-            <div className="small muted">Single tasks with useful phrases, model answers and corrections.</div>
+            <div className="small muted">Single tasks with useful phrases and model answers.</div>
           </Link>
           <a
             className="card card-link"
@@ -251,7 +251,7 @@ function WritingSimulation({ tasks, minutes, onExit }: { tasks: WritingTask[]; m
               </details>
               {texts[index].trim() && (
                 <Link className="btn small" to={`/writing/${task.id}`}>
-                  Get corrections for this text →
+                  Open in Writing to note mistakes →
                 </Link>
               )}
             </div>

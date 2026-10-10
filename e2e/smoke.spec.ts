@@ -30,19 +30,3 @@ test('dictation shows a word-by-word comparison', async ({ page }) => {
   await page.keyboard.press('Enter')
   await expect(page.locator('.diff')).toBeVisible()
 })
-
-test('a pasted Claude reply becomes a new reading text', async ({ page }) => {
-  await page.goto('/#/reading')
-  await page.getByRole('button', { name: /New text with Claude/ }).click()
-  const reply = {
-    title: 'Der Flohmarkt',
-    theme: 'freizeit',
-    genre: 'blog',
-    paragraphs: ['Am Sonntag war ich auf dem Flohmarkt.'],
-    glossary: [{ term: 'Flohmarkt', english: 'flea market' }],
-    questions: [],
-  }
-  await page.getByLabel("Claude's reply").fill(JSON.stringify(reply))
-  await page.getByRole('button', { name: 'Import reply' }).click()
-  await expect(page.getByRole('heading', { name: 'Der Flohmarkt' })).toBeVisible()
-})

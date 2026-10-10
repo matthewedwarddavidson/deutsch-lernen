@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react'
-import type { Level, ListeningText, ReadingText, Word, WritingTask } from '../content/types'
+import type { Level, Word } from '../content/types'
 import type { StoredCard } from './srs'
 
 export interface ReviewRecord {
@@ -12,15 +12,6 @@ export interface Completion {
   completedAt: string
   /** Fraction correct, 0 to 1. */
   score: number
-}
-
-export interface WritingFeedback {
-  correctedText: string
-  summary: string
-  estimatedLevel: string
-  pointsCovered: { point: string; covered: boolean }[]
-  errors: { category: string; original: string; correction: string; explanation: string }[]
-  nextStep: string
 }
 
 /** An error from your own writing, kept for spaced practice. */
@@ -38,7 +29,6 @@ export interface WritingAttempt {
   taskId: string
   text: string
   savedAt: string
-  feedback?: WritingFeedback
 }
 
 export type ActivityKind =
@@ -56,10 +46,10 @@ export interface Settings {
   newWordsPerDay: number
   voiceURI?: string
   speechRate: number
-  apiKey: string
   name: string
   /** Prefer the recorded neural voices where available. */
   useRecordings: boolean
+  theme: 'system' | 'light' | 'dark'
   lastBackupAt?: string
   welcomeDismissed?: boolean
 }
@@ -80,7 +70,6 @@ export interface AppState {
   dictations: { at: string; score: number }[]
   writing: WritingAttempt[]
   activity: Activity[]
-  generated: { reading: ReadingText[]; listening: ListeningText[]; writing: WritingTask[] }
   settings: Settings
 }
 
@@ -102,8 +91,7 @@ export function initialState(): AppState {
     dictations: [],
     writing: [],
     activity: [],
-    generated: { reading: [], listening: [], writing: [] },
-    settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, apiKey: '', name: '', useRecordings: true },
+    settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, name: '', useRecordings: true, theme: 'system' },
   }
 }
 
@@ -113,7 +101,6 @@ function withDefaults(saved: Partial<AppState>): AppState {
   return {
     ...defaults,
     ...saved,
-    generated: { ...defaults.generated, ...saved.generated },
     settings: { ...defaults.settings, ...saved.settings },
   }
 }

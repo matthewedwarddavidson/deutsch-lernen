@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
-import { GenerateButton } from '../components/GenerateButton'
 import { Icon } from '../components/Icon'
 import { InteractiveText } from '../components/InteractiveText'
 import { Questions } from '../components/Questions'
-import { readingTexts } from '../content/library'
+import { READING_TEXTS } from '../content/reading'
 import { themeById } from '../content/themes'
 import { LEVELS, type ReadingText } from '../content/types'
-import { completeReading, deleteGenerated, recordActivity } from '../lib/actions'
+import { completeReading, recordActivity } from '../lib/actions'
 import { useTimeOnPage } from '../lib/hooks'
 import { speakDialogue, stopSpeaking } from '../lib/speech'
 import { useAppState } from '../lib/store'
@@ -31,7 +30,7 @@ function wordCount(paragraphs: string[]): number {
 
 export function ReadingList() {
   const state = useAppState()
-  const texts = readingTexts(state)
+  const texts = READING_TEXTS
   return (
     <div className="page">
       <div className="page-header row between" style={{ alignItems: 'flex-end' }}>
@@ -43,7 +42,6 @@ export function ReadingList() {
             questions. Afterwards, read it again faster for fluency.
           </p>
         </div>
-        <GenerateButton kind="reading" />
       </div>
       {LEVELS.map((level) => {
         const atLevel = texts.filter((text) => text.level === level)
@@ -59,7 +57,6 @@ export function ReadingList() {
                     <div className="row between" style={{ alignItems: 'flex-start' }}>
                       <div className="eyebrow">
                         {GENRE_LABELS[text.genre]} · {themeById(text.theme).title}
-                        {text.generated && ' · generated'}
                       </div>
                       {done && <span className="pill good">{Math.round(done.score * 100)}%</span>}
                     </div>
@@ -83,7 +80,7 @@ export function ReadingList() {
 export function ReadingPage() {
   const { textId } = useParams()
   const state = useAppState()
-  const text = readingTexts(state).find((item) => item.id === textId)
+  const text = READING_TEXTS.find((item) => item.id === textId)
   const [speaking, setSpeaking] = useState<number>()
   const [finished, setFinished] = useState<number>()
   const [fluencyStart, setFluencyStart] = useState<number>()
@@ -154,19 +151,6 @@ export function ReadingPage() {
               }}
             >
               Fluency read: again, faster
-            </button>
-          )}
-          {text.generated && (
-            <button
-              className="btn small ghost"
-              onClick={() => {
-                if (window.confirm('Delete this generated text?')) {
-                  deleteGenerated('reading', text.id)
-                  history.back()
-                }
-              }}
-            >
-              <Icon name="trash" size={14} /> Delete
             </button>
           )}
         </div>

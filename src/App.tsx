@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { HashRouter, NavLink, Route, Routes, useLocation } from 'react-router'
 import { Icon, type IconName } from './components/Icon'
 import { dueCards } from './lib/cards'
@@ -79,7 +80,17 @@ function Fresh({ page: Page }: { page: () => React.ReactNode }) {
   return <Page key={location.key} />
 }
 
+/** Applies the colour theme chosen in Settings; "system" follows the OS. */
+function useTheme() {
+  const { theme } = useAppState().settings
+  useEffect(() => {
+    if (theme === 'system') delete document.documentElement.dataset.theme
+    else document.documentElement.dataset.theme = theme
+  }, [theme])
+}
+
 export default function App() {
+  useTheme()
   return (
     // Hash routes work on static hosting such as GitHub Pages without server rewrites.
     <HashRouter>
