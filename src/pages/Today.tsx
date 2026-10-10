@@ -2,8 +2,10 @@ import { Link } from 'react-router'
 import { Icon, type IconName } from '../components/Icon'
 import { listeningTexts, readingTexts, suggest, writingTasks } from '../content/library'
 import { dueCards, newWordsLearnedToday, nextNewWords } from '../lib/cards'
+import { updateSettings } from '../lib/actions'
 import { backupDue, downloadBackup } from '../lib/backup'
 import { useNow } from '../lib/hooks'
+import { LEVELS, type Level } from '../content/types'
 import { useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
 
@@ -74,6 +76,8 @@ export function Today() {
           Working towards <strong>{target}</strong>. Reviews first while your memory is fresh, then something new.
         </p>
       </div>
+
+      {!state.settings.welcomeDismissed && <Welcome level={target} />}
 
       {backupDue(now) && (
         <div className="feedback almost" style={{ marginTop: 0, marginBottom: 16 }}>
@@ -150,14 +154,7 @@ export function Today() {
           action="Write"
         />
         <PlanCard
-          icon="slow"
-          title="Dictation"
-          detail="Hear a sentence, type it, see every word you missed."
-          to="/listening/dictation"
-          action="Start"
-        />
-        <PlanCard
-          icon="today"
+          icon="progress"
           title="Fluency"
           detail="Speed round: recognise known words in under 1.5 seconds, or re-read a text faster."
           to="/words/speed"
@@ -258,6 +255,53 @@ function StrandBalance({ state }: { state: AppState }) {
             </span>
           </div>
         ))}
+      </div>
+    </div>
+  )
+}
+
+/** First-visit guide: how a day with the app is meant to look. */
+function Welcome({ level }: { level: Level }) {
+  return (
+    <div className="card welcome">
+      <div className="row between" style={{ alignItems: 'flex-start' }}>
+        <h2 style={{ marginBottom: 6 }}>How this works</h2>
+        <button className="btn ghost small" onClick={() => updateSettings({ welcomeDismissed: true })}>
+          Got it
+        </button>
+      </div>
+      <p className="muted" style={{ marginTop: 0 }}>
+        Around 30 minutes a day, in this order:
+      </p>
+      <ol className="welcome-steps">
+        <li>
+          <strong>Reviews</strong> (10 min). Words and grammar come back just before you'd forget them. Type the answer;
+          don't just think it.
+        </li>
+        <li>
+          <strong>New words</strong> (5 min). Ten a day. Import your course's word lists under Words.
+        </li>
+        <li>
+          <strong>Grammar, reading or listening</strong> (15 min). Alternate. Read and listen to texts you mostly
+          understand.
+        </li>
+        <li>
+          <strong>Writing</strong>, twice a week. Get corrections, then send the mistakes to your reviews.
+        </li>
+      </ol>
+      <div className="row" style={{ marginTop: 8 }}>
+        <span className="small muted">Working towards:</span>
+        <div className="chips">
+          {LEVELS.map((item) => (
+            <button
+              key={item}
+              className={`chip ${level === item ? 'active' : ''}`}
+              onClick={() => updateSettings({ level: item })}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )

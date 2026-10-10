@@ -1748,3 +1748,16 @@ table.grammar-table {
   background: var(--accent);
   transition: width 0.1s linear;
 }
+
+.welcome {
+  margin-bottom: 16px;
+  border-color: var(--accent);
+}
+
+.welcome-steps {
+  margin: 0 0 8px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

@@ -61,6 +61,7 @@ export interface Settings {
   /** Prefer the recorded neural voices where available. */
   useRecordings: boolean
   lastBackupAt?: string
+  welcomeDismissed?: boolean
 }
 
 export interface AppState {
