@@ -368,4 +368,88 @@ export const SCRIPTS_EXAM: ListeningText[] = [
       },
     ],
   },
+  {
+    id: 'feature-ehrenamt-c1',
+    title: 'Radiofeature: Wer hält die Gesellschaft zusammen?',
+    level: 'C1',
+    theme: 'gesellschaft',
+    genre: 'report',
+    voices: { Sprecherin: 'kerstin', 'Prof. Hartmann': 'thorsten', 'Frau Demir': 'thorsten-emotional' },
+    situation:
+      'A radio feature on volunteering, with a sociologist and the head of a food bank. Focus on the arguments and on what is implied, not only on facts.',
+    lines: [
+      {
+        speaker: 'Sprecherin',
+        text: 'Rund dreißig Millionen Menschen engagieren sich in Deutschland ehrenamtlich – in Sportvereinen, bei der Feuerwehr, in der Flüchtlingshilfe oder bei den Tafeln. Ohne sie, so heißt es oft, würde vieles schlicht zusammenbrechen. Doch das Ehrenamt verändert sich, und nicht alle sehen diese Entwicklung positiv.',
+      },
+      {
+        speaker: 'Prof. Hartmann',
+        text: 'Was wir beobachten, ist kein Rückgang des Engagements insgesamt, sondern ein Wandel seiner Form. Früher trat man mit zwanzig in einen Verein ein und blieb dort, bis man starb. Heute engagieren sich die Menschen eher projektbezogen und zeitlich begrenzt: Sie helfen drei Monate bei einer Sprachpatenschaft und wenden sich dann etwas anderem zu. Das ist nicht per se schlechter, stellt aber Organisationen, die auf Kontinuität angewiesen sind, vor erhebliche Probleme.',
+      },
+      {
+        speaker: 'Sprecherin',
+        text: 'Eine dieser Organisationen ist die Tafel in Offenbach. Ihre Leiterin, Aylin Demir, kennt die Schwierigkeiten aus erster Hand.',
+      },
+      {
+        speaker: 'Frau Demir',
+        text: 'Wir haben eigentlich genug Leute, die mal einen Samstag beim Sortieren helfen. Was uns fehlt, sind Menschen, die Verantwortung übernehmen – die Touren planen, den Kontakt zu den Supermärkten halten, neue Helfer einarbeiten. Und dann gibt es noch ein Problem, über das man ungern spricht: Wir übernehmen inzwischen Aufgaben, für die eigentlich der Staat zuständig wäre. Wenn immer mehr Menschen auf Lebensmittelspenden angewiesen sind, dann ist das kein Erfolg des Ehrenamts, sondern ein Versagen der Sozialpolitik.',
+      },
+      {
+        speaker: 'Prof. Hartmann',
+        text: 'Diesen Punkt halte ich für zentral. Es besteht die Gefahr, dass der Staat sich auf das Ehrenamt verlässt und sich schleichend aus bestimmten Bereichen zurückzieht. Ehrenamt sollte staatliche Leistungen ergänzen, nicht ersetzen. Gleichzeitig darf man nicht übersehen, was Engagement für die Engagierten selbst bedeutet: Es stiftet Sinn, schafft Kontakte über soziale Grenzen hinweg und ist, nebenbei bemerkt, einer der besten Schutzfaktoren gegen Einsamkeit im Alter.',
+      },
+      {
+        speaker: 'Sprecherin',
+        text: 'Was also tun? Fachleute fordern, Engagement besser anzuerkennen, etwa durch Rentenpunkte oder Vergünstigungen im Nahverkehr, und Organisationen bei der Verwaltung zu entlasten. Frau Demir hat einen bescheideneren Wunsch.',
+      },
+      {
+        speaker: 'Frau Demir',
+        text: 'Ich würde mir wünschen, dass man uns nicht nur zu Weihnachten wahrnimmt. Ein Dankeschön im Dezember ist schön. Aber die Leute stehen auch im Februar bei uns in der Schlange.',
+      },
+    ],
+    questions: [
+      {
+        kind: 'choice',
+        question: 'Wie beschreibt Prof. Hartmann die Entwicklung des Ehrenamts?',
+        options: [
+          'Immer weniger Menschen engagieren sich.',
+          'Das Engagement wird kurzfristiger und projektbezogener.',
+          'Vereine gewinnen wieder an Bedeutung.',
+        ],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Was fehlt der Tafel in Offenbach vor allem?',
+        options: [
+          'Helfer für einzelne Einsätze',
+          'Lebensmittelspenden',
+          'Menschen, die dauerhaft Verantwortung übernehmen',
+        ],
+        answer: 2,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Frau Demir sieht den Zulauf zu den Tafeln als Beweis für ein gut funktionierendes Ehrenamt.',
+        answer: false,
+        explanation: 'Sie nennt es ein „Versagen der Sozialpolitik".',
+      },
+      {
+        kind: 'choice',
+        question: 'Welche Gefahr sieht Prof. Hartmann?',
+        options: [
+          'Dass Ehrenamtliche ausgebeutet werden',
+          'Dass der Staat sich aus seiner Verantwortung zurückzieht',
+          'Dass Vereine zu bürokratisch werden',
+        ],
+        answer: 1,
+      },
+      {
+        kind: 'open',
+        question: 'Was meint Frau Demir mit ihrem letzten Satz über Februar?',
+        model:
+          'Armut und Bedürftigkeit gibt es das ganze Jahr, nicht nur zu Weihnachten, wenn die Öffentlichkeit aufmerksam ist. Sie wünscht sich dauerhafte Anerkennung und Unterstützung.',
+      },
+    ],
+  },
 ]
