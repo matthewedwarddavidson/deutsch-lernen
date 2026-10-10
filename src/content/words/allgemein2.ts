@@ -168,4 +168,52 @@ ADV | weitgehend | | | largely | Die Arbeiten sind {weitgehend} abgeschlossen. |
 ADV | schlechthin | | | par excellence, per se | Er gilt als der Romantiker {schlechthin}. | He is regarded as the quintessential Romantic.
 ADV | mitunter | | | at times | {Mitunter} dauert es Wochen, bis eine Antwort kommt. | At times it takes weeks for an answer to arrive.
 ADV | gleichwohl | | | nevertheless | Das Risiko ist gering, {gleichwohl} sollten wir vorsichtig sein. | The risk is small; nevertheless we should be careful.
+# B1
+V | abschließen | schließt ab, schloss ab, hat abgeschlossen | | to lock; to complete | Hast du die Tür {abgeschlossen}? | Did you lock the door?
+V | ablehnen | lehnt ab, lehnte ab, hat abgelehnt | | to refuse, reject | Die Bank hat den Kredit {abgelehnt}. | The bank turned down the loan.
+V | ausrichten | richtet aus, richtete aus, hat ausgerichtet | D + A | to pass on (a message) | Kannst du ihr schöne Grüße {ausrichten}? | Can you give her my regards?
+V | befürchten | befürchtet, befürchtete, hat befürchtet | | to fear | Ich {befürchte}, dass wir zu spät kommen. | I'm afraid we'll be late.
+V | begleiten | begleitet, begleitete, hat begleitet | | to accompany | Ich {begleite} dich zum Bahnhof. | I'll walk you to the station.
+V | behandeln | behandelt, behandelte, hat behandelt | | to treat | Der Arzt hat die Wunde sofort {behandelt}. | The doctor treated the wound straight away.
+V | betreuen | betreut, betreute, hat betreut | | to look after, supervise | Am Nachmittag werden die Kinder im Hort {betreut}. | In the afternoon the children are looked after at the after-school club.
+V | einsetzen | setzt ein, setzte ein, hat eingesetzt | sich für + A | to use; to stand up for (sich) | Sie {setzt} sich für bezahlbare Wohnungen {ein}. | She campaigns for affordable housing.
+V | feststellen | stellt fest, stellte fest, hat festgestellt | | to notice, establish | Zu Hause habe ich {festgestellt}, dass die Jacke ein Loch hat. | At home I noticed the jacket has a hole.
+V | mitteilen | teilt mit, teilte mit, hat mitgeteilt | D + A | to inform, tell | Bitte {teilen} Sie uns Ihre neue Adresse {mit}. | Please let us know your new address.
+V | übernehmen | übernimmt, übernahm, hat übernommen | | to take on, take over | Wer {übernimmt} die Kosten? | Who will cover the costs?
+V | verstecken | versteckt, versteckte, hat versteckt | | to hide | Die Kinder haben die Ostereier im Garten {versteckt}. | The children hid the Easter eggs in the garden.
+V | verteilen | verteilt, verteilte, hat verteilt | | to hand out, distribute | Die Lehrerin {verteilt} die Arbeitsblätter. | The teacher hands out the worksheets.
+V | warnen | warnt, warnte, hat gewarnt | vor + D | to warn | Die Polizei {warnt} vor Glatteis. | The police are warning of black ice.
+V | tauschen | tauscht, tauschte, hat getauscht | | to swap, exchange | Wollen wir die Plätze {tauschen}? | Shall we swap seats?
+V | sich verhalten | verhält sich, verhielt sich, hat sich verhalten | | to behave | Er hat sich sehr fair {verhalten}. | He behaved very fairly.
+V | zusammenfassen | fasst zusammen, fasste zusammen, hat zusammengefasst | | to summarise | Können Sie das kurz {zusammenfassen}? | Can you summarise that briefly?
+N | der Ausweg | Auswege | | way out | Wir sehen keinen anderen {Ausweg}. | We see no other way out.
+N | die Bemerkung | Bemerkungen | | remark | Diese {Bemerkung} war nicht nett. | That remark wasn't nice.
+N | der Besitz | – | | possession, property | Das Haus ist im {Besitz} der Familie. | The house is owned by the family.
+N | der Betrag | Beträge | | amount, sum | Bitte überweisen Sie den {Betrag} bis Freitag. | Please transfer the amount by Friday.
+N | die Entfernung | Entfernungen | | distance | Aus dieser {Entfernung} kann ich nichts lesen. | I can't read anything from this distance.
+N | das Ereignis | Ereignisse | | event | Die Hochzeit war das {Ereignis} des Jahres. | The wedding was the event of the year.
+N | die Erlaubnis | Erlaubnisse | | permission | Für das Foto brauchen Sie eine {Erlaubnis}. | You need permission for the photo.
+N | der Hinweis | Hinweise | | tip, note, clue | Danke für den {Hinweis}! | Thanks for the tip!
+N | der Irrtum | Irrtümer | | mistake, error | Das war ein {Irrtum}, entschuldigen Sie. | That was a mistake, sorry.
+N | die Menge | Mengen | | amount; crowd | Wir haben eine {Menge} Arbeit. | We've got a lot of work.
+N | die Regel | Regeln | | rule | In der {Regel} fahre ich mit dem Rad. | As a rule I cycle.
+N | die Sorge | Sorgen | | worry | Mach dir keine {Sorgen}! | Don't worry!
+N | das Verhältnis | Verhältnisse | | relationship; ratio | Ich habe ein gutes {Verhältnis} zu meinen Eltern. | I get on well with my parents.
+ADJ | ängstlich | ängstlicher, am ängstlichsten | | anxious, timid | Unser Hund ist sehr {ängstlich}. | Our dog is very timid.
+ADJ | dankbar | dankbarer, am dankbarsten | für + A | grateful | Ich bin dir sehr {dankbar} für deine Hilfe. | I'm very grateful to you for your help.
+ADJ | eilig | eiliger, am eiligsten | | urgent, in a hurry | Ich habe es {eilig}. | I'm in a hurry.
+ADJ | erstaunlich | erstaunlicher, am erstaunlichsten | | astonishing | Es ist {erstaunlich}, wie schnell sie Deutsch gelernt hat. | It's astonishing how quickly she learnt German.
+ADJ | gewöhnlich | – | | usual; ordinary | Er steht {gewöhnlich} um sechs auf. | He usually gets up at six.
+ADJ | gründlich | gründlicher, am gründlichsten | | thorough | Lies den Vertrag {gründlich}, bevor du unterschreibst. | Read the contract thoroughly before you sign.
+ADJ | heimlich | – | | secret(ly) | Er hat {heimlich} geraucht. | He smoked in secret.
+ADJ | künftig | – | | future; in future | {Künftig} beginnt der Kurs um neun. | In future the course starts at nine.
+ADJ | nachdenklich | nachdenklicher, am nachdenklichsten | | thoughtful, pensive | Der Film hat mich {nachdenklich} gemacht. | The film made me think.
+ADJ | ordentlich | ordentlicher, am ordentlichsten | | tidy; proper | Sein Zimmer ist immer {ordentlich}. | His room is always tidy.
+ADJ | vergeblich | – | | in vain | Wir haben {vergeblich} auf den Bus gewartet. | We waited for the bus in vain.
+ADJ | vernünftig | vernünftiger, am vernünftigsten | | sensible | Das ist ein {vernünftiger} Vorschlag. | That's a sensible suggestion.
+ADJ | wütend | wütender, am wütendsten | auf + A | furious | Sie ist {wütend} auf ihren Chef. | She's furious with her boss.
+ADV | glücklicherweise | | | fortunately | {Glücklicherweise} wurde niemand verletzt. | Fortunately nobody was hurt.
+ADV | mehrmals | | | several times | Ich habe {mehrmals} angerufen. | I called several times.
+ADV | möglichst | | | as … as possible | Bitte antworten Sie {möglichst} schnell. | Please reply as quickly as possible.
+ADV | überhaupt | | | at all | Das interessiert mich {überhaupt} nicht. | That doesn't interest me at all.
 `
