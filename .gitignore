@@ -26,3 +26,5 @@ dist-ssr
 # Speech build
 audio-build/
 .venv-tts/
+test-results/
+playwright-report/
