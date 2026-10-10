@@ -1,5 +1,5 @@
 import { useMemo, useState, type FormEvent } from 'react'
-import { Link } from 'react-router'
+import { Link, useSearchParams } from 'react-router'
 import { Icon } from '../components/Icon'
 import { SpeakButton } from '../components/SpeakButton'
 import { GermanWord, WordView } from '../components/WordView'
@@ -26,7 +26,8 @@ export function Words() {
   const [theme, setTheme] = useState<ThemeId | 'all'>('all')
   const [level, setLevel] = useState<Level | 'all'>('all')
   const [status, setStatus] = useState<Status | 'all'>('all')
-  const [query, setQuery] = useState('')
+  const [searchParams] = useSearchParams()
+  const [query, setQuery] = useState(searchParams.get('q') ?? '')
   const [openId, setOpenId] = useState<string>()
   const [adding, setAdding] = useState(false)
 

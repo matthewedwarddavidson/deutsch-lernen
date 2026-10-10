@@ -12,6 +12,7 @@ import { newWordsLearnedToday, nextNewWords } from '../lib/cards'
 import type { CheckResult } from '../lib/check'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
+import { Rating } from '../lib/srs'
 import { getState, useAppState } from '../lib/store'
 import { checkWord, suggestedGrade } from '../lib/grading'
 
@@ -61,8 +62,29 @@ export function Learn() {
     )
   }
 
-  function finishStudy() {
-    setStep({ kind: 'quiz', queue: [...batch], firstTry: true })
+  function finishStudy(known = graded) {
+    const queue = batch.filter((word) => !known.has(word.id))
+    if (queue.length > 0) setStep({ kind: 'quiz', queue, firstTry: true })
+    else advanceBatch()
+  }
+
+  function advanceBatch() {
+    if (batchStart + BATCH_SIZE < words.length) {
+      setBatchStart(batchStart + BATCH_SIZE)
+      setStep({ kind: 'study', index: 0 })
+    } else {
+      setStep({ kind: 'done' })
+    }
+  }
+
+  /** Words you already know skip the quiz and start with long intervals. */
+  function markKnown(word: Word) {
+    if (step.kind !== 'study') return
+    learnWord(word, Rating.Easy)
+    const known = new Set(graded).add(word.id)
+    setGraded(known)
+    if (step.index + 1 < batch.length) setStep({ kind: 'study', index: step.index + 1 })
+    else finishStudy(known)
   }
 
   function handleQuizAnswer(word: Word, result: CheckResult) {
@@ -74,14 +96,8 @@ export function Learn() {
     const rest = step.queue.slice(1)
     // Words answered wrongly go to the back until they are right.
     const queue = result.verdict === 'wrong' ? [...rest, word] : rest
-    if (queue.length > 0) {
-      setStep({ kind: 'quiz', queue, firstTry: false })
-    } else if (batchStart + BATCH_SIZE < words.length) {
-      setBatchStart(batchStart + BATCH_SIZE)
-      setStep({ kind: 'study', index: 0 })
-    } else {
-      setStep({ kind: 'done' })
-    }
+    if (queue.length > 0) setStep({ kind: 'quiz', queue, firstTry: false })
+    else advanceBatch()
   }
 
   const progress = (graded.size + (step.kind === 'study' ? step.index * 0.5 : 0)) / words.length
@@ -105,6 +121,7 @@ export function Learn() {
           onNext={() =>
             step.index + 1 < batch.length ? setStep({ kind: 'study', index: step.index + 1 }) : finishStudy()
           }
+          onKnown={() => markKnown(batch[step.index])}
         />
       )}
       {step.kind === 'quiz' && (
@@ -133,11 +150,13 @@ function StudyCard({
   position,
   batchSize,
   onNext,
+  onKnown,
 }: {
   word: Word
   position: number
   batchSize: number
   onNext: () => void
+  onKnown: () => void
 }) {
   const { settings } = useAppState()
   useKeyHandler(true, (key) => {
@@ -157,6 +176,9 @@ function StudyCard({
       <div className="row" style={{ marginTop: 20 }}>
         <button className="btn primary" onClick={onNext} autoFocus>
           {position + 1 < batchSize ? 'Next word' : 'Test these words'} <span className="kbd">Enter</span>
+        </button>
+        <button className="btn" onClick={onKnown}>
+          I already know this
         </button>
         <button
           className="btn ghost"
