@@ -1,0 +1,216 @@
+import { Link } from 'react-router'
+import { Icon, type IconName } from '../components/Icon'
+import { listeningTexts, readingTexts, suggest, writingTasks } from '../content/library'
+import { dueCards, newWordsLearnedToday, nextNewWords } from '../lib/cards'
+import { useAppState, type ActivityKind, type AppState } from '../lib/store'
+import { nextTopic } from '../lib/grading'
+
+const STRANDS: { id: string; label: string; description: string; kinds: ActivityKind[]; color: string }[] = [
+  { id: 'input', label: 'Input', description: 'reading and listening', kinds: ['reading', 'listening'], color: 'var(--der)' },
+  { id: 'output', label: 'Output', description: 'writing', kinds: ['writing'], color: 'var(--die)' },
+  { id: 'study', label: 'Study', description: 'words, grammar, dictation', kinds: ['review', 'learn', 'grammar', 'dictation'], color: 'var(--almost)' },
+  { id: 'fluency', label: 'Fluency', description: 'fast practice with known material', kinds: ['fluency'], color: 'var(--das)' },
+]
+
+function greeting(now: Date): string {
+  const hour = now.getHours()
+  if (hour < 11) return 'Guten Morgen'
+  if (hour < 18) return 'Guten Tag'
+  return 'Guten Abend'
+}
+
+function minutesThisWeek(state: AppState, kinds: ActivityKind[]): number {
+  const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
+  const seconds = state.activity
+    .filter((entry) => kinds.includes(entry.kind) && new Date(entry.at).getTime() > weekAgo)
+    .reduce((total, entry) => total + entry.seconds, 0)
+  return Math.round(seconds / 60)
+}
+
+export function Today() {
+  const state = useAppState()
+  const now = new Date()
+  const due = dueCards(state, now)
+  const learnedToday = newWordsLearnedToday(state, now)
+  const newLeft = Math.max(0, state.settings.newWordsPerDay - learnedToday)
+  const availableNew = nextNewWords(state, newLeft).length
+  const topic = nextTopic(state)
+  const target = state.settings.level
+  const reading = suggest(readingTexts(state), state.reading, target)
+  const listening = suggest(listeningTexts(state), state.listening, target)
+  const writtenTaskIds = Object.fromEntries(state.writing.map((attempt) => [attempt.taskId, true]))
+  const writing = suggest(writingTasks(state), writtenTaskIds, target)
+  const dateLabel = now.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })
+
+  return (
+    <div className="page">
+      <div className="page-header">
+        <div className="eyebrow">{dateLabel}</div>
+        <h1>
+          {greeting(now)}
+          {state.settings.name ? `, ${state.settings.name}` : ''}.
+        </h1>
+        <p>
+          Working towards <strong>{target}</strong>. Reviews first while your memory is fresh, then something new.
+        </p>
+      </div>
+
+      <div className="card today-hero">
+        <div>
+          <div className="stat-value">{due.length}</div>
+          <div className="stat-label">{due.length === 1 ? 'review due' : 'reviews due'}</div>
+          <div className="faint small" style={{ marginTop: 6 }}>
+            {reviewBreakdown(due)}
+          </div>
+        </div>
+        {due.length > 0 ? (
+          <Link className="btn primary" to="/review">
+            Start review
+          </Link>
+        ) : (
+          <span className="pill good">All caught up</span>
+        )}
+      </div>
+
+      <div className="section-title section">Today's plan</div>
+      <div className="plan-grid">
+        <PlanCard
+          icon="words"
+          title="New words"
+          detail={
+            availableNew > 0
+              ? `${learnedToday} of ${state.settings.newWordsPerDay} learned today`
+              : learnedToday > 0
+                ? `${learnedToday} learned today. Done.`
+                : 'No new words left at your level.'
+          }
+          to={availableNew > 0 ? '/words/learn' : '/words'}
+          action={availableNew > 0 ? `Learn ${availableNew}` : 'Browse words'}
+          done={availableNew === 0 && learnedToday > 0}
+        />
+        <PlanCard
+          icon="grammar"
+          title="Grammar"
+          detail={topic ? `${topic.title} · ${topic.english}` : `All topics up to ${target} studied.`}
+          to={topic ? `/grammar/${topic.id}` : '/grammar'}
+          action={topic ? 'Study' : 'Browse'}
+        />
+        <PlanCard
+          icon="reading"
+          title="Read"
+          detail={reading ? `${reading.title} · ${reading.level}` : 'All texts read. Generate a new one.'}
+          to={reading ? `/reading/${reading.id}` : '/reading'}
+          action="Read"
+        />
+        <PlanCard
+          icon="listening"
+          title="Listen"
+          detail={listening ? `${listening.title} · ${listening.level}` : 'Try a dictation.'}
+          to={listening ? `/listening/${listening.id}` : '/listening/dictation'}
+          action="Listen"
+        />
+        <PlanCard
+          icon="writing"
+          title="Write"
+          detail={writing ? `${writing.title} · ${writing.level}` : 'All tasks written. Generate a new one.'}
+          to={writing ? `/writing/${writing.id}` : '/writing'}
+          action="Write"
+        />
+        <PlanCard
+          icon="slow"
+          title="Dictation"
+          detail="Hear a sentence, type it, see every word you missed."
+          to="/listening/dictation"
+          action="Start"
+        />
+      </div>
+
+      <div className="section-title section">This week</div>
+      <div className="card">
+        <StrandBalance state={state} />
+      </div>
+    </div>
+  )
+}
+
+function reviewBreakdown(due: ReturnType<typeof dueCards>): string {
+  if (due.length === 0) return 'Come back tomorrow, or learn something new.'
+  const words = due.filter((card) => card.kind !== 'grammar').length
+  const grammar = due.length - words
+  return [words && `${words} words`, grammar && `${grammar} grammar`].filter(Boolean).join(' · ')
+}
+
+function PlanCard({
+  icon,
+  title,
+  detail,
+  to,
+  action,
+  done = false,
+}: {
+  icon: IconName
+  title: string
+  detail: string
+  to: string
+  action: string
+  done?: boolean
+}) {
+  return (
+    <Link to={to} className={`card card-link plan-card ${done ? 'done' : ''}`}>
+      <div className="plan-icon">
+        <Icon name={done ? 'check' : icon} />
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontWeight: 600 }}>{title}</div>
+        <div className="muted small plan-detail">{detail}</div>
+      </div>
+      <span className="plan-action">{action} →</span>
+    </Link>
+  )
+}
+
+/** Time per strand over the last seven days, as a stacked bar. */
+function StrandBalance({ state }: { state: AppState }) {
+  const totals = STRANDS.map((strand) => ({ ...strand, minutes: minutesThisWeek(state, strand.kinds) }))
+  const sum = totals.reduce((total, strand) => total + strand.minutes, 0)
+  if (sum === 0) {
+    return (
+      <p className="muted" style={{ margin: 0 }}>
+        Nothing yet this week. A good week splits time roughly evenly between input, output, study and fluency.
+      </p>
+    )
+  }
+  const weakest = [...totals].sort((a, b) => a.minutes - b.minutes)[0]
+  return (
+    <div className="stack">
+      <div className="row between">
+        <div>
+          <span className="stat-value" style={{ fontSize: '1.4rem' }}>
+            {sum}
+          </span>{' '}
+          <span className="muted">minutes</span>
+        </div>
+        <span className="small muted">
+          Least practised: <strong>{weakest.label.toLowerCase()}</strong> ({weakest.description})
+        </span>
+      </div>
+      <div className="strand-bar" aria-hidden="true">
+        {totals.map((strand) =>
+          strand.minutes > 0 ? (
+            <span key={strand.id} style={{ flex: strand.minutes, background: strand.color }} title={`${strand.label}: ${strand.minutes} min`} />
+          ) : null,
+        )}
+      </div>
+      <div className="strand-legend">
+        {totals.map((strand) => (
+          <div key={strand.id} className="row" style={{ gap: 6 }}>
+            <span className="legend-swatch" style={{ background: strand.color }} />
+            <span className="small">
+              {strand.label} <span className="muted">{strand.minutes} min</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}

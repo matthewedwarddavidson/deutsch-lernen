@@ -31,24 +31,37 @@ export interface WritingAttempt {
   feedback?: WritingFeedback
 }
 
+export type ActivityKind = 'review' | 'learn' | 'grammar' | 'reading' | 'listening' | 'dictation' | 'writing' | 'fluency'
+
+export interface Activity {
+  at: string
+  kind: ActivityKind
+  seconds: number
+}
+
 export interface Settings {
+  /** The level being worked towards. New material comes from this level and below. */
   level: Level
   newWordsPerDay: number
   voiceURI?: string
   speechRate: number
   apiKey: string
+  name: string
 }
 
 export interface AppState {
   version: 1
   cards: Record<string, StoredCard>
   log: ReviewRecord[]
+  /** Word id → when it was first learned. */
+  wordsLearned: Record<string, string>
   customWords: Word[]
   grammar: Record<string, { studiedAt: string }>
   reading: Record<string, Completion>
   listening: Record<string, Completion>
   dictations: { at: string; score: number }[]
   writing: WritingAttempt[]
+  activity: Activity[]
   generated: { reading: ReadingText[]; listening: ListeningText[]; writing: WritingTask[] }
   settings: Settings
 }
@@ -61,14 +74,16 @@ export function initialState(): AppState {
     version: 1,
     cards: {},
     log: [],
+    wordsLearned: {},
     customWords: [],
     grammar: {},
     reading: {},
     listening: {},
     dictations: [],
     writing: [],
+    activity: [],
     generated: { reading: [], listening: [], writing: [] },
-    settings: { level: 'A2', newWordsPerDay: 10, speechRate: 0.95, apiKey: '' },
+    settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, apiKey: '', name: '' },
   }
 }
 
