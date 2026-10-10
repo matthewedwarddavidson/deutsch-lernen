@@ -128,4 +128,44 @@ ADV | zumindest | | | at least | Das ist {zumindest} meine Meinung. | That's my 
 ADV | ohnehin | | | anyway | Ich muss {ohnehin} in die Stadt, ich nehme dich mit. | I've got to go into town anyway, I'll give you a lift.
 ADV | endlich | | | finally, at last | {Endlich} ist Wochenende! | At last it's the weekend!
 ADV | offenbar | | | apparently | Er hat {offenbar} keine Lust. | He apparently doesn't feel like it.
+
+# C1
+V | beanstanden | beanstandet, beanstandete, hat beanstandet | | to object to, find fault with | Der Prüfer hat mehrere Punkte {beanstandet}. | The inspector found fault with several points.
+V | erachten | erachtet, erachtete, hat erachtet | als + A | to consider, deem | Ich {erachte} das als unnötig. | I consider that unnecessary.
+V | gewährleisten | gewährleistet, gewährleistete, hat gewährleistet | | to guarantee, ensure | Die Sicherheit der Daten muss {gewährleistet} sein. | Data security must be guaranteed.
+V | hervorheben | hebt hervor, hob hervor, hat hervorgehoben | | to emphasise | Die Autorin {hebt} die Rolle der Bildung {hervor}. | The author emphasises the role of education.
+V | infrage stellen | stellt infrage, stellte infrage, hat infrage gestellt | | to question | Die Studie {stellt} bisherige Annahmen {infrage}. | The study calls previous assumptions into question.
+V | relativieren | relativiert, relativierte, hat relativiert | | to put into perspective, qualify | Später hat er seine Aussage {relativiert}. | Later he qualified his statement.
+V | sich abzeichnen | zeichnet sich ab, zeichnete sich ab, hat sich abgezeichnet | | to emerge, become apparent | Eine Lösung {zeichnet} sich noch nicht {ab}. | No solution is emerging yet.
+V | anstreben | strebt an, strebte an, hat angestrebt | | to aim for | Die Regierung {strebt} eine Reform {an}. | The government is aiming for reform.
+V | beimessen | misst bei, maß bei, hat beigemessen | D + A | to attach (importance) | Man sollte dem Ergebnis nicht zu viel Bedeutung {beimessen}. | One shouldn't attach too much importance to the result.
+V | einhergehen | geht einher, ging einher, ist einhergegangen | mit + D | to go hand in hand with | Der Wandel {geht} mit großen Unsicherheiten {einher}. | The change goes hand in hand with great uncertainty.
+V | erschweren | erschwert, erschwerte, hat erschwert | | to make more difficult | Die Bürokratie {erschwert} die Gründung. | Red tape makes starting a business harder.
+V | begünstigen | begünstigt, begünstigte, hat begünstigt | | to favour, encourage | Feuchtigkeit {begünstigt} Schimmel. | Damp encourages mould.
+V | untermauern | untermauert, untermauerte, hat untermauert | | to back up, substantiate | Sie {untermauert} ihre These mit Zahlen. | She backs up her thesis with figures.
+V | verdeutlichen | verdeutlicht, verdeutlichte, hat verdeutlicht | | to illustrate, make clear | Ein Beispiel soll das {verdeutlichen}. | An example should make this clear.
+V | abwägen | wägt ab, wog ab, hat abgewogen | | to weigh up | Man muss Vor- und Nachteile sorgfältig {abwägen}. | You have to weigh up the pros and cons carefully.
+N | die Tragweite | – | | scope, implications | Die {Tragweite} dieser Entscheidung ist enorm. | The implications of this decision are enormous.
+N | der Stellenwert | – | | status, importance | Bildung hat in der Familie einen hohen {Stellenwert}. | Education has high status in the family.
+N | der Widerspruch | Widersprüche | | contradiction | Darin liegt ein {Widerspruch}. | Therein lies a contradiction.
+N | die Annahme | Annahmen | | assumption | Diese {Annahme} ist nicht belegt. | This assumption is not supported.
+N | der Ansatz | Ansätze | | approach | Das ist ein vielversprechender {Ansatz}. | That's a promising approach.
+N | die Gegebenheit | Gegebenheiten | | circumstance, given condition | Man muss sich an die örtlichen {Gegebenheiten} anpassen. | You have to adapt to local conditions.
+N | das Spannungsfeld | Spannungsfelder | | area of tension | Die Arbeit bewegt sich im {Spannungsfeld} zwischen Freiheit und Sicherheit. | The work sits between freedom and security.
+N | die Nachhaltigkeit | – | | sustainability | {Nachhaltigkeit} ist zum Modewort geworden. | Sustainability has become a buzzword.
+N | der Missstand | Missstände | | grievance, abuse | Die Reporterin deckte {Missstände} in der Pflege auf. | The reporter uncovered abuses in care.
+ADJ | ausschlaggebend | – | | decisive | Der Preis war {ausschlaggebend} für meine Entscheidung. | Price was the deciding factor.
+ADJ | unerlässlich | – | | essential, indispensable | Gute Planung ist {unerlässlich}. | Good planning is essential.
+ADJ | fragwürdig | fragwürdiger, am fragwürdigsten | | dubious, questionable | Die Methode ist ethisch {fragwürdig}. | The method is ethically questionable.
+ADJ | weitreichend | weitreichender, am weitreichendsten | | far-reaching | Das hat {weitreichende} Folgen. | That has far-reaching consequences.
+ADJ | stichhaltig | stichhaltiger, am stichhaltigsten | | sound, valid (argument) | Das Argument ist nicht {stichhaltig}. | The argument doesn't hold water.
+ADJ | zweckmäßig | zweckmäßiger, am zweckmäßigsten | | practical, appropriate | Die Einrichtung ist schlicht, aber {zweckmäßig}. | The furnishings are plain but practical.
+ADJ | eindeutig | eindeutiger, am eindeutigsten | | clear, unambiguous | Die Ergebnisse sind {eindeutig}. | The results are clear-cut.
+ADJ | vielschichtig | vielschichtiger, am vielschichtigsten | | complex, multi-layered | Das Problem ist {vielschichtig}. | The problem is complex.
+ADV | dementsprechend | | | accordingly | Die Nachfrage ist gestiegen, {dementsprechend} auch die Preise. | Demand has risen, and prices accordingly.
+ADV | infolgedessen | | | as a result | {Infolgedessen} mussten wir den Termin verschieben. | As a result we had to postpone the appointment.
+ADV | weitgehend | | | largely | Die Arbeiten sind {weitgehend} abgeschlossen. | The work is largely complete.
+ADV | schlechthin | | | par excellence, per se | Er gilt als der Romantiker {schlechthin}. | He is regarded as the quintessential Romantic.
+ADV | mitunter | | | at times | {Mitunter} dauert es Wochen, bis eine Antwort kommt. | At times it takes weeks for an answer to arrive.
+ADV | gleichwohl | | | nevertheless | Das Risiko ist gering, {gleichwohl} sollten wir vorsichtig sein. | The risk is small; nevertheless we should be careful.
 `

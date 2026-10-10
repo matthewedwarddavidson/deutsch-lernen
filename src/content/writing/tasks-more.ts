@@ -125,4 +125,29 @@ export const TASKS_MORE: WritingTask[] = [
     model:
       'Die Frage, ob Schüler KI für ihre Hausaufgaben nutzen dürfen, wird zurzeit heftig diskutiert. Ich möchte dazu meine Sicht schildern.\n\nEinerseits bietet KI große Chancen. Sie kann schwierige Themen geduldig erklären, Fragen beantworten und Texte korrigieren. Gerade Kinder, deren Eltern nicht helfen können, könnten davon profitieren.\n\nAndererseits besteht die Gefahr, dass Schüler die Aufgaben einfach von der KI erledigen lassen und selbst nichts mehr lernen. Außerdem sind die Antworten nicht immer richtig, und viele Jugendliche können das nicht erkennen.\n\nStatt KI zu verbieten, sollten Schulen den Umgang damit unterrichten: Wie formuliere ich eine gute Frage? Wie prüfe ich, ob eine Antwort stimmt? Gleichzeitig sollten wichtige Leistungen wieder häufiger in der Schule geschrieben werden.\n\nAlles in allem bin ich der Ansicht, dass KI ein nützliches Werkzeug ist, wenn man gelernt hat, kritisch damit umzugehen.',
   },
+  {
+    id: 'zusammenfassung-langeweile-c1',
+    title: 'Zusammenfassung: Lob der Langeweile',
+    level: 'C1',
+    theme: 'gesellschaft',
+    format: 'summary',
+    instructions:
+      'Lesen Sie den Text „Lob der Langeweile" im Bereich Lesen. Fassen Sie die Argumentation des Autors in eigenen Worten zusammen und nehmen Sie kurz Stellung (circa 180 Wörter).',
+    points: [
+      'Nennen Sie die Hauptthese.',
+      'Geben Sie die zwei zentralen Argumente wieder.',
+      'Erläutern Sie die Schlussfolgerung des Autors.',
+      'Nehmen Sie begründet Stellung.',
+    ],
+    minWords: 180,
+    phrases: [
+      { de: 'Der Text befasst sich mit der Frage, …', en: 'The text deals with the question …' },
+      { de: 'Der Autor vertritt die These, dass …', en: 'The author argues that …' },
+      { de: 'Zur Begründung führt er an, dass …', en: 'In support he states that …' },
+      { de: 'Daraus leitet er ab, dass …', en: 'From this he concludes that …' },
+      { de: 'Dem ist insofern zuzustimmen, als …', en: 'One can agree with this in so far as …' },
+    ],
+    model:
+      'Der Text befasst sich mit der Frage, welchen Wert Langeweile in einer Zeit ständiger digitaler Ablenkung hat. Der Autor vertritt die These, dass wir mit der Langeweile etwas Wertvolles verlieren, weil wir jede Lücke im Alltag sofort mit dem Smartphone füllen.\n\nZur Begründung führt er zwei Argumente an. Erstens sei das Gehirn in Phasen des Nichtstuns keineswegs untätig, sondern verarbeite Erlebtes und verknüpfe Gedanken, was kreative Ideen begünstige. Zweitens sei Langeweile ein Signal, dass eine Tätigkeit uns nicht erfülle; wer es ständig übertöne, weiche letztlich sich selbst aus.\n\nDaraus leitet er nicht ab, auf Smartphones zu verzichten, sondern empfiehlt, Leerlauf bewusst zuzulassen, etwa bei Bahnfahrten oder Spaziergängen.\n\nDem ist insofern zuzustimmen, als viele Menschen tatsächlich kaum noch Momente ohne Ablenkung erleben. Allerdings blendet der Text aus, dass Langeweile für manche – etwa Menschen in eintönigen Jobs – keine Wahl, sondern eine Belastung ist. Bewusster Leerlauf ist daher vor allem ein Privileg derer, die sonst zu viel zu tun haben.',
+  },
 ]
