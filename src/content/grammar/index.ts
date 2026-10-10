@@ -9,6 +9,7 @@ import {
   partizipialattribute,
   passivErsatz,
 } from './b2'
+import { doppelterInfinitiv, genitivPraepositionen, konnektorenC1 } from './c1'
 import { adjektiveMitPraepositionen, alsOb, dativAkkusativ, perfekt, praepositionenKasus } from './grundlagen'
 import { konjunktiv2 } from './konjunktiv2'
 import { passiv } from './passiv'
@@ -59,6 +60,9 @@ const BASE_TOPICS: GrammarTopic[] = [
   alsOb,
   // C1
   funktionsverbgefuege,
+  konnektorenC1,
+  doppelterInfinitiv,
+  genitivPraepositionen,
 ]
 
 /** Topics in teaching order within each level, with their extra exercises. */
