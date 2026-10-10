@@ -38,19 +38,21 @@ function replaceUmlautSpellings(text: string): string {
   return UMLAUT_SPELLINGS.reduce((result, [pattern, umlaut]) => result.replace(pattern, umlaut), text)
 }
 
+/** Edit distance where swapping two neighbouring letters counts as one edit, like other typos. */
 export function editDistance(a: string, b: string): number {
-  const previous = Array.from({ length: b.length + 1 }, (_, index) => index)
+  const rows = Array.from({ length: a.length + 1 }, (_, i) =>
+    Array.from({ length: b.length + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0)),
+  )
   for (let i = 1; i <= a.length; i++) {
-    let diagonal = previous[0]
-    previous[0] = i
     for (let j = 1; j <= b.length; j++) {
-      const above = previous[j]
-      const substitution = diagonal + (a[i - 1] === b[j - 1] ? 0 : 1)
-      previous[j] = Math.min(above + 1, previous[j - 1] + 1, substitution)
-      diagonal = above
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1
+      rows[i][j] = Math.min(rows[i - 1][j] + 1, rows[i][j - 1] + 1, rows[i - 1][j - 1] + cost)
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        rows[i][j] = Math.min(rows[i][j], rows[i - 2][j - 2] + 1)
+      }
     }
   }
-  return previous[b.length]
+  return rows[a.length][b.length]
 }
 
 function allowedTypos(length: number): number {
@@ -77,11 +79,32 @@ function compareOne(given: string, expected: string): CheckResult {
   if (typed.replace(/ss/g, 'ß') === target || typed.replace(/ß/g, 'ss') === target) {
     return { verdict: 'almost', expected, note: 'Check ß and ss.' }
   }
-  const distance = editDistance(typed.toLowerCase(), target.toLowerCase())
-  if (distance > 0 && distance <= allowedTypos(target.length)) {
+  if (isTypo(typed.toLowerCase(), target.toLowerCase())) {
     return { verdict: 'almost', expected, note: 'Small spelling mistake.' }
   }
   return { verdict: 'wrong', expected }
+}
+
+const ENDING = /(e|en|er|es|em|n|s)$/
+
+/**
+ * A slip of the keyboard, not a grammar mistake: exactly one word differs, it
+ * is long enough to judge, it is off by a letter or two, and the difference
+ * is not an inflectional ending (den/dem, größere/größeren stay wrong).
+ */
+function isTypo(typed: string, target: string): boolean {
+  const typedWords = typed.split(' ')
+  const targetWords = target.split(' ')
+  if (typedWords.length !== targetWords.length) return false
+  const differing = targetWords
+    .map((word, index) => [typedWords[index], word] as const)
+    .filter(([typedWord, targetWord]) => typedWord !== targetWord)
+  if (differing.length !== 1) return false
+  const [typedWord, targetWord] = differing[0]
+  if (targetWord.length < 5) return false
+  if (typedWord.replace(ENDING, '') === targetWord.replace(ENDING, '')) return false
+  const distance = editDistance(typedWord, targetWord)
+  return distance > 0 && distance <= allowedTypos(targetWord.length)
 }
 
 const VERDICT_RANK: Record<Verdict, number> = { correct: 2, almost: 1, wrong: 0 }

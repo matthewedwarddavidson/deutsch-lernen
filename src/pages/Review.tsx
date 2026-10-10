@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState, type KeyboardEvent } from 'react'
 import { Link } from 'react-router'
 import { AnswerInput } from '../components/AnswerInput'
 import { ExerciseView } from '../components/ExerciseView'
@@ -12,6 +12,7 @@ import type { Word } from '../content/types'
 import { gradeCard, recordActivity, suspendCard } from '../lib/actions'
 import { dueCards, type CardRef } from '../lib/cards'
 import { checkAnswer, type CheckResult, type Verdict } from '../lib/check'
+import { verbForms } from '../lib/verbForms'
 import { checkWord, suggestedGrade } from '../lib/grading'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
@@ -118,6 +119,7 @@ export function ReviewCard({ card, stored, onGrade }: CardProps) {
   if (card.kind === 'recognise') return <RecogniseCard word={card.word} stored={stored} onGrade={onGrade} />
   if (card.kind === 'produce') return <ProduceCard word={card.word} stored={stored} onGrade={onGrade} />
   if (card.kind === 'mistake') return <MistakeCard mistake={card.mistake} stored={stored} onGrade={onGrade} />
+  if (card.kind === 'forms') return <FormsCard word={card.word} stored={stored} onGrade={onGrade} />
   return <GrammarCard card={card} stored={stored} onGrade={onGrade} />
 }
 
@@ -345,6 +347,102 @@ function MistakeCard({
             {result.note && <div className="small">{result.note}</div>}
           </Feedback>
           <GradeButtons card={stored} suggested={suggestedGrade(result.verdict)} onGrade={onGrade} />
+        </>
+      )}
+    </div>
+  )
+}
+
+const FORM_FIELDS = [
+  { key: 'present', label: 'er/sie/es (Präsens)' },
+  { key: 'preterite', label: 'Präteritum (er)' },
+  { key: 'perfect', label: 'Perfekt (er), with hat or ist' },
+] as const
+
+/** Strips a leading pronoun, so "er fuhr" and "fuhr" both count. */
+function withoutPronoun(text: string): string {
+  return text.trim().replace(/^(er|sie|es)\s+/i, '')
+}
+
+/** An irregular verb: type its three key forms. */
+function FormsCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; onGrade: (grade: Grade) => void }) {
+  const forms = verbForms(word)!
+  const [values, setValues] = useState({ present: '', preterite: '', perfect: '' })
+  const [results, setResults] = useState<Record<string, CheckResult>>()
+  const fieldRefs = useRef<(HTMLInputElement | null)[]>([])
+
+  function submit() {
+    if (results) return
+    const checked: Record<string, CheckResult> = {}
+    for (const field of FORM_FIELDS) {
+      checked[field.key] = checkAnswer(withoutPronoun(values[field.key]), [forms[field.key]])
+    }
+    setResults(checked)
+    speak(`${word.german.replace(/^sich /, '')}, ${forms.present}, ${forms.preterite}, ${forms.perfect}`)
+  }
+
+  function handleKey(event: KeyboardEvent<HTMLInputElement>, index: number) {
+    if (event.key !== 'Enter') return
+    event.preventDefault()
+    if (index < FORM_FIELDS.length - 1) fieldRefs.current[index + 1]?.focus()
+    else submit()
+  }
+
+  const verdicts = results ? Object.values(results).map((result) => result.verdict) : []
+  const overall: Verdict | undefined = !results
+    ? undefined
+    : verdicts.includes('wrong')
+      ? 'wrong'
+      : verdicts.includes('almost')
+        ? 'almost'
+        : 'correct'
+
+  return (
+    <div className="stack">
+      <div className="eyebrow">Verb forms · irregular</div>
+      <div className="review-prompt">{word.german}</div>
+      <div className="muted">{word.english}</div>
+      <div className="forms-grid">
+        {FORM_FIELDS.map((field, index) => (
+          <label key={field.key} className="field">
+            {field.label}
+            <input
+              ref={(element) => {
+                fieldRefs.current[index] = element
+              }}
+              className={`input de ${results?.[field.key].verdict ?? ''}`}
+              value={values[field.key]}
+              onChange={(event) => setValues({ ...values, [field.key]: event.target.value })}
+              onKeyDown={(event) => handleKey(event, index)}
+              disabled={!!results}
+              autoFocus={index === 0}
+              autoComplete="off"
+              autoCapitalize="off"
+              spellCheck={false}
+              lang="de"
+            />
+            {results && results[field.key].verdict !== 'correct' && (
+              <span className="small de">
+                <strong>{forms[field.key]}</strong>
+              </span>
+            )}
+          </label>
+        ))}
+      </div>
+      {!results ? (
+        <div>
+          <button className="btn primary" onClick={submit}>
+            Check <span className="kbd">Enter</span>
+          </button>
+        </div>
+      ) : (
+        <>
+          <Feedback verdict={overall!}>
+            <div className="de small">
+              {forms.present} · {forms.preterite} · {forms.perfect}
+            </div>
+          </Feedback>
+          <GradeButtons card={stored} suggested={suggestedGrade(overall!)} onGrade={onGrade} />
         </>
       )}
     </div>

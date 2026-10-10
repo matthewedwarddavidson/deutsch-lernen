@@ -173,7 +173,7 @@ export function Today() {
 function reviewBreakdown(due: ReturnType<typeof dueCards>): string {
   if (due.length === 0) return 'Come back tomorrow, or learn something new.'
   const count = (kinds: string[]) => due.filter((card) => kinds.includes(card.kind)).length
-  const words = count(['recognise', 'produce'])
+  const words = count(['recognise', 'produce', 'forms'])
   const grammar = count(['grammar'])
   const mistakes = count(['mistake'])
   return [words && `${words} words`, grammar && `${grammar} grammar`, mistakes && `${mistakes} of your mistakes`]

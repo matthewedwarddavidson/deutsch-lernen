@@ -4,10 +4,12 @@ import { LEVELS } from '../content/types'
 import { BUILT_IN_WORDS } from '../content/words'
 import type { AppState, Mistake } from './store'
 import { isDue, newCard, type StoredCard } from './srs'
+import { isIrregular } from './verbForms'
 
 export type CardRef =
   | { id: string; kind: 'recognise'; word: Word }
   | { id: string; kind: 'produce'; word: Word }
+  | { id: string; kind: 'forms'; word: Word }
   | { id: string; kind: 'grammar'; topic: GrammarTopic; exercise: GrammarExercise }
   | { id: string; kind: 'mistake'; mistake: Mistake }
 
@@ -19,6 +21,10 @@ export function recogniseId(word: Word) {
 
 export function produceId(word: Word) {
   return `w:${word.id}:p`
+}
+
+export function formsId(word: Word) {
+  return `w:${word.id}:f`
 }
 
 /** A short, stable hash so exercise cards survive reordering. */
@@ -55,6 +61,7 @@ export function buildCardIndex(state: AppState): Map<string, CardRef> {
   for (const word of allWords(state)) {
     index.set(recogniseId(word), { id: recogniseId(word), kind: 'recognise', word })
     index.set(produceId(word), { id: produceId(word), kind: 'produce', word })
+    if (isIrregular(word)) index.set(formsId(word), { id: formsId(word), kind: 'forms', word })
   }
   for (const topic of GRAMMAR_TOPICS) {
     for (const exercise of topic.exercises) {
@@ -156,11 +163,25 @@ export function nextNewWords(state: AppState, count: number, theme?: string): Wo
 }
 
 /** Cards to add when a word is learned. Production waits a day so it isn't trivially easy. */
+/** Cards to add when a word is learned. Irregular verbs also get a card for their forms, a few days later. */
 export function cardsForNewWord(word: Word, now: Date): Record<string, StoredCard> {
-  return {
+  const cards: Record<string, StoredCard> = {
     [recogniseId(word)]: newCard(now),
     [produceId(word)]: newCard(now, ONE_DAY),
   }
+  if (isIrregular(word)) cards[formsId(word)] = newCard(now, 3 * ONE_DAY)
+  return cards
+}
+
+/** Adds verb-form cards for irregular verbs learned before those cards existed. */
+export function missingFormCards(state: AppState, now: Date): Record<string, StoredCard> {
+  const cards: Record<string, StoredCard> = {}
+  let spread = 0
+  for (const word of allWords(state)) {
+    if (!isWordLearned(state, word) || !isIrregular(word) || formsId(word) in state.cards) continue
+    cards[formsId(word)] = newCard(now, ONE_DAY * (1 + (spread++ % 5)))
+  }
+  return cards
 }
 
 export function cardsForTopic(topic: GrammarTopic, now: Date): Record<string, StoredCard> {

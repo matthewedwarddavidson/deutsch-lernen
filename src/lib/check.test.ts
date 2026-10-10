@@ -11,6 +11,7 @@ describe('editDistance', () => {
   it('counts edits', () => {
     expect(editDistance('kitten', 'sitting')).toBe(3)
     expect(editDistance('', 'abc')).toBe(3)
+    expect(editDistance('Vertarg', 'Vertrag')).toBe(1)
   })
 })
 
@@ -35,9 +36,23 @@ describe('checkAnswer', () => {
   })
 
   it('allows one typo in longer words but not short ones', () => {
-    expect(checkAnswer('Wohnnug', ['Wohnung']).verdict).toBe('wrong')
+    expect(checkAnswer('Wohnnug', ['Wohnung']).verdict).toBe('almost')
     expect(checkAnswer('Wohnug', ['Wohnung']).verdict).toBe('almost')
+    expect(checkAnswer('Wonhnug', ['Wohnung']).verdict).toBe('wrong')
     expect(checkAnswer('dem', ['den']).verdict).toBe('wrong')
+  })
+
+  it('treats a wrong ending as wrong, not a typo', () => {
+    expect(checkAnswer('größere', ['größeren']).verdict).toBe('wrong')
+    expect(checkAnswer('den Kollege', ['den Kollegen']).verdict).toBe('wrong')
+    expect(checkAnswer('Ich gebe dem Kind den Ball', ['Ich gebe den Kind den Ball']).verdict).toBe('wrong')
+    expect(checkAnswer('hat umgezogen', ['ist umgezogen']).verdict).toBe('wrong')
+  })
+
+  it('still forgives a typo inside a longer sentence', () => {
+    expect(checkAnswer('Ich habe den Vertarg unterschrieben', ['Ich habe den Vertrag unterschrieben']).verdict).toBe(
+      'almost',
+    )
   })
 
   it('flags missing commas', () => {

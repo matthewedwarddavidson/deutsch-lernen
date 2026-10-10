@@ -1,5 +1,5 @@
 import type { GrammarTopic, ListeningText, ReadingText, Word, WritingTask } from '../content/types'
-import { cardsForNewWord, cardsForTopic } from './cards'
+import { cardsForNewWord, cardsForTopic, missingFormCards } from './cards'
 import { newCard, reviewCard, type Grade } from './srs'
 import { update, type ActivityKind, type Mistake, type Settings, type WritingFeedback } from './store'
 
@@ -53,11 +53,19 @@ export function unsuspendCards(cardIds: string[]) {
   })
 }
 
+export function addMissingFormCards() {
+  update((state) => {
+    const cards = missingFormCards(state, new Date())
+    return Object.keys(cards).length === 0 ? state : { ...state, cards: { ...state.cards, ...cards } }
+  })
+}
+
 export function forgetWord(word: Word) {
   update((state) => {
     const cards = { ...state.cards }
     delete cards[`w:${word.id}:r`]
     delete cards[`w:${word.id}:p`]
+    delete cards[`w:${word.id}:f`]
     const wordsLearned = { ...state.wordsLearned }
     delete wordsLearned[word.id]
     return { ...state, cards, wordsLearned }
