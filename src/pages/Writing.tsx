@@ -2,12 +2,14 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { GenerateButton } from '../components/GenerateButton'
 import { Icon } from '../components/Icon'
+import { ViaClaudeAi } from '../components/ViaClaudeAi'
 import { writingTasks } from '../content/library'
 import { themeById } from '../content/themes'
 import { LEVELS, type WritingTask } from '../content/types'
 import { deleteGenerated, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
 import { diffWords } from '../lib/check'
 import { ClaudeError, correctWriting } from '../lib/claude'
+import { feedbackJob } from '../lib/generation'
 import { useTimeOnPage } from '../lib/hooks'
 import { useAppState, type WritingAttempt, type WritingFeedback } from '../lib/store'
 
@@ -45,8 +47,8 @@ export function WritingList() {
           <div className="eyebrow">Schreiben</div>
           <h1>Writing</h1>
           <p>
-            Exam-style tasks. Write first, then compare with the model answer. With a Claude API key you also get
-            focused corrections: a corrected version and the few error types that matter most.
+            Exam-style tasks. Write first, then compare with the model answer. Claude can correct your text: a corrected
+            version plus the few error types that matter most. That works free through your claude.ai plan.
           </p>
         </div>
         <GenerateButton kind="writing" />
@@ -110,6 +112,7 @@ function WritingEditor({ task }: { task: WritingTask }) {
   const [text, setText] = useState(current?.text ?? '')
   const [showModel, setShowModel] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [correcting, setCorrecting] = useState(false)
   const [error, setError] = useState('')
   const textarea = useRef<HTMLTextAreaElement>(null)
   useTimeOnPage((seconds) => recordActivity('writing', seconds))
@@ -150,6 +153,7 @@ function WritingEditor({ task }: { task: WritingTask }) {
     try {
       const feedback = await correctWriting(state.settings.apiKey, task, text)
       saveWriting(attemptId, task.id, text, feedback)
+      setCorrecting(false)
     } catch (caught) {
       setError(caught instanceof ClaudeError ? caught.message : 'Something went wrong.')
     }
@@ -222,15 +226,9 @@ function WritingEditor({ task }: { task: WritingTask }) {
           </div>
 
           <div className="row" style={{ marginTop: 14 }}>
-            {state.settings.apiKey ? (
-              <button className="btn primary" onClick={getFeedback} disabled={busy || words < 10}>
-                <Icon name="sparkle" /> {busy ? 'Reading your text…' : feedback ? 'Check again' : 'Get corrections'}
-              </button>
-            ) : (
-              <Link className="btn" to="/settings">
-                Add a Claude API key for corrections
-              </Link>
-            )}
+            <button className="btn primary" onClick={() => setCorrecting(!correcting)} disabled={words < 10}>
+              <Icon name="sparkle" /> {feedback ? 'Check again' : 'Get corrections'}
+            </button>
             <button className="btn" onClick={() => setShowModel(!showModel)}>
               {showModel ? 'Hide model answer' : 'Model answer'}
             </button>
@@ -240,6 +238,28 @@ function WritingEditor({ task }: { task: WritingTask }) {
               </button>
             )}
           </div>
+          {correcting && (
+            <div className="card stack" style={{ marginTop: 14 }}>
+              <div className="small muted">
+                Free with your Claude plan: copy the prompt (it includes your text) to claude.ai, then paste the reply
+                here.
+              </div>
+              <ViaClaudeAi
+                job={() => feedbackJob(task, text)}
+                onResult={(result) => {
+                  saveWriting(attemptId, task.id, text, result)
+                  setCorrecting(false)
+                }}
+              />
+              {state.settings.apiKey && (
+                <div>
+                  <button className="btn small" onClick={getFeedback} disabled={busy}>
+                    {busy ? 'Reading your text…' : 'Or correct with your API key (paid per use)'}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
           {error && (
             <div className="feedback wrong">
               <div className="small">{error}</div>

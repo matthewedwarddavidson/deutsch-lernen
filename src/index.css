@@ -1691,3 +1691,20 @@ table.grammar-table {
     flex: 1;
   }
 }
+
+.via-steps {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.via-steps li::marker {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.via-steps li > * + * {
+  margin-top: 6px;
+}

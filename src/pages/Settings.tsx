@@ -141,14 +141,18 @@ export function Settings() {
       </div>
 
       <div className="card stack">
-        <h3>Claude API key</h3>
+        <h3>Claude</h3>
         <p className="muted small" style={{ margin: 0 }}>
-          Optional. With a key, the app corrects your writing and generates new texts and tasks at your level. The key
-          is stored only in this browser and sent only to Anthropic. Get one at{' '}
+          Writing corrections and new texts work through claude.ai at no extra cost: the app copies a prompt, you paste
+          Claude's reply back. You don't need anything here for that.
+        </p>
+        <p className="muted small" style={{ margin: 0 }}>
+          Optional, for one-click use: an API key from{' '}
           <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">
             console.anthropic.com
           </a>
-          .
+          . API use is billed separately from a Pro or Max plan, per request (a correction costs a few cents). The key is
+          stored only in this browser and sent only to Anthropic.
         </p>
         <div className="row">
           <input
