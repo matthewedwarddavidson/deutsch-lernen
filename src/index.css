@@ -185,6 +185,20 @@ code {
   border-radius: 2px;
 }
 
+/* Flag colours stay fixed in both themes; the outline keeps black visible on dark. */
+.brand-mark span:nth-child(1) {
+  background: #1a1a1a;
+  box-shadow: 0 0 0 1px var(--border-strong);
+}
+
+.brand-mark span:nth-child(2) {
+  background: #d63a3a;
+}
+
+.brand-mark span:nth-child(3) {
+  background: #f2c230;
+}
+
 .nav-link {
   display: flex;
   align-items: center;

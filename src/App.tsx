@@ -37,9 +37,9 @@ function Sidebar() {
     <nav className="sidebar" aria-label="Main">
       <NavLink to="/" className="brand">
         <span className="brand-mark" aria-hidden="true">
-          <span style={{ background: 'var(--text)' }} />
-          <span style={{ background: 'var(--die)' }} />
-          <span style={{ background: '#e8b84a' }} />
+          <span />
+          <span />
+          <span />
         </span>
         Deutsch lernen
       </NavLink>
