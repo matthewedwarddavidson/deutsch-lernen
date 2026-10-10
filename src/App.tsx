@@ -74,7 +74,7 @@ export default function App() {
         <main className="main">
           <Routes>
             <Route path="/" element={<Today />} />
-            <Route path="/review" element={<Review />} />
+            <Route path="/review" element={<Fresh page={Review} />} />
             <Route path="/words" element={<Words />} />
             <Route path="/words/learn" element={<Fresh page={Learn} />} />
             <Route path="/words/speed" element={<Fresh page={SpeedRound} />} />

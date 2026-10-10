@@ -19,9 +19,12 @@ import { speak } from '../lib/speech'
 import { Rating, type Grade, type StoredCard } from '../lib/srs'
 import { getState, useAppState, type Mistake } from '../lib/store'
 
+const SESSION_SIZE = 60
+
 export function Review() {
   // The queue is fixed when the session starts; cards failed again come back at the end.
-  const [queue, setQueue] = useState<CardRef[]>(() => dueCards(getState(), new Date()))
+  // Long backlogs are split into sessions, most overdue first.
+  const [queue, setQueue] = useState<CardRef[]>(() => dueCards(getState(), new Date()).slice(0, SESSION_SIZE))
   const [position, setPosition] = useState(0)
   const [results, setResults] = useState<Grade[]>([])
   const state = useAppState()
@@ -94,6 +97,7 @@ export function Review() {
 
 function SessionSummary({ results }: { results: Grade[] }) {
   const firstTry = results.filter((grade) => grade !== Rating.Again).length
+  const stillDue = dueCards(getState(), new Date()).length
   return (
     <div className="page narrow">
       <div className="card empty">
@@ -101,9 +105,16 @@ function SessionSummary({ results }: { results: Grade[] }) {
         <p>
           {results.length} reviews. {firstTry} remembered, {results.length - firstTry} to see again soon.
         </p>
-        <Link className="btn primary" to="/">
-          Back to today
-        </Link>
+        <div className="row" style={{ justifyContent: 'center' }}>
+          {stillDue > 0 && (
+            <Link className="btn" to="/review">
+              {stillDue} more due: keep going
+            </Link>
+          )}
+          <Link className="btn primary" to="/">
+            Back to today
+          </Link>
+        </div>
       </div>
     </div>
   )
