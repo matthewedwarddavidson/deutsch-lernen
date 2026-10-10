@@ -268,7 +268,7 @@ export function Dictation() {
             exactly what to listen for.
           </p>
           <div className="row" style={{ justifyContent: 'center' }}>
-            <Link className="btn primary" to="/listening/dictation" reloadDocument>
+            <Link className="btn primary" to="/listening/dictation">
               Another 10
             </Link>
             <Link className="btn" to="/">

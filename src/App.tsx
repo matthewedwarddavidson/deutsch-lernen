@@ -1,4 +1,4 @@
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router'
+import { HashRouter, NavLink, Route, Routes, useLocation } from 'react-router'
 import { Icon, type IconName } from './components/Icon'
 import { dueCards } from './lib/cards'
 import { useNow } from './lib/hooks'
@@ -58,9 +58,16 @@ function Sidebar() {
   )
 }
 
+/** Starts a page afresh on every navigation, even to the same address, so "another round" links work. */
+function Fresh({ page: Page }: { page: () => React.ReactNode }) {
+  const location = useLocation()
+  return <Page key={location.key} />
+}
+
 export default function App() {
   return (
-    <BrowserRouter>
+    // Hash routes work on static hosting such as GitHub Pages without server rewrites.
+    <HashRouter>
       <div className="app">
         <Sidebar />
         <main className="main">
@@ -68,13 +75,13 @@ export default function App() {
             <Route path="/" element={<Today />} />
             <Route path="/review" element={<Review />} />
             <Route path="/words" element={<Words />} />
-            <Route path="/words/learn" element={<Learn />} />
+            <Route path="/words/learn" element={<Fresh page={Learn} />} />
             <Route path="/grammar" element={<GrammarList />} />
             <Route path="/grammar/:topicId" element={<GrammarLesson />} />
             <Route path="/reading" element={<ReadingList />} />
             <Route path="/reading/:textId" element={<ReadingPage />} />
             <Route path="/listening" element={<ListeningList />} />
-            <Route path="/listening/dictation" element={<Dictation />} />
+            <Route path="/listening/dictation" element={<Fresh page={Dictation} />} />
             <Route path="/listening/:textId" element={<ListeningPage />} />
             <Route path="/writing" element={<WritingList />} />
             <Route path="/writing/:taskId" element={<WritingPage />} />
@@ -84,6 +91,6 @@ export default function App() {
           </Routes>
         </main>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

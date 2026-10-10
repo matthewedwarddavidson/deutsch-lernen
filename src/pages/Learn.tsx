@@ -53,7 +53,7 @@ export function Learn() {
             <Link className="btn primary" to="/review">
               Review
             </Link>
-            <Link className="btn" to={`/words/learn?more=1${theme ? `&theme=${theme}` : ''}`} reloadDocument>
+            <Link className="btn" to={`/words/learn?more=1${theme ? `&theme=${theme}` : ''}`}>
               Learn 10 more anyway
             </Link>
           </div>

@@ -1,5 +1,7 @@
 # Deutsch lernen
 
+**[Open the app →](https://matthewedwarddavidson.github.io/deutsch-lernen/)**
+
 A web app for learning German from A2 upwards: vocabulary, grammar, reading, listening and writing. No speaking, no streaks, no points.
 
 The design follows the research summarised in [docs/research.md](docs/research.md): Nation's four strands, retrieval practice, FSRS spaced repetition, explicit grammar with interleaved practice, graded reading at 95–98% known words, dictation, and focused written corrective feedback.
@@ -34,7 +36,7 @@ Use Chrome, Edge or Safari for listening. On macOS, install a better German voic
 | **Writing** | Goethe-style tasks (A2–C1) with useful phrases, live word and connector counts, model answers, and corrections from Claude. |
 | **Progress** | Words known by level, recall rate, review forecast, study time, grammar mastery. |
 
-Progress is stored in the browser (localStorage). Back it up from Settings.
+Progress is stored in the browser (localStorage), separately for the hosted app and a local copy. Back it up from Settings to move between them.
 
 ## Claude, at no extra cost
 
