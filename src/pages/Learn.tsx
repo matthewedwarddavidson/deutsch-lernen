@@ -27,12 +27,12 @@ type Step = { kind: 'study'; index: number } | { kind: 'quiz'; queue: Word[]; fi
 export function Learn() {
   const [searchParams] = useSearchParams()
   const theme = searchParams.get('theme') as ThemeId | null
-  const [words] = useState(() => {
+  const [{ words, limitReached }] = useState(() => {
     const state = getState()
     const remainingToday = Math.max(0, state.settings.newWordsPerDay - newWordsLearnedToday(state, new Date()))
     const requested = Number(searchParams.get('count'))
     const count = requested > 0 ? requested : searchParams.get('more') ? BATCH_SIZE * 2 : remainingToday
-    return nextNewWords(state, count, theme ?? undefined)
+    return { words: nextNewWords(state, count, theme ?? undefined), limitReached: count === 0 }
   })
   const [batchStart, setBatchStart] = useState(0)
   const [step, setStep] = useState<Step>({ kind: 'study', index: 0 })
@@ -45,17 +45,25 @@ export function Learn() {
     return (
       <div className="page narrow">
         <div className="card empty">
-          <h2>{theme ? `No new words left in ${themeById(theme).title}` : "You've reached today's new words"}</h2>
+          <h2>
+            {limitReached
+              ? "You've reached today's new words"
+              : `No new words left${theme ? ` in ${themeById(theme).title}` : ' at your level'}`}
+          </h2>
           <p>
-            New words are spread over days so reviews stay manageable. You can still learn more if you have the energy.
+            {limitReached
+              ? 'New words are spread over days so reviews stay manageable. You can still learn more if you have the energy.'
+              : 'Raise your target level in Settings, or import words from your course.'}
           </p>
           <div className="row" style={{ justifyContent: 'center' }}>
             <Link className="btn primary" to="/review">
               Review
             </Link>
-            <Link className="btn" to={`/words/learn?more=1${theme ? `&theme=${theme}` : ''}`}>
-              Learn 10 more anyway
-            </Link>
+            {limitReached && (
+              <Link className="btn" to={`/words/learn?more=1${theme ? `&theme=${theme}` : ''}`}>
+                Learn 10 more anyway
+              </Link>
+            )}
           </div>
         </div>
       </div>
