@@ -81,6 +81,9 @@ export function Words() {
           >
             <Icon name="plus" /> Add one
           </button>
+          <Link className="btn" to="/words/speed">
+            Speed round
+          </Link>
           <Link className="btn primary" to={theme === 'all' ? '/words/learn' : `/words/learn?theme=${theme}`}>
             Learn new words
           </Link>

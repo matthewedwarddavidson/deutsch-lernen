@@ -15,6 +15,7 @@ export const THEMES: Theme[] = [
   { id: 'einkaufen', title: 'Einkaufen und Geld', english: 'Shopping and money' },
   { id: 'essen', title: 'Essen und Trinken', english: 'Food and drink' },
   { id: 'behoerden', title: 'Ämter und Dienstleistungen', english: 'Offices and services' },
+  { id: 'allgemein', title: 'Allgemein', english: 'General words for any topic' },
   { id: 'redemittel', title: 'Redemittel', english: 'Useful phrases and connectors' },
   { id: 'eigene', title: 'Meine Wörter', english: 'My own words' },
 ]

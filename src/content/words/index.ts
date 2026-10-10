@@ -1,5 +1,6 @@
 import { parseWords } from '../parseWords'
 import type { ThemeId, Word } from '../types'
+import allgemein from './allgemein'
 import alltag from './alltag'
 import arbeit from './arbeit'
 import behoerden from './behoerden'
@@ -31,6 +32,7 @@ const SOURCES: [ThemeId, string][] = [
   ['einkaufen', einkaufen],
   ['essen', essen],
   ['behoerden', behoerden],
+  ['allgemein', allgemein],
   ['redemittel', redemittel],
 ]
 

@@ -142,6 +142,13 @@ export function Today() {
           to="/listening/dictation"
           action="Start"
         />
+        <PlanCard
+          icon="today"
+          title="Fluency"
+          detail="Speed round: recognise known words in under 1.5 seconds, or re-read a text faster."
+          to="/words/speed"
+          action="Go"
+        />
       </div>
 
       <div className="section-title section">This week</div>

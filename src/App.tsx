@@ -10,6 +10,7 @@ import { Progress } from './pages/Progress'
 import { ReadingList, ReadingPage } from './pages/Reading'
 import { Review } from './pages/Review'
 import { Settings } from './pages/Settings'
+import { SpeedRound } from './pages/SpeedRound'
 import { Today } from './pages/Today'
 import { Words } from './pages/Words'
 import { WritingList, WritingPage } from './pages/Writing'
@@ -76,6 +77,7 @@ export default function App() {
             <Route path="/review" element={<Review />} />
             <Route path="/words" element={<Words />} />
             <Route path="/words/learn" element={<Fresh page={Learn} />} />
+            <Route path="/words/speed" element={<Fresh page={SpeedRound} />} />
             <Route path="/grammar" element={<GrammarList />} />
             <Route path="/grammar/:topicId" element={<GrammarLesson />} />
             <Route path="/reading" element={<ReadingList />} />

@@ -17,6 +17,7 @@ export type ThemeId =
   | 'essen'
   | 'behoerden'
   | 'redemittel'
+  | 'allgemein'
   | 'eigene'
 
 export interface Theme {
