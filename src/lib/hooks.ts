@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /**
  * Calls the handler for key presses while active, ignoring typing in text
@@ -37,4 +37,14 @@ export function useTimeOnPage(onLeave: (seconds: number) => void) {
     const started = Date.now()
     return () => onLeaveRef.current((Date.now() - started) / 1000)
   }, [])
+}
+
+/** The current time, refreshed every minute, so due counts stay current without reading the clock during render. */
+export function useNow(): Date {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 60_000)
+    return () => clearInterval(timer)
+  }, [])
+  return now
 }

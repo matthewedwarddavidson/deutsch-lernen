@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { LEVELS, type Level, type ListeningText, type ReadingText, type WritingTask } from '../content/types'
 import { saveGeneratedListening, saveGeneratedReading, saveGeneratedWriting } from '../lib/actions'
-import { ClaudeError, runJob } from '../lib/claude'
 import { listeningJob, readingJob, writingTaskJob, type Job } from '../lib/generation'
 import { useAppState } from '../lib/store'
 import { Icon } from './Icon'
@@ -50,9 +49,11 @@ export function GenerateButton({ kind }: { kind: Kind }) {
     setBusy(true)
     setError('')
     try {
+      // Loaded on demand: only API-key users need the SDK.
+      const { runJob } = await import('../lib/claude')
       save(await runJob(settings.apiKey, jobFor(kind, level, topic.trim())))
     } catch (caught) {
-      setError(caught instanceof ClaudeError ? caught.message : 'Something went wrong. Try again.')
+      setError(caught instanceof Error ? caught.message : 'Something went wrong. Try again.')
       setBusy(false)
     }
   }

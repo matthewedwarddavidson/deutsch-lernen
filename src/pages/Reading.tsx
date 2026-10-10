@@ -25,7 +25,7 @@ const GENRE_LABELS: Record<ReadingText['genre'], string> = {
   report: 'Bericht',
 }
 
-export function wordCount(paragraphs: string[]): number {
+function wordCount(paragraphs: string[]): number {
   return paragraphs.join(' ').split(/\s+/).filter(Boolean).length
 }
 

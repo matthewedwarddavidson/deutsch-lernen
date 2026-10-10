@@ -71,7 +71,7 @@ export function Review() {
       <div className="card review-card">
         <ReviewCard key={`${current.id}-${position}`} card={current} stored={stored} onGrade={handleGrade} />
       </div>
-      <p className="faint small" style={{ marginTop: 12 }}>
+      <p className="faint small keys-hint" style={{ marginTop: 12 }}>
         Keys: <span className="kbd">Enter</span> check or accept the suggested grade, <span className="kbd">1</span>–
         <span className="kbd">4</span> pick a grade.
       </p>

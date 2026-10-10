@@ -8,7 +8,6 @@ import { themeById } from '../content/themes'
 import { LEVELS, type WritingTask } from '../content/types'
 import { addMistake, deleteGenerated, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
 import { diffWords } from '../lib/check'
-import { ClaudeError, correctWriting } from '../lib/claude'
 import { feedbackJob } from '../lib/generation'
 import { useTimeOnPage } from '../lib/hooks'
 import { useAppState, type WritingAttempt, type WritingFeedback } from '../lib/store'
@@ -178,11 +177,13 @@ function WritingEditor({ task }: { task: WritingTask }) {
     setBusy(true)
     setError('')
     try {
+      // Loaded on demand: only API-key users need the SDK.
+      const { correctWriting } = await import('../lib/claude')
       const feedback = await correctWriting(state.settings.apiKey, task, text)
       saveWriting(attemptId, task.id, text, feedback)
       setCorrecting(false)
     } catch (caught) {
-      setError(caught instanceof ClaudeError ? caught.message : 'Something went wrong.')
+      setError(caught instanceof Error ? caught.message : 'Something went wrong.')
     }
     setBusy(false)
   }

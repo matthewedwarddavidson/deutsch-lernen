@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { Icon, type IconName } from '../components/Icon'
 import { listeningTexts, readingTexts, suggest, writingTasks } from '../content/library'
 import { dueCards, newWordsLearnedToday, nextNewWords } from '../lib/cards'
+import { useNow } from '../lib/hooks'
 import { useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
 
@@ -47,7 +48,7 @@ function minutesThisWeek(state: AppState, kinds: ActivityKind[]): number {
 
 export function Today() {
   const state = useAppState()
-  const now = new Date()
+  const now = useNow()
   const due = dueCards(state, now)
   const learnedToday = newWordsLearnedToday(state, now)
   const newLeft = Math.max(0, state.settings.newWordsPerDay - learnedToday)

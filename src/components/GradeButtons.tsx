@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { previewIntervals, Rating, type Grade, type StoredCard } from '../lib/srs'
 
 const GRADES: { grade: Grade; label: string; className: string; key: string }[] = [
@@ -19,7 +19,8 @@ interface GradeButtonsProps {
  * grade; Enter accepts the suggested one.
  */
 export function GradeButtons({ card, suggested, onGrade }: GradeButtonsProps) {
-  const intervals = card ? previewIntervals(card, new Date()) : undefined
+  const [shownAt] = useState(() => new Date())
+  const intervals = card ? previewIntervals(card, shownAt) : undefined
 
   useEffect(() => {
     function handleKey(event: KeyboardEvent) {

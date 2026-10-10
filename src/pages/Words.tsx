@@ -11,6 +11,7 @@ import { addCustomWord, addCustomWords, forgetWord, learnWord, removeCustomWord 
 import { wordImportJob } from '../lib/generation'
 import { allWords, isWordLearned, recogniseId } from '../lib/cards'
 import { isMature, Rating, retrievability } from '../lib/srs'
+import { useNow } from '../lib/hooks'
 import { useAppState, type AppState } from '../lib/store'
 
 type Status = 'new' | 'learning' | 'known'
@@ -157,7 +158,8 @@ function WordRow({
 }) {
   const status = wordStatus(state, word)
   const card = state.cards[recogniseId(word)]
-  const recall = card ? retrievability(card, new Date()) : 0
+  const now = useNow()
+  const recall = card ? retrievability(card, now) : 0
   return (
     <div className={`word-row ${open ? 'open' : ''}`}>
       <button className="word-row-summary" onClick={onToggle} aria-expanded={open}>

@@ -1,6 +1,7 @@
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router'
 import { Icon, type IconName } from './components/Icon'
 import { dueCards } from './lib/cards'
+import { useNow } from './lib/hooks'
 import { useAppState } from './lib/store'
 import { GrammarLesson, GrammarList } from './pages/Grammar'
 import { Learn } from './pages/Learn'
@@ -25,7 +26,8 @@ const NAV: { to: string; label: string; icon: IconName }[] = [
 
 function Sidebar() {
   const state = useAppState()
-  const due = dueCards(state, new Date()).length
+  const now = useNow()
+  const due = dueCards(state, now).length
   return (
     <nav className="sidebar" aria-label="Main">
       <NavLink to="/" className="brand">

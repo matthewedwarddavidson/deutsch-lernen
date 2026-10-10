@@ -265,10 +265,28 @@ code {
   }
 
   .nav-link {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    font-size: 0.62rem;
+    padding: 6px 2px;
+  }
+
+  .nav-link > .row {
     flex-direction: column;
-    gap: 2px;
-    font-size: 0.7rem;
-    padding: 6px 8px;
+    gap: 2px !important;
+    max-width: 100%;
+  }
+
+  .nav-link > .row,
+  .nav-link > .row * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sidebar {
+    gap: 0;
   }
 
   .main {
@@ -1707,4 +1725,12 @@ table.grammar-table {
 
 .via-steps li > * + * {
   margin-top: 6px;
+}
+
+/* Keyboard hints only make sense with a keyboard. */
+@media (hover: none) {
+  .kbd,
+  .keys-hint {
+    display: none;
+  }
 }

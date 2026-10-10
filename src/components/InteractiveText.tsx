@@ -20,7 +20,7 @@ interface Selection {
 }
 
 /** Finds a word-list entry for a form seen in a text: the lemma, a plural, or a reflexive verb without "sich". */
-export function lookUpWord(surface: string, words: Word[]): Word | undefined {
+function lookUpWord(surface: string, words: Word[]): Word | undefined {
   const form = surface.toLowerCase()
   return words.find((word) => {
     const lemma = word.german.toLowerCase()
