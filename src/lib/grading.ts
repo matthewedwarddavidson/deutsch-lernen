@@ -37,7 +37,9 @@ export function solvedSentence(exercise: GrammarExercise): string {
     case 'gap':
       return exercise.prompt.replace('___', exercise.answers[0])
     case 'choice':
-      return exercise.prompt.replace('___', exercise.options[exercise.answer])
+      return exercise.prompt.includes('___')
+        ? exercise.prompt.replace('___', exercise.options[exercise.answer])
+        : exercise.options[exercise.answer]
     case 'order':
       return exercise.words.join(' ')
     case 'transform':

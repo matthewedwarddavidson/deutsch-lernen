@@ -54,6 +54,13 @@ function Explanation({ exercise, result }: { exercise: GrammarExercise; result: 
 }
 
 function GapPrompt({ prompt, filled }: { prompt: string; filled?: string }) {
+  if (!prompt.includes('___')) {
+    return (
+      <p className="de" style={{ fontSize: '1.2rem', margin: 0 }}>
+        {prompt}
+      </p>
+    )
+  }
   const [before, after] = prompt.split('___')
   return (
     <p className="de" style={{ fontSize: '1.3rem', lineHeight: 1.6, margin: 0 }}>

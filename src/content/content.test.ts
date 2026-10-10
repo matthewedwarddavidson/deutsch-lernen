@@ -58,11 +58,12 @@ describe('grammar topics', () => {
     expect(new Set(ids).size).toBe(ids.length)
   })
 
-  it('have one gap in every gap and choice exercise', () => {
+  it('have one gap in every gap exercise and at most one in choice exercises', () => {
     const bad: string[] = []
     for (const topic of GRAMMAR_TOPICS) {
       for (const exercise of topic.exercises) {
-        if ((exercise.kind === 'gap' || exercise.kind === 'choice') && exercise.prompt.split('___').length !== 2) {
+        const gaps = exercise.kind === 'gap' || exercise.kind === 'choice' ? exercise.prompt.split('___').length - 1 : 1
+        if ((exercise.kind === 'gap' && gaps !== 1) || (exercise.kind === 'choice' && gaps > 1)) {
           bad.push(`${topic.id}: ${exercise.prompt}`)
         }
       }
