@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router'
 import { Icon } from '../components/Icon'
 import { InteractiveText } from '../components/InteractiveText'
 import { Questions } from '../components/Questions'
+import { MATCHING_TASKS } from '../content/matching'
 import { READING_TEXTS } from '../content/reading'
 import { themeById } from '../content/themes'
 import { LEVELS, type ReadingText } from '../content/types'
@@ -45,7 +46,8 @@ export function ReadingList() {
       </div>
       {LEVELS.map((level) => {
         const atLevel = texts.filter((text) => text.level === level)
-        if (atLevel.length === 0) return null
+        const matching = MATCHING_TASKS.filter((task) => task.level === level)
+        if (atLevel.length === 0 && matching.length === 0) return null
         return (
           <div key={level} className="section">
             <div className="section-title">{level}</div>
@@ -65,6 +67,23 @@ export function ReadingList() {
                     </h3>
                     <div className="faint small">
                       {wordCount(text.body)} words · about {Math.max(1, Math.round(wordCount(text.body) / 100))} min
+                    </div>
+                  </Link>
+                )
+              })}
+              {matching.map((task) => {
+                const done = state.reading[task.id]
+                return (
+                  <Link key={task.id} to={`/reading/match/${task.id}`} className="card card-link">
+                    <div className="row between" style={{ alignItems: 'flex-start' }}>
+                      <div className="eyebrow">Zuordnung · {themeById(task.theme).title}</div>
+                      {done && <span className="pill good">{Math.round(done.score * 100)}%</span>}
+                    </div>
+                    <h3 className="de" style={{ marginBottom: 4 }}>
+                      {task.title}
+                    </h3>
+                    <div className="faint small">
+                      Match {task.people.length} people to {task.ads.length} ads, as in Lesen Teil 3
                     </div>
                   </Link>
                 )
@@ -204,7 +223,7 @@ export function ReadingPage() {
               <Questions
                 questions={text.questions}
                 onFinish={(score) => {
-                  completeReading(text, score)
+                  completeReading(text.id, score)
                   setFinished(score)
                 }}
               />

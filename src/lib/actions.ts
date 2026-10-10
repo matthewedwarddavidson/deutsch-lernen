@@ -1,4 +1,4 @@
-import type { GrammarTopic, ListeningText, ReadingText, Word } from '../content/types'
+import type { GrammarTopic, ListeningText, Word } from '../content/types'
 import { cardsForNewWord, cardsForTopic, missingCards } from './cards'
 import { newCard, reviewCard, type Grade } from './srs'
 import { update, type ActivityKind, type Mistake, type Settings } from './store'
@@ -82,10 +82,11 @@ export function completeTopic(topic: GrammarTopic) {
   }))
 }
 
-export function completeReading(text: ReadingText, score: number) {
+/** Records a reading text or matching task by id. */
+export function completeReading(id: string, score: number) {
   update((state) => ({
     ...state,
-    reading: { ...state.reading, [text.id]: { completedAt: new Date().toISOString(), score } },
+    reading: { ...state.reading, [id]: { completedAt: new Date().toISOString(), score } },
   }))
 }
 

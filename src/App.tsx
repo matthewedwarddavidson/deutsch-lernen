@@ -8,6 +8,7 @@ import { Exam } from './pages/Exam'
 import { GrammarLesson, GrammarList } from './pages/Grammar'
 import { Learn } from './pages/Learn'
 import { Dictation, ListeningList, ListeningPage } from './pages/Listening'
+import { MatchingPage } from './pages/Matching'
 import { Progress } from './pages/Progress'
 import { ReadingList, ReadingPage } from './pages/Reading'
 import { Reference } from './pages/Reference'
@@ -107,6 +108,7 @@ export default function App() {
             <Route path="/grammar/:topicId" element={<GrammarLesson />} />
             <Route path="/reading" element={<ReadingList />} />
             <Route path="/reading/:textId" element={<ReadingPage />} />
+            <Route path="/reading/match/:taskId" element={<MatchingPage />} />
             <Route path="/listening" element={<ListeningList />} />
             <Route path="/listening/dictation" element={<Fresh page={Dictation} />} />
             <Route path="/listening/:textId" element={<ListeningPage />} />
