@@ -94,3 +94,11 @@ describe('grammar topics', () => {
     expect(bad).toEqual([])
   })
 })
+
+describe('extra exercises', () => {
+  it('belong to existing topics', async () => {
+    const { EXTRA_EXERCISES } = await import('./grammar/extra')
+    const ids = new Set(GRAMMAR_TOPICS.map((topic) => topic.id))
+    expect(Object.keys(EXTRA_EXERCISES).filter((id) => !ids.has(id))).toEqual([])
+  })
+})

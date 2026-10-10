@@ -173,13 +173,24 @@ export function cardsForNewWord(word: Word, now: Date): Record<string, StoredCar
   return cards
 }
 
-/** Adds verb-form cards for irregular verbs learned before those cards existed. */
-export function missingFormCards(state: AppState, now: Date): Record<string, StoredCard> {
+/**
+ * Cards that should exist but don't, because content was added after you
+ * learned the word or studied the topic: verb forms and new grammar exercises.
+ * They are spread over the next few days.
+ */
+export function missingCards(state: AppState, now: Date): Record<string, StoredCard> {
   const cards: Record<string, StoredCard> = {}
   let spread = 0
+  const add = (id: string) => {
+    if (id in state.cards) return
+    cards[id] = newCard(now, ONE_DAY * (1 + (spread++ % 5)))
+  }
   for (const word of allWords(state)) {
-    if (!isWordLearned(state, word) || !isIrregular(word) || formsId(word) in state.cards) continue
-    cards[formsId(word)] = newCard(now, ONE_DAY * (1 + (spread++ % 5)))
+    if (isWordLearned(state, word) && isIrregular(word)) add(formsId(word))
+  }
+  for (const topic of GRAMMAR_TOPICS) {
+    if (!(topic.id in state.grammar)) continue
+    for (const exercise of topic.exercises) add(grammarCardId(topic, exercise))
   }
   return cards
 }
