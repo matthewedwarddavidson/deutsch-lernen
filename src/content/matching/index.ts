@@ -440,4 +440,94 @@ export const MATCHING_TASKS: MatchingTask[] = [
       },
     ],
   },
+  {
+    id: 'zuordnung-dienstleistungen',
+    title: 'Hilfe und Dienstleistungen',
+    level: 'B1',
+    theme: 'alltag',
+    instructions:
+      'Sieben Personen suchen Hilfe im Alltag. Lesen Sie die Situationen und die Anzeigen. Welche Anzeige passt zu welcher Person? Sie können jede Anzeige nur einmal verwenden. Für eine Person gibt es keine passende Anzeige.',
+    people: [
+      {
+        situation:
+          'Jana zieht nächsten Monat um und braucht ein paar kräftige Helfer, aber kein teures Umzugsunternehmen.',
+        answer: 3,
+        explanation: 'Anzeige D: Studenten helfen beim Umzug, günstig, stundenweise.',
+      },
+      {
+        situation: 'Herr Kaya hat seinen ersten Job in Deutschland und versteht seine Steuererklärung nicht.',
+        answer: 6,
+        explanation: 'Anzeige G: Lohnsteuerhilfeverein, Beratung für Arbeitnehmer, auch auf Englisch und Türkisch.',
+      },
+      {
+        situation:
+          'Die Tochter von Familie Weiß hat Probleme in Mathe und braucht vor der Prüfung im Juni Unterstützung.',
+        answer: 0,
+        explanation: 'Anzeige A: Nachhilfe in Mathe und Physik, Prüfungsvorbereitung.',
+      },
+      {
+        situation:
+          'Leon möchte sein altes Fahrrad nicht wegwerfen, aber er hat kein Werkzeug und keine Ahnung, wie man es repariert.',
+        answer: 4,
+        explanation: 'Anzeige E: Repair-Café, Ehrenamtliche helfen beim Reparieren, Werkzeug ist vorhanden.',
+      },
+      {
+        situation:
+          'Frau Novak arbeitet oft abends und sucht jemanden, der zweimal pro Woche mit ihrem Hund spazieren geht.',
+        answer: null,
+        explanation:
+          'Keine Anzeige passt. Die Tierpension (H) nimmt Hunde nur für Urlaube auf, nicht für regelmäßige Spaziergänge.',
+      },
+      {
+        situation:
+          'Paul und Sara möchten am Samstag ins Theater gehen und brauchen jemanden für ihre zwei kleinen Kinder.',
+        answer: 1,
+        explanation: 'Anzeige B: Babysitterin mit Erste-Hilfe-Kurs, auch abends und am Wochenende.',
+      },
+      {
+        situation:
+          'Der 82-jährige Herr Brandt kann nicht mehr gut laufen und braucht Hilfe beim Einkaufen und im Haushalt.',
+        answer: 8,
+        explanation: 'Anzeige I: Nachbarschaftshilfe, Einkäufe und Haushalt für ältere Menschen.',
+      },
+    ],
+    ads: [
+      {
+        title: 'Endlich bessere Noten!',
+        text: 'Lehramtsstudentin gibt Nachhilfe in Mathe und Physik für die Klassen 5 bis 10. Gezielte Vorbereitung auf Prüfungen. Bei Ihnen zu Hause oder online.',
+      },
+      {
+        title: 'Zuverlässige Babysitterin',
+        text: 'Ich bin 22, studiere Sozialpädagogik und habe einen Erste-Hilfe-Kurs für Kinder gemacht. Ich habe abends und am Wochenende Zeit.',
+      },
+      {
+        title: 'Hausmeisterservice Krause',
+        text: 'Wir kümmern uns um Treppenhausreinigung, Winterdienst und Gartenpflege für Wohnanlagen. Nur Aufträge von Hausverwaltungen.',
+      },
+      {
+        title: 'Starke Hände',
+        text: 'Drei Studenten helfen beim Umzug: Kisten tragen, Möbel abbauen und aufbauen. Wir haben kein eigenes Auto, sind aber günstig. 15 Euro pro Stunde und Person.',
+      },
+      {
+        title: 'Repair-Café im Stadtteilzentrum',
+        text: 'Jeden ersten Samstag im Monat: Ehrenamtliche helfen Ihnen, Elektrogeräte, Kleidung und Fahrräder selbst zu reparieren. Werkzeug ist vorhanden. Kostenlos, Spenden willkommen.',
+      },
+      {
+        title: 'Fahrradladen Speiche',
+        text: 'Neue und gebrauchte Räder, E-Bikes und Zubehör. Inspektion zum Festpreis. Mo–Fr 10–19 Uhr.',
+      },
+      {
+        title: 'Lohnsteuerhilfeverein Mitte',
+        text: 'Wir machen die Steuererklärung für Arbeitnehmerinnen und Arbeitnehmer. Beratung auch auf Englisch und Türkisch. Jahresbeitrag ab 60 Euro.',
+      },
+      {
+        title: 'Tierpension Waldblick',
+        text: 'Sie fahren in den Urlaub? Ihr Hund oder Ihre Katze wohnt bei uns – mit großem Garten und viel Auslauf. Mindestaufenthalt drei Tage.',
+      },
+      {
+        title: 'Nachbarschaftshilfe e. V.',
+        text: 'Unsere Helferinnen und Helfer gehen für ältere und kranke Menschen einkaufen, helfen im Haushalt und begleiten zum Arzt. Rufen Sie uns an!',
+      },
+    ],
+  },
 ]
