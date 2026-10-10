@@ -3,6 +3,7 @@ import { Icon, type IconName } from './components/Icon'
 import { dueCards } from './lib/cards'
 import { useNow } from './lib/hooks'
 import { useAppState } from './lib/store'
+import { Exam } from './pages/Exam'
 import { GrammarLesson, GrammarList } from './pages/Grammar'
 import { Learn } from './pages/Learn'
 import { Dictation, ListeningList, ListeningPage } from './pages/Listening'
@@ -49,6 +50,12 @@ function Sidebar() {
           {item.to === '/' && due > 0 && <span className="nav-badge">{due}</span>}
         </NavLink>
       ))}
+      <NavLink to="/exam" className="nav-link desktop-only">
+        <span className="row" style={{ gap: 10 }}>
+          <Icon name="check" />
+          Exam
+        </span>
+      </NavLink>
       <NavLink to="/reference" className="nav-link desktop-only">
         <span className="row" style={{ gap: 10 }}>
           <Icon name="words" />
@@ -96,6 +103,7 @@ export default function App() {
             <Route path="/writing/:taskId" element={<WritingPage />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/reference" element={<Reference />} />
+            <Route path="/exam" element={<Exam />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<Today />} />
           </Routes>

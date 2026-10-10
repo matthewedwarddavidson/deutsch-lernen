@@ -162,6 +162,11 @@ export function Today() {
         />
       </div>
 
+      <p className="small muted" style={{ marginTop: 16 }}>
+        Also: <Link to="/exam">Exam practice</Link> · <Link to="/reference">Reference tables</Link> ·{' '}
+        <Link to="/words/speed">Speed round</Link>
+      </p>
+
       <div className="section-title section">This week</div>
       <div className="card">
         <StrandBalance state={state} />

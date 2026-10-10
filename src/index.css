@@ -1801,3 +1801,12 @@ table.grammar-table {
     display: none !important;
   }
 }
+
+.clock {
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock.warning {
+  color: var(--bad);
+}
