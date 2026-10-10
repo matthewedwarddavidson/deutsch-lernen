@@ -55,13 +55,25 @@ async function ask<Schema extends z.ZodType>(
   }
 }
 
-const themeIds = THEMES.filter((theme) => theme.id !== 'eigene' && theme.id !== 'redemittel').map((theme) => theme.id) as [
-  ThemeId,
-  ...ThemeId[],
-]
+const themeIds: ThemeId[] = THEMES.filter((theme) => theme.id !== 'eigene' && theme.id !== 'redemittel').map(
+  (theme) => theme.id,
+)
+
+/** One of the allowed values, or the fallback. Enums arrive as plain strings. */
+function oneOf<T extends string>(value: string, allowed: readonly T[], fallback: T): T {
+  return (allowed as readonly string[]).includes(value) ? (value as T) : fallback
+}
+
+function choiceOf(allowed: readonly string[]) {
+  return z.string().describe(`Exactly one of: ${allowed.join(', ')}`)
+}
+
+const READING_GENRES = ['blog', 'article', 'email', 'forum', 'story', 'notice', 'interview', 'report'] as const
+const LISTENING_GENRES = ['dialogue', 'announcement', 'interview', 'report'] as const
+const WRITING_FORMATS = ['informal-email', 'formal-email', 'forum', 'essay', 'story', 'summary'] as const
 
 const questionSchema = z.object({
-  kind: z.enum(['truefalse', 'choice', 'open']),
+  kind: choiceOf(['truefalse', 'choice', 'open']),
   text: z.string().describe('The statement (truefalse) or question (choice, open), in German'),
   options: z.array(z.string()).describe('Three options for choice questions; empty otherwise'),
   correctOption: z.number().describe('Index of the correct option for choice questions; 0 otherwise'),
@@ -108,8 +120,8 @@ function newId(prefix: string): string {
 
 const readingSchema = z.object({
   title: z.string(),
-  theme: z.enum(themeIds),
-  genre: z.enum(['blog', 'article', 'email', 'forum', 'story', 'notice', 'interview', 'report']),
+  theme: choiceOf(themeIds),
+  genre: choiceOf(READING_GENRES),
   paragraphs: z.array(z.string()),
   glossary: glossSchema,
   questions: z.array(questionSchema),
@@ -129,8 +141,8 @@ export async function generateReading(apiKey: string, level: Level, topic: strin
     id: newId('gen-lesen'),
     title: result.title,
     level,
-    theme: result.theme,
-    genre: result.genre,
+    theme: oneOf(result.theme, themeIds, 'alltag'),
+    genre: oneOf(result.genre, READING_GENRES, 'article'),
     body: result.paragraphs,
     glossary: toGlossary(result.glossary, [result.title, ...result.paragraphs].join(' ')),
     questions: result.questions.map(toQuestion),
@@ -140,8 +152,8 @@ export async function generateReading(apiKey: string, level: Level, topic: strin
 
 const listeningSchema = z.object({
   title: z.string(),
-  theme: z.enum(themeIds),
-  genre: z.enum(['dialogue', 'announcement', 'interview', 'report']),
+  theme: choiceOf(themeIds),
+  genre: choiceOf(LISTENING_GENRES),
   situation: z.string().describe('One sentence in English telling the learner what they will hear'),
   lines: z.array(z.object({ speaker: z.string(), text: z.string() })),
   questions: z.array(questionSchema),
@@ -160,8 +172,8 @@ export async function generateListening(apiKey: string, level: Level, topic: str
     id: newId('gen-hoeren'),
     title: result.title,
     level,
-    theme: result.theme,
-    genre: result.genre,
+    theme: oneOf(result.theme, themeIds, 'alltag'),
+    genre: oneOf(result.genre, LISTENING_GENRES, 'dialogue'),
     situation: result.situation,
     lines: result.lines,
     questions: result.questions.map(toQuestion),
@@ -171,8 +183,8 @@ export async function generateListening(apiKey: string, level: Level, topic: str
 
 const writingTaskSchema = z.object({
   title: z.string(),
-  theme: z.enum(themeIds),
-  format: z.enum(['informal-email', 'formal-email', 'forum', 'essay', 'story', 'summary']),
+  theme: choiceOf(themeIds),
+  format: choiceOf(WRITING_FORMATS),
   instructions: z.string().describe('The situation and task in German, as in an exam'),
   points: z.array(z.string()).describe('3–4 content points the text must cover, in German'),
   minWords: z.number(),
@@ -189,7 +201,14 @@ export async function generateWritingTask(apiKey: string, level: Level, topic: s
     'Use paragraph breaks in the model answer.',
   ].join('\n')
   const result = await ask(apiKey, writingTaskSchema, system, prompt, 'medium')
-  return { id: newId('gen-schreiben'), level, ...result, generated: true }
+  return {
+    id: newId('gen-schreiben'),
+    level,
+    ...result,
+    theme: oneOf(result.theme, themeIds, 'alltag'),
+    format: oneOf(result.format, WRITING_FORMATS, 'informal-email'),
+    generated: true,
+  }
 }
 
 const feedbackSchema = z.object({

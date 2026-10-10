@@ -41,7 +41,10 @@ export function newCard(now: Date, dueIn = 0): StoredCard {
 }
 
 export function reviewCard(card: StoredCard, grade: Grade, now: Date): StoredCard {
-  return toStored(scheduler.next(fromStored(card), now, grade).card)
+  // A review can't come before the previous one; guards against clock changes.
+  const lastReview = card.last_review ? new Date(card.last_review) : undefined
+  const at = lastReview && lastReview > now ? lastReview : now
+  return toStored(scheduler.next(fromStored(card), at, grade).card)
 }
 
 export function isDue(card: StoredCard, now: Date): boolean {

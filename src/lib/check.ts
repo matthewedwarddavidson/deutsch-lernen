@@ -137,22 +137,21 @@ export interface TokenDiff {
   typed?: string
 }
 
-function tokenise(text: string): string[] {
-  return text
-    .normalize('NFC')
-    .replace(/[–—]/g, '-')
-    .split(/\s+/)
-    .map((token) => token.replace(/^[„"“»«(]+|[.,!?;:"“”»«)]+$/g, ''))
-    .filter(Boolean)
+function tokenise(text: string, keepPunctuation: boolean): string[] {
+  const tokens = text.normalize('NFC').replace(/[–—]/g, '-').split(/\s+/)
+  const cleaned = keepPunctuation
+    ? tokens
+    : tokens.map((token) => token.replace(/^[„"“»«(]+|[.,!?;:"“”»«)]+$/g, ''))
+  return cleaned.filter(Boolean)
 }
 
 /**
- * Word-by-word comparison for dictation. Punctuation is ignored; case is not.
- * Uses the longest common subsequence to line the two texts up.
+ * Word-by-word comparison. Uses the longest common subsequence to line the two
+ * texts up. Case always counts; punctuation is ignored unless asked for.
  */
-export function diffWords(typed: string, expected: string): TokenDiff[] {
-  const typedTokens = tokenise(typed)
-  const expectedTokens = tokenise(expected)
+export function diffWords(typed: string, expected: string, keepPunctuation = false): TokenDiff[] {
+  const typedTokens = tokenise(typed, keepPunctuation)
+  const expectedTokens = tokenise(expected, keepPunctuation)
   const rows = typedTokens.length
   const cols = expectedTokens.length
   const lengths = Array.from({ length: rows + 1 }, () => new Array<number>(cols + 1).fill(0))

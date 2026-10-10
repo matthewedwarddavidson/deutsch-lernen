@@ -6,10 +6,10 @@ import { useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
 
 const STRANDS: { id: string; label: string; description: string; kinds: ActivityKind[]; color: string }[] = [
-  { id: 'input', label: 'Input', description: 'reading and listening', kinds: ['reading', 'listening'], color: 'var(--der)' },
-  { id: 'output', label: 'Output', description: 'writing', kinds: ['writing'], color: 'var(--die)' },
-  { id: 'study', label: 'Study', description: 'words, grammar, dictation', kinds: ['review', 'learn', 'grammar', 'dictation'], color: 'var(--almost)' },
-  { id: 'fluency', label: 'Fluency', description: 'fast practice with known material', kinds: ['fluency'], color: 'var(--das)' },
+  { id: 'input', label: 'Input', description: 'reading and listening', kinds: ['reading', 'listening'], color: 'var(--series-1)' },
+  { id: 'output', label: 'Output', description: 'writing', kinds: ['writing'], color: 'var(--series-2)' },
+  { id: 'study', label: 'Study', description: 'words, grammar, dictation', kinds: ['review', 'learn', 'grammar', 'dictation'], color: 'var(--series-3)' },
+  { id: 'fluency', label: 'Fluency', description: 'fast practice with known material', kinds: ['fluency'], color: 'var(--series-4)' },
 ]
 
 function greeting(now: Date): string {
