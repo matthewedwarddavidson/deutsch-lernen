@@ -17,22 +17,23 @@ Other scripts:
 
 ```bash
 npm test           # unit and content tests (Vitest)
+npm run test:e2e   # end-to-end smoke tests (Playwright)
 npm run build      # type-check and production build into dist/
 npm run format     # Prettier
 ```
 
-Use Chrome, Edge or Safari for listening. On macOS, install a better German voice under System Settings → Accessibility → Spoken Content → System voice → Manage voices (Anna or Petra, Premium).
+Built-in words, examples, grammar sentences, texts and dialogues come with recordings made by a neural voice (see below). Generated texts and your own words use the browser's voice: Microsoft Edge has free natural German voices (Katja, Conrad); on macOS a Premium voice (Anna, Petra) helps in other browsers.
 
 ## What's in it
 
 | Area | What it does |
 | --- | --- |
 | **Today** | Reviews due, new words, the next grammar topic, a text to read and listen to, a writing task, and how your week splits across input, output, study and fluency. |
-| **Words** | ~580 words across 15 themes, A2–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own, or import a course word list. |
-| **Reviews** | One FSRS queue for everything: recognition (German → English), production (English → German, typed, with article; alternates with gap-fills in context), grammar exercises and your own writing mistakes. |
+| **Words** | ~720 words across 16 themes, A2–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own, or import a course word list. A timed speed round on known words trains fluency. |
+| **Reviews** | One FSRS queue for everything: recognition (German → English), production (English → German, typed, with article; alternates with gap-fills in context), irregular verb forms, grammar exercises and your own writing mistakes. Marking forgives typos but not wrong endings or auxiliaries. |
 | **Grammar** | 30 topics from A2 review to C1: explanation, tables, examples, common mistakes, then exercises (gap, choice, word order, transformation). Finished topics feed their exercises into reviews. |
-| **Reading** | Graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |
-| **Listening** | Dialogues, announcements and interviews read by the browser's German voices, with questions first and the transcript after. Dictation with word-by-word feedback. |
+| **Reading** | 16 graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |
+| **Listening** | 11 dialogues, announcements, interviews and talks with distinct recorded voices; questions first, transcript after. Dictation with word-by-word feedback. |
 | **Writing** | Goethe-style tasks (A2–C1) with useful phrases, live word and connector counts, model answers, and corrections from Claude. |
 | **Progress** | Words known by level, recall rate, review forecast, study time, grammar mastery. |
 
@@ -52,15 +53,32 @@ Corrections, new texts, listening scripts, writing tasks and word-list imports u
 
 Optionally, an API key in Settings makes it one click. API use is billed separately from claude.ai plans.
 
+## Recorded voices
+
+Recordings are made offline with [Piper](https://github.com/rhasspy/piper) using the CC0 voices Thorsten (male) and Kerstin (female), and stored in `public/audio/` as AAC. After changing built-in content, record the new sentences (macOS, needs `afconvert`):
+
+```bash
+python3 -m venv .venv-tts && .venv-tts/bin/pip install piper-tts      # once
+mkdir -p audio-build && cd audio-build && for v in de_DE-thorsten-high de_DE-kerstin-low de_DE-thorsten_emotional-medium; do
+  ../.venv-tts/bin/python -m piper.download_voices $v; done && cd ..   # once
+npx tsx scripts/collect-speech.ts > audio-build/requests.json
+.venv-tts/bin/python scripts/generate_speech.py
+```
+
+Only missing sentences are recorded. Anything without a recording falls back to the browser voice.
+
 ## Code map
 
 ```
 src/
   content/       words (pipe-separated lists), grammar topics, texts, tasks
   lib/           check (answer marking), srs (FSRS), cards (queue), store (state),
+                 speech (recordings + browser voices), verbForms,
                  generation (Claude jobs), manual (claude.ai route), claude (API route)
   components/    shared UI
   pages/         one file per section
+scripts/         speech collection and recording, screenshots
+e2e/             Playwright smoke tests
 docs/research.md
 ```
 
