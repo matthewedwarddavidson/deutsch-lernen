@@ -245,4 +245,105 @@ export const TASKS: WritingTask[] = [
     model:
       'Die Debatte um ein soziales Pflichtjahr hat in jüngster Zeit an Fahrt aufgenommen – nicht zuletzt wegen des Personalmangels in Pflege und Katastrophenschutz.\n\nNicht von der Hand zu weisen ist, dass ein solches Jahr den gesellschaftlichen Zusammenhalt stärken könnte. Junge Menschen kämen mit Lebenswelten in Berührung, die ihnen sonst verschlossen blieben, und viele würden dabei Fähigkeiten entdecken, die in keinem Lehrplan vorkommen.\n\nWas auf den ersten Blick überzeugend klingt, erweist sich bei näherer Betrachtung jedoch als problematisch. Ein Pflichtdienst greift erheblich in die Freiheit junger Erwachsener ein, die ohnehin unter Druck stehen, rasch in Ausbildung oder Studium zu starten. Zudem wäre es verkürzt, strukturelle Probleme wie die schlechte Bezahlung in der Pflege mit unerfahrenen Kräften lösen zu wollen; die Einrichtungen bräuchten vielmehr zusätzliche Kapazitäten für deren Anleitung.\n\nUnterm Strich überwiegen aus meiner Sicht die Bedenken. Sinnvoller erschiene mir, freiwillige Dienste deutlich attraktiver zu gestalten – etwa durch eine angemessene Vergütung und die Anrechnung auf Studium oder Ausbildung. Engagement, das aus Überzeugung entsteht, ist nachhaltiger als eines, das verordnet wird.',
   },
+  {
+    id: 'urlaub-erzaehlen',
+    title: 'Urlaubsgrüße an eine Freundin',
+    level: 'B1',
+    theme: 'reisen',
+    format: 'informal-email',
+    instructions: 'Sie sind gerade im Urlaub. Schreiben Sie Ihrer Freundin Lena eine E-Mail (circa 80 Wörter).',
+    points: [
+      'Wo sind Sie und mit wem?',
+      'Was haben Sie schon gemacht?',
+      'Was hat Ihnen nicht gefallen?',
+      'Machen Sie einen Vorschlag für ein Treffen nach dem Urlaub.',
+    ],
+    minWords: 80,
+    phrases: [
+      { de: 'Viele Grüße aus …!', en: 'Greetings from …!' },
+      { de: 'Wir sind seit … hier.', en: "We've been here since …" },
+      { de: 'Gestern waren wir …', en: 'Yesterday we were …' },
+      { de: 'Leider …', en: 'Unfortunately …' },
+      { de: 'Wenn ich zurück bin, …', en: "When I'm back, …" },
+      { de: 'Hast du Lust, …?', en: 'Do you fancy …?' },
+    ],
+    model:
+      'Liebe Lena,\n\nviele Grüße aus Lissabon! Ich bin seit Montag mit meinem Bruder hier, und die Stadt ist wirklich toll.\n\nGestern sind wir mit der berühmten Straßenbahn durch die Altstadt gefahren, und abends haben wir in einem kleinen Restaurant Fisch gegessen. Heute wollen wir an den Strand.\n\nNicht so schön ist unser Hotel: Das Zimmer ist sehr klein und laut, weil es direkt an einer großen Straße liegt.\n\nWenn ich zurück bin, zeige ich dir die Fotos. Hast du am Wochenende Zeit für einen Kaffee?\n\nLiebe Grüße\nAlex',
+  },
+  {
+    id: 'forum-autofreie-innenstadt',
+    title: 'Forumsbeitrag: Autofreie Innenstadt',
+    level: 'B1',
+    theme: 'umwelt',
+    format: 'forum',
+    instructions:
+      'In einer Radiosendung wurde über das Thema „Autofreie Innenstädte" diskutiert. Im Online-Forum der Sendung finden Sie folgende Meinung von Markus: „Ohne Autos sterben die Geschäfte in der Innenstadt. Niemand fährt mit dem Bus zum Einkaufen." Schreiben Sie Ihre Meinung (circa 80 Wörter).',
+    points: [
+      'Sagen Sie, ob Sie Markus zustimmen.',
+      'Nennen Sie Vorteile und Nachteile.',
+      'Erzählen Sie von Ihrer Stadt.',
+    ],
+    minWords: 80,
+    phrases: [
+      { de: 'Ich sehe das anders als Markus, denn …', en: 'I see it differently from Markus, because …' },
+      { de: 'Ein großer Vorteil ist, dass …', en: 'A big advantage is that …' },
+      { de: 'Natürlich gibt es auch Nachteile: …', en: 'Of course there are disadvantages too: …' },
+      { de: 'In meiner Stadt …', en: 'In my town …' },
+      { de: 'Meiner Meinung nach sollte man …', en: 'In my opinion one should …' },
+    ],
+    model:
+      'Ich sehe das anders als Markus. Ein großer Vorteil einer autofreien Innenstadt ist, dass die Luft besser und die Straßen ruhiger sind. Die Leute bleiben dann gern länger, trinken einen Kaffee und kaufen auch mehr ein.\n\nNatürlich gibt es auch Nachteile: Für ältere Menschen oder Familien mit kleinen Kindern ist der Weg ohne Auto schwieriger.\n\nIn meiner Stadt ist die Altstadt seit fünf Jahren autofrei, und die Geschäfte laufen besser als vorher. Meiner Meinung nach braucht man aber gute Busse und genug Parkplätze am Stadtrand.',
+  },
+  {
+    id: 'vermieter-reparatur',
+    title: 'Nachricht an den Vermieter',
+    level: 'B1',
+    theme: 'wohnen',
+    format: 'formal-email',
+    instructions:
+      'In Ihrer Wohnung ist seit drei Tagen die Heizung kaputt. Schreiben Sie Ihrem Vermieter, Herrn Wagner, eine E-Mail (circa 40 Wörter).',
+    points: [
+      'Beschreiben Sie das Problem.',
+      'Bitten Sie um eine schnelle Reparatur.',
+      'Sagen Sie, wann Sie zu Hause sind.',
+    ],
+    minWords: 40,
+    phrases: [
+      { de: 'Sehr geehrter Herr Wagner,', en: 'Dear Mr Wagner,' },
+      { de: 'leider funktioniert … seit … nicht mehr.', en: "unfortunately … hasn't worked since …" },
+      { de: 'Könnten Sie bitte so schnell wie möglich …?', en: 'Could you please … as soon as possible?' },
+      { de: 'Ich bin … zu Hause.', en: "I'm at home …" },
+      { de: 'Mit freundlichen Grüßen', en: 'Yours sincerely' },
+    ],
+    model:
+      'Sehr geehrter Herr Wagner,\n\nleider funktioniert die Heizung in meiner Wohnung seit Montag nicht mehr, und es ist sehr kalt. Könnten Sie bitte so schnell wie möglich einen Handwerker schicken? Ich bin jeden Tag ab 16 Uhr zu Hause.\n\nMit freundlichen Grüßen\nAlex Morgan',
+  },
+  {
+    id: 'leserbrief-b2',
+    title: 'Leserbrief: Vier-Tage-Woche',
+    level: 'B2',
+    theme: 'arbeit',
+    format: 'essay',
+    instructions:
+      'Sie haben in einer Zeitung einen Artikel über die Vier-Tage-Woche gelesen. Schreiben Sie einen Leserbrief (circa 150 Wörter), in dem Sie Stellung nehmen.',
+    points: [
+      'Beziehen Sie sich auf den Artikel.',
+      'Nennen Sie Vorteile einer Vier-Tage-Woche.',
+      'Nennen Sie mögliche Probleme.',
+      'Formulieren Sie Ihre Meinung und begründen Sie sie.',
+    ],
+    minWords: 150,
+    phrases: [
+      {
+        de: 'Mit großem Interesse habe ich Ihren Artikel über … gelesen.',
+        en: 'I read your article on … with great interest.',
+      },
+      { de: 'Zweifellos …', en: 'Undoubtedly …' },
+      { de: 'Allerdings darf man nicht vergessen, dass …', en: 'However, we must not forget that …' },
+      { de: 'Aus meiner eigenen Erfahrung weiß ich, dass …', en: 'I know from my own experience that …' },
+      { de: 'Alles in allem bin ich der Ansicht, dass …', en: 'All in all I am of the view that …' },
+    ],
+    model:
+      'Sehr geehrte Damen und Herren,\n\nmit großem Interesse habe ich Ihren Artikel über die Vier-Tage-Woche gelesen.\n\nZweifellos bietet das Modell viele Vorteile. Wer drei Tage frei hat, kann sich besser erholen und hat mehr Zeit für Familie und Hobbys. Die Ergebnisse des Experiments zeigen außerdem, dass die Produktivität nicht unbedingt sinkt.\n\nAllerdings darf man nicht vergessen, dass nicht jeder Beruf dafür geeignet ist. In Krankenhäusern oder im Einzelhandel müssen Kunden und Patienten jeden Tag versorgt werden. Hier würde eine Vier-Tage-Woche zusätzliches Personal erfordern, das ohnehin knapp ist.\n\nAus meiner eigenen Erfahrung weiß ich, dass konzentriertes Arbeiten oft wichtiger ist als die Zahl der Stunden. Alles in allem bin ich deshalb der Ansicht, dass Unternehmen das Modell ausprobieren sollten, wo es möglich ist, ohne es allen vorzuschreiben.\n\nMit freundlichen Grüßen\nAlex Morgan',
+  },
 ]

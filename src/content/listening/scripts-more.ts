@@ -231,4 +231,167 @@ export const SCRIPTS_MORE: ListeningText[] = [
       },
     ],
   },
+  {
+    id: 'mailbox-freundin',
+    title: 'Eine Nachricht auf der Mailbox',
+    level: 'B1',
+    theme: 'freizeit',
+    genre: 'announcement',
+    voices: { Jule: 'kerstin' },
+    situation: 'Your friend Jule leaves you a voicemail about the weekend.',
+    lines: [
+      { speaker: 'Jule', text: 'Hallo, hier ist Jule! Schade, dass ich dich nicht erreiche. Es geht um Samstag.' },
+      {
+        speaker: 'Jule',
+        text: 'Also, das Picknick im Stadtpark findet leider nicht statt, weil es den ganzen Tag regnen soll. Stattdessen treffen wir uns bei Mehmet in der Wohnung, in der Bergstraße 12, dritter Stock.',
+      },
+      {
+        speaker: 'Jule',
+        text: 'Wir fangen nicht um zwei an, sondern erst um vier, weil Mehmet vorher noch arbeiten muss.',
+      },
+      {
+        speaker: 'Jule',
+        text: 'Jeder bringt etwas zu essen mit. Könntest du vielleicht einen Salat machen? Getränke kauft Tobias.',
+      },
+      {
+        speaker: 'Jule',
+        text: 'Ach ja, und wenn du Lust hast, bring doch deine Gitarre mit! Ruf mich einfach zurück, wenn du kommst. Bis dann!',
+      },
+    ],
+    questions: [
+      {
+        kind: 'truefalse',
+        statement: 'Das Picknick findet wie geplant im Stadtpark statt.',
+        answer: false,
+        explanation: 'Wegen Regen treffen sie sich bei Mehmet.',
+      },
+      {
+        kind: 'choice',
+        question: 'Um wie viel Uhr beginnt das Treffen?',
+        options: ['um zwei Uhr', 'um vier Uhr', 'um zwölf Uhr'],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Was soll man mitbringen?',
+        options: ['Getränke', 'einen Salat', 'einen Kuchen'],
+        answer: 1,
+      },
+      { kind: 'truefalse', statement: 'Jule möchte, dass man die Gitarre mitbringt.', answer: true },
+    ],
+  },
+  {
+    id: 'gespraech-chefin',
+    title: 'Ein Gespräch mit der Chefin',
+    level: 'B1',
+    theme: 'arbeit',
+    genre: 'dialogue',
+    voices: { 'Frau Becker': 'kerstin', Daniel: 'thorsten' },
+    situation: 'Daniel asks his manager, Ms Becker, about reducing his hours.',
+    lines: [
+      { speaker: 'Daniel', text: 'Frau Becker, haben Sie kurz Zeit? Ich wollte etwas mit Ihnen besprechen.' },
+      { speaker: 'Frau Becker', text: 'Natürlich, Daniel. Setzen Sie sich. Worum geht es?' },
+      {
+        speaker: 'Daniel',
+        text: 'Meine Frau fängt im Herbst wieder an zu arbeiten, und wir haben ja zwei kleine Kinder. Deshalb würde ich gern meine Arbeitszeit reduzieren, von vierzig auf dreißig Stunden.',
+      },
+      {
+        speaker: 'Frau Becker',
+        text: 'Verstehe. Grundsätzlich ist das möglich. Haben Sie sich schon überlegt, wie Sie die Stunden verteilen wollen?',
+      },
+      {
+        speaker: 'Daniel',
+        text: 'Am liebsten würde ich freitags gar nicht arbeiten und an den anderen Tagen etwas früher gehen.',
+      },
+      {
+        speaker: 'Frau Becker',
+        text: 'Freitags ist schwierig, weil wir da immer die Teambesprechung haben. Wäre der Mittwoch auch eine Möglichkeit?',
+      },
+      { speaker: 'Daniel', text: 'Ja, das ginge auch. Hauptsache, ich habe einen Tag für die Kinder.' },
+      {
+        speaker: 'Frau Becker',
+        text: 'Gut. Dann schreiben Sie mir bitte bis Ende der Woche einen kurzen Antrag, und ich spreche mit der Personalabteilung. Ab Oktober sollte das klappen.',
+      },
+      { speaker: 'Daniel', text: 'Vielen Dank, das ist wirklich eine große Erleichterung.' },
+    ],
+    questions: [
+      {
+        kind: 'choice',
+        question: 'Warum möchte Daniel weniger arbeiten?',
+        options: [
+          'Er will eine Weiterbildung machen.',
+          'Seine Frau arbeitet bald wieder und sie haben kleine Kinder.',
+          'Er ist oft krank.',
+        ],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Wie viele Stunden möchte Daniel in Zukunft arbeiten?',
+        options: ['20', '30', '35'],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Frau Becker ist mit dem freien Freitag sofort einverstanden.',
+        answer: false,
+        explanation: 'Freitags ist die Teambesprechung; sie schlägt Mittwoch vor.',
+      },
+      { kind: 'open', question: 'Was soll Daniel bis Ende der Woche tun?', model: 'Einen kurzen Antrag schreiben.' },
+      { kind: 'truefalse', statement: 'Die neue Arbeitszeit soll ab Oktober gelten.', answer: true },
+    ],
+  },
+  {
+    id: 'nachrichten-kurz',
+    title: 'Nachrichten in Kürze',
+    level: 'B1',
+    theme: 'gesellschaft',
+    genre: 'report',
+    voices: { Sprecher: 'thorsten' },
+    situation: 'A short regional news bulletin on the radio: three items.',
+    lines: [
+      { speaker: 'Sprecher', text: 'Es ist zwölf Uhr. Hier sind die Nachrichten.' },
+      {
+        speaker: 'Sprecher',
+        text: 'In Leipzig hat heute die größte Buchmesse des Frühjahrs begonnen. Über zweitausend Verlage aus vierzig Ländern stellen bis Sonntag ihre neuen Bücher vor. Die Veranstalter erwarten mehr als zweihunderttausend Besucher.',
+      },
+      {
+        speaker: 'Sprecher',
+        text: 'Die Stadt Dresden will bis zum Jahr 2030 alle Busse auf Elektroantrieb umstellen. Wie der Oberbürgermeister mitteilte, werden bereits im nächsten Jahr die ersten fünfzig Elektrobusse geliefert. Die Kosten liegen bei rund hundert Millionen Euro.',
+      },
+      {
+        speaker: 'Sprecher',
+        text: 'Und zum Schluss noch eine gute Nachricht: Ein Hund, der vor drei Wochen in Chemnitz verschwunden war, ist wieder zu Hause. Er war über achtzig Kilometer gelaufen und stand am Montagmorgen plötzlich vor der Tür seiner Besitzerin.',
+      },
+      {
+        speaker: 'Sprecher',
+        text: 'Das Wetter: im Süden sonnig, im Norden Regen bei Temperaturen zwischen zwölf und achtzehn Grad.',
+      },
+    ],
+    questions: [
+      {
+        kind: 'choice',
+        question: 'Wie lange dauert die Buchmesse?',
+        options: ['nur heute', 'bis Sonntag', 'eine Woche'],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'In Dresden fahren schon alle Busse elektrisch.',
+        answer: false,
+        explanation: 'Das Ziel ist das Jahr 2030.',
+      },
+      {
+        kind: 'choice',
+        question: 'Wie viele Elektrobusse kommen nächstes Jahr?',
+        options: ['zwanzig', 'fünfzig', 'hundert'],
+        answer: 1,
+      },
+      {
+        kind: 'open',
+        question: 'Was ist mit dem Hund passiert?',
+        model: 'Er war drei Wochen verschwunden und ist über 80 Kilometer allein nach Hause gelaufen.',
+      },
+    ],
+  },
 ]
