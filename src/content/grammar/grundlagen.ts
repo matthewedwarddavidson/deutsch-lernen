@@ -133,7 +133,8 @@ export const perfekt: GrammarTopic = {
       prompt: 'Er ___ seinen Freund zum Flughafen gefahren.',
       options: ['ist', 'hat'],
       answer: 1,
-      explanation: 'With an accusative object (seinen Freund) fahren takes haben.',
+      explanation:
+        'With an accusative object (seinen Freund) fahren takes haben. Without one, it takes sein: Er ist zum Flughafen gefahren.',
     },
     {
       kind: 'choice',
