@@ -226,4 +226,218 @@ export const MATCHING_TASKS: MatchingTask[] = [
       },
     ],
   },
+  {
+    id: 'zuordnung-ausfluege',
+    title: 'Ausflüge am Wochenende',
+    level: 'B1',
+    theme: 'reisen',
+    instructions:
+      'Sechs Personen suchen ein Ausflugsziel für das Wochenende. Welche Anzeige passt zu welcher Person? Jede Anzeige passt höchstens einmal. Für eine Person gibt es keine passende Anzeige.',
+    people: [
+      {
+        situation: 'Nina und Ben haben kein Auto und möchten einen Tag am Wasser verbringen.',
+        answer: 3,
+        explanation: 'Anzeige D: Schifffahrt auf dem See, Abfahrt direkt am Bahnhof.',
+      },
+      {
+        situation: 'Herr Weber interessiert sich für Technik und möchte sehen, wie früher gearbeitet wurde.',
+        answer: 0,
+        explanation: 'Anzeige A: Industriemuseum mit alten Maschinen, die noch laufen.',
+      },
+      {
+        situation: 'Familie Braun sucht etwas für Regentage, bei dem sich die Kinder bewegen können.',
+        answer: 5,
+        explanation: 'Anzeige F: Kletterhalle mit Kinderbereich, drinnen.',
+      },
+      {
+        situation: 'Lena möchte am Sonntag in Ruhe ein gutes Frühstück essen und dabei Musik hören.',
+        answer: 1,
+        explanation: 'Anzeige B: Jazz-Brunch jeden Sonntag.',
+      },
+      {
+        situation: 'Ein Rentnerpaar möchte wandern, aber nicht mehr als zwei Stunden und ohne steile Wege.',
+        answer: 6,
+        explanation: 'Anzeige G: leichter Rundweg, 5 km, für Senioren geeignet.',
+      },
+      {
+        situation: 'Kai möchte eine Nacht im Zelt unter freiem Himmel verbringen.',
+        answer: null,
+        explanation: 'Anzeige E ist ein Hotel, kein Campingplatz. Keine Anzeige passt.',
+      },
+    ],
+    ads: [
+      {
+        title: 'Industriemuseum Lautertal',
+        text: 'Erleben Sie, wie man vor 100 Jahren Stoffe gewebt hat. Unsere historischen Maschinen sind noch in Betrieb. Täglich Vorführungen um 11 und 15 Uhr.',
+      },
+      {
+        title: 'Jazz-Brunch im Café Mondschein',
+        text: 'Jeden Sonntag von 10 bis 14 Uhr: großes Frühstücksbuffet und Live-Jazz. Bitte reservieren.',
+      },
+      {
+        title: 'Freizeitpark Wunderland',
+        text: 'Achterbahn, Wasserrutsche und Spaß für die ganze Familie. Nur bei gutem Wetter geöffnet. Großer Parkplatz direkt am Eingang.',
+      },
+      {
+        title: 'Mit dem Schiff über den See',
+        text: 'Rundfahrten stündlich ab 10 Uhr. Der Anleger liegt fünf Gehminuten vom Bahnhof entfernt. Restaurant an Bord.',
+      },
+      {
+        title: 'Wellnesshotel Bergblick',
+        text: 'Ein Wochenende ausspannen: Sauna, Massage und Panoramablick. Doppelzimmer ab 180 Euro pro Nacht.',
+      },
+      {
+        title: 'Kletterhalle Hoch hinaus',
+        text: 'Klettern bei jedem Wetter! Eigener Bereich für Kinder ab 4 Jahren, Ausrüstung kann geliehen werden.',
+      },
+      {
+        title: 'Gemütlich wandern',
+        text: 'Unser Rundweg am Waldrand ist nur 5 km lang und fast flach. Mit vielen Bänken – ideal auch für ältere Menschen.',
+      },
+    ],
+  },
+  {
+    id: 'zuordnung-gesundheit',
+    title: 'Gesundheit und Beratung',
+    level: 'B1',
+    theme: 'gesundheit',
+    instructions:
+      'Sechs Personen suchen Hilfe oder Informationen. Welche Anzeige passt zu welcher Person? Jede Anzeige passt höchstens einmal. Für eine Person gibt es keine passende Anzeige.',
+    people: [
+      {
+        situation: 'Olga hat am Samstagabend starke Zahnschmerzen.',
+        answer: 2,
+        explanation: 'Anzeige C: zahnärztlicher Notdienst am Wochenende.',
+      },
+      {
+        situation: 'Herr Fischer schläft seit Monaten schlecht und möchte lernen, wie man sich entspannt.',
+        answer: 4,
+        explanation: 'Anzeige E: Kurs Entspannung und besser schlafen.',
+      },
+      {
+        situation: 'Anna möchte aufhören zu rauchen und sucht Unterstützung in einer Gruppe.',
+        answer: 0,
+        explanation: 'Anzeige A: Nichtraucherkurs in der Gruppe.',
+      },
+      {
+        situation: 'Ein junger Vater weiß nicht, ob sein Baby genug isst, und möchte jemanden fragen.',
+        answer: 5,
+        explanation: 'Anzeige F: Hebammen-Sprechstunde für Eltern mit Babys.',
+      },
+      {
+        situation: 'Murat hat sich beim Sport am Knie verletzt und braucht nach der Operation Übungen.',
+        answer: 1,
+        explanation: 'Anzeige B: Physiotherapie nach Sportverletzungen.',
+      },
+      {
+        situation: 'Frau Kaya sucht eine Ärztin, die Türkisch spricht.',
+        answer: null,
+        explanation: 'Keine Anzeige nennt Türkischkenntnisse.',
+      },
+    ],
+    ads: [
+      {
+        title: 'Rauchfrei in sechs Wochen',
+        text: 'Gemeinsam schafft man es leichter: Unser Kurs trifft sich einmal pro Woche in kleinen Gruppen. Die Krankenkasse übernimmt einen Teil der Kosten.',
+      },
+      {
+        title: 'Physiopraxis Bewegung',
+        text: 'Spezialisiert auf Sportverletzungen und Reha nach Operationen an Knie und Schulter. Termine auch abends.',
+      },
+      {
+        title: 'Zahnärztlicher Notdienst',
+        text: 'Am Wochenende und an Feiertagen: Unter 01805 986700 erfahren Sie, welche Praxis geöffnet hat.',
+      },
+      {
+        title: 'Apotheke am Markt',
+        text: 'Neu: Bestellen Sie Ihre Medikamente online und holen Sie sie in 30 Minuten ab. Mo–Sa 8–20 Uhr.',
+      },
+      {
+        title: 'Endlich wieder durchschlafen',
+        text: 'Progressive Muskelentspannung und Atemübungen: acht Abende an der Volkshochschule, für Menschen mit Schlafproblemen.',
+      },
+      {
+        title: 'Hebammen-Sprechstunde',
+        text: 'Fragen zum Stillen, zur Flasche oder zum Schlafen? Jeden Donnerstag beraten unsere Hebammen Eltern mit Babys bis zu einem Jahr. Kostenlos.',
+      },
+      {
+        title: 'Yoga für Schwangere',
+        text: 'Sanfte Übungen für werdende Mütter ab dem vierten Monat. Dienstags 10 Uhr.',
+      },
+    ],
+  },
+  {
+    id: 'zuordnung-weiterbildung-b2',
+    title: 'Weiterbildung',
+    level: 'B2',
+    theme: 'bildung',
+    instructions:
+      'Sechs Personen interessieren sich für eine Weiterbildung. Lesen Sie die Angebote genau: Oft passen Thema und Zielgruppe, aber nicht Zeit, Ort oder Voraussetzungen. Für eine Person gibt es kein passendes Angebot.',
+    people: [
+      {
+        situation:
+          'Sandra arbeitet Vollzeit im Marketing und möchte sich neben dem Beruf in Datenanalyse fortbilden, ohne feste Termine.',
+        answer: 3,
+        explanation: 'Anzeige D: Datenanalyse im Selbststudium, Videos jederzeit abrufbar.',
+      },
+      {
+        situation:
+          'Herr Okafor ist Ingenieur aus Nigeria. Seine Abschlüsse sollen in Deutschland anerkannt werden, und er braucht dafür Fachsprache.',
+        answer: 0,
+        explanation:
+          'Anzeige A: Berufsbezogenes Deutsch für Ingenieurinnen und Ingenieure, mit Beratung zur Anerkennung.',
+      },
+      {
+        situation: 'Petra leitet seit Kurzem ein Team und fühlt sich bei schwierigen Mitarbeitergesprächen unsicher.',
+        answer: 5,
+        explanation: 'Anzeige F: Gesprächsführung für neue Führungskräfte.',
+      },
+      {
+        situation: 'Jan hat kein Abitur, möchte aber studieren. Er hat eine Ausbildung und fünf Jahre Berufserfahrung.',
+        answer: 2,
+        explanation: 'Anzeige C: Studieren ohne Abitur, Beratung für beruflich Qualifizierte.',
+      },
+      {
+        situation: 'Frau Roth ist 58 und möchte sich zur Tagesmutter qualifizieren.',
+        answer: null,
+        explanation: 'Keine Anzeige bietet eine Qualifizierung in der Kinderbetreuung.',
+      },
+      {
+        situation:
+          'Tim möchte sich selbstständig machen und braucht Grundwissen in Buchhaltung und Steuern, am liebsten kompakt an einem Wochenende.',
+        answer: 4,
+        explanation: 'Anzeige E: Existenzgründer-Wochenende mit Buchhaltung und Steuern.',
+      },
+    ],
+    ads: [
+      {
+        title: 'Deutsch für Ingenieurinnen und Ingenieure',
+        text: 'Fachsprache für technische Berufe, Niveau B2–C1. Inklusive individueller Beratung zur Anerkennung ausländischer Abschlüsse.',
+      },
+      {
+        title: 'Excel für Einsteiger',
+        text: 'Tabellen, Formeln, Diagramme: In vier Abendterminen lernen Sie die Grundlagen. Präsenzkurs, Raum 204.',
+      },
+      {
+        title: 'Studieren ohne Abitur',
+        text: 'Mit abgeschlossener Berufsausbildung und mehrjähriger Berufserfahrung können Sie auch ohne Abitur studieren. Wir beraten Sie zu Zugangswegen und Finanzierung.',
+      },
+      {
+        title: 'Datenanalyse flexibel lernen',
+        text: 'Online-Kurs im Selbststudium: Alle Videos und Übungen sind jederzeit abrufbar. Zertifikat nach bestandenem Abschlusstest.',
+      },
+      {
+        title: 'Gründen – aber richtig',
+        text: 'Intensivseminar Samstag und Sonntag: Businessplan, Buchhaltung, Steuern und Versicherungen für Existenzgründer.',
+      },
+      {
+        title: 'Neu in der Führungsrolle',
+        text: 'Kritikgespräche, Konflikte, Motivation: Trainieren Sie schwierige Gesprächssituationen in Rollenspielen. Drei Tage, Kleingruppe.',
+      },
+      {
+        title: 'Pflegehelfer/in werden',
+        text: 'Qualifizierung für die Altenpflege in sechs Monaten, Vollzeit. Gefördert von der Agentur für Arbeit.',
+      },
+    ],
+  },
 ]
