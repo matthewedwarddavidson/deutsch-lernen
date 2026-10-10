@@ -1,0 +1,45 @@
+// KIND | german | grammar | usage | english | example | example in English
+export default `
+# A2
+N | die Fahrkarte | Fahrkarten | | ticket | Die {Fahrkarte} kannst du auch in der App kaufen. | You can also buy the ticket in the app.
+N | das Gleis | Gleise | | platform, track | Der Zug nach Hamburg fährt heute von {Gleis} 7. | The train to Hamburg leaves from platform 7 today.
+V | umsteigen | steigt um, stieg um, ist umgestiegen | | to change (trains) | In Mannheim müssen Sie {umsteigen}. | You have to change in Mannheim.
+N | die Unterkunft | Unterkünfte | | accommodation | Habt ihr schon eine {Unterkunft} gefunden? | Have you found somewhere to stay yet?
+
+# B1
+N | die Verspätung | Verspätungen | | delay | Der ICE hat 40 Minuten {Verspätung}. | The ICE is running 40 minutes late.
+N | der Anschluss | Anschlüsse | | connection | Wegen der Verspätung habe ich meinen {Anschluss} verpasst. | Because of the delay I missed my connection.
+V | verpassen | verpasst, verpasste, hat verpasst | | to miss | Beeil dich, sonst {verpassen} wir den Bus! | Hurry up, or we'll miss the bus!
+N | die Abfahrt | Abfahrten | | departure | Die {Abfahrt} ist um 6:15 Uhr. | Departure is at 6.15.
+N | die Ankunft | Ankünfte | | arrival | Bei {Ankunft} melden Sie sich bitte an der Rezeption. | On arrival please check in at reception.
+N | die Durchsage | Durchsagen | | announcement | Achtung, eine {Durchsage}: Der Zug fällt heute aus. | Attention, an announcement: the train is cancelled today.
+V | ausfallen | fällt aus, fiel aus, ist ausgefallen | | to be cancelled | Die S-Bahn ist wegen eines Streiks {ausgefallen}. | The S-Bahn was cancelled because of a strike.
+N | der Streik | Streiks | | strike | Wegen des {Streiks} fahren heute keine Züge. | Because of the strike there are no trains today.
+N | die Rückfahrt | Rückfahrten | | return journey | Auf der {Rückfahrt} haben wir in Würzburg übernachtet. | On the way back we stayed overnight in Würzburg.
+V | übernachten | übernachtet, übernachtete, hat übernachtet | | to stay the night | Wir haben in einer Jugendherberge {übernachtet}. | We stayed at a youth hostel.
+N | die Halbpension | – | | half board | Das Zimmer mit {Halbpension} kostet 90 Euro. | The room with half board costs 90 euros.
+V | buchen | bucht, buchte, hat gebucht | | to book | Wir haben den Flug schon im Januar {gebucht}. | We booked the flight back in January.
+V | stornieren | storniert, stornierte, hat storniert | | to cancel (a booking) | Kann ich die Reservierung kostenlos {stornieren}? | Can I cancel the booking for free?
+N | das Gepäck | – | | luggage | Wie viel {Gepäck} darf man mitnehmen? | How much luggage can you take?
+N | der Ausweis | Ausweise | | ID card | Bitte zeigen Sie Ihren {Ausweis}. | Please show your ID.
+N | die Sehenswürdigkeit | Sehenswürdigkeiten | | sight, place of interest | Der Dom ist die bekannteste {Sehenswürdigkeit} der Stadt. | The cathedral is the city's best-known sight.
+N | der Stau | Staus | | traffic jam | Auf der A8 gibt es zehn Kilometer {Stau}. | There's a ten-kilometre jam on the A8.
+N | die Baustelle | Baustellen | | roadworks, building site | Wegen einer {Baustelle} ist die Straße gesperrt. | The road is closed because of roadworks.
+ADJ | gesperrt | – | | closed (road) | Die Brücke ist bis Montag {gesperrt}. | The bridge is closed until Monday.
+N | die Umleitung | Umleitungen | | diversion | Folgen Sie bitte der {Umleitung}. | Please follow the diversion.
+N | der Führerschein | Führerscheine | | driving licence | Ich habe meinen {Führerschein} mit 18 gemacht. | I got my driving licence at 18.
+V | tanken | tankt, tankte, hat getankt | | to fill up (with fuel) | Wir müssen vor der Autobahn noch {tanken}. | We need to get fuel before the motorway.
+N | die Reiseleitung | Reiseleitungen | | tour guide(s) | Die {Reiseleitung} spricht Deutsch und Englisch. | The tour guide speaks German and English.
+V | sich verlaufen | verläuft sich, verlief sich, hat sich verlaufen | | to get lost (on foot) | In der Altstadt haben wir uns total {verlaufen}. | We got completely lost in the old town.
+V | sich verfahren | verfährt sich, verfuhr sich, hat sich verfahren | | to get lost (driving) | Ohne Navi hätte ich mich sicher {verfahren}. | Without satnav I'd certainly have got lost.
+N | die Grenze | Grenzen | | border | An der {Grenze} gab es keine Kontrollen. | There were no checks at the border.
+N | der Aufenthalt | Aufenthalte | | stay | Wir wünschen Ihnen einen angenehmen {Aufenthalt}. | We wish you a pleasant stay.
+ADJ | ausgebucht | – | | fully booked | Leider sind alle Hotels in der Stadt {ausgebucht}. | Unfortunately all the hotels in town are fully booked.
+
+# B2
+N | die Entschädigung | Entschädigungen | | compensation | Bei mehr als einer Stunde Verspätung gibt es eine {Entschädigung}. | With a delay of more than an hour you get compensation.
+N | das Verkehrsmittel | Verkehrsmittel | | means of transport | Öffentliche {Verkehrsmittel} sind hier gut ausgebaut. | Public transport is well developed here.
+V | erstatten | erstattet, erstattete, hat erstattet | | to refund | Der Fahrpreis wird Ihnen vollständig {erstattet}. | Your fare will be refunded in full.
+N | der Reiseveranstalter | Reiseveranstalter | | tour operator | Der {Reiseveranstalter} hat die Reise kurzfristig abgesagt. | The tour operator cancelled the trip at short notice.
+ADJ | kurzfristig | – | | at short notice | Wir mussten den Urlaub {kurzfristig} verschieben. | We had to postpone the holiday at short notice.
+`
