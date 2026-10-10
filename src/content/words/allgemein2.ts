@@ -216,4 +216,29 @@ ADV | glücklicherweise | | | fortunately | {Glücklicherweise} wurde niemand ve
 ADV | mehrmals | | | several times | Ich habe {mehrmals} angerufen. | I called several times.
 ADV | möglichst | | | as … as possible | Bitte antworten Sie {möglichst} schnell. | Please reply as quickly as possible.
 ADV | überhaupt | | | at all | Das interessiert mich {überhaupt} nicht. | That doesn't interest me at all.
+# C1
+V | beanspruchen | beansprucht, beanspruchte, hat beansprucht | | to claim; to take up (time) | Das Projekt {beansprucht} viel Zeit. | The project takes up a lot of time.
+V | beeinträchtigen | beeinträchtigt, beeinträchtigte, hat beeinträchtigt | | to impair, affect | Lärm kann die Konzentration {beeinträchtigen}. | Noise can impair concentration.
+V | hinterfragen | hinterfragt, hinterfragte, hat hinterfragt | | to question, scrutinise | Man sollte solche Statistiken kritisch {hinterfragen}. | Statistics like these should be questioned critically.
+V | veranschaulichen | veranschaulicht, veranschaulichte, hat veranschaulicht | | to illustrate | Ein Beispiel soll das {veranschaulichen}. | An example will illustrate this.
+V | verzeichnen | verzeichnet, verzeichnete, hat verzeichnet | | to record, register | Die Firma {verzeichnete} einen Gewinn von zehn Prozent. | The company recorded a profit of ten per cent.
+V | zurückführen | führt zurück, führte zurück, hat zurückgeführt | auf + A | to attribute to | Den Erfolg {führt} sie auf harte Arbeit {zurück}. | She attributes her success to hard work.
+V | ausschöpfen | schöpft aus, schöpfte aus, hat ausgeschöpft | | to exhaust, make full use of | Wir haben alle Möglichkeiten {ausgeschöpft}. | We have exhausted every option.
+N | der Befund | Befunde | | finding(s), result | Der {Befund} der Studie ist eindeutig. | The study's finding is clear.
+N | die Diskrepanz | Diskrepanzen | | discrepancy | Es gibt eine {Diskrepanz} zwischen Anspruch und Wirklichkeit. | There is a gap between aspiration and reality.
+N | die Wechselwirkung | Wechselwirkungen | | interaction | Achten Sie auf {Wechselwirkungen} mit anderen Medikamenten. | Watch out for interactions with other medicines.
+N | die Zuversicht | – | | confidence, optimism | Sie blickt mit {Zuversicht} in die Zukunft. | She looks to the future with confidence.
+N | das Anliegen | Anliegen | | concern, request | Was ist Ihr {Anliegen}? | What can I do for you?
+N | die Akzeptanz | – | | acceptance | Die {Akzeptanz} für das Projekt ist gering. | There is little support for the project.
+N | die Abwägung | Abwägungen | | weighing up | Nach sorgfältiger {Abwägung} haben wir uns dagegen entschieden. | After careful consideration we decided against it.
+ADJ | beträchtlich | beträchtlicher, am beträchtlichsten | | considerable | Die Kosten sind {beträchtlich} gestiegen. | Costs have risen considerably.
+ADJ | gravierend | gravierender, am gravierendsten | | serious, grave | Das hätte {gravierende} Folgen. | That would have serious consequences.
+ADJ | unabdingbar | – | | indispensable | Gute Deutschkenntnisse sind für die Stelle {unabdingbar}. | Good German is essential for the job.
+ADJ | vorrangig | – | | primary; primarily | Es geht {vorrangig} um die Sicherheit. | It is primarily about safety.
+ADJ | zutreffend | – | | accurate, applicable | {Zutreffendes} bitte ankreuzen. | Please tick where applicable.
+ADJ | hinlänglich | – | | sufficient(ly) | Das Problem ist {hinlänglich} bekannt. | The problem is well known.
+ADV | schlichtweg | | | simply, quite simply | Das ist {schlichtweg} falsch. | That is simply wrong.
+ADV | keineswegs | | | by no means | Das ist {keineswegs} sicher. | That is by no means certain.
+ADV | letztlich | | | ultimately | {Letztlich} entscheidet der Kunde. | Ultimately the customer decides.
+ADV | durchaus | | | quite, definitely | Das ist {durchaus} möglich. | That's quite possible.
 `
