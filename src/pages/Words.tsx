@@ -7,9 +7,9 @@ import { displayGerman, slugify } from '../content/parseWords'
 import { THEMES } from '../content/themes'
 import { LEVELS, type Gender, type Level, type ThemeId, type Word, type WordKind } from '../content/types'
 import { ViaClaudeAi } from '../components/ViaClaudeAi'
-import { addCustomWord, addCustomWords, forgetWord, learnWord, removeCustomWord } from '../lib/actions'
+import { addCustomWord, addCustomWords, forgetWord, learnWord, removeCustomWord, unsuspendCards } from '../lib/actions'
 import { wordImportJob } from '../lib/generation'
-import { allWords, isWordLearned, recogniseId } from '../lib/cards'
+import { allWords, isWordLearned, produceId, recogniseId } from '../lib/cards'
 import { isMature, Rating, retrievability } from '../lib/srs'
 import { useNow } from '../lib/hooks'
 import { useAppState, type AppState } from '../lib/store'
@@ -187,6 +187,14 @@ function WordRow({
                 <button className="btn small ghost" onClick={() => forgetWord(word)}>
                   Reset progress
                 </button>
+                {(state.suspended[recogniseId(word)] || state.suspended[produceId(word)]) && (
+                  <button
+                    className="btn small ghost"
+                    onClick={() => unsuspendCards([recogniseId(word), produceId(word)])}
+                  >
+                    Show in reviews again
+                  </button>
+                )}
               </>
             )}
             {word.theme === 'eigene' && (

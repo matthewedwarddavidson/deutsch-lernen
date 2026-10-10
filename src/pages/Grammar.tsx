@@ -7,7 +7,7 @@ import { SpeakButton } from '../components/SpeakButton'
 import { GRAMMAR_TOPICS, topicById } from '../content/grammar'
 import { nextTopic } from '../lib/grading'
 import { LEVELS, type GrammarTopic } from '../content/types'
-import { completeTopic, recordActivity } from '../lib/actions'
+import { completeTopic, recordActivity, unsuspendCards } from '../lib/actions'
 import { grammarCardId, levelIndex } from '../lib/cards'
 import type { Verdict } from '../lib/check'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
@@ -124,6 +124,9 @@ export function GrammarLesson() {
 function Lesson({ topic, onPractise }: { topic: GrammarTopic; onPractise: () => void }) {
   const state = useAppState()
   const studied = topic.id in state.grammar
+  const suspendedIds = topic.exercises
+    .map((exercise) => grammarCardId(topic, exercise))
+    .filter((id) => state.suspended[id])
   return (
     <article className="lesson">
       <div className="page-header">
@@ -210,6 +213,11 @@ function Lesson({ topic, onPractise }: { topic: GrammarTopic; onPractise: () => 
               : 'When you finish, the exercises join your spaced reviews.'}
           </div>
         </div>
+        {suspendedIds.length > 0 && (
+          <button className="btn ghost small" onClick={() => unsuspendCards(suspendedIds)}>
+            Restore {suspendedIds.length} hidden exercise{suspendedIds.length > 1 ? 's' : ''}
+          </button>
+        )}
         <button className="btn primary" onClick={onPractise}>
           {studied ? 'Practise again' : 'Start practice'}
         </button>

@@ -72,6 +72,8 @@ export interface AppState {
   wordsLearned: Record<string, string>
   customWords: Word[]
   mistakes: Mistake[]
+  /** Cards you chose never to see again. */
+  suspended: Record<string, true>
   grammar: Record<string, { studiedAt: string }>
   reading: Record<string, Completion>
   listening: Record<string, Completion>
@@ -93,6 +95,7 @@ export function initialState(): AppState {
     wordsLearned: {},
     customWords: [],
     mistakes: [],
+    suspended: {},
     grammar: {},
     reading: {},
     listening: {},

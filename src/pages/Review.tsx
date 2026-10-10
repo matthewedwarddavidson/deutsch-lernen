@@ -9,7 +9,7 @@ import { SpeakButton } from '../components/SpeakButton'
 import { WordView } from '../components/WordView'
 import { clozeParts, displayGerman } from '../content/parseWords'
 import type { Word } from '../content/types'
-import { gradeCard, recordActivity } from '../lib/actions'
+import { gradeCard, recordActivity, suspendCard } from '../lib/actions'
 import { dueCards, type CardRef } from '../lib/cards'
 import { checkAnswer, type CheckResult, type Verdict } from '../lib/check'
 import { checkWord, suggestedGrade } from '../lib/grading'
@@ -71,10 +71,22 @@ export function Review() {
       <div className="card review-card">
         <ReviewCard key={`${current.id}-${position}`} card={current} stored={stored} onGrade={handleGrade} />
       </div>
-      <p className="faint small keys-hint" style={{ marginTop: 12 }}>
-        Keys: <span className="kbd">Enter</span> check or accept the suggested grade, <span className="kbd">1</span>–
-        <span className="kbd">4</span> pick a grade.
-      </p>
+      <div className="row between" style={{ marginTop: 12 }}>
+        <p className="faint small keys-hint" style={{ margin: 0 }}>
+          Keys: <span className="kbd">Enter</span> check or accept the suggested grade, <span className="kbd">1</span>–
+          <span className="kbd">4</span> pick a grade.
+        </p>
+        <button
+          className="btn ghost small"
+          title="Removes this card from your reviews. Undo from the word list."
+          onClick={() => {
+            suspendCard(current.id)
+            setPosition(position + 1)
+          }}
+        >
+          Don't show again
+        </button>
+      </div>
     </div>
   )
 }

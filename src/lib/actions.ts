@@ -41,6 +41,18 @@ export function learnWord(word: Word, grade: Grade) {
   })
 }
 
+export function suspendCard(cardId: string) {
+  update((state) => ({ ...state, suspended: { ...state.suspended, [cardId]: true } }))
+}
+
+export function unsuspendCards(cardIds: string[]) {
+  update((state) => {
+    const suspended = { ...state.suspended }
+    for (const id of cardIds) delete suspended[id]
+    return { ...state, suspended }
+  })
+}
+
 export function forgetWord(word: Word) {
   update((state) => {
     const cards = { ...state.cards }

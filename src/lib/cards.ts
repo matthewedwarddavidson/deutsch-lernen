@@ -85,7 +85,7 @@ function shuffle<T>(items: T[]): T[] {
 export function dueCards(state: AppState, now: Date): CardRef[] {
   const index = buildCardIndex(state)
   const due = Object.entries(state.cards)
-    .filter(([id, card]) => index.has(id) && isDue(card, now))
+    .filter(([id, card]) => index.has(id) && !state.suspended[id] && isDue(card, now))
     .sort(([, a], [, b]) => new Date(a.due).getTime() - new Date(b.due).getTime())
     .map(([id]) => index.get(id)!)
 
