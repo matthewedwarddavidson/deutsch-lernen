@@ -374,12 +374,12 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     level: 'C1',
     theme: 'gesellschaft',
     genre: 'report',
-    voices: { Sprecherin: 'kerstin', 'Prof. Hartmann': 'thorsten', 'Frau Demir': 'thorsten-emotional' },
+    voices: { Sprecher: 'thorsten-emotional', 'Prof. Hartmann': 'thorsten', 'Frau Demir': 'kerstin' },
     situation:
       'A radio feature on volunteering, with a sociologist and the head of a food bank. Focus on the arguments and on what is implied, not only on facts.',
     lines: [
       {
-        speaker: 'Sprecherin',
+        speaker: 'Sprecher',
         text: 'Rund dreißig Millionen Menschen engagieren sich in Deutschland ehrenamtlich – in Sportvereinen, bei der Feuerwehr, in der Flüchtlingshilfe oder bei den Tafeln. Ohne sie, so heißt es oft, würde vieles schlicht zusammenbrechen. Doch das Ehrenamt verändert sich, und nicht alle sehen diese Entwicklung positiv.',
       },
       {
@@ -387,7 +387,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
         text: 'Was wir beobachten, ist kein Rückgang des Engagements insgesamt, sondern ein Wandel seiner Form. Früher trat man mit zwanzig in einen Verein ein und blieb dort, bis man starb. Heute engagieren sich die Menschen eher projektbezogen und zeitlich begrenzt: Sie helfen drei Monate bei einer Sprachpatenschaft und wenden sich dann etwas anderem zu. Das ist nicht per se schlechter, stellt aber Organisationen, die auf Kontinuität angewiesen sind, vor erhebliche Probleme.',
       },
       {
-        speaker: 'Sprecherin',
+        speaker: 'Sprecher',
         text: 'Eine dieser Organisationen ist die Tafel in Offenbach. Ihre Leiterin, Aylin Demir, kennt die Schwierigkeiten aus erster Hand.',
       },
       {
@@ -399,7 +399,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
         text: 'Diesen Punkt halte ich für zentral. Es besteht die Gefahr, dass der Staat sich auf das Ehrenamt verlässt und sich schleichend aus bestimmten Bereichen zurückzieht. Ehrenamt sollte staatliche Leistungen ergänzen, nicht ersetzen. Gleichzeitig darf man nicht übersehen, was Engagement für die Engagierten selbst bedeutet: Es stiftet Sinn, schafft Kontakte über soziale Grenzen hinweg und ist, nebenbei bemerkt, einer der besten Schutzfaktoren gegen Einsamkeit im Alter.',
       },
       {
-        speaker: 'Sprecherin',
+        speaker: 'Sprecher',
         text: 'Was also tun? Fachleute fordern, Engagement besser anzuerkennen, etwa durch Rentenpunkte oder Vergünstigungen im Nahverkehr, und Organisationen bei der Verwaltung zu entlasten. Frau Demir hat einen bescheideneren Wunsch.',
       },
       {
