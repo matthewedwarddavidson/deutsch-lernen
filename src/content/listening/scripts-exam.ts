@@ -293,4 +293,79 @@ export const SCRIPTS_EXAM: ListeningText[] = [
       },
     ],
   },
+  {
+    id: 'kurze-nachrichten-teil1',
+    title: 'Fünf kurze Texte',
+    level: 'B1',
+    theme: 'alltag',
+    genre: 'announcement',
+    voices: {
+      'Text 1': 'kerstin',
+      'Text 2': 'thorsten',
+      'Text 3': 'kerstin',
+      'Text 4': 'thorsten-emotional',
+      'Text 5': 'thorsten',
+    },
+    situation:
+      'Five short recordings: a voicemail, two announcements, a radio advert and a weather report (Hören Teil 1). In the exam you hear each one twice. Read the questions first.',
+    lines: [
+      {
+        speaker: 'Text 1',
+        text: 'Hallo Paul, hier ist Svenja. Du, ich schaffe es heute Abend leider nicht um sieben ins Kino, ich muss länger arbeiten. Können wir die Vorstellung um halb zehn nehmen? Die Karten hast ja du, also treffen wir uns einfach um Viertel nach neun vor dem Eingang. Ruf mich kurz an, ob das klappt!',
+      },
+      {
+        speaker: 'Text 2',
+        text: 'Sehr geehrte Fahrgäste, wegen einer Signalstörung fährt der RE 7 nach Münster heute nicht von Gleis 4, sondern von Gleis 11 ab. Die Abfahrt verzögert sich um etwa fünfzehn Minuten. Fahrgäste nach Hamm nutzen bitte die S-Bahn um 14 Uhr 32.',
+      },
+      {
+        speaker: 'Text 3',
+        text: 'Liebe Kundinnen und Kunden, nur noch heute bis 20 Uhr: Alle Wintermäntel und Stiefel im ersten Obergeschoss sind um vierzig Prozent reduziert. Und an unserer Kaffeebar im Erdgeschoss bekommen Sie zu jedem Einkauf über fünfzig Euro einen Cappuccino gratis.',
+      },
+      {
+        speaker: 'Text 4',
+        text: 'Sie suchen eine neue Herausforderung? Das Stadtkrankenhaus sucht ab sofort Pflegekräfte in Voll- und Teilzeit. Wir bieten flexible Arbeitszeiten, ein Jobticket und einen Platz in unserer Betriebskita. Informieren Sie sich am Samstag beim Tag der offenen Tür von 10 bis 16 Uhr.',
+      },
+      {
+        speaker: 'Text 5',
+        text: 'Und nun das Wetter für morgen, Donnerstag. Am Vormittag ist es noch sonnig, ab Mittag ziehen aus Westen Wolken auf, und am Nachmittag gibt es teilweise kräftige Gewitter. Die Temperaturen erreichen bis zu 29 Grad. Am Freitag wird es dann deutlich kühler, bei höchstens 19 Grad.',
+      },
+    ],
+    questions: [
+      {
+        kind: 'choice',
+        question: 'Text 1: Wann treffen sich Svenja und Paul?',
+        options: ['Um 19 Uhr', 'Um 21:15 Uhr', 'Um 21:30 Uhr'],
+        answer: 1,
+        explanation: 'Der Film beginnt um halb zehn, sie treffen sich um Viertel nach neun.',
+      },
+      {
+        kind: 'choice',
+        question: 'Text 2: Was ist mit dem RE 7?',
+        options: ['Er fällt aus.', 'Er fährt von einem anderen Gleis.', 'Er fährt nur bis Hamm.'],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Text 3: Was bekommt man heute gratis?',
+        options: [
+          'Einen Kaffee bei einem Einkauf über 50 Euro',
+          'Stiefel beim Kauf eines Mantels',
+          'Vierzig Prozent auf alles',
+        ],
+        answer: 0,
+      },
+      {
+        kind: 'choice',
+        question: 'Text 4: Was bietet das Krankenhaus?',
+        options: ['Ein höheres Gehalt', 'Kinderbetreuung im Betrieb', 'Eine Wohnung'],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Text 5: Wie wird das Wetter am Donnerstagnachmittag?',
+        options: ['Sonnig und heiß', 'Gewittrig', 'Kühl und trocken'],
+        answer: 1,
+      },
+    ],
+  },
 ]
