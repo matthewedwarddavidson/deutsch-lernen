@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { Icon, type IconName } from '../components/Icon'
 import { listeningTexts, readingTexts, suggest, writingTasks } from '../content/library'
 import { dueCards, newWordsLearnedToday, nextNewWords } from '../lib/cards'
+import { backupDue, downloadBackup } from '../lib/backup'
 import { useNow } from '../lib/hooks'
 import { useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
@@ -73,6 +74,19 @@ export function Today() {
           Working towards <strong>{target}</strong>. Reviews first while your memory is fresh, then something new.
         </p>
       </div>
+
+      {backupDue(now) && (
+        <div className="feedback almost" style={{ marginTop: 0, marginBottom: 16 }}>
+          <div className="row between">
+            <span className="small">
+              Your progress lives only in this browser, and browsers sometimes clear site data. Keep a backup.
+            </span>
+            <button className="btn small" onClick={downloadBackup}>
+              Download backup
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="card today-hero">
         <div>

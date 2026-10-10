@@ -60,6 +60,7 @@ export interface Settings {
   name: string
   /** Prefer the recorded neural voices where available. */
   useRecordings: boolean
+  lastBackupAt?: string
 }
 
 export interface AppState {

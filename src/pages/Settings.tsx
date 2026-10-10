@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import { LEVELS, type Level } from '../content/types'
 import { updateSettings } from '../lib/actions'
 import { bestGermanVoices, hasNaturalBrowserVoice, speak, whenVoicesReady } from '../lib/speech'
-import { exportState, importState, resetState, useAppState } from '../lib/store'
+import { downloadBackup } from '../lib/backup'
+import { importState, resetState, useAppState } from '../lib/store'
 
 const LEVEL_DESCRIPTIONS: Record<Level, string> = {
   A2: 'Consolidate the basics',
@@ -21,15 +22,6 @@ export function Settings() {
   useEffect(() => {
     whenVoicesReady().then(() => setVoices(bestGermanVoices()))
   }, [])
-
-  function download() {
-    const blob = new Blob([exportState()], { type: 'application/json' })
-    const link = document.createElement('a')
-    link.href = URL.createObjectURL(blob)
-    link.download = `deutsch-lernen-${new Date().toISOString().slice(0, 10)}.json`
-    link.click()
-    URL.revokeObjectURL(link.href)
-  }
 
   async function upload(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
@@ -211,7 +203,7 @@ export function Settings() {
           and then, or to move to another computer or browser.
         </p>
         <div className="row">
-          <button className="btn" onClick={download}>
+          <button className="btn" onClick={downloadBackup}>
             Download backup
           </button>
           <button className="btn" onClick={() => fileInput.current?.click()}>
