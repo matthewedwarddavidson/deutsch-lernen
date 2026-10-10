@@ -59,4 +59,10 @@ V | sich begeistern | begeistert sich, begeisterte sich, hat sich begeistert | f
 ADJ | abwechslungsreich | abwechslungsreicher, am abwechslungsreichsten | | varied | Das Programm war sehr {abwechslungsreich}. | The programme was very varied.
 N | die Muße | – | | leisure, idleness | Zum Lesen fehlt mir oft die {Muße}. | I often lack the leisure to read.
 V | nachgehen | geht nach, ging nach, ist nachgegangen | D | to pursue (a hobby) | In der Rente will er endlich seinen Hobbys {nachgehen}. | In retirement he finally wants to pursue his hobbies.
+
+# B1
+N | die Ausrüstung | Ausrüstungen | | equipment, gear | Die {Ausrüstung} kann man ausleihen. | You can hire the equipment.
+V | ausleihen | leiht aus, lieh aus, hat ausgeliehen | | to borrow, hire | Ich habe mir in der Bibliothek drei Bücher {ausgeliehen}. | I borrowed three books from the library.
+N | der Wettbewerb | Wettbewerbe | | competition | Sie hat einen {Wettbewerb} gewonnen. | She won a competition.
+N | der Liegestuhl | Liegestühle | | deckchair | Am Strand kann man {Liegestühle} mieten. | You can hire deckchairs on the beach.
 `

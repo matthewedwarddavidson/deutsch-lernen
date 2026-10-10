@@ -74,4 +74,14 @@ V | vertreten | vertritt, vertrat, hat vertreten | | to stand in for; to represe
 N | der Fachkräftemangel | – | | skills shortage | Viele Betriebe leiden unter dem {Fachkräftemangel}. | Many firms are suffering from the skills shortage.
 ADJ | ausgebrannt | – | | burnt out | Nach zwei Jahren ohne Urlaub war er völlig {ausgebrannt}. | After two years without a holiday he was completely burnt out.
 N | die Vergütung | Vergütungen | | pay, remuneration | Die {Vergütung} erfolgt nach Tarif. | Pay is according to the collective agreement.
+
+# B1
+N | die Kantine | Kantinen | | canteen | Wir essen mittags in der {Kantine}. | We have lunch in the canteen.
+N | der Vertrag | Verträge | | contract | Bitte lesen Sie den {Vertrag} genau. | Please read the contract carefully.
+N | die Konferenz | Konferenzen | | conference | Nächste Woche fahre ich zu einer {Konferenz}. | Next week I'm going to a conference.
+N | die Dienstreise | Dienstreisen | | business trip | Er ist diese Woche auf {Dienstreise}. | He's away on a business trip this week.
+V | sich krankmelden | meldet sich krank, meldete sich krank, hat sich krankgemeldet | | to call in sick | Ich muss mich heute {krankmelden}. | I have to call in sick today.
+N | der Urlaubsantrag | Urlaubsanträge | | holiday request | Hast du deinen {Urlaubsantrag} schon abgegeben? | Have you handed in your holiday request yet?
+N | die Kenntnisse | – | | knowledge, skills (plural) | Gute EDV-{Kenntnisse} sind erforderlich. | Good IT skills are required.
+N | der Auszubildende | Auszubildenden | | trainee, apprentice | Wir haben dieses Jahr drei neue {Auszubildende}. | We have three new trainees this year.
 `

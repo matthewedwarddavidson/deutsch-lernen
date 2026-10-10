@@ -68,4 +68,12 @@ N | die Gentrifizierung | – | | gentrification | Die {Gentrifizierung} verdrä
 V | verdrängen | verdrängt, verdrängte, hat verdrängt | | to displace, push out | Viele Familien wurden an den Stadtrand {verdrängt}. | Many families were pushed out to the edge of town.
 N | der Leerstand | – | | vacancy (empty property) | In manchen Dörfern gibt es viel {Leerstand}. | In some villages many properties are empty.
 ADJ | sanierungsbedürftig | – | | in need of renovation | Das Gebäude ist stark {sanierungsbedürftig}. | The building badly needs renovating.
+
+# B1
+N | das Erdgeschoss | Erdgeschosse | | ground floor | Die Wohnung liegt im {Erdgeschoss}. | The flat is on the ground floor.
+N | der Balkon | Balkone | | balcony | Im Sommer frühstücken wir auf dem {Balkon}. | In summer we have breakfast on the balcony.
+N | die Garage | Garagen | | garage | Das Auto steht in der {Garage}. | The car is in the garage.
+N | der Vormieter | Vormieter | | previous tenant | Die Küche hat der {Vormieter} dagelassen. | The previous tenant left the kitchen.
+V | ausziehen | zieht aus, zog aus, ist ausgezogen | | to move out | Wir {ziehen} Ende des Monats {aus}. | We're moving out at the end of the month.
+N | die Warmmiete | Warmmieten | | rent including bills | Die {Warmmiete} beträgt 900 Euro. | The rent including heating is 900 euros.
 `

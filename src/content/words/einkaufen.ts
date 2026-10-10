@@ -3,7 +3,6 @@ export default `
 # A2
 N | das Angebot | Angebote | | offer | Diese Woche sind Äpfel im {Angebot}. | Apples are on offer this week.
 V | bezahlen | bezahlt, bezahlte, hat bezahlt | | to pay | Kann ich mit Karte {bezahlen}? | Can I pay by card?
-N | die Kasse | Kassen | | till, checkout | Bitte zahlen Sie an der {Kasse}. | Please pay at the till.
 ADJ | günstig | günstiger, am günstigsten | | cheap, good value | Im Internet ist der Fernseher viel {günstiger}. | The TV is much cheaper online.
 
 # B1
@@ -56,4 +55,11 @@ N | das Preis-Leistungs-Verhältnis | – | | value for money | Das {Preis-Leist
 ADJ | mangelhaft | – | | defective, poor | Die Ware war {mangelhaft}. | The goods were defective.
 N | der Mangel | Mängel | | defect; shortage | Bitte melden Sie {Mängel} innerhalb von zwei Wochen. | Please report defects within two weeks.
 N | die Kaufentscheidung | Kaufentscheidungen | | purchasing decision | Bewertungen beeinflussen unsere {Kaufentscheidung}. | Reviews influence our decision to buy.
+
+# B1
+N | der Gutschein | Gutscheine | | voucher | Ich schenke ihr einen {Gutschein}. | I'm giving her a voucher.
+V | zurückgeben | gibt zurück, gab zurück, hat zurückgegeben | | to give back, return | Kann ich die Hose {zurückgeben}? | Can I return the trousers?
+N | der Umtausch | – | | exchange | Ein {Umtausch} ist nur mit Kassenbon möglich. | Exchanges are only possible with a receipt.
+ADJ | reduziert | – | | reduced | Alle Jacken sind {reduziert}. | All jackets are reduced.
+N | die Auswahl | – | | choice, selection | Der Laden hat eine große {Auswahl}. | The shop has a big selection.
 `

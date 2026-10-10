@@ -61,4 +61,21 @@ ADJ | abgelegen | – | | remote | Das Hotel liegt sehr {abgelegen}. | The hotel
 V | sich erkundigen | erkundigt sich, erkundigte sich, hat sich erkundigt | nach + D | to enquire | Ich habe mich nach den Abfahrtszeiten {erkundigt}. | I asked about the departure times.
 N | die Anreise | Anreisen | | journey there, arrival | Die {Anreise} erfolgt mit dem Zug. | You travel there by train.
 N | die Pauschalreise | Pauschalreisen | | package holiday | Eine {Pauschalreise} ist oft günstiger. | A package holiday is often cheaper.
+
+# B1
+N | die Ampel | Ampeln | | traffic lights | Fahr los, die {Ampel} ist grün! | Go, the lights are green!
+N | die Kreuzung | Kreuzungen | | crossroads, junction | An der nächsten {Kreuzung} links abbiegen. | Turn left at the next junction.
+V | abbiegen | biegt ab, bog ab, ist abgebogen | | to turn (off) | Hier dürfen Sie nicht rechts {abbiegen}. | You can't turn right here.
+N | der Fußgänger | Fußgänger | | pedestrian | Die Innenstadt ist nur für {Fußgänger}. | The town centre is pedestrians only.
+N | der Radweg | Radwege | | cycle path | Fahr bitte auf dem {Radweg}! | Please ride on the cycle path!
+N | der Strafzettel | Strafzettel | | parking ticket | Ich habe schon wieder einen {Strafzettel} bekommen. | I've got another parking ticket.
+N | die Geschwindigkeit | Geschwindigkeiten | | speed | Die {Geschwindigkeit} ist hier auf 30 begrenzt. | The speed limit here is 30.
+N | die Fähre | Fähren | | ferry | Wir nehmen die {Fähre} nach Dänemark. | We're taking the ferry to Denmark.
+N | der Hafen | Häfen | | harbour, port | Das Schiff liegt im {Hafen}. | The ship is in the harbour.
+N | die Aussicht | Aussichten | | view | Vom Turm hat man eine tolle {Aussicht}. | There's a great view from the tower.
+N | der Reiseführer | Reiseführer | | guidebook; tour guide | Im {Reiseführer} steht, dass das Museum montags zu ist. | The guidebook says the museum is closed on Mondays.
+N | das Ausland | – | | abroad | Sie hat ein Jahr im {Ausland} gelebt. | She lived abroad for a year.
+V | sich anschnallen | schnallt sich an, schnallte sich an, hat sich angeschnallt | | to fasten your seat belt | Bitte {schnallen} Sie sich {an}. | Please fasten your seat belts.
+N | die Panne | Pannen | | breakdown | Wir hatten auf der Autobahn eine {Panne}. | We broke down on the motorway.
+N | die Haltestelle | Haltestellen | | (bus/tram) stop | An welcher {Haltestelle} muss ich aussteigen? | Which stop do I have to get off at?
 `

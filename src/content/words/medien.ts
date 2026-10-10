@@ -58,4 +58,17 @@ V | recherchieren | recherchiert, recherchierte, hat recherchiert | | to researc
 ADJ | einseitig | einseitiger, am einseitigsten | | one-sided | Der Bericht war sehr {einseitig}. | The report was very one-sided.
 N | die Meinungsfreiheit | – | | freedom of expression | Die {Meinungsfreiheit} ist im Grundgesetz geschützt. | Freedom of expression is protected by the constitution.
 V | manipulieren | manipuliert, manipulierte, hat manipuliert | | to manipulate | Das Foto wurde {manipuliert}. | The photo was manipulated.
+
+# B1
+N | der Sender | Sender | | (TV/radio) channel, station | Auf welchem {Sender} läuft das Spiel? | Which channel is the match on?
+N | die Serie | Serien | | series | Welche {Serie} schaust du gerade? | What series are you watching at the moment?
+N | der Artikel | Artikel | | article | Hast du den {Artikel} über das Klima gelesen? | Did you read the article about the climate?
+N | der Leserbrief | Leserbriefe | | letter to the editor | Sie hat einen {Leserbrief} an die Zeitung geschrieben. | She wrote a letter to the newspaper.
+V | abonnieren | abonniert, abonnierte, hat abonniert | | to subscribe to | Ich habe die Zeitung online {abonniert}. | I've subscribed to the paper online.
+N | das Abonnement | Abonnements | | subscription | Wie kann ich mein {Abonnement} kündigen? | How can I cancel my subscription?
+V | senden | sendet, sendete, hat gesendet | | to broadcast; to send | Das Interview wird morgen {gesendet}. | The interview will be broadcast tomorrow.
+N | die Live-Übertragung | Live-Übertragungen | | live broadcast | Die {Live-Übertragung} beginnt um acht. | The live broadcast starts at eight.
+V | hochladen | lädt hoch, lud hoch, hat hochgeladen | | to upload | Sie hat ein Video {hochgeladen}. | She uploaded a video.
+N | das Ladegerät | Ladegeräte | | charger | Hast du ein {Ladegerät} für mich? | Have you got a charger I can use?
+ADJ | leer | leerer, am leersten | | empty, flat (battery) | Mein Akku ist {leer}. | My battery is flat.
 `
