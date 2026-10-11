@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Word } from '../content/types'
-import { checkMeaning, englishMeanings } from './grading'
+import { checkMeaning, checkNounParts, englishMeanings, nounVerdict } from './grading'
 
 function wordWithMeaning(english: string): Word {
   return { english } as Word
@@ -33,5 +33,24 @@ describe('checkMeaning', () => {
 
   it('rejects an unrelated answer', () => {
     expect(checkMeaning(word, 'forget').verdict).toBe('wrong')
+  })
+})
+
+describe('checkNounParts', () => {
+  const noun = { german: 'Termin', gender: 'der', plural: 'Termine', kind: 'noun' } as Word
+
+  it('marks article, word and plural separately', () => {
+    expect(checkNounParts(noun, 'der Termin', 'die Termine')).toEqual({
+      article: true,
+      noun: 'correct',
+      plural: 'correct',
+    })
+    expect(checkNounParts(noun, 'die Termin', 'Termin').article).toBe(false)
+  })
+
+  it('lets a wrong plural lower the grade without failing the word', () => {
+    expect(nounVerdict(checkNounParts(noun, 'der Termin', 'Terminen'))).toBe('almost')
+    expect(nounVerdict(checkNounParts(noun, 'das Termin', 'Termine'))).toBe('wrong')
+    expect(nounVerdict(checkNounParts(noun, 'der Termin', 'Termine'))).toBe('correct')
   })
 })

@@ -1893,3 +1893,9 @@ table.grammar-table {
 .small-textarea {
   min-height: 80px;
 }
+
+.noun-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}

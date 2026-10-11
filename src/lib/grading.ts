@@ -23,6 +23,36 @@ export function checkWord(word: Word, typed: string): CheckResult {
   return result
 }
 
+/** A noun answer split into its parts, so feedback can say which one was wrong. */
+export interface NounParts {
+  article: boolean
+  noun: Verdict
+  plural?: Verdict
+}
+
+export function checkNounParts(word: Word, typed: string, typedPlural?: string): NounParts {
+  const [first = '', ...rest] = typed.trim().split(/\s+/)
+  const hasArticle = ['der', 'die', 'das'].includes(first.toLowerCase())
+  const parts: NounParts = {
+    article: hasArticle && first.toLowerCase() === word.gender,
+    noun: checkAnswer(hasArticle ? rest.join(' ') : typed, [word.german]).verdict,
+  }
+  if (typedPlural !== undefined && word.plural) {
+    parts.plural = checkAnswer(typedPlural.trim().replace(/^die\s+/i, ''), [word.plural]).verdict
+  }
+  return parts
+}
+
+/**
+ * One verdict for the card. The word and its article decide it; a wrong plural alone
+ * only lowers it to "almost", so the word isn't treated as forgotten.
+ */
+export function nounVerdict(parts: NounParts): Verdict {
+  if (!parts.article || parts.noun === 'wrong') return 'wrong'
+  if (parts.noun === 'almost' || (parts.plural && parts.plural !== 'correct')) return 'almost'
+  return 'correct'
+}
+
 /** Drops words that don't change the meaning, so "to recognise" matches "recognise". */
 function withoutFillers(text: string): string {
   return text

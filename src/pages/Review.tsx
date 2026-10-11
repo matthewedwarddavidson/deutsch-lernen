@@ -13,7 +13,7 @@ import { gradeCard, recordActivity, suspendCard } from '../lib/actions'
 import { dueCards, type CardRef } from '../lib/cards'
 import { checkAnswer, type CheckResult, type Verdict } from '../lib/check'
 import { verbForms, verbFormsSpeech } from '../lib/verbForms'
-import { checkMeaning, checkWord, suggestedGrade } from '../lib/grading'
+import { checkMeaning, checkNounParts, checkWord, nounVerdict, suggestedGrade, type NounParts } from '../lib/grading'
 import { useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
 import { Rating, type Grade, type StoredCard } from '../lib/srs'
@@ -204,23 +204,54 @@ function ProduceCard({ word, stored, onGrade }: { word: Word; stored: StoredCard
 }
 
 function TranslateCard({ word, stored, onGrade }: { word: Word; stored: StoredCard; onGrade: (grade: Grade) => void }) {
+  const isNoun = word.kind === 'noun' && !!word.gender
+  const askPlural = isNoun && !!word.plural
   const [value, setValue] = useState('')
+  const [plural, setPlural] = useState('')
   const [result, setResult] = useState<CheckResult>()
+  const [parts, setParts] = useState<NounParts>()
+  const pluralRef = useRef<HTMLInputElement>(null)
 
   function submit() {
     if (result) return
-    setResult(checkWord(word, value))
+    const checked = checkWord(word, value)
+    if (isNoun) {
+      const nounParts = checkNounParts(word, value, askPlural ? plural : undefined)
+      setParts(nounParts)
+      setResult({ ...checked, verdict: nounVerdict(nounParts) })
+    } else {
+      setResult(checked)
+    }
     speak(displayGerman(word))
   }
 
   return (
     <div className="stack">
-      <div className="eyebrow">In German{word.kind === 'noun' ? ', with the article' : ''}</div>
+      <div className="eyebrow">In German{isNoun ? ', with the article' : ''}</div>
       <div className="review-prompt" style={{ fontFamily: 'var(--font-ui)' }}>
         {word.english}
       </div>
       {word.usage && <div className="muted small">Usage: {word.usage}</div>}
-      <AnswerInput value={value} onChange={setValue} onSubmit={submit} verdict={result?.verdict} disabled={!!result} />
+      <AnswerInput
+        value={value}
+        onChange={setValue}
+        onSubmit={askPlural ? () => pluralRef.current?.focus() : submit}
+        verdict={parts ? nounVerdict({ ...parts, plural: undefined }) : result?.verdict}
+        disabled={!!result}
+      />
+      {askPlural && (
+        <AnswerInput
+          value={plural}
+          onChange={setPlural}
+          onSubmit={submit}
+          verdict={parts?.plural}
+          disabled={!!result}
+          autoFocus={false}
+          placeholder="Plural: die …"
+          label="Plural"
+          inputRef={pluralRef}
+        />
+      )}
       {!result ? (
         <div className="row">
           <button className="btn primary" onClick={submit}>
@@ -232,11 +263,34 @@ function TranslateCard({ word, stored, onGrade }: { word: Word; stored: StoredCa
         </div>
       ) : (
         <>
-          <Feedback verdict={result.verdict}>{result.note && <div className="small">{result.note}</div>}</Feedback>
+          <Feedback verdict={result.verdict}>
+            {parts && <NounPartsLine word={word} parts={parts} />}
+            {result.note && <div className="small">{result.note}</div>}
+          </Feedback>
           <hr className="divider" />
           <WordView word={word} />
           <GradeButtons card={stored} suggested={suggestedGrade(result.verdict)} onGrade={onGrade} />
         </>
+      )}
+    </div>
+  )
+}
+
+/** Which parts of a noun answer were right: article, word and plural. */
+function NounPartsLine({ word, parts }: { word: Word; parts: NounParts }) {
+  const mark = (ok: boolean) => (ok ? '✓' : '✗')
+  return (
+    <div className="small de noun-parts">
+      <span>
+        {mark(parts.article)} {word.gender}
+      </span>
+      <span>
+        {mark(parts.noun !== 'wrong')} {word.german}
+      </span>
+      {parts.plural && (
+        <span>
+          {mark(parts.plural === 'correct')} die {word.plural}
+        </span>
       )}
     </div>
   )

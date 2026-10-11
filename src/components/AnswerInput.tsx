@@ -1,4 +1,4 @@
-import { useRef, type KeyboardEvent } from 'react'
+import { useRef, type KeyboardEvent, type RefObject } from 'react'
 import type { Verdict } from '../lib/check'
 
 const SPECIAL_LETTERS = ['ä', 'ö', 'ü', 'ß', 'Ä', 'Ö', 'Ü']
@@ -12,6 +12,8 @@ interface AnswerInputProps {
   autoFocus?: boolean
   disabled?: boolean
   label?: string
+  /** Lets the parent focus this field, e.g. to move on to a second answer. */
+  inputRef?: RefObject<HTMLInputElement | null>
 }
 
 /** A text field for German answers with buttons for umlauts and ß. */
@@ -24,8 +26,10 @@ export function AnswerInput({
   autoFocus = true,
   disabled = false,
   label = 'Your answer',
+  inputRef: externalRef,
 }: AnswerInputProps) {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const ownRef = useRef<HTMLInputElement>(null)
+  const inputRef = externalRef ?? ownRef
 
   function insert(letter: string) {
     const input = inputRef.current
