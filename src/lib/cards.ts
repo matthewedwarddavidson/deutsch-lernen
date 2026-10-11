@@ -2,6 +2,7 @@ import { GRAMMAR_TOPICS } from '../content/grammar'
 import type { GrammarExercise, GrammarTopic, Level, Word } from '../content/types'
 import { LEVELS } from '../content/types'
 import { BUILT_IN_WORDS } from '../content/words'
+import { FREQUENCY_RANK } from '../content/words/frequency'
 import type { AppState, Mistake } from './store'
 import { isDue, newCard, type StoredCard } from './srs'
 import { isIrregular } from './verbForms'
@@ -198,37 +199,29 @@ export function nextNewWords(state: AppState, count: number, theme?: string): Wo
   return withoutNearPairs(orderedNewWords(state, theme), state, count)
 }
 
+/** Rank for ordering: unranked words (rare, or your own) after ranked ones. */
+function frequencyRank(word: Word): number {
+  return FREQUENCY_RANK[word.id] ?? Number.MAX_SAFE_INTEGER
+}
+
+/** Words not yet learned, up to the target level: easiest level first, most common words first within a level. */
 function orderedNewWords(state: AppState, theme?: string): Word[] {
   const target = levelIndex(state.settings.level)
-  // Your own words are always available, whatever their level.
+  // Your own words are always available, whatever their level, and come first.
   const candidates = allWords(state).filter(
     (word) =>
       !isWordLearned(state, word) &&
       (levelIndex(word.level) <= target || word.theme === 'eigene') &&
       (!theme || word.theme === theme),
   )
-  const byLevel = [...candidates].sort((a, b) => levelIndex(a.level) - levelIndex(b.level))
-  if (theme) return byLevel
-
-  // Take round-robin across themes within the lowest available level.
-  const result: Word[] = []
-  const lowestLevel = byLevel[0]?.level
-  const queues = new Map<string, Word[]>()
-  for (const word of byLevel) {
-    if (word.level !== lowestLevel) continue
-    queues.set(word.theme, [...(queues.get(word.theme) ?? []), word])
-  }
-  while ([...queues.values()].some((queue) => queue.length > 0)) {
-    for (const queue of queues.values()) {
-      const next = queue.shift()
-      if (next) result.push(next)
-    }
-  }
-  const included = new Set(result)
-  return [...result, ...byLevel.filter((word) => !included.has(word))]
+  return candidates.sort(
+    (a, b) =>
+      Number(b.theme === 'eigene') - Number(a.theme === 'eigene') ||
+      levelIndex(a.level) - levelIndex(b.level) ||
+      frequencyRank(a) - frequencyRank(b),
+  )
 }
 
-/** Cards to add when a word is learned. Production waits a day so it isn't trivially easy. */
 /** Cards to add when a word is learned. Irregular verbs also get a card for their forms, a few days later. */
 export function cardsForNewWord(word: Word, now: Date): Record<string, StoredCard> {
   const cards: Record<string, StoredCard> = {

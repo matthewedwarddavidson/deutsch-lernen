@@ -59,6 +59,10 @@ npx tsx scripts/collect-speech.ts > audio-build/requests.json
 
 Only missing sentences are recorded. Anything without a recording falls back to the browser voice.
 
+## Word frequency
+
+New words are introduced most common first. `src/content/words/frequency.ts` holds a rank per word, generated from German OpenSubtitles counts in [FrequencyWords](https://github.com/hermitdave/FrequencyWords) by Hermit Dave (CC BY-SA 4.0). After adding words, download `de_50k.txt` from that repository into `audio-build/freq/` and run `npx tsx scripts/frequency.ts > src/content/words/frequency.ts`.
+
 ## Code map
 
 ```
