@@ -3,7 +3,7 @@
 // The copy is gzipped JSON split into chunks, as a full history can exceed Firestore's 1 MiB document limit.
 
 import { useSyncExternalStore } from 'react'
-import type { User } from 'firebase/auth'
+import type { Auth, User } from 'firebase/auth'
 import { getFirebaseAuth, getFirebaseDb, isFirebaseConfigured } from './firebase'
 import { mergeStates } from './merge'
 import { applySynced, getState, subscribeToState, withDefaults, type AppState } from './store'
@@ -129,12 +129,19 @@ function schedulePush() {
   pushTimer = setTimeout(syncNow, PUSH_DELAY_MS)
 }
 
+type AuthModule = typeof import('firebase/auth')
+let preparedAuth: { module: AuthModule; auth: Auth } | undefined
+
+/** Loads Firebase ahead of a sign-in click: browsers block popups opened after a delay. */
+export async function prepareSignIn() {
+  const [module, auth] = await Promise.all([import('firebase/auth'), getFirebaseAuth()])
+  preparedAuth = { module, auth }
+}
+
 export async function signIn() {
-  const [{ GoogleAuthProvider, signInWithPopup }, auth] = await Promise.all([
-    import('firebase/auth'),
-    getFirebaseAuth(),
-  ])
-  await signInWithPopup(auth, new GoogleAuthProvider())
+  if (!preparedAuth) await prepareSignIn()
+  const { module, auth } = preparedAuth!
+  await module.signInWithPopup(auth, new module.GoogleAuthProvider())
   rememberSignedIn(true)
   await watchAuth()
 }

@@ -4,7 +4,7 @@ import { updateSettings } from '../lib/actions'
 import { bestGermanVoices, hasNaturalBrowserVoice, speak, whenVoicesReady } from '../lib/speech'
 import { downloadBackup } from '../lib/backup'
 import { importState, resetState, useAppState } from '../lib/store'
-import { signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
+import { prepareSignIn, signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
 
 const LEVEL_DESCRIPTIONS: Record<Level, string> = {
   A2: 'Consolidate the basics',
@@ -208,6 +208,12 @@ export function Settings() {
 function SyncCard() {
   const sync = useSyncStatus()
   const [error, setError] = useState('')
+  const signedIn = !!sync.user
+
+  useEffect(() => {
+    if (sync.available && !signedIn) prepareSignIn().catch(() => undefined)
+  }, [sync.available, signedIn])
+
   if (!sync.available) return null
 
   async function run(action: () => Promise<void>) {
