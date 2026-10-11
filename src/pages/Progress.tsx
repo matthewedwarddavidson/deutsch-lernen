@@ -198,6 +198,8 @@ export function Progress() {
         </div>
       </div>
 
+      <ReadingSpeedChart state={state} />
+
       <WritingAccuracy state={state} />
 
       <LevelReadiness state={state} />
@@ -393,6 +395,31 @@ function LevelReadiness({ state }: { state: AppState }) {
         <p className="small faint" style={{ margin: 0 }}>
           This measures the app's material, not your exam result. Your course and the official model tests remain the
           real benchmark.
+        </p>
+      </div>
+    </>
+  )
+}
+
+/** Words per minute in timed re-reads: faster reading of familiar text shows growing automatic recognition. */
+function ReadingSpeedChart({ state }: { state: AppState }) {
+  const recent = state.readingSpeeds.slice(-12)
+  if (recent.length === 0) return null
+  return (
+    <>
+      <div className="section-title section">Reading speed</div>
+      <div className="card">
+        <BarChart
+          values={recent.map((speed) => speed.wordsPerMinute)}
+          labels={recent.map((speed) =>
+            new Date(speed.at).toLocaleDateString('de-DE', { day: 'numeric', month: 'numeric' }),
+          )}
+          unit="words per minute"
+          caption="Words per minute in your last timed re-reads"
+        />
+        <p className="small muted" style={{ marginBottom: 0 }}>
+          Re-read a text you have finished, once a week, with Fluency read on its page. Aim for steady gains, not speed
+          at the cost of understanding.
         </p>
       </div>
     </>

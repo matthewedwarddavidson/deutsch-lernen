@@ -68,6 +68,13 @@ export function Today() {
   const listening = suggest(LISTENING_TEXTS, state.listening, target)
   const writtenTaskIds = Object.fromEntries(state.writing.map((attempt) => [attempt.taskId, true]))
   const writing = suggest(WRITING_TASKS, writtenTaskIds, target)
+  // Once a week, re-read a finished text against the clock.
+  const lastSpeed = state.readingSpeeds[state.readingSpeeds.length - 1]
+  const speedDue = !lastSpeed || now.getTime() - new Date(lastSpeed.at).getTime() > 7 * 24 * 60 * 60 * 1000
+  const finishedTexts = Object.entries(state.reading).sort(([, a], [, b]) => b.completedAt.localeCompare(a.completedAt))
+  const rereadText = speedDue
+    ? READING_TEXTS.find((text) => finishedTexts.slice(1).some(([id]) => id === text.id))
+    : undefined
   const rewriteTask = WRITING_TASKS.find((task) => {
     const rewrite = state.rewrites[task.id]
     return rewrite && !rewrite.doneAt && new Date(rewrite.dueAt) <= now
@@ -178,13 +185,23 @@ export function Today() {
             action="Write"
           />
         )}
-        <PlanCard
-          icon="progress"
-          title="Fluency"
-          detail="Speed round: recognise known words in under 1.5 seconds, or re-read a text faster."
-          to="/words/speed"
-          action="Go"
-        />
+        {rereadText ? (
+          <PlanCard
+            icon="progress"
+            title="Fluency"
+            detail={`Timed re-read, no looking up: ${rereadText.title}`}
+            to={`/reading/${rereadText.id}`}
+            action="Re-read"
+          />
+        ) : (
+          <PlanCard
+            icon="progress"
+            title="Fluency"
+            detail="Speed round: recognise known words in under 1.5 seconds."
+            to="/words/speed"
+            action="Go"
+          />
+        )}
       </div>
 
       <p className="small muted" style={{ marginTop: 16 }}>

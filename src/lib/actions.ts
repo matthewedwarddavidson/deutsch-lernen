@@ -150,6 +150,13 @@ export function completeRewrite(taskId: string) {
   })
 }
 
+export function recordReadingSpeed(textId: string, wordsPerMinute: number) {
+  update((state) => ({
+    ...state,
+    readingSpeeds: [...state.readingSpeeds, { at: new Date().toISOString(), textId, wordsPerMinute }],
+  }))
+}
+
 export function recordExam({
   startedAt,
   ...result

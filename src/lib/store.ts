@@ -47,6 +47,13 @@ export interface WritingAttempt {
   cantSay?: string
 }
 
+/** A timed re-read of a familiar text, without looking anything up. */
+export interface ReadingSpeed {
+  at: string
+  textId: string
+  wordsPerMinute: number
+}
+
 /** A finished practice exam paper, scored out of 100 like the real one. */
 export interface ExamResult {
   id: string
@@ -109,6 +116,7 @@ export interface AppState {
   /** Task id → rewrite reminder. */
   rewrites: Record<string, Rewrite>
   exams: ExamResult[]
+  readingSpeeds: ReadingSpeed[]
   activity: Activity[]
   settings: Settings
   /** When anything last changed. Sync uses it to pick the newer settings. */
@@ -138,6 +146,7 @@ export function initialState(): AppState {
     writing: [],
     rewrites: {},
     exams: [],
+    readingSpeeds: [],
     activity: [],
     deleted: {},
     settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, name: '', useRecordings: true, theme: 'system' },

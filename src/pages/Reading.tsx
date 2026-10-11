@@ -8,7 +8,7 @@ import { MATCHING_TASKS } from '../content/matching'
 import { READING_TEXTS } from '../content/reading'
 import { themeById } from '../content/themes'
 import { LEVELS, type ReadingText } from '../content/types'
-import { completeReading, recordActivity } from '../lib/actions'
+import { completeReading, recordActivity, recordReadingSpeed } from '../lib/actions'
 import type { LookUp } from '../lib/lookups'
 import { useTimeOnPage } from '../lib/hooks'
 import { speakDialogue, stopSpeaking } from '../lib/speech'
@@ -25,6 +25,10 @@ const GENRE_LABELS: Record<ReadingText['genre'], string> = {
   dialogue: 'Dialog',
   announcement: 'Durchsage',
   report: 'Bericht',
+}
+
+function secondsSince(start: number): number {
+  return (Date.now() - start) / 1000
 }
 
 function wordCount(paragraphs: string[]): number {
@@ -143,10 +147,12 @@ export function ReadingPage() {
   }
 
   function finishFluency() {
-    const seconds = (Date.now() - fluencyStart!) / 1000
-    setFluencyResult(Math.round(words / (seconds / 60)))
+    const seconds = secondsSince(fluencyStart!)
+    const wordsPerMinute = Math.round(words / (seconds / 60))
+    setFluencyResult(wordsPerMinute)
     setFluencyStart(undefined)
     recordActivity('fluency', seconds)
+    recordReadingSpeed(text!.id, wordsPerMinute)
   }
 
   return (
