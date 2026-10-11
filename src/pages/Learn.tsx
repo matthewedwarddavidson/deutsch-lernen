@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
 import { AnswerInput } from '../components/AnswerInput'
 import { Feedback } from '../components/Feedback'
 import { ProgressBar } from '../components/ProgressBar'
 import { WordView } from '../components/WordView'
-import { displayGerman } from '../content/parseWords'
+import { clozeParts, displayGerman } from '../content/parseWords'
 import { themeById } from '../content/themes'
 import type { ThemeId, Word } from '../content/types'
 import { learnWord, recordActivity } from '../lib/actions'
-import { newWordsLearnedToday, nextNewWords } from '../lib/cards'
-import type { CheckResult } from '../lib/check'
+import { dueCards, newWordsLearnedToday, nextNewWords, REVIEW_BACKLOG_LIMIT } from '../lib/cards'
+import { checkAnswer, type CheckResult } from '../lib/check'
 import { useKeyHandler, useTimeOnPage } from '../lib/hooks'
 import { speak } from '../lib/speech'
 import { Rating } from '../lib/srs'
@@ -17,23 +17,34 @@ import { getState } from '../lib/store'
 import { checkWord, suggestedGrade } from '../lib/grading'
 
 const BATCH_SIZE = 5
+/** Correct recalls of each new word before the batch is done. More early retrieval, better retention. */
+const RECALLS_PER_WORD = 3
 
-type Step = { kind: 'study'; index: number } | { kind: 'quiz'; queue: Word[]; firstTry: boolean } | { kind: 'done' }
+type Step = { kind: 'study'; index: number } | { kind: 'quiz'; queue: Word[] } | { kind: 'done' }
 
 /**
  * Introduces new words in batches: study each word, then recall the batch
- * from English. The first recall attempt becomes the word's first review.
+ * until each word has been recalled three times, alternating translation and
+ * gap-filling, with other words in between. The first recall becomes the word's first review.
  */
 export function Learn() {
   const [searchParams] = useSearchParams()
   const theme = searchParams.get('theme') as ThemeId | null
-  const [{ words, limitReached }] = useState(() => {
+  const [{ words, limitReached, backlog }] = useState(() => {
     const state = getState()
-    const remainingToday = Math.max(0, state.settings.newWordsPerDay - newWordsLearnedToday(state, new Date()))
+    const now = new Date()
+    const remainingToday = Math.max(0, state.settings.newWordsPerDay - newWordsLearnedToday(state, now))
     const requested = Number(searchParams.get('count'))
-    const count = requested > 0 ? requested : searchParams.get('more') ? BATCH_SIZE * 2 : remainingToday
-    return { words: nextNewWords(state, count, theme ?? undefined), limitReached: count === 0 }
+    const due = dueCards(state, now).length
+    const paused = due >= REVIEW_BACKLOG_LIMIT
+    const count = requested > 0 ? requested : searchParams.get('more') ? BATCH_SIZE * 2 : paused ? 0 : remainingToday
+    return {
+      words: nextNewWords(state, count, theme ?? undefined),
+      limitReached: count === 0,
+      backlog: paused ? due : 0,
+    }
   })
+  const [recalls, setRecalls] = useState<Record<string, number>>({})
   const [batchStart, setBatchStart] = useState(0)
   const [step, setStep] = useState<Step>({ kind: 'study', index: 0 })
   const [graded, setGraded] = useState<Set<string>>(new Set())
@@ -46,14 +57,18 @@ export function Learn() {
       <div className="page narrow">
         <div className="card empty">
           <h2>
-            {limitReached
-              ? "You've reached today's new words"
-              : `No new words left${theme ? ` in ${themeById(theme).title}` : ' at your level'}`}
+            {backlog > 0
+              ? 'New words are paused'
+              : limitReached
+                ? "You've reached today's new words"
+                : `No new words left${theme ? ` in ${themeById(theme).title}` : ' at your level'}`}
           </h2>
           <p>
-            {limitReached
-              ? 'New words are spread over days so reviews stay manageable. You can still learn more if you have the energy.'
-              : 'Raise your target level in Settings, or import words from your course.'}
+            {backlog > 0
+              ? `You have ${backlog} reviews due. Clearing them first keeps the backlog from growing; new words come back when fewer than ${REVIEW_BACKLOG_LIMIT} are due.`
+              : limitReached
+                ? 'New words are spread over days so reviews stay manageable. You can still learn more if you have the energy.'
+                : 'Raise your target level in Settings, or import words from your course.'}
           </p>
           <div className="row" style={{ justifyContent: 'center' }}>
             <Link className="btn primary" to="/review">
@@ -72,7 +87,7 @@ export function Learn() {
 
   function finishStudy(known = graded) {
     const queue = batch.filter((word) => !known.has(word.id))
-    if (queue.length > 0) setStep({ kind: 'quiz', queue, firstTry: true })
+    if (queue.length > 0) setStep({ kind: 'quiz', queue })
     else advanceBatch()
   }
 
@@ -101,10 +116,12 @@ export function Learn() {
       learnWord(word, suggestedGrade(result.verdict))
       setGraded(new Set(graded).add(word.id))
     }
+    const count = (recalls[word.id] ?? 0) + (result.verdict === 'wrong' ? 0 : 1)
+    setRecalls({ ...recalls, [word.id]: count })
     const rest = step.queue.slice(1)
-    // Words answered wrongly go to the back until they are right.
-    const queue = result.verdict === 'wrong' ? [...rest, word] : rest
-    if (queue.length > 0) setStep({ kind: 'quiz', queue, firstTry: false })
+    // Each word goes to the back until it has been recalled enough times, so other words come in between.
+    const queue = count < RECALLS_PER_WORD ? [...rest, word] : rest
+    if (queue.length > 0) setStep({ kind: 'quiz', queue })
     else advanceBatch()
   }
 
@@ -133,14 +150,19 @@ export function Learn() {
         />
       )}
       {step.kind === 'quiz' && (
-        <QuizCard key={`${step.queue[0].id}-${step.queue.length}`} word={step.queue[0]} onAnswer={handleQuizAnswer} />
+        <QuizCard
+          key={`${step.queue[0].id}-${recalls[step.queue[0].id] ?? 0}-${step.queue.length}`}
+          word={step.queue[0]}
+          recallNumber={(recalls[step.queue[0].id] ?? 0) + 1}
+          onAnswer={handleQuizAnswer}
+        />
       )}
       {step.kind === 'done' && (
         <div className="card empty">
           <h2>{words.length} new words</h2>
           <p>
-            They will come back for review tomorrow, then at growing intervals. Typing them in German starts from
-            tomorrow.
+            You recalled each one {RECALLS_PER_WORD} times. They come back for review tomorrow, then at growing
+            intervals.
           </p>
           <div className="row" style={{ justifyContent: 'center' }}>
             <Link className="btn primary" to="/">
@@ -198,15 +220,27 @@ function StudyCard({
   )
 }
 
-function QuizCard({ word, onAnswer }: { word: Word; onAnswer: (word: Word, result: CheckResult) => void }) {
+interface QuizCardProps {
+  word: Word
+  /** Which correct recall this would be: the second uses the example sentence. */
+  recallNumber: number
+  onAnswer: (word: Word, result: CheckResult) => void
+}
+
+function QuizCard({ word, recallNumber, onAnswer }: QuizCardProps) {
   const [value, setValue] = useState('')
   const [result, setResult] = useState<CheckResult>()
+  const parts = useMemo(() => clozeParts(word.example), [word])
+  const gap = parts
+    .filter((part) => part.gap)
+    .map((part) => part.text)
+    .join(' ')
+  const useCloze = recallNumber === 2 && gap !== ''
 
   function submit() {
     if (result) return
-    const checked = checkWord(word, value)
-    setResult(checked)
-    speak(displayGerman(word))
+    setResult(useCloze ? checkAnswer(value, [gap]) : checkWord(word, value))
+    speak(useCloze ? word.example : displayGerman(word))
   }
 
   useKeyHandler(!!result, (key) => {
@@ -219,10 +253,34 @@ function QuizCard({ word, onAnswer }: { word: Word; onAnswer: (word: Word, resul
 
   return (
     <div className="card review-card stack">
-      <div className="eyebrow">Recall · in German{word.kind === 'noun' ? ', with the article' : ''}</div>
-      <div className="review-prompt" style={{ fontFamily: 'var(--font-ui)' }}>
-        {word.english}
-      </div>
+      {useCloze ? (
+        <>
+          <div className="eyebrow">
+            Recall {recallNumber} of {RECALLS_PER_WORD} · fill the gap
+          </div>
+          <p className="de" style={{ fontSize: '1.3rem', lineHeight: 1.6, margin: 0 }}>
+            {parts.map((part, index) =>
+              part.gap ? (
+                <span key={index} className="gap">
+                  {result ? part.text : '\u00a0'.repeat(Math.max(4, part.text.length))}
+                </span>
+              ) : (
+                <span key={index}>{part.text}</span>
+              ),
+            )}
+          </p>
+          <div className="muted">{word.exampleEnglish}</div>
+        </>
+      ) : (
+        <>
+          <div className="eyebrow">
+            Recall {recallNumber} of {RECALLS_PER_WORD} · in German{word.kind === 'noun' ? ', with the article' : ''}
+          </div>
+          <div className="review-prompt" style={{ fontFamily: 'var(--font-ui)' }}>
+            {word.english}
+          </div>
+        </>
+      )}
       <AnswerInput value={value} onChange={setValue} onSubmit={submit} verdict={result?.verdict} disabled={!!result} />
       {!result ? (
         <div>
@@ -235,7 +293,7 @@ function QuizCard({ word, onAnswer }: { word: Word; onAnswer: (word: Word, resul
           <Feedback verdict={result.verdict}>
             {result.verdict !== 'correct' && (
               <div className="de">
-                <strong>{displayGerman(word)}</strong>
+                <strong>{useCloze ? gap : displayGerman(word)}</strong>
               </div>
             )}
             {result.note && <div className="small">{result.note}</div>}

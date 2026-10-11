@@ -128,8 +128,77 @@ export function isWordLearned(state: AppState, word: Word): boolean {
   return word.id in state.wordsLearned
 }
 
+/** New words pause while this many reviews are waiting, so the backlog doesn't keep growing. */
+export const REVIEW_BACKLOG_LIMIT = 100
+
+const PREFIXES = [
+  'zusammen',
+  'zurück',
+  'weiter',
+  'wieder',
+  'durch',
+  'unter',
+  'über',
+  'nach',
+  'ver',
+  'vor',
+  'ein',
+  'aus',
+  'auf',
+  'zer',
+  'ent',
+  'mit',
+  'ab',
+  'an',
+  'um',
+  'zu',
+  'be',
+  'er',
+  'ge',
+]
+
+/** The stem a word shares with its near-pairs: einziehen and umziehen → ziehen, Vermieter → mieter. */
+export function wordCore(german: string): string {
+  const lemma =
+    german
+      .toLowerCase()
+      .replace(/^sich /, '')
+      .split(' ')
+      .pop() ?? ''
+  const prefix = PREFIXES.find((candidate) => lemma.startsWith(candidate) && lemma.length - candidate.length >= 4)
+  return prefix ? lemma.slice(prefix.length) : lemma
+}
+
+/**
+ * Leaves out words that look like a word already chosen or learned today, so near-pairs
+ * such as einziehen/umziehen are learned on different days and confused less.
+ */
+function withoutNearPairs(words: Word[], state: AppState, count: number): Word[] {
+  const today = new Date().toDateString()
+  const learnedToday = allWords(state).filter(
+    (word) => word.id in state.wordsLearned && new Date(state.wordsLearned[word.id]).toDateString() === today,
+  )
+  const cores = new Set(learnedToday.map((word) => wordCore(word.german)))
+  const chosen: Word[] = []
+  const later: Word[] = []
+  for (const word of words) {
+    const core = wordCore(word.german)
+    if (cores.has(core)) {
+      later.push(word)
+    } else {
+      cores.add(core)
+      chosen.push(word)
+    }
+  }
+  return [...chosen, ...later].slice(0, count)
+}
+
 /** Words not yet learned, up to the target level, easiest level first, themes interleaved. */
 export function nextNewWords(state: AppState, count: number, theme?: string): Word[] {
+  return withoutNearPairs(orderedNewWords(state, theme), state, count)
+}
+
+function orderedNewWords(state: AppState, theme?: string): Word[] {
   const target = levelIndex(state.settings.level)
   // Your own words are always available, whatever their level.
   const candidates = allWords(state).filter(
@@ -139,7 +208,7 @@ export function nextNewWords(state: AppState, count: number, theme?: string): Wo
       (!theme || word.theme === theme),
   )
   const byLevel = [...candidates].sort((a, b) => levelIndex(a.level) - levelIndex(b.level))
-  if (theme) return byLevel.slice(0, count)
+  if (theme) return byLevel
 
   // Take round-robin across themes within the lowest available level.
   const result: Word[] = []
@@ -149,17 +218,14 @@ export function nextNewWords(state: AppState, count: number, theme?: string): Wo
     if (word.level !== lowestLevel) continue
     queues.set(word.theme, [...(queues.get(word.theme) ?? []), word])
   }
-  while (result.length < count && [...queues.values()].some((queue) => queue.length > 0)) {
+  while ([...queues.values()].some((queue) => queue.length > 0)) {
     for (const queue of queues.values()) {
       const next = queue.shift()
-      if (next && result.length < count) result.push(next)
+      if (next) result.push(next)
     }
   }
-  for (const word of byLevel) {
-    if (result.length >= count) break
-    if (!result.includes(word)) result.push(word)
-  }
-  return result
+  const included = new Set(result)
+  return [...result, ...byLevel.filter((word) => !included.has(word))]
 }
 
 /** Cards to add when a word is learned. Production waits a day so it isn't trivially easy. */

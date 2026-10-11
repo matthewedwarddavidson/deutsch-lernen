@@ -4,7 +4,7 @@ import { suggest } from '../content/library'
 import { LISTENING_TEXTS } from '../content/listening'
 import { READING_TEXTS } from '../content/reading'
 import { WRITING_TASKS } from '../content/writing'
-import { dueCards, newWordsLearnedToday, nextNewWords } from '../lib/cards'
+import { dueCards, newWordsLearnedToday, nextNewWords, REVIEW_BACKLOG_LIMIT } from '../lib/cards'
 import { updateSettings } from '../lib/actions'
 import { backupDue, downloadBackup } from '../lib/backup'
 import { useNow } from '../lib/hooks'
@@ -123,14 +123,18 @@ export function Today() {
           icon="words"
           title="New words"
           detail={
-            availableNew > 0
-              ? `${learnedToday} of ${state.settings.newWordsPerDay} learned today`
-              : learnedToday > 0
-                ? `${learnedToday} learned today. Done.`
-                : 'No new words left at your level.'
+            due.length >= REVIEW_BACKLOG_LIMIT
+              ? `Paused while ${due.length} reviews are due.`
+              : availableNew > 0
+                ? `${learnedToday} of ${state.settings.newWordsPerDay} learned today`
+                : learnedToday > 0
+                  ? `${learnedToday} learned today. Done.`
+                  : 'No new words left at your level.'
           }
-          to={availableNew > 0 ? '/words/learn' : '/words'}
-          action={availableNew > 0 ? `Learn ${availableNew}` : 'Browse words'}
+          to={due.length >= REVIEW_BACKLOG_LIMIT ? '/review' : availableNew > 0 ? '/words/learn' : '/words'}
+          action={
+            due.length >= REVIEW_BACKLOG_LIMIT ? 'Review' : availableNew > 0 ? `Learn ${availableNew}` : 'Browse words'
+          }
           done={availableNew === 0 && learnedToday > 0}
         />
         <PlanCard

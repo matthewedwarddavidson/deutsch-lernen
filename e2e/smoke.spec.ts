@@ -6,7 +6,7 @@ test('learn five words: study, then recall', async ({ page }) => {
     await expect(page.getByText(`New word ${index + 1} of 5`)).toBeVisible()
     await page.keyboard.press('Enter')
   }
-  await expect(page.getByText(/Recall · in German/)).toBeVisible()
+  await expect(page.getByText(/Recall 1 of 3 · in German/)).toBeVisible()
   await page.getByLabel('Your answer').fill('falsch')
   await page.keyboard.press('Enter')
   await expect(page.getByText('Nicht ganz')).toBeVisible()
@@ -21,7 +21,9 @@ test('grammar practice marks an answer', async ({ page }) => {
 test('reading: tapping a glossed word shows its meaning', async ({ page }) => {
   await page.goto('/#/reading/forum-homeoffice')
   await page.locator('.glossed', { hasText: 'einsam' }).click()
-  await expect(page.getByRole('dialog')).toContainText('lonely')
+  await expect(page.getByText('Guess first')).toBeVisible()
+  await page.getByRole('button', { name: 'lonely' }).click()
+  await expect(page.getByRole('dialog')).toContainText('Richtig')
 })
 
 test('dictation shows a word-by-word comparison', async ({ page }) => {
