@@ -105,6 +105,10 @@ function SessionSummary({ results }: { results: Grade[] }) {
         <p>
           {results.length} reviews. {firstTry} remembered, {results.length - firstTry} to see again soon.
         </p>
+        <p className="small muted">
+          If that felt hard, it was meant to. Recalling something just before you forget it, with topics mixed, feels
+          slower than rereading but is remembered far longer.
+        </p>
         <div className="row" style={{ justifyContent: 'center' }}>
           {stillDue > 0 && (
             <Link className="btn" to="/review">

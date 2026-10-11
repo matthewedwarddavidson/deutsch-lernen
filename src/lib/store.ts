@@ -75,6 +75,8 @@ export interface Settings {
   theme: 'system' | 'light' | 'dark'
   lastBackupAt?: string
   welcomeDismissed?: boolean
+  /** An if-then plan: when and where you study. Concrete plans make it far more likely to happen. */
+  studyPlan?: string
 }
 
 export interface AppState {

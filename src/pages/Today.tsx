@@ -7,6 +7,7 @@ import { WRITING_TASKS } from '../content/writing'
 import { dueCards, newWordsLearnedToday, nextNewWords, REVIEW_BACKLOG_LIMIT } from '../lib/cards'
 import { updateSettings } from '../lib/actions'
 import { backupDue, downloadBackup } from '../lib/backup'
+import { useState } from 'react'
 import { useNow } from '../lib/hooks'
 import { LEVELS, type Level } from '../content/types'
 import { useAppState, type ActivityKind, type AppState } from '../lib/store'
@@ -190,9 +191,12 @@ export function Today() {
       </p>
 
       <div className="section-title section">This week</div>
-      <div className="card">
+      <div className="card stack">
+        <DaysStudied state={state} now={now} />
         <StrandBalance state={state} />
       </div>
+
+      <StudyPlan plan={state.settings.studyPlan} />
     </div>
   )
 }
@@ -331,5 +335,74 @@ function Welcome({ level }: { level: Level }) {
         </div>
       </div>
     </div>
+  )
+}
+
+/** How many of the last seven days had any practice. A count, not a streak: a missed day costs nothing. */
+function DaysStudied({ state, now }: { state: AppState; now: Date }) {
+  const days = new Set(
+    state.activity
+      .filter((entry) => now.getTime() - new Date(entry.at).getTime() < 7 * 24 * 60 * 60 * 1000)
+      .map((entry) => new Date(entry.at).toDateString()),
+  )
+  return (
+    <p className="small" style={{ margin: 0 }}>
+      Studied on <strong>{days.size} of the last 7 days</strong>.{' '}
+      <span className="muted">Short, frequent sessions beat long, rare ones.</span>
+    </p>
+  )
+}
+
+const PLAN_EXAMPLE = 'After dinner, at my desk, I do my reviews and one text.'
+
+/** An if-then plan ("When X, I'll do Y") roughly doubles the chance of following through. */
+function StudyPlan({ plan }: { plan?: string }) {
+  const [editing, setEditing] = useState(!plan)
+  const [draft, setDraft] = useState(plan ?? '')
+
+  function save() {
+    updateSettings({ studyPlan: draft.trim() || undefined })
+    setEditing(false)
+  }
+
+  return (
+    <>
+      <div className="section-title section">Your plan</div>
+      <div className="card stack">
+        {editing ? (
+          <>
+            <p className="small muted" style={{ margin: 0 }}>
+              When and where will you study? A specific cue ("after breakfast", "on the train home") makes it much more
+              likely to happen than a general intention.
+            </p>
+            <input
+              className="input"
+              value={draft}
+              onChange={(event) => setDraft(event.target.value)}
+              onKeyDown={(event) => event.key === 'Enter' && save()}
+              placeholder={PLAN_EXAMPLE}
+              aria-label="Your study plan"
+            />
+            <div className="row">
+              <button className="btn primary small" onClick={save} disabled={!draft.trim()}>
+                Save plan
+              </button>
+              {plan && (
+                <button className="btn ghost small" onClick={() => setEditing(false)}>
+                  Cancel
+                </button>
+              )}
+            </div>
+          </>
+        ) : (
+          <div className="row between">
+            <span>{plan}</span>
+            <button className="btn ghost small" onClick={() => setEditing(true)}>
+              Change
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   )
 }
