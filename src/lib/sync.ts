@@ -161,7 +161,7 @@ function rememberSignedIn(signedIn: boolean) {
   }
 }
 
-function wasSignedIn(): boolean {
+export function wasSignedIn(): boolean {
   try {
     return localStorage.getItem(SIGNED_IN_KEY) === '1'
   } catch {

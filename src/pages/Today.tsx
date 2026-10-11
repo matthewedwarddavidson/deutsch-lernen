@@ -9,6 +9,7 @@ import { updateSettings } from '../lib/actions'
 import { backupDue, downloadBackup } from '../lib/backup'
 import { useState } from 'react'
 import { useNow } from '../lib/hooks'
+import { useSyncStatus, wasSignedIn } from '../lib/sync'
 import { LEVELS, type Level } from '../content/types'
 import { useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
@@ -56,6 +57,7 @@ function minutesThisWeek(state: AppState, kinds: ActivityKind[]): number {
 export function Today() {
   const state = useAppState()
   const now = useNow()
+  const sync = useSyncStatus()
   const due = dueCards(state, now)
   const learnedToday = newWordsLearnedToday(state, now)
   const newLeft = Math.max(0, state.settings.newWordsPerDay - learnedToday)
@@ -87,12 +89,12 @@ export function Today() {
 
       {!state.settings.welcomeDismissed && <Welcome level={target} />}
 
-      {backupDue(now) && (
+      {!sync.user && !wasSignedIn() && backupDue(now) && (
         <div className="feedback almost" style={{ marginTop: 0, marginBottom: 16 }}>
           <div className="row between">
             <span className="small">
-              Unless you sync, your progress lives only in this browser, and browsers sometimes clear site data. Keep a
-              backup.
+              Your progress lives only in this browser, and browsers sometimes clear site data. Sign in under Settings
+              to sync it, or keep a backup.
             </span>
             <button className="btn small" onClick={downloadBackup}>
               Download backup
