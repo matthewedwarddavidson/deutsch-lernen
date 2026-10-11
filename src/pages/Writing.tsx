@@ -4,9 +4,17 @@ import { Icon } from '../components/Icon'
 import { WRITING_TASKS } from '../content/writing'
 import { themeById } from '../content/themes'
 import { LEVELS, type WritingTask } from '../content/types'
-import { addMistake, deleteWriting, recordActivity, saveWriting } from '../lib/actions'
-import { useTimeOnPage } from '../lib/hooks'
-import { useAppState, type WritingAttempt } from '../lib/store'
+import {
+  addMistake,
+  completeRewrite,
+  deleteWriting,
+  recordActivity,
+  saveCantSay,
+  saveWriting,
+  scheduleRewrite,
+} from '../lib/actions'
+import { useNow, useTimeOnPage } from '../lib/hooks'
+import { MISTAKE_CATEGORIES, useAppState, type WritingAttempt } from '../lib/store'
 
 const FORMAT_LABELS: Record<WritingTask['format'], string> = {
   'informal-email': 'Informal email',
@@ -129,8 +137,13 @@ function WritingEditor({ task }: { task: WritingTask }) {
   const [attemptId, setAttemptId] = useState(() => attempts[0]?.id ?? newAttemptId())
   const current = state.writing.find((attempt) => attempt.id === attemptId)
   const [text, setText] = useState(current?.text ?? '')
-  const [showModel, setShowModel] = useState(false)
+  // Write, then note what you couldn't say, then compare with the model.
+  const [phase, setPhase] = useState<'write' | 'cant-say' | 'compare'>('write')
+  const [cantSay, setCantSay] = useState(current?.cantSay ?? '')
   const [notingMistake, setNotingMistake] = useState(false)
+  const now = useNow()
+  const rewrite = state.rewrites[task.id]
+  const rewriteDue = rewrite && !rewrite.doneAt && new Date(rewrite.dueAt) <= now
   const textarea = useRef<HTMLTextAreaElement>(null)
   useTimeOnPage((seconds) => recordActivity('writing', seconds))
 
@@ -165,14 +178,24 @@ function WritingEditor({ task }: { task: WritingTask }) {
   }
 
   function startNew() {
+    if (rewriteDue) completeRewrite(task.id)
     setAttemptId(newAttemptId())
     setText('')
-    setShowModel(false)
+    setCantSay('')
+    setPhase('write')
+    setNotingMistake(false)
   }
 
   function openAttempt(attempt: WritingAttempt) {
     setAttemptId(attempt.id)
     setText(attempt.text)
+    setCantSay(attempt.cantSay ?? '')
+  }
+
+  function showModel() {
+    if (current) saveCantSay(current.id, cantSay.trim())
+    scheduleRewrite(task.id)
+    setPhase('compare')
   }
 
   return (
@@ -221,30 +244,94 @@ function WritingEditor({ task }: { task: WritingTask }) {
             {current && <span className="faint">Draft saved</span>}
           </div>
 
-          <div className="row" style={{ marginTop: 14 }}>
-            <button className="btn primary" onClick={() => setShowModel(!showModel)}>
-              {showModel ? 'Hide model answer' : 'Model answer'}
-            </button>
-            <button className="btn" onClick={() => setNotingMistake(!notingMistake)}>
-              Note a mistake
-            </button>
-            {text && (
-              <button className="btn ghost" onClick={startNew}>
-                Start a new version
-              </button>
-            )}
-          </div>
-
-          {showModel && (
-            <div className="card model-text" style={{ marginTop: 20 }}>
-              <div className="eyebrow">Model answer</div>
-              <div className="de" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.7 }}>
-                {task.model}
+          {rewriteDue && (
+            <div className="feedback almost" style={{ marginTop: 14 }}>
+              <div className="feedback-title">Time to rewrite this from memory</div>
+              <div className="small">
+                Start a new version and write it again without looking at the model. Then compare the two versions.
               </div>
             </div>
           )}
 
-          {notingMistake && <MistakeForm onDone={() => setNotingMistake(false)} />}
+          {phase === 'write' && (
+            <div className="row" style={{ marginTop: 14 }}>
+              <button className="btn primary" onClick={() => setPhase('cant-say')} disabled={!text.trim()}>
+                Finished: compare with the model
+              </button>
+              {text && (
+                <button className="btn ghost" onClick={startNew}>
+                  Start a new version
+                </button>
+              )}
+            </div>
+          )}
+
+          {phase === 'cant-say' && (
+            <div className="card stack" style={{ marginTop: 16 }}>
+              <h3 style={{ margin: 0 }}>Before you look</h3>
+              <p className="small muted" style={{ margin: 0 }}>
+                What did you want to say but couldn't, or weren't sure how to? English is fine. Then look for it in the
+                model.
+              </p>
+              <textarea
+                className="textarea small-textarea"
+                value={cantSay}
+                onChange={(event) => setCantSay(event.target.value)}
+                placeholder="e.g. how to say I'm looking forward to it; which case after trotz"
+                aria-label="What you couldn't say"
+              />
+              <div>
+                <button className="btn primary" onClick={showModel}>
+                  Show the model answer
+                </button>
+              </div>
+            </div>
+          )}
+
+          {phase === 'compare' && (
+            <>
+              <div className="card model-text" style={{ marginTop: 20 }}>
+                <div className="eyebrow">Model answer</div>
+                <div className="de" style={{ whiteSpace: 'pre-wrap', lineHeight: 1.7 }}>
+                  {task.model}
+                </div>
+              </div>
+              <div className="card stack" style={{ marginTop: 16 }}>
+                <h3 style={{ margin: 0 }}>Compare</h3>
+                {cantSay.trim() && (
+                  <p className="small" style={{ margin: 0 }}>
+                    <strong>You wanted to say:</strong> {cantSay.trim().replace(/[.!?]+$/, '')}. Find how the model says
+                    it, or something close.
+                  </p>
+                )}
+                <p className="small muted" style={{ margin: 0 }}>
+                  Most people only notice words. Go through your own text once for each line below, and note each
+                  mistake you find.
+                </p>
+                <GrammarChecklist format={task.format} />
+                <div className="row">
+                  <button className="btn primary" onClick={() => setNotingMistake(true)}>
+                    Note a mistake
+                  </button>
+                  <button className="btn" onClick={startNew}>
+                    Rewrite from memory
+                  </button>
+                  <button className="btn ghost" onClick={() => setPhase('write')}>
+                    Hide the model
+                  </button>
+                </div>
+                {rewrite && !rewrite.doneAt && !rewriteDue && (
+                  <p className="faint small" style={{ margin: 0 }}>
+                    You'll be asked to rewrite this from scratch on{' '}
+                    {new Date(rewrite.dueAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' })}. Writing it
+                    again later is what makes the corrections stick.
+                  </p>
+                )}
+              </div>
+            </>
+          )}
+
+          {notingMistake && <MistakeForm attemptId={current?.id} onDone={() => setNotingMistake(false)} />}
 
           {attempts.length > 1 && (
             <div className="section">
@@ -290,18 +377,14 @@ function WritingEditor({ task }: { task: WritingTask }) {
             </div>
           </div>
           <div className="card">
-            <div className="eyebrow">Before you finish</div>
-            <ul className="checklist small">
-              <li>Every point answered, in its own sentence or paragraph?</li>
-              <li>Verb second in main clauses, last in weil/dass/wenn clauses?</li>
-              <li>Articles and adjective endings checked?</li>
-              <li>
-                {task.format === 'formal-email'
-                  ? 'Sie throughout, formal greeting and closing?'
-                  : 'Right tone for the reader?'}
-              </li>
-              <li>Nouns capitalised?</li>
-            </ul>
+            <div className="eyebrow">How this works</div>
+            <ol className="checklist small">
+              <li>Write without looking anything up, if you can.</li>
+              <li>Note what you couldn't say.</li>
+              <li>Compare with the model, line by line through the checklist.</li>
+              <li>Note your mistakes: they come back in reviews.</li>
+              <li>Rewrite from memory, now and again in two weeks.</li>
+            </ol>
           </div>
         </aside>
       </div>
@@ -317,7 +400,8 @@ function newAttemptId(): string {
  * Comparing your text with the model answer, write down what you got wrong.
  * It becomes a review card: you see your version and write the correct one.
  */
-function MistakeForm({ onDone }: { onDone: () => void }) {
+function MistakeForm({ attemptId, onDone }: { attemptId?: string; onDone: () => void }) {
+  const [category, setCategory] = useState<string>(MISTAKE_CATEGORIES[0])
   const [original, setOriginal] = useState('')
   const [correction, setCorrection] = useState('')
   const [explanation, setExplanation] = useState('')
@@ -326,7 +410,8 @@ function MistakeForm({ onDone }: { onDone: () => void }) {
     event.preventDefault()
     if (!original.trim() || !correction.trim()) return
     addMistake({
-      category: 'Writing',
+      category,
+      attemptId,
       original: original.trim(),
       correction: correction.trim(),
       explanation: explanation.trim() || 'From your writing.',
@@ -340,6 +425,14 @@ function MistakeForm({ onDone }: { onDone: () => void }) {
       <p className="small muted" style={{ margin: 0 }}>
         It comes back in your reviews: you see what you wrote and type the correct version.
       </p>
+      <label className="field">
+        Kind of mistake
+        <select className="select" value={category} onChange={(event) => setCategory(event.target.value)}>
+          {MISTAKE_CATEGORIES.map((option) => (
+            <option key={option}>{option}</option>
+          ))}
+        </select>
+      </label>
       <label className="field">
         What you wrote
         <input
@@ -373,5 +466,42 @@ function MistakeForm({ onDone }: { onDone: () => void }) {
         </button>
       </div>
     </form>
+  )
+}
+
+const CHECKLIST = [
+  'Verb second in every main clause, including after a fronted time or place (Morgen fahre ich …)?',
+  'Verb at the end after weil, dass, wenn, ob, obwohl, als and relative pronouns?',
+  'Separable verbs split in main clauses (ich rufe … an)?',
+  'Right case after each preposition (mit + Dativ, für + Akkusativ, wegen + Genitiv)?',
+  'Adjective endings after der/ein/no article?',
+  'Every noun capitalised, with the right article?',
+  'Every point of the task answered?',
+]
+
+/** Grammar to check in your own text, one pass per line. Ticks reset each time. */
+function GrammarChecklist({ format }: { format: WritingTask['format'] }) {
+  const items = [
+    ...CHECKLIST,
+    format === 'formal-email' ? 'Sie throughout, with a formal greeting and closing?' : 'Right tone for the reader?',
+  ]
+  const [ticked, setTicked] = useState<string[]>([])
+  return (
+    <ul className="checklist-ticks small">
+      {items.map((item) => (
+        <li key={item}>
+          <label>
+            <input
+              type="checkbox"
+              checked={ticked.includes(item)}
+              onChange={() =>
+                setTicked(ticked.includes(item) ? ticked.filter((other) => other !== item) : [...ticked, item])
+              }
+            />{' '}
+            {item}
+          </label>
+        </li>
+      ))}
+    </ul>
   )
 }

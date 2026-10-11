@@ -65,6 +65,10 @@ export function Today() {
   const listening = suggest(LISTENING_TEXTS, state.listening, target)
   const writtenTaskIds = Object.fromEntries(state.writing.map((attempt) => [attempt.taskId, true]))
   const writing = suggest(WRITING_TASKS, writtenTaskIds, target)
+  const rewriteTask = WRITING_TASKS.find((task) => {
+    const rewrite = state.rewrites[task.id]
+    return rewrite && !rewrite.doneAt && new Date(rewrite.dueAt) <= now
+  })
   const dateLabel = now.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' })
 
   return (
@@ -150,13 +154,23 @@ export function Today() {
           to={listening ? `/listening/${listening.id}` : '/listening/dictation'}
           action="Listen"
         />
-        <PlanCard
-          icon="writing"
-          title="Write"
-          detail={writing ? `${writing.title} · ${writing.level}` : 'All tasks written.'}
-          to={writing ? `/writing/${writing.id}` : '/writing'}
-          action="Write"
-        />
+        {rewriteTask ? (
+          <PlanCard
+            icon="writing"
+            title="Rewrite"
+            detail={`From memory, two weeks on: ${rewriteTask.title}`}
+            to={`/writing/${rewriteTask.id}`}
+            action="Rewrite"
+          />
+        ) : (
+          <PlanCard
+            icon="writing"
+            title="Write"
+            detail={writing ? `${writing.title} · ${writing.level}` : 'All tasks written.'}
+            to={writing ? `/writing/${writing.id}` : '/writing'}
+            action="Write"
+          />
+        )}
         <PlanCard
           icon="progress"
           title="Fluency"

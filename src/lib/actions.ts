@@ -111,11 +111,42 @@ export function recordDictation(score: number) {
 
 export function saveWriting(id: string, taskId: string, text: string) {
   update((state) => {
+    const existing = state.writing.find((attempt) => attempt.id === id)
     const others = state.writing.filter((attempt) => attempt.id !== id)
     return {
       ...state,
-      writing: [...others, { id, taskId, text, savedAt: new Date().toISOString() }],
+      writing: [...others, { ...existing, id, taskId, text, savedAt: new Date().toISOString() }],
     }
+  })
+}
+
+/** Saves what you couldn't say, before you look at the model. */
+export function saveCantSay(id: string, cantSay: string) {
+  update((state) => ({
+    ...state,
+    writing: state.writing.map((attempt) => (attempt.id === id ? { ...attempt, cantSay } : attempt)),
+  }))
+}
+
+const REWRITE_AFTER_DAYS = 14
+
+/** Sets a reminder to rewrite a task from scratch, unless one is already waiting. */
+export function scheduleRewrite(taskId: string) {
+  update((state) => {
+    const existing = state.rewrites[taskId]
+    if (existing && !existing.doneAt) return state
+    const now = new Date()
+    const dueAt = new Date(now.getTime() + REWRITE_AFTER_DAYS * 24 * 60 * 60 * 1000).toISOString()
+    return { ...state, rewrites: { ...state.rewrites, [taskId]: { dueAt, changedAt: now.toISOString() } } }
+  })
+}
+
+export function completeRewrite(taskId: string) {
+  update((state) => {
+    const existing = state.rewrites[taskId]
+    if (!existing || existing.doneAt) return state
+    const now = new Date().toISOString()
+    return { ...state, rewrites: { ...state.rewrites, [taskId]: { ...existing, doneAt: now, changedAt: now } } }
   })
 }
 

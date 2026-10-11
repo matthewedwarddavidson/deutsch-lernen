@@ -22,13 +22,36 @@ export interface Mistake {
   correction: string
   explanation: string
   createdAt: string
+  /** The writing version it came from, for errors per 100 words. */
+  attemptId?: string
 }
+
+/** Kinds of writing mistake, so you can see which ones are falling over time. */
+export const MISTAKE_CATEGORIES = [
+  'Word order',
+  'Case and articles',
+  'Adjective endings',
+  'Verb forms',
+  'Prepositions',
+  'Vocabulary',
+  'Spelling',
+  'Other',
+] as const
 
 export interface WritingAttempt {
   id: string
   taskId: string
   text: string
   savedAt: string
+  /** What you wanted to say but couldn't, noted before seeing the model. */
+  cantSay?: string
+}
+
+/** A reminder to write a task again from scratch, about two weeks after comparing it with the model. */
+export interface Rewrite {
+  dueAt: string
+  doneAt?: string
+  changedAt: string
 }
 
 export type ActivityKind =
@@ -69,6 +92,8 @@ export interface AppState {
   listening: Record<string, Completion>
   dictations: { at: string; score: number }[]
   writing: WritingAttempt[]
+  /** Task id → rewrite reminder. */
+  rewrites: Record<string, Rewrite>
   activity: Activity[]
   settings: Settings
   /** When anything last changed. Sync uses it to pick the newer settings. */
@@ -96,6 +121,7 @@ export function initialState(): AppState {
     listening: {},
     dictations: [],
     writing: [],
+    rewrites: {},
     activity: [],
     deleted: {},
     settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, name: '', useRecordings: true, theme: 'system' },

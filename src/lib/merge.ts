@@ -111,6 +111,7 @@ export function mergeStates(local: AppState, remote: AppState): AppState {
       (attempt) => attempt.id,
       (a, b) => (a.savedAt >= b.savedAt ? a : b),
     ).filter((attempt) => notDeleted(deleted, `writing:${attempt.id}`, attempt.savedAt)),
+    rewrites: mergeMaps(local.rewrites, remote.rewrites, (a, b) => (a.changedAt >= b.changedAt ? a : b)),
     activity: mergeLists(local.activity, remote.activity, (entry) => `${entry.at}|${entry.kind}`).sort(
       byTime((entry) => entry.at),
     ),

@@ -6,7 +6,7 @@ import { READING_TEXTS } from '../content/reading'
 import { LEVELS, type Level } from '../content/types'
 import { allWords, grammarCardId, isWordLearned, recogniseId } from '../lib/cards'
 import { isMature, Rating } from '../lib/srs'
-import { useAppState, type AppState } from '../lib/store'
+import { MISTAKE_CATEGORIES, useAppState, type AppState } from '../lib/store'
 
 const DAY = 24 * 60 * 60 * 1000
 
@@ -198,8 +198,76 @@ export function Progress() {
         </div>
       </div>
 
+      <WritingAccuracy state={state} />
+
       <LevelReadiness state={state} />
     </div>
+  )
+}
+
+function wordsIn(text: string): number {
+  return text.split(/\s+/).filter((word) => /[\p{L}\p{N}]/u.test(word)).length
+}
+
+/** Errors per 100 words in versions you checked against the model: the accuracy measure that reflects real use. */
+function WritingAccuracy({ state }: { state: AppState }) {
+  const checked = state.writing
+    .map((attempt) => ({
+      attempt,
+      mistakes: state.mistakes.filter((mistake) => mistake.attemptId === attempt.id),
+      words: wordsIn(attempt.text),
+    }))
+    .filter((entry) => entry.mistakes.length > 0 && entry.words > 0)
+    .sort((a, b) => a.attempt.savedAt.localeCompare(b.attempt.savedAt))
+  if (checked.length === 0) return null
+
+  const rate = (entries: typeof checked) => {
+    const words = entries.reduce((total, entry) => total + entry.words, 0)
+    const errors = entries.reduce((total, entry) => total + entry.mistakes.length, 0)
+    return words === 0 ? undefined : (errors / words) * 100
+  }
+  const recent = checked.slice(-5)
+  const earlier = checked.slice(-10, -5)
+  const recentRate = rate(recent)!
+  const earlierRate = rate(earlier)
+  const recentWords = recent.reduce((total, entry) => total + entry.words, 0)
+  const byCategory = MISTAKE_CATEGORIES.map((category) => ({
+    category,
+    perHundred:
+      (recent.flatMap((entry) => entry.mistakes).filter((mistake) => mistake.category === category).length /
+        recentWords) *
+      100,
+  })).filter((entry) => entry.perHundred > 0)
+
+  return (
+    <>
+      <div className="section-title section">Writing accuracy</div>
+      <div className="card stack">
+        <p className="small muted" style={{ margin: 0 }}>
+          Mistakes you noted per 100 words, over your last {recent.length} checked{' '}
+          {recent.length === 1 ? 'text' : 'texts'}. Exercise scores can look good while free writing lags behind; this
+          is the number that shows real progress.
+        </p>
+        <div className="row" style={{ gap: 24 }}>
+          <Stat value={recentRate.toFixed(1)} label="errors per 100 words" />
+          {earlierRate !== undefined && (
+            <Stat
+              value={earlierRate.toFixed(1)}
+              label="the 5 texts before"
+              detail={earlierRate > recentRate ? 'improving' : undefined}
+            />
+          )}
+        </div>
+        <div className="stack" style={{ gap: 6 }}>
+          {byCategory.map((entry) => (
+            <div key={entry.category} className="row between small">
+              <span>{entry.category}</span>
+              <span className="muted">{entry.perHundred.toFixed(1)} per 100 words</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   )
 }
 
