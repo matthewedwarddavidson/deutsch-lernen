@@ -3,13 +3,15 @@ import { Link, useParams } from 'react-router'
 import { Icon } from '../components/Icon'
 import { InteractiveText } from '../components/InteractiveText'
 import { LookedUpWords } from '../components/LookedUpWords'
+import { OutsideInput } from '../components/OutsideInput'
 import { Questions } from '../components/Questions'
 import { MATCHING_TASKS } from '../content/matching'
 import { READING_TEXTS } from '../content/reading'
 import { themeById } from '../content/themes'
-import { LEVELS, type ReadingText } from '../content/types'
+import { LEVELS, type ReadingText, type ThemeId } from '../content/types'
 import { completeReading, recordActivity, recordReadingSpeed } from '../lib/actions'
 import type { LookUp } from '../lib/lookups'
+import { coverageBand, knownShare } from '../lib/coverage'
 import { useTimeOnPage } from '../lib/hooks'
 import { speakDialogue, stopSpeaking } from '../lib/speech'
 import { useAppState } from '../lib/store'
@@ -35,9 +37,32 @@ function wordCount(paragraphs: string[]): number {
   return paragraphs.join(' ').split(/\s+/).filter(Boolean).length
 }
 
+/** Below this, the estimate mostly reflects words not yet marked as learned, so it isn't shown. */
+const ESTIMATE_AFTER_WORDS = 100
+
+const BAND_LABELS = { easy: 'easy read', study: 'study text', hard: 'hard' }
+
+/** Estimated share of known words, as a pill: 98%+ suits fast reading, 95–98% study with glosses. */
+function KnownWords({ text }: { text: ReadingText }) {
+  const state = useAppState()
+  const share = knownShare(text, state)
+  const band = coverageBand(share)
+  return (
+    <span
+      className={`pill ${band === 'easy' ? 'good' : band === 'hard' ? 'almost' : ''}`}
+      title="Estimated share of words you know. 98% or more suits fast, easy reading; 95–98% suits study with glosses."
+    >
+      ~{Math.floor(share * 100)}% known · {BAND_LABELS[band]}
+    </span>
+  )
+}
+
 export function ReadingList() {
   const state = useAppState()
-  const texts = READING_TEXTS
+  const [theme, setTheme] = useState<ThemeId>()
+  const texts = theme ? READING_TEXTS.filter((text) => text.theme === theme) : READING_TEXTS
+  const themes = [...new Set(READING_TEXTS.map((text) => text.theme))]
+  const learnedCount = Object.keys(state.wordsLearned).length
   return (
     <div className="page">
       <div className="page-header row between" style={{ alignItems: 'flex-end' }}>
@@ -50,9 +75,24 @@ export function ReadingList() {
           </p>
         </div>
       </div>
+      <div className="chips" style={{ marginBottom: 8 }}>
+        <button className={`chip ${theme === undefined ? 'active' : ''}`} onClick={() => setTheme(undefined)}>
+          All topics
+        </button>
+        {themes.map((id) => (
+          <button key={id} className={`chip ${theme === id ? 'active' : ''}`} onClick={() => setTheme(id)}>
+            {themeById(id).title}
+          </button>
+        ))}
+      </div>
+      {theme && (
+        <p className="small muted">
+          Reading several texts on one topic brings the same words back, which is how they stick.
+        </p>
+      )}
       {LEVELS.map((level) => {
         const atLevel = texts.filter((text) => text.level === level)
-        const matching = MATCHING_TASKS.filter((task) => task.level === level)
+        const matching = MATCHING_TASKS.filter((task) => task.level === level && (!theme || task.theme === theme))
         if (atLevel.length === 0 && matching.length === 0) return null
         return (
           <div key={level} className="section">
@@ -71,8 +111,11 @@ export function ReadingList() {
                     <h3 className="de" style={{ marginBottom: 4 }}>
                       {text.title}
                     </h3>
-                    <div className="faint small">
-                      {wordCount(text.body)} words · about {Math.max(1, Math.round(wordCount(text.body) / 100))} min
+                    <div className="row between faint small">
+                      <span>
+                        {wordCount(text.body)} words · about {Math.max(1, Math.round(wordCount(text.body) / 100))} min
+                      </span>
+                      {!done && learnedCount >= ESTIMATE_AFTER_WORDS && <KnownWords text={text} />}
                     </div>
                   </Link>
                 )
@@ -98,6 +141,7 @@ export function ReadingList() {
           </div>
         )
       })}
+      <OutsideInput kind="reading" />
     </div>
   )
 }

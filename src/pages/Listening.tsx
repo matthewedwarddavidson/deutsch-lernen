@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router'
 import { AnswerInput } from '../components/AnswerInput'
 import { Icon } from '../components/Icon'
 import { ProgressBar } from '../components/ProgressBar'
+import { OutsideInput } from '../components/OutsideInput'
 import { Questions } from '../components/Questions'
 import { SpeakButton } from '../components/SpeakButton'
 import { LISTENING_TEXTS, voiceForSpeaker } from '../content/listening'
@@ -87,6 +88,7 @@ export function ListeningList() {
           </div>
         )
       })}
+      <OutsideInput kind="listening" />
     </div>
   )
 }
