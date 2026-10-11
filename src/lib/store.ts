@@ -62,8 +62,8 @@ export interface AppState {
   wordsLearned: Record<string, string>
   customWords: Word[]
   mistakes: Mistake[]
-  /** Cards you chose never to see again. */
-  suspended: Record<string, true>
+  /** Cards you chose never to see again, with when. */
+  suspended: Record<string, string>
   grammar: Record<string, { studiedAt: string }>
   reading: Record<string, Completion>
   listening: Record<string, Completion>
@@ -71,6 +71,12 @@ export interface AppState {
   writing: WritingAttempt[]
   activity: Activity[]
   settings: Settings
+  /** When anything last changed. Sync uses it to pick the newer settings. */
+  updatedAt?: string
+  /** When progress was last reset or replaced by a backup. Older data on other devices is discarded. */
+  resetAt?: string
+  /** Deleted items, keyed like "writing:abc", with when. Sync uses them so deletions aren't undone. */
+  deleted: Record<string, string>
 }
 
 const STORAGE_KEY = 'deutsch-lernen:v1'
@@ -91,16 +97,25 @@ export function initialState(): AppState {
     dictations: [],
     writing: [],
     activity: [],
+    deleted: {},
     settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, name: '', useRecordings: true, theme: 'system' },
   }
 }
 
+/** Stands in for the unknown time of items saved before times were recorded. */
+export const LONG_AGO = '1970-01-01T00:00:00.000Z'
+
 /** Fills in fields added since the state was saved. */
-function withDefaults(saved: Partial<AppState>): AppState {
+export function withDefaults(saved: Partial<AppState>): AppState {
   const defaults = initialState()
+  const suspended: Record<string, string> = {}
+  for (const [id, value] of Object.entries(saved.suspended ?? {})) {
+    suspended[id] = typeof value === 'string' ? value : LONG_AGO
+  }
   return {
     ...defaults,
     ...saved,
+    suspended,
     settings: { ...defaults.settings, ...saved.settings },
   }
 }
@@ -131,12 +146,25 @@ export function getState(): AppState {
 
 /** Applies a change and saves. The updater must return a new object, not mutate. */
 export function update(updater: (current: AppState) => AppState) {
-  state = updater(state)
+  const next = updater(state)
+  if (next === state) return
+  state = { ...next, updatedAt: new Date().toISOString() }
   if (state.log.length > MAX_LOG_ENTRIES) {
     state = { ...state, log: state.log.slice(-MAX_LOG_ENTRIES) }
   }
   save()
   listeners.forEach((listener) => listener())
+}
+
+/** Replaces the state with one merged from another device, keeping its timestamps. */
+export function applySynced(synced: AppState) {
+  state = synced
+  save()
+  listeners.forEach((listener) => listener())
+}
+
+export function subscribeToState(listener: () => void) {
+  return subscribe(listener)
 }
 
 function subscribe(listener: () => void) {
@@ -157,9 +185,9 @@ export function importState(json: string) {
   if (parsed?.version !== 1 || typeof parsed.cards !== 'object') {
     throw new Error('This file is not a Deutsch lernen backup.')
   }
-  update(() => withDefaults(parsed))
+  update(() => ({ ...withDefaults(parsed), resetAt: new Date().toISOString() }))
 }
 
 export function resetState() {
-  update(() => ({ ...initialState(), settings: state.settings }))
+  update(() => ({ ...initialState(), settings: state.settings, resetAt: new Date().toISOString() }))
 }

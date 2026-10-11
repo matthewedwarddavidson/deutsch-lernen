@@ -4,6 +4,7 @@ import { updateSettings } from '../lib/actions'
 import { bestGermanVoices, hasNaturalBrowserVoice, speak, whenVoicesReady } from '../lib/speech'
 import { downloadBackup } from '../lib/backup'
 import { importState, resetState, useAppState } from '../lib/store'
+import { signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
 
 const LEVEL_DESCRIPTIONS: Record<Level, string> = {
   A2: 'Consolidate the basics',
@@ -178,12 +179,13 @@ export function Settings() {
         />
       </div>
 
+      <SyncCard />
+
       <div className="card stack">
         <h3>Your data</h3>
         <p className="muted small" style={{ margin: 0 }}>
-          Everything (progress, your writing, your words and any API key) is stored only in this browser. The app has no
-          server and no accounts, so nobody else can see it, even though the app itself is public. Download a backup now
-          and then, or to move to another computer or browser.
+          Progress, your writing and your words are stored in this browser. Unless you sign in to sync, nothing leaves
+          it, so nobody else can see it even though the app itself is public. Download a backup now and then.
         </p>
         <div className="row">
           <button className="btn" onClick={downloadBackup}>
@@ -199,6 +201,72 @@ export function Settings() {
         </div>
         {message && <div className="small">{message}</div>}
       </div>
+    </div>
+  )
+}
+
+function SyncCard() {
+  const sync = useSyncStatus()
+  const [error, setError] = useState('')
+  if (!sync.available) return null
+
+  async function run(action: () => Promise<void>) {
+    setError('')
+    try {
+      await action()
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : String(caught))
+    }
+  }
+
+  return (
+    <div className="card stack">
+      <h3>Sync across devices</h3>
+      {!sync.user ? (
+        <>
+          <p className="muted small" style={{ margin: 0 }}>
+            Sign in with Google to use your progress on your phone and computer. A copy is kept in Firebase (Google),
+            readable only by your account. Progress from each device is merged, so nothing is lost.
+          </p>
+          <div>
+            <button className="btn primary" onClick={() => run(signIn)}>
+              Sign in with Google
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="small" style={{ margin: 0 }}>
+            Signed in as <strong>{sync.user.email || sync.user.name}</strong>.{' '}
+            <span className="muted">
+              {sync.phase === 'syncing'
+                ? 'Syncing…'
+                : sync.phase === 'error'
+                  ? `Sync failed: ${sync.error}`
+                  : sync.lastSyncedAt
+                    ? `Last synced ${new Date(sync.lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}.`
+                    : ''}
+            </span>
+          </p>
+          <div className="row">
+            <button className="btn" onClick={() => run(syncNow)} disabled={sync.phase === 'syncing'}>
+              Sync now
+            </button>
+            <button className="btn ghost" onClick={() => run(signOut)}>
+              Sign out
+            </button>
+          </div>
+          <p className="faint small" style={{ margin: 0 }}>
+            Signing out keeps your progress on this device. Deleting all progress or restoring a backup also replaces
+            the synced copy.
+          </p>
+        </>
+      )}
+      {error && (
+        <div className="small" style={{ color: 'var(--bad)' }}>
+          {error}
+        </div>
+      )}
     </div>
   )
 }

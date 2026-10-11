@@ -39,7 +39,9 @@ Built-in words, examples, grammar sentences, texts and dialogues come with recor
 
 ## Privacy
 
-The hosted app is a static site with no server and no accounts. Progress, writing and your own words are stored only in your browser's localStorage, so nobody else visiting the site can see them. Nothing leaves the browser.
+The hosted app is a static site. Progress, writing and your own words are stored in your browser's localStorage, so nobody else visiting the site can see them. Nothing leaves the browser unless you sign in.
+
+Signing in with Google (Settings → Sync across devices) keeps a copy in Firestore under `users/{uid}/deutsch-lernen/`, readable only by your account, and merges progress from each device. It needs `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID` and `VITE_FIREBASE_APP_ID`: in `.env.local` for development and as repository secrets for the deploy. Without them, sign-in is hidden. The Firestore rules must allow `users/{uid}/{document=**}` only for that `uid`, and the Pages domain must be an authorised domain in Firebase Authentication.
 
 Storage is per browser and per address, so the hosted app and a local copy keep separate progress. Use Settings → Download backup / Restore to move between them.
 

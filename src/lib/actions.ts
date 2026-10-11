@@ -42,14 +42,18 @@ export function learnWord(word: Word, grade: Grade) {
 }
 
 export function suspendCard(cardId: string) {
-  update((state) => ({ ...state, suspended: { ...state.suspended, [cardId]: true } }))
+  update((state) => ({ ...state, suspended: { ...state.suspended, [cardId]: new Date().toISOString() } }))
 }
 
 export function unsuspendCards(cardIds: string[]) {
   update((state) => {
     const suspended = { ...state.suspended }
-    for (const id of cardIds) delete suspended[id]
-    return { ...state, suspended }
+    const deleted = { ...state.deleted }
+    for (const id of cardIds) {
+      delete suspended[id]
+      deleted[`suspended:${id}`] = new Date().toISOString()
+    }
+    return { ...state, suspended, deleted }
   })
 }
 
@@ -68,7 +72,8 @@ export function forgetWord(word: Word) {
     delete cards[`w:${word.id}:f`]
     const wordsLearned = { ...state.wordsLearned }
     delete wordsLearned[word.id]
-    return { ...state, cards, wordsLearned }
+    const deleted = { ...state.deleted, [`word:${word.id}`]: new Date().toISOString() }
+    return { ...state, cards, wordsLearned, deleted }
   })
 }
 
@@ -115,16 +120,25 @@ export function saveWriting(id: string, taskId: string, text: string) {
 }
 
 export function deleteWriting(id: string) {
-  update((state) => ({ ...state, writing: state.writing.filter((attempt) => attempt.id !== id) }))
+  update((state) => ({
+    ...state,
+    writing: state.writing.filter((attempt) => attempt.id !== id),
+    deleted: { ...state.deleted, [`writing:${id}`]: new Date().toISOString() },
+  }))
 }
 
 export function addCustomWord(word: Word) {
-  update((state) => ({ ...state, customWords: [...state.customWords.filter((w) => w.id !== word.id), word] }))
+  const added = { ...word, addedAt: new Date().toISOString() }
+  update((state) => ({ ...state, customWords: [...state.customWords.filter((w) => w.id !== word.id), added] }))
 }
 
 export function removeCustomWord(word: Word) {
   forgetWord(word)
-  update((state) => ({ ...state, customWords: state.customWords.filter((w) => w.id !== word.id) }))
+  update((state) => ({
+    ...state,
+    customWords: state.customWords.filter((w) => w.id !== word.id),
+    deleted: { ...state.deleted, [`customWord:${word.id}`]: new Date().toISOString() },
+  }))
 }
 
 export function updateSettings(changes: Partial<Settings>) {
@@ -153,6 +167,11 @@ export function removeMistake(id: string) {
   update((state) => {
     const cards = { ...state.cards }
     delete cards[`m:${id}`]
-    return { ...state, cards, mistakes: state.mistakes.filter((mistake) => mistake.id !== id) }
+    return {
+      ...state,
+      cards,
+      mistakes: state.mistakes.filter((mistake) => mistake.id !== id),
+      deleted: { ...state.deleted, [`mistake:${id}`]: new Date().toISOString() },
+    }
   })
 }

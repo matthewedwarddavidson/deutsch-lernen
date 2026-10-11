@@ -86,7 +86,8 @@ export function Today() {
         <div className="feedback almost" style={{ marginTop: 0, marginBottom: 16 }}>
           <div className="row between">
             <span className="small">
-              Your progress lives only in this browser, and browsers sometimes clear site data. Keep a backup.
+              Unless you sync, your progress lives only in this browser, and browsers sometimes clear site data. Keep a
+              backup.
             </span>
             <button className="btn small" onClick={downloadBackup}>
               Download backup

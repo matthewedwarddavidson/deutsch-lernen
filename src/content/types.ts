@@ -32,6 +32,8 @@ export type Gender = 'der' | 'die' | 'das'
 
 export interface Word {
   id: string
+  /** When you added it, for your own words. */
+  addedAt?: string
   kind: WordKind
   /** Lemma without article, e.g. "Wohnung", "sich bewerben". */
   german: string
