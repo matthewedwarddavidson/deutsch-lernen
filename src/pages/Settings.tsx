@@ -109,8 +109,9 @@ export function Settings() {
           {voices.length > 0 && !hasNaturalBrowserVoice() && (
             <>
               Yours sound robotic. For much better ones, open the app in <strong>Microsoft Edge</strong>, which has free
-              natural German voices (Katja, Conrad), or on macOS download a Premium voice (Anna or Petra) under System
-              Settings → Accessibility → Spoken Content → Manage voices.
+              natural German voices (Katja, Conrad). On a Mac, download a German Premium or Enhanced voice (such as Anna
+              or Petra): System Settings → Accessibility → Read & Speak (Spoken Content on older macOS) → open the
+              System voice menu → Manage Voices… → German. Then reload the app, ideally in Safari.
             </>
           )}
         </div>
