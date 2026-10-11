@@ -371,7 +371,7 @@ function DictationItem({ sentence, onNext }: { sentence: DictationSentence; onNe
 }
 
 /** Progress through a dialogue, weighted by line length and updated every frame so it moves smoothly. */
-function PlaybackProgress({ lines, playing }: { lines: string[]; playing: number }) {
+export function PlaybackProgress({ lines, playing }: { lines: string[]; playing: number }) {
   const [lineFraction, setLineFraction] = useState(0)
 
   useEffect(() => {

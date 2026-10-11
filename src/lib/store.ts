@@ -47,6 +47,18 @@ export interface WritingAttempt {
   cantSay?: string
 }
 
+/** A finished practice exam paper, scored out of 100 like the real one. */
+export interface ExamResult {
+  id: string
+  setId: string
+  module: 'lesen' | 'hoeren'
+  at: string
+  score: number
+  /** The score you expected before starting, to calibrate your sense of readiness. */
+  predicted?: number
+  minutes: number
+}
+
 /** A reminder to write a task again from scratch, about two weeks after comparing it with the model. */
 export interface Rewrite {
   dueAt: string
@@ -96,6 +108,7 @@ export interface AppState {
   writing: WritingAttempt[]
   /** Task id → rewrite reminder. */
   rewrites: Record<string, Rewrite>
+  exams: ExamResult[]
   activity: Activity[]
   settings: Settings
   /** When anything last changed. Sync uses it to pick the newer settings. */
@@ -124,6 +137,7 @@ export function initialState(): AppState {
     dictations: [],
     writing: [],
     rewrites: {},
+    exams: [],
     activity: [],
     deleted: {},
     settings: { level: 'B1', newWordsPerDay: 10, speechRate: 0.95, name: '', useRecordings: true, theme: 'system' },

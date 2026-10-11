@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router'
+import { HOEREN_SETS, LESEN_SETS } from '../content/exam'
 import { WRITING_TASKS } from '../content/writing'
 import type { Level, WritingFormat, WritingTask } from '../content/types'
 import { recordActivity, saveWriting } from '../lib/actions'
@@ -79,7 +80,7 @@ function pickWritingSet(level: Level, formats: WritingFormat[], written: Set<str
 }
 
 export function Exam() {
-  const { settings, writing } = useAppState()
+  const { settings, writing, exams } = useAppState()
   const level: Level = settings.level === 'B2' || settings.level === 'C1' ? 'B2' : 'B1'
   const exam = EXAMS[level]!
   const [simulating, setSimulating] = useState(false)
@@ -113,6 +114,34 @@ export function Exam() {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="section">
+        <div className="section-title">Practice papers</div>
+        <div className="grid halves">
+          {[
+            ...LESEN_SETS.filter((set) => set.level === level).map((set) => ({ ...set, module: 'lesen' as const })),
+            ...HOEREN_SETS.filter((set) => set.level === level).map((set) => ({ ...set, module: 'hoeren' as const })),
+          ].map((set) => {
+            const results = exams.filter((result) => result.setId === set.id)
+            const last = results[results.length - 1]
+            return (
+              <Link key={set.id} className="card card-link" to={`/exam/${set.module}/${set.id}`}>
+                <div className="row between">
+                  <h3 style={{ margin: 0 }}>
+                    {set.module === 'lesen' ? 'Lesen' : 'Hören'} · {set.title}
+                  </h3>
+                  {last && <span className={`pill ${last.score >= 60 ? 'good' : 'almost'}`}>{last.score}/100</span>}
+                </div>
+                <div className="small muted">
+                  {set.module === 'lesen'
+                    ? 'All five parts, 65 minutes, scored out of 100.'
+                    : 'All four parts. Each recording plays only as often as in the exam.'}
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
 
       <div className="section card lesson-cta">

@@ -1899,3 +1899,41 @@ table.grammar-table {
   flex-wrap: wrap;
   gap: 4px 16px;
 }
+
+.exam-timer {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  width: fit-content;
+}
+
+.exam-timer.low {
+  color: var(--almost);
+}
+
+.exam-timer.over {
+  color: var(--bad);
+}
+
+.exam-part-scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+
+.good-text {
+  color: var(--good);
+}
+
+.bad-text {
+  color: var(--bad);
+}

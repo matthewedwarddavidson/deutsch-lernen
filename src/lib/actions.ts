@@ -1,7 +1,7 @@
 import type { GrammarTopic, ListeningText, Word } from '../content/types'
 import { cardsForNewWord, cardsForTopic, missingCards } from './cards'
 import { newCard, reviewCard, type Grade } from './srs'
-import { update, type ActivityKind, type Mistake, type Settings } from './store'
+import { update, type ActivityKind, type ExamResult, type Mistake, type Settings } from './store'
 
 export function recordActivity(kind: ActivityKind, seconds: number) {
   if (seconds < 5) return
@@ -148,6 +148,16 @@ export function completeRewrite(taskId: string) {
     const now = new Date().toISOString()
     return { ...state, rewrites: { ...state.rewrites, [taskId]: { ...existing, doneAt: now, changedAt: now } } }
   })
+}
+
+export function recordExam({
+  startedAt,
+  ...result
+}: Omit<ExamResult, 'id' | 'at' | 'minutes'> & { startedAt: number }) {
+  const now = new Date()
+  const at = now.toISOString()
+  const minutes = Math.round((now.getTime() - startedAt) / 60000)
+  update((state) => ({ ...state, exams: [...state.exams, { ...result, minutes, id: `${result.setId}-${at}`, at }] }))
 }
 
 export function deleteWriting(id: string) {

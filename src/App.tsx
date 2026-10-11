@@ -5,6 +5,7 @@ import { dueCards } from './lib/cards'
 import { useNow } from './lib/hooks'
 import { useAppState } from './lib/store'
 import { Exam } from './pages/Exam'
+import { HoerenPaper, LesenPaper } from './pages/ExamPaper'
 import { GrammarLesson, GrammarList } from './pages/Grammar'
 import { Learn } from './pages/Learn'
 import { Dictation, ListeningList, ListeningPage } from './pages/Listening'
@@ -117,6 +118,8 @@ export default function App() {
             <Route path="/progress" element={<Progress />} />
             <Route path="/reference" element={<Reference />} />
             <Route path="/exam" element={<Exam />} />
+            <Route path="/exam/lesen/:setId" element={<LesenPaper />} />
+            <Route path="/exam/hoeren/:setId" element={<HoerenPaper />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<Today />} />
           </Routes>
