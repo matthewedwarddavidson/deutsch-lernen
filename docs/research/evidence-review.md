@@ -110,6 +110,23 @@ Items 1, 2 and 5–7 are all small and together close most of the design gaps. I
 
 Several things are not worth building. Colour-coding genders did no better than the article alone. German-German glosses did worse than English ones at every level. Picture or audio glosses added nothing over text. Streaks and XP raise usage but carry the reward-type motivation cost. Heavily slowed audio has no reliable support; modest slowing is enough. Typed answers on recognition cards are fine but optional, because silent recall matches typing for simple pairs. A quick-flip option would save time without loss.
 
+## Implementation status (12 October 2026)
+
+| Rank | Status |
+|---|---|
+| 1 | Done. Guess-first glosses; "Words you looked up" list with one-tap add to reviews. (The popover already let you add single words.) |
+| 2 | Done. "Couldn't say" note, grammar checklist, mistakes logged by kind, rewrite from memory and a reminder two weeks later. |
+| 3 | Partly done. New words come most common first (subtitle frequencies); 105 common missing words added. The app has about 1,300 words, not the 1,450 assumed above, so roughly 1,100 short of the B1 list. |
+| 4 | Done for B1. One Lesen paper (all five parts, 65-minute timer) and one Hören paper (exam play counts), scored out of 100. |
+| 5 | Done. Three recalls per new word on the day; pause above 100 due reviews; near-pairs split across days. |
+| 6 | Done. If-then plan and days studied on Today; predicted versus actual exam score; note on desirable difficulty. |
+| 7 | Done. Plural asked on noun cards; article, word and plural marked separately. A wrong plural alone lowers the grade to Hard. |
+| 8 | Done. Case-comprehension and sentence-combining items; errors per 100 words by kind on Progress. |
+| 9 | Partly done. Known-word estimate per text (shown after 100 learned words), topic filter, outside reading and listening links. No new topic series yet. |
+| 10 | Done. Timed re-reads are logged and charted, and suggested weekly on Today. |
+| 11 | Done. Five Chatterbox voices cloned from public-domain readers and checked with Whisper; two scripts with natural spoken features; links to human audio. |
+| 12 | Not done. Training FSRS in the browser needs multithreaded WebAssembly, which GitHub Pages can't serve without breaking Google sign-in. A target recall setting was added instead. |
+
 ## Conclusion
 
 The research gives this app's method a good score and its content a weak one. That is the opposite of most commercial apps, which tend to have plenty of content and weak method. The method choices that are hard to change later are already right: typed retrieval, spaced review across every skill, and feedback from your own errors. The remaining work is mostly connecting what exists and adding volume. Glosses should feed review, writing should loop back to grammar, and the word bank should follow frequency.
