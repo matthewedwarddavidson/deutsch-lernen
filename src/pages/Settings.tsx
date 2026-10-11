@@ -3,6 +3,7 @@ import { LEVELS, type Level } from '../content/types'
 import { updateSettings } from '../lib/actions'
 import { bestGermanVoices, hasNaturalBrowserVoice, speak, whenVoicesReady } from '../lib/speech'
 import { downloadBackup } from '../lib/backup'
+import { DEFAULT_RETENTION } from '../lib/srs'
 import { importState, resetState, useAppState } from '../lib/store'
 import { prepareSignIn, signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
 
@@ -85,6 +86,29 @@ export function Settings() {
         </div>
         <p className="muted small" style={{ margin: 0 }}>
           Each new word adds about 10 reviews over the following month. 10 a day is a steady pace alongside a course.
+        </p>
+      </div>
+
+      <div className="card stack">
+        <h3>Target recall</h3>
+        <div className="row">
+          <input
+            type="range"
+            min={80}
+            max={95}
+            step={1}
+            value={Math.round((settings.desiredRetention ?? DEFAULT_RETENTION) * 100)}
+            onChange={(event) => updateSettings({ desiredRetention: Number(event.target.value) / 100 })}
+            aria-label="Target recall"
+            style={{ flex: 1 }}
+          />
+          <strong style={{ width: 48, textAlign: 'right' }}>
+            {Math.round((settings.desiredRetention ?? DEFAULT_RETENTION) * 100)}%
+          </strong>
+        </div>
+        <p className="muted small" style={{ margin: 0 }}>
+          How likely you should be to remember a card when it comes back. 90% is the usual balance. Lower it if reviews
+          take too long; raise it before an exam. Going from 90% to 95% roughly doubles the number of reviews.
         </p>
       </div>
 

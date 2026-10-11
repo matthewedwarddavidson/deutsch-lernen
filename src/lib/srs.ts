@@ -17,7 +17,17 @@ export interface StoredCard {
   last_review?: string
 }
 
-const scheduler = fsrs({ request_retention: 0.9, enable_fuzz: true })
+export const DEFAULT_RETENTION = 0.9
+
+let scheduler = fsrs({ request_retention: DEFAULT_RETENTION, enable_fuzz: true })
+let retention = DEFAULT_RETENTION
+
+/** The chance of remembering a card that reviews aim for. Lower means fewer reviews and more forgetting. */
+export function setDesiredRetention(value: number) {
+  if (value === retention) return
+  retention = value
+  scheduler = fsrs({ request_retention: value, enable_fuzz: true })
+}
 
 function toStored(card: Card): StoredCard {
   return {

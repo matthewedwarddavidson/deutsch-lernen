@@ -94,6 +94,8 @@ export interface Settings {
   theme: 'system' | 'light' | 'dark'
   lastBackupAt?: string
   welcomeDismissed?: boolean
+  /** The recall rate reviews aim for, 0.8 to 0.95. */
+  desiredRetention?: number
   /** An if-then plan: when and where you study. Concrete plans make it far more likely to happen. */
   studyPlan?: string
 }
