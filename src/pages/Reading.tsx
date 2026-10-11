@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { Icon } from '../components/Icon'
 import { InteractiveText } from '../components/InteractiveText'
+import { LookedUpWords } from '../components/LookedUpWords'
 import { Questions } from '../components/Questions'
 import { MATCHING_TASKS } from '../content/matching'
 import { READING_TEXTS } from '../content/reading'
 import { themeById } from '../content/themes'
 import { LEVELS, type ReadingText } from '../content/types'
 import { completeReading, recordActivity } from '../lib/actions'
+import type { LookUp } from '../lib/lookups'
 import { useTimeOnPage } from '../lib/hooks'
 import { speakDialogue, stopSpeaking } from '../lib/speech'
 import { useAppState } from '../lib/store'
@@ -104,6 +106,7 @@ export function ReadingPage() {
   const [finished, setFinished] = useState<number>()
   const [fluencyStart, setFluencyStart] = useState<number>()
   const [fluencyResult, setFluencyResult] = useState<number>()
+  const [lookUps, setLookUps] = useState<LookUp[]>([])
   const fluencyActive = fluencyStart !== undefined
   useTimeOnPage((seconds) => !fluencyActive && recordActivity('reading', seconds))
 
@@ -204,8 +207,15 @@ export function ReadingPage() {
           glossary={text.glossary}
           activeParagraph={speaking}
           showGlossHints={!fluencyActive}
+          onLookUp={(lookUp) => setLookUps((current) => [...current, lookUp])}
         />
       </article>
+
+      {!fluencyActive && lookUps.length > 0 && (
+        <div className="section">
+          <LookedUpWords lookUps={lookUps} />
+        </div>
+      )}
 
       {!fluencyActive && (
         <div className="section">
@@ -213,7 +223,7 @@ export function ReadingPage() {
           {finished !== undefined ? (
             <div className="card empty">
               <h2>{Math.round(finished * 100)}%</h2>
-              <p>Saved. Words you tapped and added will appear in your reviews.</p>
+              <p>Saved. Words you added will appear in your reviews.</p>
               <Link className="btn primary" to="/reading">
                 More texts
               </Link>

@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from 'react'
 import { Link } from 'react-router'
-import { displayGerman, slugify } from '../content/parseWords'
+import { displayGerman } from '../content/parseWords'
 import type { Word } from '../content/types'
-import { addCustomWord, learnWord } from '../lib/actions'
+import { learnWord } from '../lib/actions'
 import { allWords, isWordLearned } from '../lib/cards'
+import { distractors, saveLookUp, type LookUp } from '../lib/lookups'
 import { speak } from '../lib/speech'
 import { Rating } from '../lib/srs'
 import { getState, useAppState } from '../lib/store'
@@ -108,6 +109,8 @@ interface InteractiveTextProps {
   glossary: Record<string, string>
   activeParagraph?: number
   showGlossHints?: boolean
+  /** Called for each word or phrase tapped, so the page can offer to save them all. */
+  onLookUp?: (lookUp: LookUp) => void
 }
 
 /** A German text where every word can be tapped for its meaning and saved for practice. */
@@ -116,6 +119,7 @@ export function InteractiveText({
   glossary,
   activeParagraph,
   showGlossHints = true,
+  onLookUp,
 }: InteractiveTextProps) {
   const [selection, setSelection] = useState<Selection>()
   const segmented = useMemo(() => paragraphs.map((paragraph) => segment(paragraph, glossary)), [paragraphs, glossary])
@@ -129,15 +133,14 @@ export function InteractiveText({
 
   function select(event: MouseEvent<HTMLElement>, paragraph: string, part: Segment) {
     const rect = event.currentTarget.getBoundingClientRect()
-    const word = lookUpWord(part.text, allWords(getState()))
-    setSelection({
+    const lookUp: LookUp = {
       surface: part.text,
       sentence: sentenceAround(paragraph, part.start),
       gloss: part.gloss,
-      word,
-      x: rect.left + rect.width / 2,
-      y: rect.bottom + 8,
-    })
+      word: lookUpWord(part.text, allWords(getState())),
+    }
+    onLookUp?.(lookUp)
+    setSelection({ ...lookUp, x: rect.left + rect.width / 2, y: rect.bottom + 8 })
   }
 
   return (
@@ -170,13 +173,25 @@ export function InteractiveText({
           </p>
         )
       })}
-      {selection && <WordPopover selection={selection} onClose={() => setSelection(undefined)} />}
+      {selection && <WordPopover selection={selection} glossary={glossary} onClose={() => setSelection(undefined)} />}
     </div>
   )
 }
 
-function WordPopover({ selection, onClose }: { selection: Selection; onClose: () => void }) {
+interface WordPopoverProps {
+  selection: Selection
+  glossary: Record<string, string>
+  onClose: () => void
+}
+
+function WordPopover({ selection, glossary, onClose }: WordPopoverProps) {
   const state = useAppState()
+  // Guessing a gloss before seeing it helps the meaning stick.
+  const [options] = useState(() =>
+    selection.gloss ? [selection.gloss, ...distractors(selection.gloss, glossary)].sort(() => Math.random() - 0.5) : [],
+  )
+  const [guess, setGuess] = useState<string>()
+  const guessing = options.length >= 3 && guess === undefined
   const [meaning, setMeaning] = useState(selection.gloss ?? selection.word?.english ?? '')
   const [added, setAdded] = useState(false)
   const width = 300
@@ -186,21 +201,7 @@ function WordPopover({ selection, onClose }: { selection: Selection; onClose: ()
 
   function addFromText() {
     if (!meaning.trim()) return
-    const surface = selection.surface
-    const escaped = surface.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const example = selection.sentence.replace(new RegExp(escaped), `{${surface}}`)
-    const custom: Word = {
-      id: `eigene-${slugify(surface)}-other`,
-      kind: 'other',
-      german: surface,
-      english: meaning.trim(),
-      example,
-      exampleEnglish: `(${meaning.trim()})`,
-      theme: 'eigene',
-      level: state.settings.level,
-    }
-    addCustomWord(custom)
-    learnWord(custom, Rating.Good)
+    saveLookUp(selection, meaning)
     setAdded(true)
   }
 
@@ -222,7 +223,30 @@ function WordPopover({ selection, onClose }: { selection: Selection; onClose: ()
             <Icon name="speaker" />
           </button>
         </div>
-        {selection.gloss && <div style={{ marginTop: 4 }}>{selection.gloss}</div>}
+        {guessing ? (
+          <div className="stack" style={{ gap: 6, marginTop: 8 }}>
+            <div className="small muted">Guess first: what does it mean here?</div>
+            {options.map((option) => (
+              <button key={option} className="btn small guess-option" onClick={() => setGuess(option)}>
+                {option}
+              </button>
+            ))}
+            <button className="btn ghost small" onClick={() => setGuess('')}>
+              Just show me
+            </button>
+          </div>
+        ) : (
+          selection.gloss && (
+            <div style={{ marginTop: 4 }}>
+              {guess !== undefined && guess !== '' && (
+                <span className={`pill ${guess === selection.gloss ? 'good' : 'bad'}`} style={{ marginRight: 6 }}>
+                  {guess === selection.gloss ? 'Richtig' : 'Nicht ganz'}
+                </span>
+              )}
+              {selection.gloss}
+            </div>
+          )
+        )}
         {word && (
           <div className="small muted" style={{ marginTop: 4 }}>
             {!selection.gloss && <div style={{ color: 'var(--text)' }}>{word.english}</div>}
@@ -230,47 +254,49 @@ function WordPopover({ selection, onClose }: { selection: Selection; onClose: ()
             {word.forms && <div>{word.forms}</div>}
           </div>
         )}
-        <div className="popover-actions">
-          {word ? (
-            learned ? (
-              <span className="small pill good">In your reviews</span>
+        {!guessing && (
+          <div className="popover-actions">
+            {word ? (
+              learned ? (
+                <span className="small pill good">In your reviews</span>
+              ) : (
+                <>
+                  <button className="btn small primary" onClick={() => learnWord(word, Rating.Good)}>
+                    Add to reviews
+                  </button>
+                  <Link className="small" to={`/words?q=${encodeURIComponent(word.german)}`}>
+                    Details
+                  </Link>
+                </>
+              )
+            ) : added ? (
+              <span className="small pill good">Added with this sentence</span>
             ) : (
-              <>
-                <button className="btn small primary" onClick={() => learnWord(word, Rating.Good)}>
-                  Add to reviews
+              <div className="stack" style={{ gap: 6, width: '100%' }}>
+                {!selection.gloss && (
+                  <input
+                    className="input"
+                    placeholder="Meaning in English"
+                    value={meaning}
+                    onChange={(event) => setMeaning(event.target.value)}
+                    autoFocus
+                  />
+                )}
+                <button className="btn small primary" onClick={addFromText} disabled={!meaning.trim()}>
+                  Practise with this sentence
                 </button>
-                <Link className="small" to={`/words?q=${encodeURIComponent(word.german)}`}>
-                  Details
-                </Link>
-              </>
-            )
-          ) : added ? (
-            <span className="small pill good">Added with this sentence</span>
-          ) : (
-            <div className="stack" style={{ gap: 6, width: '100%' }}>
-              {!selection.gloss && (
-                <input
-                  className="input"
-                  placeholder="Meaning in English"
-                  value={meaning}
-                  onChange={(event) => setMeaning(event.target.value)}
-                  autoFocus
-                />
-              )}
-              <button className="btn small primary" onClick={addFromText} disabled={!meaning.trim()}>
-                Practise with this sentence
-              </button>
-              <a
-                className="small"
-                href={`https://www.dwds.de/wb/${encodeURIComponent(selection.surface)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Look up in DWDS
-              </a>
-            </div>
-          )}
-        </div>
+                <a
+                  className="small"
+                  href={`https://www.dwds.de/wb/${encodeURIComponent(selection.surface)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Look up in DWDS
+                </a>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   )
