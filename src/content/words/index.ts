@@ -3,6 +3,7 @@ import type { ThemeId, Word } from '../types'
 import allgemein from './allgemein'
 import allgemein2 from './allgemein2'
 import alltag from './alltag'
+import haeufig from './haeufig'
 import arbeit from './arbeit'
 import behoerden from './behoerden'
 import beziehungen from './beziehungen'
@@ -35,6 +36,7 @@ const SOURCES: [ThemeId, string][] = [
   ['behoerden', behoerden],
   ['allgemein', allgemein],
   ['allgemein', allgemein2],
+  ['allgemein', haeufig],
   ['redemittel', redemittel],
 ]
 
