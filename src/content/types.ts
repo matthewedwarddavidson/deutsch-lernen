@@ -1,3 +1,4 @@
+import type { RecordedVoice } from '../lib/speechText'
 export const LEVELS = ['A2', 'B1', 'B2', 'C1'] as const
 export type Level = (typeof LEVELS)[number]
 
@@ -140,7 +141,7 @@ export interface ListeningText {
   situation: string
   lines: ListeningLine[]
   /** Recorded voice per speaker; speakers without one get voices in turn. */
-  voices?: Record<string, 'thorsten' | 'kerstin' | 'thorsten-emotional'>
+  voices?: Record<string, RecordedVoice>
   questions: Question[]
 }
 

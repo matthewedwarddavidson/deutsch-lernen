@@ -15,7 +15,12 @@ readFileSync('audio-build/freq/de_50k.txt', 'utf8')
 
 /** A phrase is about as common as its rarest word, so "ab und zu" isn't ranked as "und". */
 function lemmaRank(german: string): number | undefined {
-  const words = german.toLowerCase().replace(/^sich /, '').replace(/…/g, '').split(' ').filter(Boolean)
+  const words = german
+    .toLowerCase()
+    .replace(/^sich /, '')
+    .replace(/…/g, '')
+    .split(' ')
+    .filter(Boolean)
   const found = words.map((word) => ranks.get(word))
   return found.every((rank) => rank !== undefined) ? Math.max(...(found as number[])) : undefined
 }

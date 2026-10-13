@@ -7,7 +7,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'A2',
     theme: 'essen',
     genre: 'dialogue',
-    voices: { Restaurant: 'kerstin', Gast: 'thorsten' },
+    voices: { Restaurant: 'katrin', Gast: 'jonas' },
     situation: 'A man phones an Italian restaurant to book a table.',
     lines: [
       { speaker: 'Restaurant', text: 'Trattoria Da Marco, guten Abend!' },
@@ -51,7 +51,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'B1',
     theme: 'reisen',
     genre: 'announcement',
-    voices: { Sprecherin: 'kerstin' },
+    voices: { Sprecherin: 'katrin' },
     situation: 'You are driving to Stuttgart on Friday afternoon and listen to the radio.',
     lines: [
       {
@@ -113,7 +113,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'B1',
     theme: 'behoerden',
     genre: 'dialogue',
-    voices: { Sachbearbeiter: 'thorsten', 'Frau Lindqvist': 'kerstin' },
+    voices: { Sachbearbeiter: 'jonas', 'Frau Lindqvist': 'lena' },
     situation: 'A woman who has just moved to Hamburg registers her new address.',
     lines: [
       {
@@ -177,7 +177,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'C1',
     theme: 'bildung',
     genre: 'report',
-    voices: { Referentin: 'kerstin' },
+    voices: { Referentin: 'katrin' },
     situation: 'An excerpt from a public lecture by a linguist about growing up with several languages.',
     lines: [
       {
@@ -237,7 +237,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'B1',
     theme: 'freizeit',
     genre: 'announcement',
-    voices: { Jule: 'kerstin' },
+    voices: { Jule: 'lena' },
     situation: 'Your friend Jule leaves you a voicemail about the weekend.',
     lines: [
       { speaker: 'Jule', text: 'Hallo, hier ist Jule! Schade, dass ich dich nicht erreiche. Es geht um Samstag.' },
@@ -286,7 +286,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'B1',
     theme: 'arbeit',
     genre: 'dialogue',
-    voices: { 'Frau Becker': 'kerstin', Daniel: 'thorsten' },
+    voices: { 'Frau Becker': 'lena', Daniel: 'jonas' },
     situation: 'Daniel asks his manager, Ms Becker, about reducing his hours.',
     lines: [
       { speaker: 'Daniel', text: 'Frau Becker, haben Sie kurz Zeit? Ich wollte etwas mit Ihnen besprechen.' },
@@ -347,7 +347,7 @@ export const SCRIPTS_MORE: ListeningText[] = [
     level: 'B1',
     theme: 'gesellschaft',
     genre: 'report',
-    voices: { Sprecher: 'thorsten' },
+    voices: { Sprecher: 'jonas' },
     situation: 'A short regional news bulletin on the radio: three items.',
     lines: [
       { speaker: 'Sprecher', text: 'Es ist zwölf Uhr. Hier sind die Nachrichten.' },

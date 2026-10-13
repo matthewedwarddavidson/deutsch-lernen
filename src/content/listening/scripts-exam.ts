@@ -8,7 +8,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     level: 'B1',
     theme: 'freizeit',
     genre: 'announcement',
-    voices: { Führerin: 'kerstin' },
+    voices: { Führerin: 'katrin' },
     situation: 'A group visits a chocolate factory. Listen to the guide at the start of the tour (Hören Teil 2).',
     lines: [
       {
@@ -75,7 +75,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     level: 'B1',
     theme: 'reisen',
     genre: 'dialogue',
-    voices: { Lisa: 'kerstin', Daniel: 'thorsten' },
+    voices: { Lisa: 'lena', Daniel: 'jonas' },
     situation: 'Two colleagues meet on the train home and talk about the summer holidays (Hören Teil 3).',
     lines: [
       {
@@ -146,7 +146,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     level: 'B1',
     theme: 'bildung',
     genre: 'interview',
-    voices: { Moderatorin: 'kerstin', 'Herr Becker': 'thorsten', 'Herr Yilmaz': 'thorsten-emotional' },
+    voices: { Moderatorin: 'lena', 'Herr Becker': 'jonas', 'Herr Yilmaz': 'markus' },
     situation:
       'A radio presenter talks to a head teacher, Herr Becker, and a father, Herr Yilmaz, about banning phones at school. For each statement: who says it? (Hören Teil 4)',
     lines: [
@@ -226,7 +226,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     level: 'B2',
     theme: 'umwelt',
     genre: 'report',
-    voices: { Referent: 'thorsten' },
+    voices: { Referent: 'jonas' },
     situation: 'An urban planner gives a short public talk about heat in cities. Take notes, then answer.',
     lines: [
       {
@@ -300,11 +300,11 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     theme: 'alltag',
     genre: 'announcement',
     voices: {
-      'Text 1': 'kerstin',
-      'Text 2': 'thorsten',
-      'Text 3': 'kerstin',
-      'Text 4': 'thorsten-emotional',
-      'Text 5': 'thorsten',
+      'Text 1': 'lena',
+      'Text 2': 'jonas',
+      'Text 3': 'katrin',
+      'Text 4': 'markus',
+      'Text 5': 'jonas',
     },
     situation:
       'Five short recordings: a voicemail, two announcements, a radio advert and a weather report (Hören Teil 1). In the exam you hear each one twice. Read the questions first.',
@@ -374,7 +374,7 @@ export const SCRIPTS_EXAM: ListeningText[] = [
     level: 'C1',
     theme: 'gesellschaft',
     genre: 'report',
-    voices: { Sprecher: 'thorsten-emotional', 'Prof. Hartmann': 'thorsten', 'Frau Demir': 'kerstin' },
+    voices: { Sprecher: 'markus', 'Prof. Hartmann': 'jonas', 'Frau Demir': 'lena' },
     situation:
       'A radio feature on volunteering, with a sociologist and the head of a food bank. Focus on the arguments and on what is implied, not only on facts.',
     lines: [

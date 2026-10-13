@@ -28,3 +28,4 @@ audio-build/
 .venv-tts/
 test-results/
 playwright-report/
+__pycache__/

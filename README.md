@@ -47,17 +47,23 @@ Storage is per browser and per address, so the hosted app and a local copy keep 
 
 ## Recorded voices
 
-Recordings are made offline with [Piper](https://github.com/rhasspy/piper) using the CC0 voices Thorsten (male) and Kerstin (female), and stored in `public/audio/` as AAC. After changing built-in content, record the new sentences (macOS, needs `afconvert`):
+Recordings are made offline with [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) and stored in `public/audio/` as AAC. Lena, Katrin, Jonas and Markus are cloned from short excerpts of public-domain [LibriVox](https://librivox.org) recordings in `scripts/voices/`. Chatterbox sometimes garbles short or unusual input, so the build transcribes every sentence with [Whisper](https://github.com/SYSTRAN/faster-whisper) (MIT) and regenerates it if the words don't match. After five failures it uses [Piper](https://github.com/rhasspy/piper) (CC0 voices Thorsten and Kerstin) instead, listing the sentence in `audio-build/fallbacks.txt`.
+
+After changing built-in content, record the new sentences (macOS with Apple silicon; needs `afconvert` and Python 3.11):
 
 ```bash
-python3 -m venv .venv-tts && .venv-tts/bin/pip install piper-tts      # once
-mkdir -p audio-build && cd audio-build && for v in de_DE-thorsten-high de_DE-kerstin-low de_DE-thorsten_emotional-medium; do
-  ../.venv-tts/bin/python -m piper.download_voices $v; done && cd ..   # once
+python3.11 -m venv .venv-tts && .venv-tts/bin/pip install chatterbox-tts faster-whisper piper-tts "setuptools<81"  # once
+mkdir -p audio-build/chatterbox audio-build/whisper-small && cd audio-build                              # once
+for f in ve.pt t3_mtl23ls_v2.safetensors s3gen.pt grapheme_mtl_merged_expanded_v1.json conds.pt Cangjie5_TC.json; do
+  curl -L -o chatterbox/$f https://huggingface.co/ResembleAI/chatterbox/resolve/main/$f; done
+for f in config.json model.bin tokenizer.json vocabulary.txt; do
+  curl -L -o whisper-small/$f https://huggingface.co/Systran/faster-whisper-small/resolve/main/$f; done
+for v in de_DE-thorsten-high de_DE-kerstin-low; do ../.venv-tts/bin/python -m piper.download_voices $v; done && cd ..
 npx tsx scripts/collect-speech.ts > audio-build/requests.json
-.venv-tts/bin/python scripts/generate_speech.py
+scripts/record_all.sh
 ```
 
-Only missing sentences are recorded. Anything without a recording falls back to the browser voice.
+Only missing sentences are recorded; a full rebuild takes several hours. Anything without a recording falls back to the browser voice.
 
 ## Word frequency
 

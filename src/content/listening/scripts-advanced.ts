@@ -8,7 +8,7 @@ export const SCRIPTS_ADVANCED: ListeningText[] = [
     level: 'C1',
     theme: 'bildung',
     genre: 'report',
-    voices: { 'Dr. Brandt': 'kerstin' },
+    voices: { 'Dr. Brandt': 'lena' },
     situation:
       'A public lecture by a memory researcher. Listen for how she structures the argument and which claims she rejects.',
     lines: [
@@ -86,7 +86,7 @@ export const SCRIPTS_ADVANCED: ListeningText[] = [
     level: 'C1',
     theme: 'gesellschaft',
     genre: 'interview',
-    voices: { Moderator: 'thorsten', 'Frau Lindner': 'kerstin', 'Herr Albers': 'thorsten-emotional' },
+    voices: { Moderator: 'jonas', 'Frau Lindner': 'katrin', 'Herr Albers': 'markus' },
     situation:
       'A radio debate between an economist who supports a basic income and a trade union representative who opposes it. Note who says what, and where they agree.',
     lines: [
@@ -193,7 +193,7 @@ export const SCRIPTS_ADVANCED: ListeningText[] = [
     level: 'B2',
     theme: 'beziehungen',
     genre: 'interview',
-    voices: { Moderatorin: 'kerstin', 'Herr Wolff': 'thorsten' },
+    voices: { Moderatorin: 'katrin', 'Herr Wolff': 'jonas' },
     situation:
       'A radio interview with a retired teacher who lives in a multi-generation house. Listen for his reasons, the problems, and his advice.',
     lines: [
@@ -289,7 +289,7 @@ export const SCRIPTS_ADVANCED: ListeningText[] = [
     level: 'B2',
     theme: 'umwelt',
     genre: 'report',
-    voices: { Reporter: 'thorsten', Marie: 'kerstin', Filialleiter: 'thorsten-emotional' },
+    voices: { Reporter: 'jonas', Marie: 'lena', Filialleiter: 'markus' },
     situation:
       'A radio report on volunteers who collect food that supermarkets would throw away. Listen for numbers, the rules, and the different views.',
     lines: [

@@ -5,7 +5,7 @@
  */
 import {
   cleanForSpeech,
-  DEFAULT_VOICE,
+  defaultVoiceFor,
   KEY_LENGTH,
   RECORDED_VOICES,
   recordingSource,
@@ -177,7 +177,7 @@ export interface SpeakOptions {
 export function speak(text: string, options: SpeakOptions = {}) {
   stopSpeaking()
   const token = playback
-  playLine(text, options.voice ?? DEFAULT_VOICE, options.slow ?? false, token).then(() => {
+  playLine(text, options.voice ?? defaultVoiceFor(text), options.slow ?? false, token).then(() => {
     if (token === playback) options.onEnd?.()
   })
 }
@@ -199,7 +199,7 @@ export async function speakDialogue(
     currentAudio = undefined
     browserLine = undefined
     options.onLine?.(index)
-    await playLine(line.text, line.voice ?? DEFAULT_VOICE, options.slow ?? false, token)
+    await playLine(line.text, line.voice ?? defaultVoiceFor(line.text), options.slow ?? false, token)
   }
   if (token === playback) options.onEnd?.()
 }

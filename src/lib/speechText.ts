@@ -3,15 +3,42 @@
  * app finds the recording made for it.
  */
 
-/** Recorded neural voices (Piper, CC0): Thorsten (male), Kerstin (female), Thorsten in a second style. */
-export const RECORDED_VOICES = ['thorsten', 'kerstin', 'thorsten-emotional'] as const
+/**
+ * Recorded voices, made with Chatterbox (MIT) and cloned from public-domain LibriVox readers.
+ * Its built-in voice is not used: its pitch and accent drift between clips. A clip that fails the
+ * build's speech-recognition check falls back to a Piper voice (CC0) of the same gender.
+ */
+export const RECORDED_VOICES = ['lena', 'jonas', 'katrin', 'markus'] as const
 export type RecordedVoice = (typeof RECORDED_VOICES)[number]
 
-export const DEFAULT_VOICE: RecordedVoice = 'thorsten'
+export const FEMALE_VOICES: RecordedVoice[] = ['lena', 'katrin']
 
-/** Strips formatting marks and tidies whitespace, so the same sentence always has the same key. */
+/** Sentences are read by Lena. */
+export const DEFAULT_VOICE: RecordedVoice = 'lena'
+
+/** Single words and short phrases are read by Jonas, the voice that handled them most reliably. */
+export const WORD_VOICE: RecordedVoice = 'jonas'
+
+/**
+ * The voice for a text with no speaker: Jonas for words, short phrases and lists of
+ * verb forms (no full stop, at most six words), Lena for sentences.
+ */
+export function defaultVoiceFor(text: string): RecordedVoice {
+  const clean = cleanForSpeech(text)
+  const words = clean.split(' ').length
+  const isSentence = /[.!?…]["“”»]?$/.test(clean)
+  return words < 3 || (!isSentence && words <= 6) ? WORD_VOICE : DEFAULT_VOICE
+}
+
+/** Strips formatting marks and bracketed hints, and tidies whitespace, so the same sentence always has the same key. */
 export function cleanForSpeech(text: string): string {
-  return text.normalize('NFC').replace(/\*+/g, '').replace(/[{}]/g, '').replace(/\s+/g, ' ').trim()
+  return text
+    .normalize('NFC')
+    .replace(/\*+/g, '')
+    .replace(/[{}]/g, '')
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
 /** The text hashed to name a recording. */

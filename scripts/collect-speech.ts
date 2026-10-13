@@ -13,7 +13,7 @@ import { READING_TEXTS } from '../src/content/reading'
 import { BUILT_IN_WORDS } from '../src/content/words'
 import { solvedSentence } from '../src/lib/grading'
 import { isIrregular, verbFormsSpeech } from '../src/lib/verbForms'
-import { cleanForSpeech, DEFAULT_VOICE, KEY_LENGTH, recordingSource, type RecordedVoice } from '../src/lib/speechText'
+import { cleanForSpeech, defaultVoiceFor, KEY_LENGTH, recordingSource, type RecordedVoice } from '../src/lib/speechText'
 
 interface Request {
   key: string
@@ -23,9 +23,10 @@ interface Request {
 
 const requests = new Map<string, Request>()
 
-function add(text: string, voice: RecordedVoice = DEFAULT_VOICE) {
+function add(text: string, chosenVoice?: RecordedVoice) {
   const clean = cleanForSpeech(text)
   if (!clean) return
+  const voice = chosenVoice ?? defaultVoiceFor(clean)
   const key = createHash('sha1').update(recordingSource(voice, clean), 'utf8').digest('hex').slice(0, KEY_LENGTH)
   requests.set(key, { key, voice, text: clean })
 }

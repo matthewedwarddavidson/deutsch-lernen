@@ -4,8 +4,15 @@ import { SCRIPTS } from './scripts'
 import { SCRIPTS_ADVANCED } from './scripts-advanced'
 import { SCRIPTS_EXAM } from './scripts-exam'
 import { SCRIPTS_MORE } from './scripts-more'
+import { SCRIPTS_SPOKEN } from './scripts-spoken'
 
-export const LISTENING_TEXTS: ListeningText[] = [...SCRIPTS, ...SCRIPTS_MORE, ...SCRIPTS_EXAM, ...SCRIPTS_ADVANCED]
+export const LISTENING_TEXTS: ListeningText[] = [
+  ...SCRIPTS,
+  ...SCRIPTS_MORE,
+  ...SCRIPTS_EXAM,
+  ...SCRIPTS_ADVANCED,
+  ...SCRIPTS_SPOKEN,
+]
 
 /** The voice for a speaker: as set in the script, otherwise the speakers take the voices in turn. */
 export function voiceForSpeaker(text: ListeningText, speaker: string): RecordedVoice {
