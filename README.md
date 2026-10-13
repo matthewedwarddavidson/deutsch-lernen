@@ -1,10 +1,65 @@
-# Deutsch lernen
+# Deutsch lernen 🇩🇪
 
-**[Open the app →](https://matthewedwarddavidson.github.io/deutsch-lernen/)**
+**Learn German properly, from A1 to C1, in your browser. Free, private, and built on what the research says works.**
 
-A web app for learning German from A1 upwards: vocabulary, grammar, reading, listening and writing. No speaking, no streaks, no points.
+[![Deploy](https://github.com/matthewedwarddavidson/deutsch-lernen/actions/workflows/pages.yml/badge.svg)](https://github.com/matthewedwarddavidson/deutsch-lernen/actions/workflows/pages.yml)
 
-The design follows the research summarised in [docs/research.md](docs/research.md): Nation's four strands, retrieval practice, FSRS spaced repetition, explicit grammar with interleaved practice, graded reading at 95–98% known words, dictation, and focused written corrective feedback.
+### [Open the app →](https://matthewedwarddavidson.github.io/deutsch-lernen/)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/today-dark.png">
+  <img src="docs/screenshots/today.png" alt="The Today page: reviews due and a plan for words, grammar, reading, listening, writing and fluency">
+</picture>
+
+## Why another German app?
+
+- **Every skill, every day.** The Today page plans words, grammar, reading, listening and writing in roughly equal measure, so flashcards don't crowd out everything else.
+- **Real recall, not recognition.** You type answers, with articles and plurals. The checker forgives typos but not wrong endings.
+- **Spaced repetition that adapts.** One [FSRS](https://github.com/open-spaced-repetition/ts-fsrs) queue holds words, irregular verbs, grammar exercises and the mistakes from your own writing.
+- **Natural voices.** About 5,700 sentences recorded with four neural voices, checked word by word with speech recognition.
+- **No streaks, hearts or XP.** Progress shows what you can actually do: words known, recall rate, mistakes per 100 words, reading speed.
+- **Private by default.** Everything stays in your browser. Sign in with Google only if you want to sync devices.
+- **Free, with no AI or paid APIs.** It's a static site.
+
+The reasoning, with sources, is in [docs/research.md](docs/research.md).
+
+## A look around
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/review.png" alt="A review card with a gap to fill"><br><b>Reviews.</b> Typed recall, gap-fills in context and grammar, all in one spaced queue.</td>
+    <td width="50%"><img src="docs/screenshots/grammar.png" alt="Adjective endings explained with tables"><br><b>Grammar.</b> 52 topics with short explanations, tables, common mistakes and exercises.</td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/reading.png" alt="A reading text with a guess-first gloss"><br><b>Reading.</b> Graded texts. Guess a word's meaning before it's shown, then save it to your reviews.</td>
+    <td><img src="docs/screenshots/listening.png" alt="A listening exercise with questions"><br><b>Listening.</b> Dialogues, announcements and talks. Questions first, transcript after.</td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/writing.png" alt="A writing task with useful phrases and live word count"><br><b>Writing.</b> Goethe-style tasks with useful phrases, a live checklist, then a model answer to compare.</td>
+    <td><img src="docs/screenshots/progress.png" alt="Progress statistics and vocabulary by level"><br><b>Progress.</b> Words known by level, recall rate and study time, not points.</td>
+  </tr>
+</table>
+
+<img src="docs/screenshots/phone.png" alt="Learning a new word on a phone" width="260" align="right">
+
+### Works on your phone
+
+The layout adapts to small screens, with navigation at the bottom. Dark mode follows your system setting or can be set by hand.
+
+<br clear="right">
+
+## What's in it
+
+| Area | What it does |
+| --- | --- |
+| **Today** | Reviews due, new words, the next grammar topic, a text to read and listen to, a writing task, and how your week splits across input, output, study and fluency. |
+| **Words** | ~2,100 words across 16 themes, A1–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own words, for example from your course. A timed speed round on known words trains fluency. |
+| **Reviews** | One FSRS queue for everything: recognition (German → English), production (English → German, typed, with article; alternates with gap-fills in context), irregular verb forms, grammar exercises and your mistakes you note from your own writing. Marking forgives typos but not wrong endings or auxiliaries. |
+| **Grammar** | 52 topics from A1 to C1: explanation, tables, examples, common mistakes, then exercises (gap, choice, word order, transformation). Finished topics feed their exercises into reviews. |
+| **Reading** | 37 graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |
+| **Listening** | 36 dialogues, announcements, interviews and talks with distinct recorded voices; questions first, transcript after. Dictation with word-by-word feedback. |
+| **Writing** | Goethe-style tasks (A1–C1) with useful phrases, live word and connector counts and model answers. Note your mistakes and they come back in reviews. A timed exam simulation is on the Exam page. |
+| **Progress** | Words known by level, recall rate, review forecast, study time, grammar mastery. |
 
 ## Run it
 
@@ -23,19 +78,6 @@ npm run format     # Prettier
 ```
 
 Built-in words, examples, grammar sentences, texts and dialogues come with recordings made by a neural voice (see below). Your own words use the browser's voice: Microsoft Edge has free natural German voices (Katja, Conrad); on macOS a Premium voice (Anna, Petra) helps in other browsers.
-
-## What's in it
-
-| Area | What it does |
-| --- | --- |
-| **Today** | Reviews due, new words, the next grammar topic, a text to read and listen to, a writing task, and how your week splits across input, output, study and fluency. |
-| **Words** | ~2,100 words across 16 themes, A1–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own words, for example from your course. A timed speed round on known words trains fluency. |
-| **Reviews** | One FSRS queue for everything: recognition (German → English), production (English → German, typed, with article; alternates with gap-fills in context), irregular verb forms, grammar exercises and your mistakes you note from your own writing. Marking forgives typos but not wrong endings or auxiliaries. |
-| **Grammar** | 52 topics from A1 to C1: explanation, tables, examples, common mistakes, then exercises (gap, choice, word order, transformation). Finished topics feed their exercises into reviews. |
-| **Reading** | 37 graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |
-| **Listening** | 36 dialogues, announcements, interviews and talks with distinct recorded voices; questions first, transcript after. Dictation with word-by-word feedback. |
-| **Writing** | Goethe-style tasks (A1–C1) with useful phrases, live word and connector counts and model answers. Note your mistakes and they come back in reviews. A timed exam simulation is on the Exam page. |
-| **Progress** | Words known by level, recall rate, review forecast, study time, grammar mastery. |
 
 ## Privacy
 
@@ -78,7 +120,7 @@ src/
                  speech (recordings + browser voices), verbForms,
   components/    shared UI
   pages/         one file per section
-scripts/         speech collection and recording, screenshots
+scripts/         speech collection and recording, word frequency, demo data and screenshots
 e2e/             Playwright smoke tests
 docs/research.md
 ```
@@ -91,3 +133,5 @@ N | die Wohnung | Wohnungen | | flat | Wir suchen eine größere {Wohnung}. | We
 ```
 
 Content tests check ids, articles, verb forms, gaps, glossaries and answer indexes, so run `npm test` after editing content.
+
+To refresh the README screenshots, start `npx vite --port 5174`, then run `npx tsx scripts/demo-state.ts > /tmp/demo-state.json && node scripts/readme-screenshots.mjs /tmp/demo-state.json`. The demo state is two months of simulated study.
