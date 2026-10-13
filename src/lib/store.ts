@@ -83,7 +83,7 @@ export interface Activity {
 }
 
 export interface Settings {
-  /** The level being worked towards. New material comes from this level and below. */
+  /** The level being worked towards. New material comes from this level and below: this level and the one below first. */
   level: Level
   newWordsPerDay: number
   voiceURI?: string

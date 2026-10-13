@@ -31,8 +31,8 @@ Spacing has a medium-to-large effect on L2 vocabulary (Kim & Webb 2022). FSRS pr
 The Goethe B1 list has about 2,400 entries. Estimates for C1 range from 3,750 to 6,000 words. Learning near-synonyms or near-pairs together (einziehen/umziehen) increases confusion between them.
 
 **In the app:**
-- About 1,300 words from A2 to C1, well short of the full B1 list. Your course's word lists fill the gap until more are added.
-- New words come most common first, ranked by German subtitle frequencies, after your own course words.
+- About 1,880 words from A1 to C1, including the A1 core of about 580. B1 is still short of the full list; your course's word lists fill the gap.
+- New words come from your target level and the one below first, most common first (ranked by German subtitle frequencies), after your own course words. Lower levels come last, as you probably know them.
 - Near-pairs are spread over different days.
 
 ## 5. Teach grammar explicitly, then practise output

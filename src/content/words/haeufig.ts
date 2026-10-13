@@ -13,7 +13,6 @@ N | das Beispiel | Beispiele | | example | Kannst du mir ein {Beispiel} geben? |
 N | die Vorsicht | – | | caution | {Vorsicht}, die Stufe! | Mind the step!
 N | die Richtung | Richtungen | | direction | Wir fahren in die falsche {Richtung}. | We're going in the wrong direction.
 N | die Kraft | Kräfte | | strength | Nach der Krankheit hatte er keine {Kraft} mehr. | After the illness he had no strength left.
-N | das Geschenk | Geschenke | | present, gift | Danke für das schöne {Geschenk}! | Thanks for the lovely present!
 N | der Witz | Witze | | joke | Er erzählt gern {Witze}. | He likes telling jokes.
 N | die Liste | Listen | | list | Ich schreibe eine {Liste} für den Einkauf. | I'm writing a shopping list.
 N | der Punkt | Punkte | | point; full stop | In diesem {Punkt} hast du recht. | You're right on that point.
@@ -34,7 +33,6 @@ N | die Schwierigkeit | Schwierigkeiten | | difficulty | Hattest du {Schwierigke
 N | das Verbrechen | Verbrechen | | crime | Die Polizei hat das {Verbrechen} aufgeklärt. | The police solved the crime.
 N | der Schmerz | Schmerzen | | pain | Ich habe starke {Schmerzen} im Rücken. | I have bad pain in my back.
 N | die Insel | Inseln | | island | Wir machen Urlaub auf einer {Insel}. | We're going on holiday to an island.
-N | das Dorf | Dörfer | | village | Meine Oma wohnt in einem kleinen {Dorf}. | My gran lives in a small village.
 N | das Gespräch | Gespräche | | conversation | Wir hatten ein langes {Gespräch}. | We had a long conversation.
 N | das Interesse | Interessen | an + D | interest | Sie hat großes {Interesse} an Kunst. | She's very interested in art.
 N | der Druck | – | | pressure | Bei der Arbeit stehe ich unter {Druck}. | I'm under pressure at work.
@@ -47,7 +45,6 @@ N | der Flug | Flüge | | flight | Der {Flug} nach Rom dauert zwei Stunden. | Th
 N | die Reihe | Reihen | | row; series | Wir sitzen in der dritten {Reihe}. | We're sitting in the third row.
 N | der Strand | Strände | | beach | Wir liegen den ganzen Tag am {Strand}. | We lie on the beach all day.
 N | der Dienst | Dienste | | service; duty | Heute hat eine andere Ärztin {Dienst}. | Another doctor is on duty today.
-N | die Sprache | Sprachen | | language | Wie viele {Sprachen} sprichst du? | How many languages do you speak?
 N | der Schutz | – | | protection | Die Creme bietet {Schutz} vor der Sonne. | The cream gives protection from the sun.
 N | die Krankheit | Krankheiten | | illness | Die {Krankheit} ist nicht ansteckend. | The illness isn't contagious.
 N | das Programm | Programme | | programme | Was steht heute auf dem {Programm}? | What's on the programme today?
@@ -60,10 +57,8 @@ V | legen | legt, legte, hat gelegt | | to lay, put (flat) | {Leg} die Schlüsse
 V | beschützen | beschützt, beschützte, hat beschützt | vor + D | to protect | Eltern wollen ihre Kinder {beschützen}. | Parents want to protect their children.
 V | herausfinden | findet heraus, fand heraus, hat herausgefunden | | to find out | Ich muss {herausfinden}, wann der Kurs beginnt. | I need to find out when the course starts.
 V | überleben | überlebt, überlebte, hat überlebt | | to survive | Alle Passagiere haben den Unfall {überlebt}. | All the passengers survived the accident.
-V | beginnen | beginnt, begann, hat begonnen | mit + D | to begin | Der Kurs {beginnt} um neun Uhr. | The course begins at nine o'clock.
 V | werfen | wirft, warf, hat geworfen | | to throw | Bitte {wirf} das Glas nicht in den Restmüll. | Please don't throw the glass in the general rubbish.
 V | mitnehmen | nimmt mit, nahm mit, hat mitgenommen | | to take along | Kann ich dich zum Bahnhof {mitnehmen}? | Can I give you a lift to the station?
-V | schließen | schließt, schloss, hat geschlossen | | to close | Die Bank {schließt} um 16 Uhr. | The bank closes at 4 p.m.
 V | besorgen | besorgt, besorgte, hat besorgt | | to get, obtain | Ich {besorge} noch schnell Brot. | I'll just quickly get some bread.
 V | drehen | dreht, drehte, hat gedreht | | to turn; to film | {Dreh} die Musik bitte leiser. | Please turn the music down.
 V | danken | dankt, dankte, hat gedankt | D + für + A | to thank | Ich {danke} Ihnen für Ihre Hilfe. | Thank you for your help.
@@ -79,7 +74,6 @@ V | atmen | atmet, atmete, hat geatmet | | to breathe | {Atmen} Sie tief ein. | 
 V | beruhigen | beruhigt, beruhigte, hat beruhigt | sich | to calm (down) | {Beruhig} dich, es ist nichts passiert. | Calm down, nothing has happened.
 V | verfolgen | verfolgt, verfolgte, hat verfolgt | | to follow, pursue | Ich {verfolge} die Nachrichten jeden Tag. | I follow the news every day.
 V | stehlen | stiehlt, stahl, hat gestohlen | | to steal | Mir wurde das Fahrrad {gestohlen}. | My bike was stolen.
-V | scheinen | scheint, schien, hat geschienen | zu + Inf. | to shine; to seem | Er {scheint} müde zu sein. | He seems to be tired.
 V | handeln | handelt, handelte, hat gehandelt | von + D; sich um + A | to act; to be about | Der Film {handelt} von einer Familie in Berlin. | The film is about a family in Berlin.
 V | bieten | bietet, bot, hat geboten | | to offer | Die Stadt {bietet} viele kostenlose Kurse an. | The city offers lots of free courses.
 V | rauchen | raucht, rauchte, hat geraucht | | to smoke | Hier darf man nicht {rauchen}. | Smoking isn't allowed here.
@@ -97,8 +91,6 @@ ADJ | ernsthaft | – | | serious(ly) | Denkst du {ernsthaft} darüber nach? | A
 ADJ | unschuldig | – | | innocent | Sie ist {unschuldig}. | She is innocent.
 ADJ | klug | klüger, am klügsten | | clever | Das war eine {kluge} Entscheidung. | That was a wise decision.
 ADJ | schwach | schwächer, am schwächsten | | weak | Nach der Grippe fühle ich mich noch {schwach}. | I still feel weak after the flu.
-ADJ | dunkel | dunkler, am dunkelsten | | dark | Im Winter wird es früh {dunkel}. | In winter it gets dark early.
-ADJ | freundlich | freundlicher, am freundlichsten | | friendly | Die Nachbarn sind sehr {freundlich}. | The neighbours are very friendly.
 ADJ | komplett | – | | complete(ly) | Ich habe den Termin {komplett} vergessen. | I completely forgot the appointment.
 ADJ | erwachsen | – | | grown-up, adult | Unsere Kinder sind schon {erwachsen}. | Our children are already grown up.
 ADJ | tief | tiefer, am tiefsten | | deep | Der See ist sehr {tief}. | The lake is very deep.
@@ -172,7 +164,6 @@ ADJ | wahnsinnig | – | | crazy; incredibly | Der Film war {wahnsinnig} spannen
 ADJ | verrückt | verrückter, am verrücktesten | nach + D | mad, crazy | Bist du {verrückt}? | Are you mad?
 ADJ | wach | – | | awake | Ich war die halbe Nacht {wach}. | I was awake half the night.
 ADJ | fair | fairer, am fairsten | | fair | Das ist nicht {fair}! | That's not fair!
-ADJ | leise | leiser, am leisesten | | quiet | Könnt ihr bitte etwas {leiser} sein? | Could you be a bit quieter, please?
 ADJ | böse | böser, am bösesten | auf + A | angry; evil | Bist du mir noch {böse}? | Are you still angry with me?
 ADJ | mutig | mutiger, am mutigsten | | brave | Das war sehr {mutig} von dir. | That was very brave of you.
 ADJ | fröhlich | fröhlicher, am fröhlichsten | | cheerful | Sie ist immer {fröhlich}. | She's always cheerful.

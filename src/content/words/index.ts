@@ -1,5 +1,7 @@
 import { parseWords } from '../parseWords'
 import type { ThemeId, Word } from '../types'
+import { A1_WORDS } from './a1'
+import { A1_TOPIC_WORDS } from './a1-themen'
 import allgemein from './allgemein'
 import allgemein2 from './allgemein2'
 import alltag from './alltag'
@@ -38,6 +40,8 @@ const SOURCES: [ThemeId, string][] = [
   ['allgemein', allgemein2],
   ['allgemein', haeufig],
   ['redemittel', redemittel],
+  ...A1_WORDS,
+  ...A1_TOPIC_WORDS,
 ]
 
 export const BUILT_IN_WORDS: Word[] = SOURCES.flatMap(([theme, source]) => parseWords(source, theme))

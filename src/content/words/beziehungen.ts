@@ -2,8 +2,6 @@
 export default `
 # A2
 V | sich freuen | freut sich, freute sich, hat sich gefreut | auf + A / über + A | to look forward to / be pleased about | Ich {freue} mich schon auf die Ferien. | I'm already looking forward to the holidays.
-V | heiraten | heiratet, heiratete, hat geheiratet | | to marry | Meine Eltern haben 1990 {geheiratet}. | My parents got married in 1990.
-ADJ | verheiratet | – | | married | Sind Sie {verheiratet}? | Are you married?
 
 # B1
 N | die Beziehung | Beziehungen | | relationship | Wir haben eine sehr offene {Beziehung}. | We have a very open relationship.
@@ -11,7 +9,6 @@ N | die Freundschaft | Freundschaften | | friendship | Unsere {Freundschaft} hä
 V | sich verlieben | verliebt sich, verliebte sich, hat sich verliebt | in + A | to fall in love | Sie hat sich im Urlaub in einen Italiener {verliebt}. | She fell in love with an Italian on holiday.
 ADJ | verliebt | – | in + A | in love | Die beiden sind total {verliebt}. | The two of them are madly in love.
 V | sich trennen | trennt sich, trennte sich, hat sich getrennt | von + D | to separate, split up | Nach acht Jahren haben sie sich {getrennt}. | After eight years they split up.
-ADJ | geschieden | – | | divorced | Seine Eltern sind seit Langem {geschieden}. | His parents have long been divorced.
 V | sich streiten | streitet sich, stritt sich, hat sich gestritten | mit + D / über + A | to argue | Die Geschwister {streiten} sich ständig. | The siblings are always arguing.
 V | sich vertragen | verträgt sich, vertrug sich, hat sich vertragen | mit + D | to get on | Ich {vertrage} mich gut mit meiner Schwiegermutter. | I get on well with my mother-in-law.
 V | sich verstehen | versteht sich, verstand sich, hat sich verstanden | mit + D | to get on | Wir {verstehen} uns super. | We get on brilliantly.
@@ -45,8 +42,6 @@ N | die Scheidung | Scheidungen | | divorce | Nach der {Scheidung} ist er umgezo
 V | sich kennenlernen | lernt sich kennen, lernte sich kennen, hat sich kennengelernt | | to get to know each other, meet | Wir haben uns im Urlaub {kennengelernt}. | We met on holiday.
 V | vermissen | vermisst, vermisste, hat vermisst | | to miss | Ich {vermisse} meine Familie sehr. | I miss my family a lot.
 V | umarmen | umarmt, umarmte, hat umarmt | | to hug | Sie hat mich zur Begrüßung {umarmt}. | She hugged me hello.
-ADJ | traurig | trauriger, am traurigsten | | sad | Warum bist du so {traurig}? | Why are you so sad?
-ADJ | glücklich | glücklicher, am glücklichsten | | happy | Die beiden sehen sehr {glücklich} aus. | The two of them look very happy.
 ADJ | nervös | nervöser, am nervösesten | | nervous | Vor Prüfungen bin ich immer {nervös}. | I'm always nervous before exams.
 N | die Angst | Ängste | | fear | Ich habe {Angst} vor Spinnen. | I'm scared of spiders.
 

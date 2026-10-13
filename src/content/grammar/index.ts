@@ -1,4 +1,5 @@
 import type { GrammarTopic } from '../types'
+import { A1_TOPICS } from './a1'
 import {
   funktionsverbgefuege,
   konjunktiv1,
@@ -22,6 +23,7 @@ import { futur, komparativ, lassen, modalverben, reflexiveVerben, satzbau } from
 import { konnektoren, plusquamperfekt, praeteritum, temporaleNebensaetze } from './zeiten'
 
 const BASE_TOPICS: GrammarTopic[] = [
+  ...A1_TOPICS,
   // A2 review
   perfekt,
   dativAkkusativ,

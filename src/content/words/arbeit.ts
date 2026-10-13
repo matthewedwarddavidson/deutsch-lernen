@@ -1,11 +1,6 @@
 // KIND | german | grammar | usage | english | example | example in English
 export default `
 # A2
-N | der Beruf | Berufe | | profession, job | Was sind Sie von {Beruf}? | What do you do for a living?
-N | die Firma | Firmen | | company | Sie arbeitet seit zehn Jahren bei derselben {Firma}. | She has worked at the same company for ten years.
-N | der Kollege | Kollegen | | colleague (n-declension) | Ich gehe oft mit meinen {Kollegen} in die Kantine. | I often go to the canteen with my colleagues.
-N | der Chef | Chefs | | boss | Mein {Chef} ist diese Woche im Urlaub. | My boss is on holiday this week.
-V | verdienen | verdient, verdiente, hat verdient | | to earn | Als Krankenpfleger {verdient} man zu wenig. | Nurses earn too little.
 
 # B1
 N | die Stelle | Stellen | | job, position | Ich habe mich um eine {Stelle} als Grafikerin beworben. | I applied for a job as a graphic designer.
@@ -34,7 +29,6 @@ V | sich weiterbilden | bildet sich weiter, bildete sich weiter, hat sich weiter
 N | die Weiterbildung | Weiterbildungen | | further training | Die Firma bezahlt die {Weiterbildung}. | The company pays for the training.
 ADJ | selbstständig | – | | self-employed; independent | Seit drei Jahren ist sie als Übersetzerin {selbstständig}. | She has been self-employed as a translator for three years.
 N | der Feierabend | Feierabende | | end of the working day | Endlich {Feierabend}! | Finally, home time!
-N | die Pause | Pausen | | break | In der {Pause} trinke ich meistens einen Kaffee. | I usually have a coffee during the break.
 V | beantragen | beantragt, beantragte, hat beantragt | | to apply for (officially) | Ich habe zwei Wochen Urlaub {beantragt}. | I've requested two weeks' holiday.
 N | die Krankmeldung | Krankmeldungen | | sick note | Ab dem dritten Tag braucht man eine {Krankmeldung}. | From the third day you need a sick note.
 ADJ | arbeitslos | – | | unemployed | Nach der Insolvenz war er ein halbes Jahr {arbeitslos}. | After the bankruptcy he was unemployed for six months.

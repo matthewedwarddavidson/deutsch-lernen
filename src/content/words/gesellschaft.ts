@@ -47,7 +47,6 @@ ADJ | umstritten | – | | controversial | Das neue Gesetz ist politisch höchst
 N | der Wandel | – | | change, transformation | Wir erleben einen tiefgreifenden demografischen {Wandel}. | We are experiencing profound demographic change.
 # B1
 N | der Bürgermeister | Bürgermeister | | mayor | Der {Bürgermeister} hat das neue Schwimmbad eröffnet. | The mayor opened the new swimming pool.
-N | die Kirche | Kirchen | | church | Viele Menschen treten aus der {Kirche} aus. | Many people are leaving the church.
 N | die Religion | Religionen | | religion | In der Schule gibt es {Religion} als Fach. | Religion is a school subject.
 N | der Ausländer | Ausländer | | foreigner | In Frankfurt leben viele {Ausländer}. | Many foreigners live in Frankfurt.
 N | die Staatsbürgerschaft | Staatsbürgerschaften | | citizenship | Sie hat die deutsche {Staatsbürgerschaft} beantragt. | She has applied for German citizenship.

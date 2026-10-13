@@ -56,7 +56,7 @@ export function Words() {
           <h1>Words</h1>
           <p>
             {words.length} words · {counts.known} known · {counts.learning} learning. New words come from your target
-            level ({state.settings.level}) and below, easiest first.
+            level ({state.settings.level}) and the one below first, then from lower levels.
           </p>
         </div>
         <div className="row">

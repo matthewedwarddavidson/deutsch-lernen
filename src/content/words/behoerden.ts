@@ -1,14 +1,10 @@
 // KIND | german | grammar | usage | english | example | example in English
 export default `
 # A2
-N | das Formular | Formulare | | form | Bitte füllen Sie dieses {Formular} aus. | Please fill in this form.
-V | ausfüllen | füllt aus, füllte aus, hat ausgefüllt | | to fill in | Haben Sie den Antrag schon {ausgefüllt}? | Have you filled in the application yet?
-V | unterschreiben | unterschreibt, unterschrieb, hat unterschrieben | | to sign | {Unterschreiben} Sie bitte hier unten. | Please sign down here.
 N | der Reisepass | Reisepässe | | passport | Mein {Reisepass} läuft nächsten Monat ab. | My passport expires next month.
 
 # B1
 N | die Behörde | Behörden | | authority, public office | Für Visa ist eine spezielle {Behörde} zuständig. | A special authority is responsible for visas.
-N | das Amt | Ämter | | office, authority | Ich muss morgen aufs {Amt}. | I've got to go to the council office tomorrow.
 N | die Anmeldung | Anmeldungen | | registration | Die {Anmeldung} der Wohnung muss innerhalb von zwei Wochen erfolgen. | You must register your address within two weeks.
 V | anmelden | meldet an, meldete an, hat angemeldet | | to register | Ich habe meinen Wohnsitz in Berlin {angemeldet}. | I've registered my address in Berlin.
 N | der Antrag | Anträge | | application (form) | Der {Antrag} wird in vier Wochen bearbeitet. | The application will be processed in four weeks.
@@ -16,7 +12,6 @@ N | die Unterlagen | – | | documents (plural) | Bringen Sie bitte alle {Unterl
 N | die Bescheinigung | Bescheinigungen | | certificate, confirmation | Ich brauche eine {Bescheinigung} vom Arbeitgeber. | I need a certificate from my employer.
 N | die Frist | Fristen | | deadline | Die {Frist} endet am 31. Juli. | The deadline is 31 July.
 N | die Gebühr | Gebühren | | fee | Für den neuen Ausweis wird eine {Gebühr} von 37 Euro fällig. | There's a 37-euro fee for the new ID card.
-N | die Staatsangehörigkeit | Staatsangehörigkeiten | | nationality | Welche {Staatsangehörigkeit} haben Sie? | What is your nationality?
 N | die Aufenthaltserlaubnis | Aufenthaltserlaubnisse | | residence permit | Meine {Aufenthaltserlaubnis} muss verlängert werden. | My residence permit needs extending.
 V | verlängern | verlängert, verlängerte, hat verlängert | | to extend, renew | Den Pass kann man nicht online {verlängern}. | You can't renew your passport online.
 ADJ | gültig | – | | valid | Ihr Ausweis ist nicht mehr {gültig}. | Your ID is no longer valid.
@@ -24,7 +19,6 @@ N | die Versicherung | Versicherungen | | insurance | Hast du eine {Versicherung
 N | der Schaden | Schäden | | damage | Die Versicherung zahlt den {Schaden}. | The insurance pays for the damage.
 N | die Steuererklärung | Steuererklärungen | | tax return | Ich mache meine {Steuererklärung} jedes Jahr selbst. | I do my own tax return every year.
 N | das Finanzamt | Finanzämter | | tax office | Das {Finanzamt} hat mir 400 Euro zurückerstattet. | The tax office refunded me 400 euros.
-N | das Paket | Pakete | | parcel | Ihr {Paket} liegt in der Filiale zur Abholung bereit. | Your parcel is ready for collection at the branch.
 N | der Absender | Absender | | sender | Der Brief kam ohne {Absender}. | The letter came with no return address.
 N | der Empfänger | Empfänger | | recipient | Der {Empfänger} war nicht zu Hause. | The recipient wasn't home.
 N | das Einschreiben | Einschreiben | | registered letter | Die Kündigung schicke ich per {Einschreiben}. | I'll send the notice by registered post.
@@ -44,10 +38,7 @@ N | die Bürokratie | – | | bureaucracy | Die deutsche {Bürokratie} ist legen
 N | die Polizei | – | | police | Ruf sofort die {Polizei}! | Call the police at once!
 N | der Diebstahl | Diebstähle | | theft | Den {Diebstahl} haben wir sofort gemeldet. | We reported the theft straight away.
 V | melden | meldet, meldete, hat gemeldet | | to report | Sie müssen den Schaden innerhalb einer Woche {melden}. | You must report the damage within a week.
-N | die Post | – | | post office; post | Ich muss noch zur {Post}. | I still need to go to the post office.
-N | die Briefmarke | Briefmarken | | stamp | Wie viel kostet eine {Briefmarke} nach England? | How much is a stamp to England?
 N | die Geburtsurkunde | Geburtsurkunden | | birth certificate | Für die Heirat brauchen Sie Ihre {Geburtsurkunde}. | You need your birth certificate to get married.
-N | die Unterschrift | Unterschriften | | signature | Hier fehlt noch Ihre {Unterschrift}. | Your signature is still missing here.
 
 # B2
 N | die Genehmigung | Genehmigungen | | permit, approval | Für den Umbau brauchen Sie eine {Genehmigung}. | You need a permit for the conversion.

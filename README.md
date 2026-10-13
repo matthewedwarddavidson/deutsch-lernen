@@ -2,7 +2,7 @@
 
 **[Open the app →](https://matthewedwarddavidson.github.io/deutsch-lernen/)**
 
-A web app for learning German from A2 upwards: vocabulary, grammar, reading, listening and writing. No speaking, no streaks, no points.
+A web app for learning German from A1 upwards: vocabulary, grammar, reading, listening and writing. No speaking, no streaks, no points.
 
 The design follows the research summarised in [docs/research.md](docs/research.md): Nation's four strands, retrieval practice, FSRS spaced repetition, explicit grammar with interleaved practice, graded reading at 95–98% known words, dictation, and focused written corrective feedback.
 
@@ -29,12 +29,12 @@ Built-in words, examples, grammar sentences, texts and dialogues come with recor
 | Area | What it does |
 | --- | --- |
 | **Today** | Reviews due, new words, the next grammar topic, a text to read and listen to, a writing task, and how your week splits across input, output, study and fluency. |
-| **Words** | ~870 words across 16 themes, A2–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own words, for example from your course. A timed speed round on known words trains fluency. |
+| **Words** | ~1,880 words across 16 themes, A1–C1, each with article, plural or verb forms, usage and an example. Learn in batches of five: study, then recall from English. Add your own words, for example from your course. A timed speed round on known words trains fluency. |
 | **Reviews** | One FSRS queue for everything: recognition (German → English), production (English → German, typed, with article; alternates with gap-fills in context), irregular verb forms, grammar exercises and your mistakes you note from your own writing. Marking forgives typos but not wrong endings or auxiliaries. |
-| **Grammar** | 30 topics from A2 review to C1: explanation, tables, examples, common mistakes, then exercises (gap, choice, word order, transformation). Finished topics feed their exercises into reviews. |
-| **Reading** | 16 graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |
-| **Listening** | 11 dialogues, announcements, interviews and talks with distinct recorded voices; questions first, transcript after. Dictation with word-by-word feedback. |
-| **Writing** | Goethe-style tasks (A2–C1) with useful phrases, live word and connector counts and model answers. Note your mistakes and they come back in reviews. A timed exam simulation is on the Exam page. |
+| **Grammar** | 47 topics from A1 to C1: explanation, tables, examples, common mistakes, then exercises (gap, choice, word order, transformation). Finished topics feed their exercises into reviews. |
+| **Reading** | 30 graded texts across genres. Tap any word for a gloss or to save it with its sentence. Comprehension questions, read-aloud, and a timed fluency re-read. |
+| **Listening** | 30 dialogues, announcements, interviews and talks with distinct recorded voices; questions first, transcript after. Dictation with word-by-word feedback. |
+| **Writing** | Goethe-style tasks (A1–C1) with useful phrases, live word and connector counts and model answers. Note your mistakes and they come back in reviews. A timed exam simulation is on the Exam page. |
 | **Progress** | Words known by level, recall rate, review forecast, study time, grammar mastery. |
 
 ## Privacy

@@ -2,7 +2,6 @@
 export default `
 # A2
 N | das Gericht | Gerichte | | dish; court | Das {Gericht} des Tages ist Gulasch. | The dish of the day is goulash.
-N | die Speisekarte | Speisekarten | | menu | Könnten wir bitte die {Speisekarte} haben? | Could we have the menu, please?
 V | probieren | probiert, probierte, hat probiert | | to try, taste | {Probier} mal den Kuchen, der ist super! | Try the cake, it's great!
 
 # B1
@@ -10,12 +9,10 @@ N | die Lebensmittel | – | | food, groceries (plural) | Wir kaufen unsere {Leb
 N | die Zutat | Zutaten | | ingredient | Für den Kuchen brauchst du nur fünf {Zutaten}. | You only need five ingredients for the cake.
 V | schneiden | schneidet, schnitt, hat geschnitten | | to cut | {Schneiden} Sie die Zwiebeln in kleine Würfel. | Cut the onions into small cubes.
 V | braten | brät, briet, hat gebraten | | to fry, roast | Das Fleisch fünf Minuten von jeder Seite {braten}. | Fry the meat for five minutes on each side.
-V | kochen | kocht, kochte, hat gekocht | | to cook; to boil | Das Wasser {kocht} schon. | The water is already boiling.
 V | backen | backt, backte, hat gebacken | | to bake | Am Wochenende {backe} ich oft Brot. | I often bake bread at the weekend.
 V | würzen | würzt, würzte, hat gewürzt | | to season | Mit Salz und Pfeffer {würzen}. | Season with salt and pepper.
 V | umrühren | rührt um, rührte um, hat umgerührt | | to stir | Die Soße immer wieder {umrühren}. | Keep stirring the sauce.
 N | die Mahlzeit | Mahlzeiten | | meal | Das Frühstück ist die wichtigste {Mahlzeit} des Tages. | Breakfast is the most important meal of the day.
-ADJ | lecker | leckerer, am leckersten | | tasty | Das riecht aber {lecker}! | That smells delicious!
 ADJ | scharf | schärfer, am schärfsten | | spicy, hot; sharp | Ist das Curry sehr {scharf}? | Is the curry very hot?
 ADJ | satt | – | | full (after eating) | Danke, ich bin {satt}. | No thanks, I'm full.
 ADJ | vegetarisch | – | | vegetarian | Haben Sie auch {vegetarische} Gerichte? | Do you also have vegetarian dishes?
@@ -39,7 +36,6 @@ N | die Unverträglichkeit | Unverträglichkeiten | | intolerance | Sie hat eine
 N | das Gewürz | Gewürze | | spice | Welche {Gewürze} brauche ich für das Curry? | Which spices do I need for the curry?
 N | der Topf | Töpfe | | pot, saucepan | Stell den {Topf} auf den Herd. | Put the pot on the stove.
 N | die Pfanne | Pfannen | | frying pan | Das Öl in der {Pfanne} ist zu heiß. | The oil in the pan is too hot.
-N | der Herd | Herde | | cooker | Hast du den {Herd} ausgemacht? | Did you turn the cooker off?
 N | der Backofen | Backöfen | | oven | Den Kuchen 40 Minuten im {Backofen} backen. | Bake the cake in the oven for 40 minutes.
 V | schälen | schält, schälte, hat geschält | | to peel | Kannst du die Kartoffeln {schälen}? | Can you peel the potatoes?
 V | mischen | mischt, mischte, hat gemischt | | to mix | Mehl und Zucker in einer Schüssel {mischen}. | Mix the flour and sugar in a bowl.

@@ -2,20 +2,16 @@
 export default `
 # A2
 V | sich fühlen | fühlt sich, fühlte sich, hat sich gefühlt | | to feel | Ich {fühle} mich heute nicht so gut. | I don't feel so good today.
-N | das Fieber | – | | fever, temperature | Das Kind hat seit gestern {Fieber}. | The child has had a temperature since yesterday.
 N | die Erkältung | Erkältungen | | cold | Ich habe eine schlimme {Erkältung}. | I've got a bad cold.
 N | das Rezept | Rezepte | | prescription; recipe | Für dieses Medikament brauchen Sie ein {Rezept}. | You need a prescription for this medicine.
-N | die Apotheke | Apotheken | | pharmacy | Die {Apotheke} am Bahnhof hat auch sonntags geöffnet. | The pharmacy at the station is also open on Sundays.
 
 # B1
 N | die Krankenkasse | Krankenkassen | | health insurance fund | Die {Krankenkasse} übernimmt die Kosten. | The health insurer covers the costs.
 N | die Versichertenkarte | Versichertenkarten | | health insurance card | Haben Sie Ihre {Versichertenkarte} dabei? | Have you got your insurance card with you?
 N | die Sprechstunde | Sprechstunden | | surgery hours | Die {Sprechstunde} ist montags bis freitags von 8 bis 12 Uhr. | Surgery hours are 8 to 12, Monday to Friday.
-N | die Praxis | Praxen | | (doctor's) practice | Die {Praxis} ist im Erdgeschoss. | The practice is on the ground floor.
 N | der Hausarzt | Hausärzte | | GP | Gehen Sie zuerst zu Ihrem {Hausarzt}. | Go to your GP first.
 N | die Überweisung | Überweisungen | | referral; bank transfer | Für den Facharzt brauchen Sie eine {Überweisung}. | You need a referral for the specialist.
 N | das Symptom | Symptome | | symptom | Welche {Symptome} haben Sie? | What symptoms do you have?
-N | die Schmerzen | – | | pain (usually plural) | Ich habe starke {Schmerzen} im Rücken. | I have bad back pain.
 V | wehtun | tut weh, tat weh, hat wehgetan | D | to hurt | Mir {tut} der Kopf {weh}. | My head hurts.
 V | untersuchen | untersucht, untersuchte, hat untersucht | | to examine | Die Ärztin hat mich gründlich {untersucht}. | The doctor examined me thoroughly.
 V | verschreiben | verschreibt, verschrieb, hat verschrieben | | to prescribe | Der Arzt hat mir Tabletten {verschrieben}. | The doctor prescribed me tablets.
@@ -49,16 +45,13 @@ N | die Pflege | – | | care, nursing | Die {Pflege} älterer Menschen wird imm
 # B1
 N | der Zahnarzt | Zahnärzte | | dentist | Ich habe Angst vor dem {Zahnarzt}. | I'm scared of the dentist.
 N | der Facharzt | Fachärzte | | specialist | Auf einen Termin beim {Facharzt} wartet man oft Wochen. | You often wait weeks for a specialist appointment.
-N | die Tablette | Tabletten | | tablet, pill | Nehmen Sie zwei {Tabletten} vor dem Schlafen. | Take two tablets before bed.
 N | der Husten | – | | cough | Seit einer Woche habe ich {Husten}. | I've had a cough for a week.
 N | der Schnupfen | – | | runny nose, cold | Ich habe nur einen leichten {Schnupfen}. | I've only got a slight cold.
 ADJ | schwindlig | – | D | dizzy | Mir ist plötzlich {schwindlig} geworden. | I suddenly felt dizzy.
 V | husten | hustet, hustete, hat gehustet | | to cough | Das Kind hat die ganze Nacht {gehustet}. | The child coughed all night.
 V | sich erkälten | erkältet sich, erkältete sich, hat sich erkältet | | to catch a cold | Zieh dich warm an, sonst {erkältest} du dich! | Wrap up warm or you'll catch a cold!
 N | die Grippe | – | | flu | Er liegt mit {Grippe} im Bett. | He's in bed with flu.
-N | das Krankenhaus | Krankenhäuser | | hospital | Sie musste drei Tage im {Krankenhaus} bleiben. | She had to stay in hospital for three days.
 N | die Operation | Operationen | | operation | Die {Operation} ist gut verlaufen. | The operation went well.
-ADJ | gesund | gesünder, am gesündesten | | healthy | Radfahren ist {gesünder} als Autofahren. | Cycling is healthier than driving.
 
 # B2
 V | vorbeugen | beugt vor, beugte vor, hat vorgebeugt | D | to prevent | Bewegung kann vielen Krankheiten {vorbeugen}. | Exercise can prevent many illnesses.

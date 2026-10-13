@@ -1,16 +1,9 @@
 // KIND | german | grammar | usage | english | example | example in English
 export default `
 # A2
-N | die Miete | Mieten | | rent | Die {Miete} ist im letzten Jahr gestiegen. | The rent went up last year.
 N | der Vermieter | Vermieter | | landlord | Der {Vermieter} hat die Heizung endlich reparieren lassen. | The landlord finally had the heating repaired.
-N | der Nachbar | Nachbarn | | neighbour | Unsere {Nachbarn} feiern jedes Wochenende. | Our neighbours have a party every weekend.
-V | umziehen | zieht um, zog um, ist umgezogen | | to move house | Wir {sind} letzten Sommer nach Köln {umgezogen}. | We moved to Cologne last summer.
 V | einziehen | zieht ein, zog ein, ist eingezogen | in + A | to move in | Wann {ziehst} du in die neue Wohnung {ein}? | When are you moving into the new flat?
 N | die Heizung | Heizungen | | heating | Die {Heizung} funktioniert schon wieder nicht. | The heating isn't working again.
-N | der Schlüssel | Schlüssel | | key | Ich habe meinen {Schlüssel} in der Wohnung vergessen. | I left my key in the flat.
-N | der Stock | Stockwerke | | floor, storey | Wir wohnen im dritten {Stock}. | We live on the third floor.
-N | der Aufzug | Aufzüge | | lift | Der {Aufzug} ist seit einer Woche kaputt. | The lift has been broken for a week.
-ADJ | hell | heller, am hellsten | | bright, light | Das Wohnzimmer ist schön {hell}. | The living room is nice and bright.
 
 # B1
 N | die Kaution | Kautionen | | deposit | Die {Kaution} beträgt drei Monatsmieten. | The deposit is three months' rent.
@@ -31,7 +24,6 @@ V | renovieren | renoviert, renovierte, hat renoviert | | to renovate, redecorat
 V | sich beschweren | beschwert sich, beschwerte sich, hat sich beschwert | über + A / bei + D | to complain | Die Nachbarin hat sich über den Lärm {beschwert}. | The neighbour complained about the noise.
 N | der Lärm | – | | noise | Bei diesem {Lärm} kann ich nicht schlafen. | I can't sleep with this noise.
 ADJ | möbliert | – | | furnished | Das Zimmer wird {möbliert} vermietet. | The room is let furnished.
-ADJ | ruhig | ruhiger, am ruhigsten | | quiet | Wir suchen eine {ruhige} Wohnung am Stadtrand. | We are looking for a quiet flat on the edge of town.
 N | der Stadtrand | Stadtränder | | outskirts | Am {Stadtrand} sind die Mieten günstiger. | Rents are cheaper on the outskirts.
 N | die Einrichtung | Einrichtungen | | furnishings, furniture | Die {Einrichtung} ist modern und gemütlich. | The furnishings are modern and cosy.
 N | der Müll | – | | rubbish | Wer bringt heute den {Müll} raus? | Who's taking the rubbish out today?
@@ -71,7 +63,6 @@ ADJ | sanierungsbedürftig | – | | in need of renovation | Das Gebäude ist st
 
 # B1
 N | das Erdgeschoss | Erdgeschosse | | ground floor | Die Wohnung liegt im {Erdgeschoss}. | The flat is on the ground floor.
-N | der Balkon | Balkone | | balcony | Im Sommer frühstücken wir auf dem {Balkon}. | In summer we have breakfast on the balcony.
 N | die Garage | Garagen | | garage | Das Auto steht in der {Garage}. | The car is in the garage.
 N | der Vormieter | Vormieter | | previous tenant | Die Küche hat der {Vormieter} dagelassen. | The previous tenant left the kitchen.
 V | ausziehen | zieht aus, zog aus, ist ausgezogen | | to move out | Wir {ziehen} Ende des Monats {aus}. | We're moving out at the end of the month.

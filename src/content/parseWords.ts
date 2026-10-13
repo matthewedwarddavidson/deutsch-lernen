@@ -29,7 +29,7 @@ export function slugify(text: string): string {
  *
  * KIND is N, V, ADJ, ADV, P, PREP, KONJ or X. Nouns start with their article
  * and give the plural in "grammar" ("–" for none). Verbs give their principal
- * parts there. Lines starting with "# A2" etc. set the level for what follows.
+ * parts there. Lines starting with "# A1" etc. set the level for what follows.
  */
 export function parseWords(source: string, theme: ThemeId): Word[] {
   let level: Level = 'A2'
@@ -38,7 +38,7 @@ export function parseWords(source: string, theme: ThemeId): Word[] {
   for (const rawLine of source.split('\n')) {
     const line = rawLine.trim()
     if (!line) continue
-    const levelMatch = line.match(/^#\s*(A2|B1|B2|C1)\b/)
+    const levelMatch = line.match(/^#\s*(A1|A2|B1|B2|C1)\b/)
     if (levelMatch) {
       level = levelMatch[1] as Level
       continue

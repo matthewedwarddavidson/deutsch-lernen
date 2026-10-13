@@ -1,0 +1,166 @@
+import type { ReadingText } from '../types'
+
+export const textsA1: ReadingText[] = [
+  {
+    id: 'ich-bin-marta',
+    title: 'Hallo, ich bin Marta!',
+    level: 'A1',
+    theme: 'beziehungen',
+    genre: 'blog',
+    body: [
+      'Hallo! Ich heiße Marta Silva und ich bin 28 Jahre alt. Ich komme aus Portugal, aus Porto. Jetzt wohne ich in Frankfurt.',
+      'Ich bin Krankenschwester von Beruf und arbeite in einem Krankenhaus. Die Arbeit ist schwer, aber ich mag meinen Beruf.',
+      'Ich bin nicht verheiratet, aber ich habe einen Freund. Er heißt Jonas und ist Deutscher. Er spricht ein bisschen Portugiesisch, und ich lerne Deutsch.',
+      'In meiner Freizeit gehe ich gern schwimmen und ich koche gern. Am Wochenende treffe ich oft Freunde. Meine Familie wohnt in Portugal. Ich telefoniere jeden Sonntag mit meiner Mutter.',
+    ],
+    glossary: {
+      Krankenschwester: 'nurse',
+      'ein bisschen': 'a little',
+      Deutscher: 'a German (man)',
+      'jeden Sonntag': 'every Sunday',
+    },
+    questions: [
+      {
+        kind: 'truefalse',
+        statement: 'Marta kommt aus Spanien.',
+        answer: false,
+        explanation: 'Sie kommt aus Portugal.',
+      },
+      { kind: 'truefalse', statement: 'Sie wohnt jetzt in Frankfurt.', answer: true },
+      {
+        kind: 'choice',
+        question: 'Was ist Marta von Beruf?',
+        options: ['Lehrerin', 'Krankenschwester', 'Ärztin'],
+        answer: 1,
+      },
+      { kind: 'truefalse', statement: 'Marta ist verheiratet.', answer: false, explanation: 'Sie hat einen Freund.' },
+      {
+        kind: 'choice',
+        question: 'Wann telefoniert Marta mit ihrer Mutter?',
+        options: ['Jeden Tag', 'Am Samstag', 'Jeden Sonntag'],
+        answer: 2,
+      },
+    ],
+  },
+  {
+    id: 'nachricht-von-paul',
+    title: 'Eine Nachricht von Paul',
+    level: 'A1',
+    theme: 'freizeit',
+    genre: 'email',
+    body: [
+      'Hallo Sara,',
+      'hast du am Samstag Zeit? Ich möchte mit Lukas und Mia ins Kino gehen. Der Film beginnt um 20 Uhr. Wir treffen uns um halb acht vor dem Kino. Danach gehen wir vielleicht noch in eine Bar.',
+      'Die Karten kosten 9 Euro. Ich kaufe sie morgen online. Kommst du mit? Bitte schreib mir bis Freitag.',
+      'Viele Grüße\nPaul',
+    ],
+    glossary: {
+      danach: 'afterwards',
+      Karten: 'tickets',
+      bis: 'by, until',
+    },
+    questions: [
+      {
+        kind: 'choice',
+        question: 'Was möchte Paul am Samstag machen?',
+        options: ['Ins Kino gehen', 'Schwimmen gehen', 'Kochen'],
+        answer: 0,
+      },
+      {
+        kind: 'choice',
+        question: 'Wann treffen sie sich?',
+        options: ['Um 19.30 Uhr', 'Um 20 Uhr', 'Um 20.30 Uhr'],
+        answer: 0,
+        explanation: 'Halb acht = 19.30 Uhr.',
+      },
+      { kind: 'truefalse', statement: 'Eine Karte kostet 9 Euro.', answer: true },
+      {
+        kind: 'truefalse',
+        statement: 'Sara soll bis Samstag antworten.',
+        answer: false,
+        explanation: '„Bitte schreib mir bis Freitag."',
+      },
+    ],
+  },
+  {
+    id: 'mein-tag',
+    title: 'Mein Tag',
+    level: 'A1',
+    theme: 'alltag',
+    genre: 'blog',
+    body: [
+      'Ich heiße Tim und bin Student. Mein Tag beginnt früh: Ich stehe um sechs Uhr auf. Dann dusche ich und frühstücke. Ich trinke einen Kaffee und esse ein Brötchen mit Käse.',
+      'Um sieben Uhr fahre ich mit dem Fahrrad zur Universität. Die Vorlesung beginnt um acht. Zu Mittag esse ich in der Mensa. Das Essen ist billig und meistens gut.',
+      'Am Nachmittag arbeite ich drei Stunden in einem Supermarkt. Um sechs Uhr komme ich nach Hause. Am Abend koche ich, lerne noch ein bisschen und sehe fern. Um elf gehe ich ins Bett.',
+      'Am Wochenende ist alles anders: Ich schlafe lange und treffe meine Freunde.',
+    ],
+    glossary: {
+      Vorlesung: 'lecture',
+      Mensa: 'university canteen',
+      meistens: 'mostly',
+      anders: 'different',
+    },
+    questions: [
+      { kind: 'truefalse', statement: 'Tim steht um sieben Uhr auf.', answer: false, explanation: 'Um sechs Uhr.' },
+      {
+        kind: 'choice',
+        question: 'Wie fährt Tim zur Universität?',
+        options: ['Mit dem Bus', 'Mit dem Fahrrad', 'Mit dem Auto'],
+        answer: 1,
+      },
+      {
+        kind: 'choice',
+        question: 'Wo arbeitet Tim?',
+        options: ['In der Mensa', 'In einem Supermarkt', 'In einem Café'],
+        answer: 1,
+      },
+      {
+        kind: 'truefalse',
+        statement: 'Am Wochenende steht Tim früh auf.',
+        answer: false,
+        explanation: '„Ich schlafe lange."',
+      },
+    ],
+  },
+  {
+    id: 'kleinanzeigen-wohnung',
+    title: 'Wohnungsanzeigen',
+    level: 'A1',
+    theme: 'wohnen',
+    genre: 'notice',
+    body: [
+      'A: Schöne 2-Zimmer-Wohnung im Zentrum, 55 m², 3. Stock, mit Balkon. Küche und Bad neu. Kein Aufzug. Miete: 750 Euro. Ab 1. Juni frei. Tel. 0171 234 567',
+      'B: Großes Zimmer in einer WG, 20 m², hell und ruhig. Wir sind zwei Studentinnen und suchen eine Frau. Miete: 380 Euro mit Nebenkosten. Keine Haustiere! E-Mail: wg-lindenstrasse@mail.de',
+      'C: Haus mit Garten für Familie, 4 Zimmer, Küche, 2 Bäder. 15 Minuten vom Zentrum, Bus vor der Tür. Haustiere kein Problem. Miete: 1.400 Euro. Tel. 0160 987 654 (nur abends)',
+    ],
+    glossary: {
+      'm²': 'square metres',
+      ab: 'from',
+      WG: 'shared flat',
+      Nebenkosten: 'bills',
+      Haustiere: 'pets',
+      abends: 'in the evenings',
+    },
+    questions: [
+      {
+        kind: 'choice',
+        question: 'Familie Kaya hat zwei Kinder und einen Hund. Welche Anzeige passt?',
+        options: ['A', 'B', 'C'],
+        answer: 2,
+      },
+      {
+        kind: 'choice',
+        question: 'Lena studiert und hat nicht viel Geld. Welche Anzeige passt?',
+        options: ['A', 'B', 'C'],
+        answer: 1,
+      },
+      { kind: 'truefalse', statement: 'Die Wohnung A hat einen Aufzug.', answer: false, explanation: '„Kein Aufzug."' },
+      {
+        kind: 'truefalse',
+        statement: 'Für das Haus C kann man den ganzen Tag anrufen.',
+        answer: false,
+        explanation: '„Nur abends."',
+      },
+    ],
+  },
+]

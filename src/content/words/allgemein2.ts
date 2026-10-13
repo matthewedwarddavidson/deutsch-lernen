@@ -9,7 +9,6 @@ V | annehmen | nimmt an, nahm an, hat angenommen | | to accept; to assume | Sie 
 V | aufpassen | passt auf, passte auf, hat aufgepasst | auf + A | to watch out; to look after | Kannst du heute Abend auf die Kinder {aufpassen}? | Can you look after the children this evening?
 V | ausdrücken | drückt aus, drückte aus, hat ausgedrückt | | to express | Ich weiß nicht, wie ich das auf Deutsch {ausdrücken} soll. | I don't know how to put that in German.
 V | aushalten | hält aus, hielt aus, hat ausgehalten | | to bear, stand | Diese Hitze {halte} ich nicht mehr {aus}. | I can't stand this heat any more.
-V | bedeuten | bedeutet, bedeutete, hat bedeutet | | to mean | Was {bedeutet} dieses Wort? | What does this word mean?
 V | begründen | begründet, begründete, hat begründet | | to give reasons for | Bitte {begründen} Sie Ihre Meinung. | Please give reasons for your opinion.
 V | behalten | behält, behielt, hat behalten | | to keep | Das Wechselgeld können Sie {behalten}. | You can keep the change.
 V | beraten | berät, beriet, hat beraten | | to advise | Die Verkäuferin hat mich sehr gut {beraten}. | The shop assistant gave me very good advice.

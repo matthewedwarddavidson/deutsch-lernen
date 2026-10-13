@@ -1,5 +1,6 @@
 import { RECORDED_VOICES, type RecordedVoice } from '../../lib/speechText'
 import type { ListeningText } from '../types'
+import { SCRIPTS_A1 } from './scripts-a1'
 import { SCRIPTS } from './scripts'
 import { SCRIPTS_ADVANCED } from './scripts-advanced'
 import { SCRIPTS_EXAM } from './scripts-exam'
@@ -7,6 +8,7 @@ import { SCRIPTS_MORE } from './scripts-more'
 import { SCRIPTS_SPOKEN } from './scripts-spoken'
 
 export const LISTENING_TEXTS: ListeningText[] = [
+  ...SCRIPTS_A1,
   ...SCRIPTS,
   ...SCRIPTS_MORE,
   ...SCRIPTS_EXAM,

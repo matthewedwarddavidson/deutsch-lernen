@@ -1,6 +1,6 @@
 import { GRAMMAR_TOPICS } from '../content/grammar'
 import type { GrammarExercise, GrammarTopic, Word } from '../content/types'
-import { levelIndex } from './cards'
+import { studyOrder } from './cards'
 import { checkAnswer, checkNoun, type CheckResult, type Verdict } from './check'
 import { Rating, type Grade } from './srs'
 import type { AppState } from './store'
@@ -76,12 +76,13 @@ export function checkMeaning(word: Word, typed: string): CheckResult {
   return checkAnswer(withoutFillers(typed), englishMeanings(word.english))
 }
 
-/** The first topic not yet studied, at or below the target level. */
+/** The first topic not yet studied up to the target level, in study order. */
 export function nextTopic(state: AppState): GrammarTopic | undefined {
-  const target = levelIndex(state.settings.level)
+  const target = state.settings.level
+  const order = (topic: GrammarTopic) => studyOrder(topic.level, target) ?? Number.MAX_SAFE_INTEGER
   return [...GRAMMAR_TOPICS]
-    .filter((topic) => levelIndex(topic.level) <= target && !(topic.id in state.grammar))
-    .sort((a, b) => levelIndex(a.level) - levelIndex(b.level))[0]
+    .filter((topic) => studyOrder(topic.level, target) !== undefined && !(topic.id in state.grammar))
+    .sort((a, b) => order(a) - order(b))[0]
 }
 
 /** The full correct sentence, for reading aloud after answering. */

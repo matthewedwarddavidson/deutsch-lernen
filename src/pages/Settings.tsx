@@ -8,6 +8,7 @@ import { importState, resetState, useAppState } from '../lib/store'
 import { prepareSignIn, signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
 
 const LEVEL_DESCRIPTIONS: Record<Level, string> = {
+  A1: 'First steps: everyday words and simple sentences',
   A2: 'Consolidate the basics',
   B1: 'Independent in everyday situations',
   B2: 'Fluent on familiar topics, can argue a point',
@@ -53,7 +54,8 @@ export function Settings() {
       <div className="card stack">
         <h3>Target level</h3>
         <p className="muted small" style={{ margin: 0 }}>
-          New words, grammar topics and texts come from this level and below. Raise it when you pass your exam.
+          New words and grammar topics come from this level and the one below first, then from lower levels. Raise it
+          when you pass your exam.
         </p>
         <div className="level-options">
           {LEVELS.map((level) => (

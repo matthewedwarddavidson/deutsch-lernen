@@ -2,9 +2,7 @@
 export default `
 # A2
 V | sich beeilen | beeilt sich, beeilte sich, hat sich beeilt | | to hurry | {Beeil dich}, der Bus fährt gleich! | Hurry up, the bus is about to leave!
-V | aufräumen | räumt auf, räumte auf, hat aufgeräumt | | to tidy up | Am Samstag {räume} ich immer die Wohnung {auf}. | I always tidy the flat on Saturdays.
 V | erledigen | erledigt, erledigte, hat erledigt | | to get done, deal with | Ich muss heute noch ein paar Sachen {erledigen}. | I still have a few things to get done today.
-N | der Termin | Termine | | appointment | Ich habe morgen um neun einen {Termin} beim Zahnarzt. | I have a dentist's appointment at nine tomorrow.
 ADV | pünktlich | – | | on time | Der Zug ist ausnahmsweise {pünktlich}. | For once the train is on time.
 V | sich verspäten | verspätet sich, verspätete sich, hat sich verspätet | | to be late | Entschuldigung, ich habe mich leider {verspätet}. | Sorry, I'm afraid I'm late.
 
@@ -19,7 +17,6 @@ V | absagen | sagt ab, sagte ab, hat abgesagt | | to cancel (an event) | Sie hat
 V | vereinbaren | vereinbart, vereinbarte, hat vereinbart | | to arrange, agree | Wir haben einen Termin für nächste Woche {vereinbart}. | We've arranged an appointment for next week.
 N | die Verabredung | Verabredungen | | date, arrangement to meet | Ich habe heute Abend eine {Verabredung} mit Paula. | I'm meeting Paula this evening.
 V | sich verabreden | verabredet sich, verabredete sich, hat sich verabredet | mit + D | to arrange to meet | Wir haben uns für Samstag zum Kaffee {verabredet}. | We've arranged to meet for coffee on Saturday.
-V | vergessen | vergisst, vergaß, hat vergessen | | to forget | Ich habe {vergessen}, Milch zu kaufen. | I forgot to buy milk.
 V | sich erinnern | erinnert sich, erinnerte sich, hat sich erinnert | an + A | to remember | {Erinnerst} du {dich} an unseren ersten Urlaub? | Do you remember our first holiday?
 V | erinnern | erinnert, erinnerte, hat erinnert | A an + A | to remind | Kannst du mich morgen an den Termin {erinnern}? | Can you remind me about the appointment tomorrow?
 N | die Zeitumstellung | Zeitumstellungen | | clock change | Nach der {Zeitumstellung} bin ich immer müde. | I'm always tired after the clocks change.
@@ -49,15 +46,11 @@ N | der Wecker | Wecker | | alarm clock | Mein {Wecker} klingelt jeden Tag um se
 V | klingeln | klingelt, klingelte, hat geklingelt | | to ring | Es hat an der Tür {geklingelt}. | Someone rang the doorbell.
 V | sich anziehen | zieht sich an, zog sich an, hat sich angezogen | | to get dressed | Ich {ziehe} mich schnell {an} und komme. | I'll get dressed quickly and come.
 V | sich umziehen | zieht sich um, zog sich um, hat sich umgezogen | | to get changed | Nach der Arbeit {ziehe} ich mich erst mal {um}. | After work I get changed first.
-V | aufhören | hört auf, hörte auf, hat aufgehört | mit + D | to stop | Hör endlich {auf}, so laut zu sein! | Stop being so loud!
-V | anfangen | fängt an, fing an, hat angefangen | mit + D | to start | Wann {fängt} der Film {an}? | When does the film start?
 V | sich ausschlafen | schläft sich aus, schlief sich aus, hat sich ausgeschlafen | | to have a lie-in | Am Sonntag {schlafe} ich mich richtig {aus}. | On Sunday I have a proper lie-in.
 N | die Wäsche | – | | laundry, washing | Ich muss noch die {Wäsche} aufhängen. | I still need to hang up the washing.
 V | bügeln | bügelt, bügelte, hat gebügelt | | to iron | Ich {bügle} nur, wenn es unbedingt sein muss. | I only iron when I absolutely have to.
 N | der Staubsauger | Staubsauger | | vacuum cleaner | Der {Staubsauger} ist zu laut. | The vacuum cleaner is too loud.
-V | putzen | putzt, putzte, hat geputzt | | to clean | Wir {putzen} jeden Freitag die Wohnung. | We clean the flat every Friday.
 N | die Erledigung | Erledigungen | | errand | Ich habe heute noch ein paar {Erledigungen} zu machen. | I've got a few errands to run today.
-ADJ | müde | müder, am müdesten | | tired | Ich bin heute total {müde}. | I'm really tired today.
 ADV | unterwegs | – | | on the way, out and about | Ich bin gerade {unterwegs}, ich rufe später an. | I'm out at the moment; I'll call later.
 ADV | zwischendurch | – | | in between, now and again | {Zwischendurch} esse ich gern einen Apfel. | In between I like to eat an apple.
 

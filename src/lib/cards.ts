@@ -125,6 +125,17 @@ export function levelIndex(level: Level): number {
   return LEVELS.indexOf(level)
 }
 
+/**
+ * Sort key for new material up to the target level: the target level and the one below come
+ * first, easiest first; lower levels come last, as they are likely known already. Above the
+ * target level: undefined.
+ */
+export function studyOrder(level: Level, target: Level): number | undefined {
+  const distance = levelIndex(target) - levelIndex(level)
+  if (distance < 0) return undefined
+  return distance <= 1 ? levelIndex(level) : LEVELS.length + levelIndex(level)
+}
+
 export function isWordLearned(state: AppState, word: Word): boolean {
   return word.id in state.wordsLearned
 }
@@ -194,7 +205,7 @@ function withoutNearPairs(words: Word[], state: AppState, count: number): Word[]
   return [...chosen, ...later].slice(0, count)
 }
 
-/** Words not yet learned, up to the target level, easiest level first, themes interleaved. */
+/** Words not yet learned up to the target level, in study order, themes interleaved. */
 export function nextNewWords(state: AppState, count: number, theme?: string): Word[] {
   return withoutNearPairs(orderedNewWords(state, theme), state, count)
 }
@@ -204,20 +215,20 @@ function frequencyRank(word: Word): number {
   return FREQUENCY_RANK[word.id] ?? Number.MAX_SAFE_INTEGER
 }
 
-/** Words not yet learned, up to the target level: easiest level first, most common words first within a level. */
+/** Words not yet learned up to the target level: in study order, most common words first within a level. */
 function orderedNewWords(state: AppState, theme?: string): Word[] {
-  const target = levelIndex(state.settings.level)
+  const target = state.settings.level
   // Your own words are always available, whatever their level, and come first.
   const candidates = allWords(state).filter(
     (word) =>
       !isWordLearned(state, word) &&
-      (levelIndex(word.level) <= target || word.theme === 'eigene') &&
+      (studyOrder(word.level, target) !== undefined || word.theme === 'eigene') &&
       (!theme || word.theme === theme),
   )
   return candidates.sort(
     (a, b) =>
       Number(b.theme === 'eigene') - Number(a.theme === 'eigene') ||
-      levelIndex(a.level) - levelIndex(b.level) ||
+      (studyOrder(a.level, target) ?? 0) - (studyOrder(b.level, target) ?? 0) ||
       frequencyRank(a) - frequencyRank(b),
   )
 }
