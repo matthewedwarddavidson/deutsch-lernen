@@ -1,6 +1,6 @@
 # Deutsch lernen 🇩🇪
 
-**Learn German properly, from A1 to C1, in your browser. Free, private, and built on what the research says works.**
+A German course you can do in your browser, from A1 up to C1.
 
 [![Deploy](https://github.com/matthewedwarddavidson/deutsch-lernen/actions/workflows/pages.yml/badge.svg)](https://github.com/matthewedwarddavidson/deutsch-lernen/actions/workflows/pages.yml)
 
@@ -11,17 +11,15 @@
   <img src="docs/screenshots/today.png" alt="The Today page: reviews due and a plan for words, grammar, reading, listening, writing and fluency">
 </picture>
 
-## Why another German app?
+## Why I made it
 
-- **Every skill, every day.** The Today page plans words, grammar, reading, listening and writing in roughly equal measure, so flashcards don't crowd out everything else.
-- **Real recall, not recognition.** You type answers, with articles and plurals. The checker forgives typos but not wrong endings.
-- **Spaced repetition that adapts.** One [FSRS](https://github.com/open-spaced-repetition/ts-fsrs) queue holds words, irregular verbs, grammar exercises and the mistakes from your own writing.
-- **Natural voices.** About 5,700 sentences recorded with four neural voices, checked word by word with speech recognition.
-- **No streaks, hearts or XP.** Progress shows what you can actually do: words known, recall rate, mistakes per 100 words, reading speed.
-- **Private by default.** Everything stays in your browser. Sign in with Google only if you want to sync devices.
-- **Free, with no AI or paid APIs.** It's a static site.
+I'm learning German: I'm at A2 and have just started a B1 course. The apps I tried were either endless flashcards or games built around keeping a streak going. Neither did much for my reading or writing, so I built something closer to what a course does.
 
-The reasoning, with sources, is in [docs/research.md](docs/research.md).
+Each day it suggests a mix: review what's due, learn a few new words, then read, listen or write something. Grammar is explained in English with tables and examples, and the exercises come back later as reviews. Answers are typed rather than ticked, so you find out whether you can actually produce *der Termin* or just recognise it.
+
+The voices are recordings rather than the browser's robot voice. There are four of them, made with an open-source model and checked with speech recognition. There's no AI tutor and nothing to pay for. Your progress stays in your browser unless you sign in to sync between devices.
+
+The research behind the design, with sources, is in [docs/research.md](docs/research.md).
 
 ## A look around
 
