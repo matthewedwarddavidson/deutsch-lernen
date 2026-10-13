@@ -5,27 +5,14 @@ N | der Reisepass | Reisepässe | | passport | Mein {Reisepass} läuft nächsten
 
 # B1
 N | die Behörde | Behörden | | authority, public office | Für Visa ist eine spezielle {Behörde} zuständig. | A special authority is responsible for visas.
-N | die Anmeldung | Anmeldungen | | registration | Die {Anmeldung} der Wohnung muss innerhalb von zwei Wochen erfolgen. | You must register your address within two weeks.
-V | anmelden | meldet an, meldete an, hat angemeldet | | to register | Ich habe meinen Wohnsitz in Berlin {angemeldet}. | I've registered my address in Berlin.
-N | der Antrag | Anträge | | application (form) | Der {Antrag} wird in vier Wochen bearbeitet. | The application will be processed in four weeks.
-N | die Unterlagen | – | | documents (plural) | Bringen Sie bitte alle {Unterlagen} mit. | Please bring all your documents.
 N | die Bescheinigung | Bescheinigungen | | certificate, confirmation | Ich brauche eine {Bescheinigung} vom Arbeitgeber. | I need a certificate from my employer.
 N | die Frist | Fristen | | deadline | Die {Frist} endet am 31. Juli. | The deadline is 31 July.
-N | die Gebühr | Gebühren | | fee | Für den neuen Ausweis wird eine {Gebühr} von 37 Euro fällig. | There's a 37-euro fee for the new ID card.
-N | die Aufenthaltserlaubnis | Aufenthaltserlaubnisse | | residence permit | Meine {Aufenthaltserlaubnis} muss verlängert werden. | My residence permit needs extending.
-V | verlängern | verlängert, verlängerte, hat verlängert | | to extend, renew | Den Pass kann man nicht online {verlängern}. | You can't renew your passport online.
-ADJ | gültig | – | | valid | Ihr Ausweis ist nicht mehr {gültig}. | Your ID is no longer valid.
-N | die Versicherung | Versicherungen | | insurance | Hast du eine {Versicherung} für dein Fahrrad? | Have you got insurance for your bike?
 N | der Schaden | Schäden | | damage | Die Versicherung zahlt den {Schaden}. | The insurance pays for the damage.
 N | die Steuererklärung | Steuererklärungen | | tax return | Ich mache meine {Steuererklärung} jedes Jahr selbst. | I do my own tax return every year.
 N | das Finanzamt | Finanzämter | | tax office | Das {Finanzamt} hat mir 400 Euro zurückerstattet. | The tax office refunded me 400 euros.
-N | der Absender | Absender | | sender | Der Brief kam ohne {Absender}. | The letter came with no return address.
-N | der Empfänger | Empfänger | | recipient | Der {Empfänger} war nicht zu Hause. | The recipient wasn't home.
 N | das Einschreiben | Einschreiben | | registered letter | Die Kündigung schicke ich per {Einschreiben}. | I'll send the notice by registered post.
-N | die Öffnungszeiten | – | | opening hours (plural) | Die {Öffnungszeiten} stehen auf der Website. | The opening hours are on the website.
 V | sich wenden | wendet sich, wandte sich, hat sich gewandt | an + A | to contact, turn to | Bei Fragen {wenden} Sie sich bitte an den Kundenservice. | If you have questions please contact customer service.
 V | bearbeiten | bearbeitet, bearbeitete, hat bearbeitet | | to process, deal with | Ihr Antrag wird gerade {bearbeitet}. | Your application is being processed.
-N | die Wartenummer | Wartenummern | | queue ticket number | Ziehen Sie bitte eine {Wartenummer}. | Please take a number.
 
 # B2
 ADJ | erforderlich | – | | required | Für die Anmeldung ist ein gültiger Ausweis {erforderlich}. | A valid ID is required for registration.
@@ -35,7 +22,6 @@ V | Widerspruch einlegen | legt Widerspruch ein, legte Widerspruch ein, hat Wide
 ADJ | beglaubigt | – | | certified | Wir brauchen eine {beglaubigte} Kopie Ihres Zeugnisses. | We need a certified copy of your certificate.
 N | die Bürokratie | – | | bureaucracy | Die deutsche {Bürokratie} ist legendär. | German bureaucracy is legendary.
 # B1
-N | die Polizei | – | | police | Ruf sofort die {Polizei}! | Call the police at once!
 N | der Diebstahl | Diebstähle | | theft | Den {Diebstahl} haben wir sofort gemeldet. | We reported the theft straight away.
 V | melden | meldet, meldete, hat gemeldet | | to report | Sie müssen den Schaden innerhalb einer Woche {melden}. | You must report the damage within a week.
 N | die Geburtsurkunde | Geburtsurkunden | | birth certificate | Für die Heirat brauchen Sie Ihre {Geburtsurkunde}. | You need your birth certificate to get married.
@@ -46,4 +32,20 @@ V | genehmigen | genehmigt, genehmigte, hat genehmigt | | to approve | Der Antra
 N | der Nachweis | Nachweise | | proof, evidence | Bitte legen Sie einen {Nachweis} über Ihr Einkommen vor. | Please provide proof of your income.
 V | vorlegen | legt vor, legte vor, hat vorgelegt | | to present, submit | Sie müssen Ihren Pass im Original {vorlegen}. | You must present your original passport.
 ADJ | verbindlich | verbindlicher, am verbindlichsten | | binding | Die Anmeldung ist {verbindlich}. | Registration is binding.
+
+# A2
+N | die Anmeldung | Anmeldungen | | registration | Die {Anmeldung} der Wohnung muss innerhalb von zwei Wochen erfolgen. | You must register your address within two weeks.
+V | anmelden | meldet an, meldete an, hat angemeldet | | to register | Ich habe meinen Wohnsitz in Berlin {angemeldet}. | I've registered my address in Berlin.
+N | der Antrag | Anträge | | application (form) | Der {Antrag} wird in vier Wochen bearbeitet. | The application will be processed in four weeks.
+N | die Unterlagen | – | | documents (plural) | Bringen Sie bitte alle {Unterlagen} mit. | Please bring all your documents.
+N | die Gebühr | Gebühren | | fee | Für den neuen Ausweis wird eine {Gebühr} von 37 Euro fällig. | There's a 37-euro fee for the new ID card.
+N | die Aufenthaltserlaubnis | Aufenthaltserlaubnisse | | residence permit | Meine {Aufenthaltserlaubnis} muss verlängert werden. | My residence permit needs extending.
+V | verlängern | verlängert, verlängerte, hat verlängert | | to extend, renew | Den Pass kann man nicht online {verlängern}. | You can't renew your passport online.
+ADJ | gültig | – | | valid | Ihr Ausweis ist nicht mehr {gültig}. | Your ID is no longer valid.
+N | die Versicherung | Versicherungen | | insurance | Hast du eine {Versicherung} für dein Fahrrad? | Have you got insurance for your bike?
+N | der Absender | Absender | | sender | Der Brief kam ohne {Absender}. | The letter came with no return address.
+N | der Empfänger | Empfänger | | recipient | Der {Empfänger} war nicht zu Hause. | The recipient wasn't home.
+N | die Öffnungszeiten | – | | opening hours (plural) | Die {Öffnungszeiten} stehen auf der Website. | The opening hours are on the website.
+N | die Wartenummer | Wartenummern | | queue ticket number | Ziehen Sie bitte eine {Wartenummer}. | Please take a number.
+N | die Polizei | – | | police | Ruf sofort die {Polizei}! | Call the police at once!
 `

@@ -288,7 +288,6 @@ N | die Tablette | Tabletten | | tablet, pill | Ich nehme eine {Tablette}. | I'm
 ADJ | krank | kränker, am kränksten | | ill | Ich bin heute {krank}. | I'm ill today.
 ADJ | gesund | gesünder, am gesündesten | | healthy | Obst ist {gesund}. | Fruit is healthy.
 ADJ | müde | müder, am müdesten | | tired | Ich bin sehr {müde}. | I'm very tired.
-P | wehtun | – | | to hurt | Mein Kopf {tut weh}. | My head hurts.
 `,
   ],
   [

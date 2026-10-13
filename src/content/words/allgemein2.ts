@@ -4,9 +4,7 @@ export default `
 # B1
 V | abhängen | hängt ab, hing ab, hat abgehangen | von + D | to depend on | Das {hängt} vom Wetter {ab}. | That depends on the weather.
 V | achten | achtet, achtete, hat geachtet | auf + A | to pay attention to | Bitte {achten} Sie auf Ihr Gepäck. | Please keep an eye on your luggage.
-V | anbieten | bietet an, bot an, hat angeboten | D + A | to offer | Darf ich Ihnen etwas zu trinken {anbieten}? | May I offer you something to drink?
 V | annehmen | nimmt an, nahm an, hat angenommen | | to accept; to assume | Sie hat die Stelle sofort {angenommen}. | She accepted the job straight away.
-V | aufpassen | passt auf, passte auf, hat aufgepasst | auf + A | to watch out; to look after | Kannst du heute Abend auf die Kinder {aufpassen}? | Can you look after the children this evening?
 V | ausdrücken | drückt aus, drückte aus, hat ausgedrückt | | to express | Ich weiß nicht, wie ich das auf Deutsch {ausdrücken} soll. | I don't know how to put that in German.
 V | aushalten | hält aus, hielt aus, hat ausgehalten | | to bear, stand | Diese Hitze {halte} ich nicht mehr {aus}. | I can't stand this heat any more.
 V | begründen | begründet, begründete, hat begründet | | to give reasons for | Bitte {begründen} Sie Ihre Meinung. | Please give reasons for your opinion.
@@ -23,15 +21,12 @@ V | entdecken | entdeckt, entdeckte, hat entdeckt | | to discover | Im Urlaub ha
 V | erfahren | erfährt, erfuhr, hat erfahren | | to find out, learn | Wann hast du davon {erfahren}? | When did you find out about it?
 V | erhalten | erhält, erhielt, hat erhalten | | to receive | Wir haben Ihre Bewerbung {erhalten}. | We have received your application.
 V | erkennen | erkennt, erkannte, hat erkannt | | to recognise | Mit der neuen Frisur habe ich dich gar nicht {erkannt}. | I didn't recognise you with your new haircut.
-V | erleben | erlebt, erlebte, hat erlebt | | to experience | In Berlin haben wir viel {erlebt}. | We did a lot in Berlin.
 V | erscheinen | erscheint, erschien, ist erschienen | | to appear, be published | Das Buch {erscheint} im Herbst. | The book comes out in the autumn.
 V | fördern | fördert, förderte, hat gefördert | | to support, promote | Die Stadt {fördert} junge Künstler. | The city supports young artists.
-V | genießen | genießt, genoss, hat genossen | | to enjoy | Wir haben die Ruhe auf dem Land {genossen}. | We enjoyed the peace and quiet in the country.
 V | gründen | gründet, gründete, hat gegründet | | to found, set up | Sie hat mit 25 ihre eigene Firma {gegründet}. | She set up her own company at 25.
 V | halten | hält, hielt, hat gehalten | von + D | to think of | Was {hältst} du von meiner Idee? | What do you think of my idea?
 V | herstellen | stellt her, stellte her, hat hergestellt | | to produce, manufacture | Diese Schuhe werden in Portugal {hergestellt}. | These shoes are made in Portugal.
 V | kritisieren | kritisiert, kritisierte, hat kritisiert | | to criticise | Der Plan wurde stark {kritisiert}. | The plan was heavily criticised.
-V | leihen | leiht, lieh, hat geliehen | D + A | to lend; to borrow (sich) | Kannst du mir dein Fahrrad {leihen}? | Can you lend me your bike?
 V | nennen | nennt, nannte, hat genannt | | to call, name | Alle {nennen} ihn nur Max. | Everyone just calls him Max.
 V | nutzen | nutzt, nutzte, hat genutzt | | to use, make use of | {Nutzen} Sie die Gelegenheit! | Make the most of the opportunity!
 V | raten | rät, riet, hat geraten | D | to advise; to guess | Der Arzt hat mir {geraten}, mehr zu schlafen. | The doctor advised me to sleep more.
@@ -41,17 +36,13 @@ V | steigen | steigt, stieg, ist gestiegen | | to rise, climb | Die Preise sind 
 V | sinken | sinkt, sank, ist gesunken | | to fall, sink | Die Temperaturen {sinken} nachts unter null. | Temperatures drop below zero at night.
 V | stören | stört, störte, hat gestört | | to disturb, bother | Entschuldigung, {störe} ich gerade? | Sorry, am I disturbing you?
 V | überraschen | überrascht, überraschte, hat überrascht | | to surprise | Wir wollen sie zum Geburtstag {überraschen}. | We want to surprise her on her birthday.
-V | übersetzen | übersetzt, übersetzte, hat übersetzt | | to translate | Kannst du mir diesen Brief {übersetzen}? | Can you translate this letter for me?
 V | umgehen | geht um, ging um, ist umgegangen | mit + D | to deal with, handle | Sie {geht} sehr gut mit Kindern {um}. | She's very good with children.
-V | sich unterhalten | unterhält sich, unterhielt sich, hat sich unterhalten | über + A | to talk, chat | Wir haben uns lange über Politik {unterhalten}. | We talked about politics for a long time.
 V | unternehmen | unternimmt, unternahm, hat unternommen | | to do (activities) | Was wollen wir am Wochenende {unternehmen}? | What shall we do at the weekend?
 V | verbessern | verbessert, verbesserte, hat verbessert | | to improve | Ich möchte mein Deutsch {verbessern}. | I want to improve my German.
 V | verbinden | verbindet, verband, hat verbunden | | to connect | Die Brücke {verbindet} die beiden Stadtteile. | The bridge connects the two districts.
 V | vermuten | vermutet, vermutete, hat vermutet | | to suspect, presume | Ich {vermute}, dass er den Zug verpasst hat. | I suspect he missed the train.
 V | verraten | verrät, verriet, hat verraten | | to give away, betray | {Verrat} es niemandem! | Don't tell anyone!
-V | versprechen | verspricht, versprach, hat versprochen | D + A | to promise | Du hast mir {versprochen}, pünktlich zu sein. | You promised me you'd be on time.
 V | verwenden | verwendet, verwendete, hat verwendet | | to use | Für den Kuchen {verwende} ich nur Bio-Eier. | I only use organic eggs for the cake.
-V | vorhaben | hat vor, hatte vor, hat vorgehabt | | to plan, intend | {Hast} du heute Abend schon etwas {vor}? | Have you got any plans for this evening?
 V | wirken | wirkt, wirkte, hat gewirkt | | to work, have an effect; to seem | Die Tabletten {wirken} schnell. | The tablets work quickly.
 V | zugeben | gibt zu, gab zu, hat zugegeben | | to admit | Er hat den Fehler sofort {zugegeben}. | He admitted the mistake straight away.
 V | sich beschäftigen | beschäftigt sich, beschäftigte sich, hat sich beschäftigt | mit + D | to occupy oneself with | Er {beschäftigt} sich viel mit Geschichte. | He spends a lot of time on history.
@@ -65,12 +56,9 @@ N | die Rücksicht | – | | consideration | Bitte nehmen Sie {Rücksicht} auf d
 N | der Sinn | Sinne | | sense, point | Es hat keinen {Sinn}, jetzt noch zu streiten. | There's no point arguing now.
 N | die Stimmung | Stimmungen | | mood, atmosphere | Die {Stimmung} auf der Party war super. | The atmosphere at the party was great.
 N | die Tatsache | Tatsachen | | fact | Das ist eine {Tatsache}, keine Meinung. | That's a fact, not an opinion.
-N | die Überraschung | Überraschungen | | surprise | Was für eine schöne {Überraschung}! | What a lovely surprise!
-N | der Unfall | Unfälle | | accident | Auf der Autobahn gab es einen schweren {Unfall}. | There was a serious accident on the motorway.
 N | die Vorbereitung | Vorbereitungen | | preparation | Die {Vorbereitungen} für die Hochzeit laufen. | Preparations for the wedding are under way.
 N | die Vorschrift | Vorschriften | | regulation, rule | Das ist gegen die {Vorschriften}. | That's against the rules.
 N | die Wirkung | Wirkungen | | effect | Das Medikament zeigt schnell {Wirkung}. | The medicine takes effect quickly.
-N | der Wunsch | Wünsche | | wish | Haben Sie noch einen {Wunsch}? | Is there anything else I can get you?
 N | der Zweck | Zwecke | | purpose | Zu welchem {Zweck} brauchen Sie die Daten? | For what purpose do you need the data?
 N | der Ausdruck | Ausdrücke | | expression | Diesen {Ausdruck} kenne ich nicht. | I don't know this expression.
 N | die Bedeutung | Bedeutungen | | meaning; importance | Das Wort hat zwei {Bedeutungen}. | The word has two meanings.
@@ -84,25 +72,16 @@ N | der Mut | – | | courage | Es hat viel {Mut} gebraucht, das zu sagen. | It 
 N | die Sicherheit | – | | safety, security; certainty | Zu Ihrer {Sicherheit} bitte anschnallen. | For your safety please fasten your seat belt.
 N | der Zweifel | Zweifel | | doubt | Ohne {Zweifel} ist sie die Beste. | She is without doubt the best.
 N | das Verständnis | – | | understanding | Vielen Dank für Ihr {Verständnis}. | Thank you for your understanding.
-N | die Hilfe | Hilfen | | help | Vielen Dank für deine {Hilfe}! | Thanks for your help!
 N | der Anlass | Anlässe | | occasion | Zu welchem {Anlass} ist das Geschenk? | What's the occasion for the present?
 N | die Ahnung | Ahnungen | | idea, notion | Ich habe keine {Ahnung}. | I have no idea.
 N | die Mühe | Mühen | | effort, trouble | Danke, dass du dir so viel {Mühe} gegeben hast. | Thanks for going to so much trouble.
 N | die Laune | Launen | | mood | Warum hast du so schlechte {Laune}? | Why are you in such a bad mood?
 ADJ | aufgeregt | – | | excited; nervous | Vor der Prüfung war ich sehr {aufgeregt}. | I was very nervous before the exam.
-ADJ | bequem | bequemer, am bequemsten | | comfortable | Die Schuhe sind sehr {bequem}. | The shoes are very comfortable.
 ADJ | bereit | – | zu + D | ready, prepared | Bist du {bereit}? Wir müssen los. | Are you ready? We have to go.
-ADJ | dringend | dringender, am dringendsten | | urgent | Ich muss {dringend} mit Ihnen sprechen. | I urgently need to speak to you.
-ADJ | einverstanden | – | mit + D | in agreement | Bist du damit {einverstanden}? | Are you OK with that?
 ADJ | erfolgreich | erfolgreicher, am erfolgreichsten | | successful | Das Projekt war sehr {erfolgreich}. | The project was very successful.
 ADJ | ernst | ernster, am ernstesten | | serious | Das meinst du doch nicht {ernst}! | You can't be serious!
-ADJ | gefährlich | gefährlicher, am gefährlichsten | | dangerous | Es ist {gefährlich}, hier zu schwimmen. | It's dangerous to swim here.
 ADJ | gerecht | gerechter, am gerechtesten | | fair, just | Das finde ich nicht {gerecht}. | I don't think that's fair.
-ADJ | höflich | höflicher, am höflichsten | | polite | Der Kellner war sehr {höflich}. | The waiter was very polite.
 ADJ | peinlich | peinlicher, am peinlichsten | | embarrassing | Das war mir total {peinlich}. | I was so embarrassed.
-ADJ | vorsichtig | vorsichtiger, am vorsichtigsten | | careful | Sei {vorsichtig}, die Straße ist glatt. | Be careful, the road is icy.
-ADJ | zufrieden | zufriedener, am zufriedensten | mit + D | satisfied | Sind Sie mit dem Service {zufrieden}? | Are you happy with the service?
-ADJ | neugierig | neugieriger, am neugierigsten | auf + A | curious | Ich bin {neugierig} auf das Ergebnis. | I'm curious to see the result.
 ADJ | schüchtern | schüchterner, am schüchternsten | | shy | Als Kind war ich sehr {schüchtern}. | I was very shy as a child.
 ADJ | sparsam | sparsamer, am sparsamsten | | thrifty, economical | Das neue Auto ist sehr {sparsam}. | The new car is very economical.
 ADJ | selbstbewusst | selbstbewusster, am selbstbewusstesten | | self-confident | Sie tritt sehr {selbstbewusst} auf. | She comes across as very self-confident.
@@ -112,20 +91,16 @@ ADJ | überzeugt | – | von + D | convinced | Ich bin {überzeugt}, dass es kla
 ADV | allmählich | | | gradually | Es wird {allmählich} dunkel. | It's gradually getting dark.
 ADV | bereits | | | already | Der Zug ist {bereits} abgefahren. | The train has already left.
 ADV | ebenfalls | | | likewise, also | Danke, {ebenfalls}! | Thanks, you too!
-ADV | gerade | | | just, right now | Ich bin {gerade} nach Hause gekommen. | I've just got home.
 ADV | jedenfalls | | | in any case, at least | Ich komme {jedenfalls} etwas später. | In any case, I'll be a bit late.
 ADV | mittlerweile | | | by now, meanwhile | {Mittlerweile} fühle ich mich hier zu Hause. | By now I feel at home here.
 ADV | nämlich | | | you see, namely | Ich kann nicht kommen, ich bin {nämlich} krank. | I can't come – I'm ill, you see.
 ADV | neulich | | | recently, the other day | {Neulich} habe ich deinen Bruder getroffen. | I met your brother the other day.
-ADV | übrigens | | | by the way | {Übrigens}, hast du schon gehört? | By the way, have you heard?
-ADV | unbedingt | | | absolutely, definitely | Den Film musst du {unbedingt} sehen. | You absolutely must see the film.
 ADV | vorhin | | | a moment ago | Ich habe dich {vorhin} angerufen. | I rang you a little while ago.
 ADV | wenigstens | | | at least | Ruf {wenigstens} an, wenn du später kommst. | At least call if you're going to be late.
 ADV | immerhin | | | after all, at least | Wir haben verloren, aber {immerhin} ein Tor geschossen. | We lost, but at least we scored a goal.
 ADV | irgendwann | | | at some point | {Irgendwann} möchte ich nach Japan reisen. | I'd like to go to Japan at some point.
 ADV | zumindest | | | at least | Das ist {zumindest} meine Meinung. | That's my opinion, at least.
 ADV | ohnehin | | | anyway | Ich muss {ohnehin} in die Stadt, ich nehme dich mit. | I've got to go into town anyway, I'll give you a lift.
-ADV | endlich | | | finally, at last | {Endlich} ist Wochenende! | At last it's the weekend!
 ADV | offenbar | | | apparently | Er hat {offenbar} keine Lust. | He apparently doesn't feel like it.
 
 # C1
@@ -195,7 +170,6 @@ N | die Erlaubnis | Erlaubnisse | | permission | Für das Foto brauchen Sie eine
 N | der Hinweis | Hinweise | | tip, note, clue | Danke für den {Hinweis}! | Thanks for the tip!
 N | der Irrtum | Irrtümer | | mistake, error | Das war ein {Irrtum}, entschuldigen Sie. | That was a mistake, sorry.
 N | die Menge | Mengen | | amount; crowd | Wir haben eine {Menge} Arbeit. | We've got a lot of work.
-N | die Regel | Regeln | | rule | In der {Regel} fahre ich mit dem Rad. | As a rule I cycle.
 N | die Sorge | Sorgen | | worry | Mach dir keine {Sorgen}! | Don't worry!
 N | das Verhältnis | Verhältnisse | | relationship; ratio | Ich habe ein gutes {Verhältnis} zu meinen Eltern. | I get on well with my parents.
 ADJ | ängstlich | ängstlicher, am ängstlichsten | | anxious, timid | Unser Hund ist sehr {ängstlich}. | Our dog is very timid.
@@ -240,4 +214,32 @@ ADV | schlichtweg | | | simply, quite simply | Das ist {schlichtweg} falsch. | T
 ADV | keineswegs | | | by no means | Das ist {keineswegs} sicher. | That is by no means certain.
 ADV | letztlich | | | ultimately | {Letztlich} entscheidet der Kunde. | Ultimately the customer decides.
 ADV | durchaus | | | quite, definitely | Das ist {durchaus} möglich. | That's quite possible.
+
+# A2
+V | anbieten | bietet an, bot an, hat angeboten | D + A | to offer | Darf ich Ihnen etwas zu trinken {anbieten}? | May I offer you something to drink?
+V | aufpassen | passt auf, passte auf, hat aufgepasst | auf + A | to watch out; to look after | Kannst du heute Abend auf die Kinder {aufpassen}? | Can you look after the children this evening?
+V | erleben | erlebt, erlebte, hat erlebt | | to experience | In Berlin haben wir viel {erlebt}. | We did a lot in Berlin.
+V | genießen | genießt, genoss, hat genossen | | to enjoy | Wir haben die Ruhe auf dem Land {genossen}. | We enjoyed the peace and quiet in the country.
+V | leihen | leiht, lieh, hat geliehen | D + A | to lend; to borrow (sich) | Kannst du mir dein Fahrrad {leihen}? | Can you lend me your bike?
+V | übersetzen | übersetzt, übersetzte, hat übersetzt | | to translate | Kannst du mir diesen Brief {übersetzen}? | Can you translate this letter for me?
+V | sich unterhalten | unterhält sich, unterhielt sich, hat sich unterhalten | über + A | to talk, chat | Wir haben uns lange über Politik {unterhalten}. | We talked about politics for a long time.
+V | versprechen | verspricht, versprach, hat versprochen | D + A | to promise | Du hast mir {versprochen}, pünktlich zu sein. | You promised me you'd be on time.
+V | vorhaben | hat vor, hatte vor, hat vorgehabt | | to plan, intend | {Hast} du heute Abend schon etwas {vor}? | Have you got any plans for this evening?
+N | die Überraschung | Überraschungen | | surprise | Was für eine schöne {Überraschung}! | What a lovely surprise!
+N | der Unfall | Unfälle | | accident | Auf der Autobahn gab es einen schweren {Unfall}. | There was a serious accident on the motorway.
+N | der Wunsch | Wünsche | | wish | Haben Sie noch einen {Wunsch}? | Is there anything else I can get you?
+N | die Hilfe | Hilfen | | help | Vielen Dank für deine {Hilfe}! | Thanks for your help!
+ADJ | bequem | bequemer, am bequemsten | | comfortable | Die Schuhe sind sehr {bequem}. | The shoes are very comfortable.
+ADJ | dringend | dringender, am dringendsten | | urgent | Ich muss {dringend} mit Ihnen sprechen. | I urgently need to speak to you.
+ADJ | einverstanden | – | mit + D | in agreement | Bist du damit {einverstanden}? | Are you OK with that?
+ADJ | gefährlich | gefährlicher, am gefährlichsten | | dangerous | Es ist {gefährlich}, hier zu schwimmen. | It's dangerous to swim here.
+ADJ | höflich | höflicher, am höflichsten | | polite | Der Kellner war sehr {höflich}. | The waiter was very polite.
+ADJ | vorsichtig | vorsichtiger, am vorsichtigsten | | careful | Sei {vorsichtig}, die Straße ist glatt. | Be careful, the road is icy.
+ADJ | zufrieden | zufriedener, am zufriedensten | mit + D | satisfied | Sind Sie mit dem Service {zufrieden}? | Are you happy with the service?
+ADJ | neugierig | neugieriger, am neugierigsten | auf + A | curious | Ich bin {neugierig} auf das Ergebnis. | I'm curious to see the result.
+ADV | gerade | | | just, right now | Ich bin {gerade} nach Hause gekommen. | I've just got home.
+ADV | übrigens | | | by the way | {Übrigens}, hast du schon gehört? | By the way, have you heard?
+ADV | unbedingt | | | absolutely, definitely | Den Film musst du {unbedingt} sehen. | You absolutely must see the film.
+ADV | endlich | | | finally, at last | {Endlich} ist Wochenende! | At last it's the weekend!
+N | die Regel | Regeln | | rule | In der {Regel} fahre ich mit dem Rad. | As a rule I cycle.
 `

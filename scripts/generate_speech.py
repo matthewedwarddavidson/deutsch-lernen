@@ -140,8 +140,12 @@ class Recorder:
 
         self.token_limit = int(len(text) * 2.5) + 60
         for temperature in TEMPERATURES:
-            with torch.inference_mode():
-                wav = self.model.generate(text, language_id='de', temperature=temperature)
+            try:
+                with torch.inference_mode():
+                    wav = self.model.generate(text, language_id='de', temperature=temperature)
+            except IndexError:
+                # Chatterbox's end-of-speech check crashes on some very short inputs.
+                continue
             samples = wav.squeeze().cpu().numpy()
             samples, _ = librosa.effects.trim(samples, top_db=40)
             words = self.transcribe(librosa.resample(samples, orig_sr=self.model.sr, target_sr=16000))

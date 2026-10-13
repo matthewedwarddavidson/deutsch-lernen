@@ -12,15 +12,10 @@ N | das Recht | Rechte | | right; law | Jeder hat das {Recht} auf freie Meinungs
 N | die Partei | Parteien | | (political) party | Welche {Partei} hast du gewählt? | Which party did you vote for?
 N | die Demonstration | Demonstrationen | | demonstration | Tausende kamen zur {Demonstration} gegen Rassismus. | Thousands came to the demonstration against racism.
 N | die Gleichberechtigung | – | | equality (of rights) | Wir sind noch weit von echter {Gleichberechtigung} entfernt. | We're still a long way from true equality.
-N | die Rente | Renten | | pension | Mein Vater geht nächstes Jahr in {Rente}. | My father retires next year.
-N | der Rentner | Rentner | | pensioner | Viele {Rentner} engagieren sich ehrenamtlich. | Many pensioners volunteer.
 ADJ | ehrenamtlich | – | | voluntary, unpaid | Sie arbeitet {ehrenamtlich} bei der Tafel. | She volunteers at the food bank.
 V | sich engagieren | engagiert sich, engagierte sich, hat sich engagiert | für + A | to get involved, be active | Er {engagiert} sich seit Jahren für Flüchtlinge. | He has been involved in helping refugees for years.
-N | der Verein | Vereine | | club, association | Ich bin seit zehn Jahren Mitglied in einem {Verein}. | I have been a member of a club for ten years.
-N | das Mitglied | Mitglieder | | member | Der Verein hat über 300 {Mitglieder}. | The club has over 300 members.
 N | die Integration | – | | integration | Sprache ist der Schlüssel zur {Integration}. | Language is the key to integration.
 V | sich einleben | lebt sich ein, lebte sich ein, hat sich eingelebt | | to settle in | Habt ihr euch gut in Berlin {eingelebt}? | Have you settled in well in Berlin?
-N | die Heimat | – | | home, homeland | Meine {Heimat} ist eigentlich Schottland. | My home is actually Scotland.
 N | das Vorurteil | Vorurteile | | prejudice | Wir müssen gegen {Vorurteile} kämpfen. | We have to fight prejudice.
 N | die Armut | – | | poverty | Auch in reichen Ländern gibt es {Armut}. | There is poverty in rich countries too.
 N | die Steuer | Steuern | | tax | Die Regierung will die {Steuern} senken. | The government wants to cut taxes.
@@ -60,4 +55,11 @@ ADJ | sozial | – | | social | Sie arbeitet in einem {sozialen} Beruf. | She wo
 V | ausgrenzen | grenzt aus, grenzte aus, hat ausgegrenzt | | to exclude, marginalise | Niemand darf wegen seiner Herkunft {ausgegrenzt} werden. | No one may be excluded because of their background.
 N | die Wertschätzung | – | | appreciation | Pflegekräfte verdienen mehr {Wertschätzung}. | Care workers deserve more appreciation.
 ADJ | gesellschaftlich | – | | social, societal | Das ist ein {gesellschaftliches} Problem. | That's a social problem.
+
+# A2
+N | die Rente | Renten | | pension | Mein Vater geht nächstes Jahr in {Rente}. | My father retires next year.
+N | der Rentner | Rentner | | pensioner | Viele {Rentner} engagieren sich ehrenamtlich. | Many pensioners volunteer.
+N | der Verein | Vereine | | club, association | Ich bin seit zehn Jahren Mitglied in einem {Verein}. | I have been a member of a club for ten years.
+N | das Mitglied | Mitglieder | | member | Der Verein hat über 300 {Mitglieder}. | The club has over 300 members.
+N | die Heimat | – | | home, homeland | Meine {Heimat} ist eigentlich Schottland. | My home is actually Scotland.
 `

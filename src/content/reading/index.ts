@@ -1,5 +1,6 @@
 import type { ReadingText } from '../types'
 import { textsA1 } from './texts-a1'
+import { textsGrundstufe } from './texts-grundstufe'
 import { textsA2B1 } from './texts-a2-b1'
 import { textsB1B2 } from './texts-b1-b2'
 import { textsAdvanced } from './texts-advanced'
@@ -8,6 +9,7 @@ import { textsC1 } from './texts-c1'
 
 export const READING_TEXTS: ReadingText[] = [
   ...textsA1,
+  ...textsGrundstufe,
   ...textsA2B1,
   ...textsB1B2,
   ...textsMore,
