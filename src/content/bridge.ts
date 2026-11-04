@@ -283,6 +283,87 @@ export const BRIDGE_SECTIONS: BridgeSection[] = [
       { de: 'Mein Bruder ist **älter** als ich.', en: 'My brother is older than me.' },
     ],
   },
+  {
+    id: 'umlaut',
+    heading: 'Umlaut in English',
+    topicIds: ['komparativ', 'artikel'],
+    body: [
+      'Long ago, many plurals in both languages ended in an *-i* sound. Speakers moved the vowel before it towards that *i*, so *u* became *ü* and *a* became *ä*. Later the ending wore away and left only the changed vowel. This is **umlaut** (in English, *i-mutation*).',
+      'German still uses umlaut in plurals (*Haus, Häuser*) and comparatives (*alt, älter*), and marks it with two dots. English kept it in a handful of words and spells it differently, so it is hard to spot.',
+    ],
+    table: {
+      head: ['English', 'German', 'What changed'],
+      rows: [
+        ['f**oo**t, f**ee**t', 'F**u**ß, F**ü**ße', 'Plural'],
+        ['m**ou**se, m**i**ce', 'M**au**s, M**äu**se', 'Plural'],
+        ['g**oo**se, g**ee**se', 'G**a**ns, G**ä**nse', 'Plural'],
+        ['m**a**n, m**e**n', 'M**a**nn, M**ä**nner', 'Plural'],
+        ['t**oo**th, t**ee**th', 'Z**a**hn, Z**ä**hne', 'Plural'],
+        ['**o**ld, **e**lder, **e**ldest', '**a**lt, **ä**lter, am **ä**ltesten', 'Comparison (only *elder* kept it)'],
+        ['f**oo**d → f**ee**d, bl**oo**d → bl**ee**d, f**u**ll → f**i**ll', '', 'Verbs made from nouns and adjectives'],
+      ],
+    },
+  },
+  {
+    id: 'instrumental',
+    heading: 'The lost fifth case',
+    topicIds: ['praepositionen-kasus', 'dativ-akkusativ'],
+    body: [
+      'The ancestor of German and English had more cases than four, including an **instrumental** for "by means of" or "by how much". Old English and early German kept traces of it. Then it merged into the **dative**.',
+      'English still uses it without noticing. In *"**the** more, **the** merrier"*, *the* is not the article. It is an old instrumental meaning "by that much": "by that much more, by that much merrier". The same *the* is in *all the better*, *none the wiser* and *nevertheless* ("never the less"). *Why* is the instrumental of *what* ("by what?"), and *lest* comes from a phrase meaning "by that less that".',
+      'German has a trace too. *Heute* comes from an old instrumental phrase meaning "on this day".',
+      'The merger explains part of the dative. The German dative took over the jobs of several older cases, roughly: *to* (the old dative), *from*, *at* and *with* (the instrumental). So the dative prepositions are words of those meanings: **zu**, **nach** (to), **aus**, **von** (from), **bei** (at), **mit** (with).',
+    ],
+    examples: [
+      { de: '**Je** mehr, **desto** besser.', en: 'The more, the better.' },
+      {
+        de: 'Ich schreibe **mit dem** Stift.',
+        en: 'I write with the pen. (the instrumental’s job, now done by mit + dative)',
+      },
+    ],
+  },
+  {
+    id: 'fossils',
+    heading: 'Other Germanic fossils in English',
+    topicIds: ['konjunktiv-i', 'nebensaetze-a2', 'satzstellung-a1', 'genitiv'],
+    body: [
+      'English lost most of its Germanic grammar, but set phrases kept pieces of it. Each one below matches something German still does.',
+    ],
+    table: {
+      head: ['English', 'What it is', 'German'],
+      rows: [
+        ['till death **us do part**', 'Verb last in a clause, object before it', 'bis dass der Tod euch **scheidet**'],
+        ['Long **live** the King', 'Subjunctive (Konjunktiv I): *live*, not *lives*', 'Es **lebe** der König'],
+        [
+          'God **save** the King, come what **may**, be that as it **may**',
+          'Subjunctive (Konjunktiv I)',
+          'komme, was **wolle**; sei es, wie es **sei**',
+        ],
+        ['methinks', '"It seems to **me**": dative', '(old) mir dünkt'],
+        ['woe is me', '"Woe is to me": dative', 'Weh mir!'],
+        [
+          'nowadays, always, once, I work **nights**',
+          'Genitive *-s* used as an adverb',
+          'nacht**s**, morgen**s**, abend**s**, anfang**s**',
+        ],
+        ['the man**’s** dog', 'Genitive *-s*', 'der Hund des Mann**es** (old style: des Mann**es** Hund)'],
+        [
+          'ox**en**, child**ren**, breth**ren**',
+          '*-en* plurals (*children* is a double plural: old *childer* + *-en*)',
+          'Ochs**en**, Kind**er**',
+        ],
+        [
+          'Here **comes** the bus. Never **have** I seen it.',
+          'Verb second, before the subject',
+          'Hier **kommt** der Bus. Nie **habe** ich das gesehen.',
+        ],
+        ['he **is** gone, Christ **is** risen', '*be* perfect for movement and change', 'er **ist** gegangen'],
+        ['where, whither, whence', 'Where at, where to, where from', 'wo, wohin, woher'],
+        ['hence, thence', '"From here", "from there". *Hence* now mostly means "therefore".', 'von hier, von dort'],
+        ['thou, thee', 'Informal "you": subject and object', 'du, dich / dir'],
+      ],
+    },
+  },
 ]
 
 /** The bridge sections that explain a grammar topic. */
