@@ -4,6 +4,7 @@ import { Icon, type IconName } from './components/Icon'
 import { dueCards } from './lib/cards'
 import { useNow } from './lib/hooks'
 import { useAppState } from './lib/store'
+import { Bridge } from './pages/Bridge'
 import { Exam } from './pages/Exam'
 import { HoerenPaper, LesenPaper } from './pages/ExamPaper'
 import { GrammarLesson, GrammarList } from './pages/Grammar'
@@ -59,6 +60,12 @@ function Sidebar() {
           Exam
         </span>
       </NavLink>
+      <NavLink to="/bridge" className="nav-link desktop-only">
+        <span className="row" style={{ gap: 10 }}>
+          <Icon name="bridge" />
+          English bridge
+        </span>
+      </NavLink>
       <NavLink to="/reference" className="nav-link desktop-only">
         <span className="row" style={{ gap: 10 }}>
           <Icon name="words" />
@@ -107,6 +114,7 @@ export default function App() {
             <Route path="/words/speed" element={<Fresh page={SpeedRound} />} />
             <Route path="/grammar" element={<GrammarList />} />
             <Route path="/grammar/:topicId" element={<GrammarLesson />} />
+            <Route path="/bridge" element={<Bridge />} />
             <Route path="/reading" element={<ReadingList />} />
             <Route path="/reading/:textId" element={<ReadingPage />} />
             <Route path="/reading/match/:taskId" element={<MatchingPage />} />

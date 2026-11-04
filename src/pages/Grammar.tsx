@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { ExerciseView } from '../components/ExerciseView'
+import { ExplanationSection } from '../components/ExplanationSection'
 import { ProgressBar } from '../components/ProgressBar'
 import { Rich } from '../components/Rich'
-import { SpeakButton } from '../components/SpeakButton'
+import { bridgesForTopic } from '../content/bridge'
 import { GRAMMAR_TOPICS, topicById } from '../content/grammar'
 import { nextTopic } from '../lib/grading'
 import { LEVELS, type GrammarTopic } from '../content/types'
@@ -38,6 +39,8 @@ export function GrammarList() {
           exercises come back in your daily review, mixed with other topics.
         </p>
         <Link to="/reference">Reference tables: cases, endings, prepositions, irregular verbs →</Link>
+        <br />
+        <Link to="/bridge">English bridge: grammar terms explained with English examples →</Link>
       </div>
       {recommended && (
         <Link className="card card-link" to={`/grammar/${recommended.id}`} style={{ marginBottom: 28 }}>
@@ -125,6 +128,7 @@ export function GrammarLesson() {
 function Lesson({ topic, onPractise }: { topic: GrammarTopic; onPractise: () => void }) {
   const state = useAppState()
   const studied = topic.id in state.grammar
+  const bridges = bridgesForTopic(topic.id)
   const suspendedIds = topic.exercises
     .map((exercise) => grammarCardId(topic, exercise))
     .filter((id) => state.suspended[id])
@@ -141,54 +145,20 @@ function Lesson({ topic, onPractise }: { topic: GrammarTopic; onPractise: () => 
       </div>
 
       {topic.sections.map((section) => (
-        <section key={section.heading} className="lesson-section">
-          <h2>{section.heading}</h2>
-          {section.body.map((paragraph, index) => (
-            <p key={index}>
-              <Rich text={paragraph} />
-            </p>
-          ))}
-          {section.table && (
-            <div className="table-wrap">
-              <table className="grammar-table">
-                <thead>
-                  <tr>
-                    {section.table.head.map((cell, index) => (
-                      <th key={index}>{cell}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {section.table.rows.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                      {row.map((cell, index) => (
-                        <td key={index}>
-                          <Rich text={cell} />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-          {section.examples && (
-            <ul className="examples">
-              {section.examples.map((example) => (
-                <li key={example.de} className="example">
-                  <SpeakButton text={example.de.replace(/\*/g, '')} />
-                  <div className="example-text">
-                    <div className="de">
-                      <Rich text={example.de} />
-                    </div>
-                    <div className="en">{example.en}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
+        <ExplanationSection key={section.heading} section={section} />
       ))}
+
+      {bridges.length > 0 && (
+        <p className="small">
+          In English terms:{' '}
+          {bridges.map((bridge, index) => (
+            <span key={bridge.id}>
+              {index > 0 && ' · '}
+              <Link to={`/bridge?section=${bridge.id}`}>{bridge.heading}</Link>
+            </span>
+          ))}
+        </p>
+      )}
 
       {topic.mistakes.length > 0 && (
         <section className="lesson-section">

@@ -5,6 +5,7 @@ const PATHS = {
   today: 'M4 6h16M4 12h16M4 18h10',
   words: 'M4 5h7a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H4V5Zm16 0h-4a3 3 0 0 0-3 3',
   grammar: 'M5 19 10 5h1l5 14M7 14h7M18 9v10',
+  bridge: 'M3 17h18M5 17v-3a7 7 0 0 1 14 0v3M9 17v-4m6 4v-4',
   reading: 'M3 6c3-1 6-1 9 1 3-2 6-2 9-1v12c-3-1-6-1-9 1-3-2-6-2-9-1V6Zm9 1v12',
   listening:
     'M4 15v-3a8 8 0 0 1 16 0v3M4 15a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2v-2Zm16 0a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2v-2Z',
