@@ -38,9 +38,16 @@ export function GrammarList() {
           Each topic explains the rule, shows the usual mistakes, then gives you practice. After you finish a topic, its
           exercises come back in your daily review, mixed with other topics.
         </p>
-        <Link to="/reference">Reference tables: cases, endings, prepositions, irregular verbs →</Link>
-        <br />
-        <Link to="/bridge">English bridge: grammar terms explained with English examples →</Link>
+      </div>
+      <div className="grid two" style={{ marginBottom: 28 }}>
+        <Link className="card card-link" to="/bridge">
+          <h3 style={{ marginBottom: 2 }}>English bridge</h3>
+          <div className="muted small">Grammar terms explained with English examples</div>
+        </Link>
+        <Link className="card card-link" to="/reference">
+          <h3 style={{ marginBottom: 2 }}>Reference tables</h3>
+          <div className="muted small">Cases, endings, prepositions, irregular verbs</div>
+        </Link>
       </div>
       {recommended && (
         <Link className="card card-link" to={`/grammar/${recommended.id}`} style={{ marginBottom: 28 }}>
