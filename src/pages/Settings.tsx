@@ -5,7 +5,8 @@ import { bestGermanVoices, hasNaturalBrowserVoice, speak, whenVoicesReady } from
 import { downloadBackup } from '../lib/backup'
 import { DEFAULT_RETENTION } from '../lib/srs'
 import { importState, resetState, useAppState } from '../lib/store'
-import { prepareSignIn, signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
+import { Link } from 'react-router'
+import { deleteAccount, prepareSignIn, signIn, signOut, syncNow, useSyncStatus } from '../lib/sync'
 
 const LEVEL_DESCRIPTIONS: Record<Level, string> = {
   A1: 'First steps: everyday words and simple sentences',
@@ -212,7 +213,8 @@ export function Settings() {
         <h3>Your data</h3>
         <p className="muted small" style={{ margin: 0 }}>
           Progress, your writing and your words are stored in this browser. Unless you sign in to sync, nothing leaves
-          it, so nobody else can see it even though the app itself is public. Download a backup now and then.
+          it, so nobody else can see it even though the app itself is public. Download a backup now and then.{' '}
+          <Link to="/privacy">Privacy note</Link>
         </p>
         <div className="row">
           <button className="btn" onClick={downloadBackup}>
@@ -235,11 +237,11 @@ export function Settings() {
 function SyncCard() {
   const sync = useSyncStatus()
   const [error, setError] = useState('')
-  const signedIn = !!sync.user
 
   useEffect(() => {
-    if (sync.available && !signedIn) prepareSignIn().catch(() => undefined)
-  }, [sync.available, signedIn])
+    // Loading Firebase early lets Google's popup open straight away; browsers block late popups.
+    if (sync.available) prepareSignIn().catch(() => undefined)
+  }, [sync.available])
 
   if (!sync.available) return null
 
@@ -259,7 +261,8 @@ function SyncCard() {
         <>
           <p className="muted small" style={{ margin: 0 }}>
             Sign in with Google to use your progress on your phone and computer. A copy is kept in Firebase (Google),
-            readable only by your account. Progress from each device is merged, so nothing is lost.
+            readable only by your account. Progress from each device is merged, so nothing is lost.{' '}
+            <Link to="/privacy">What's stored</Link>
           </p>
           <div>
             <button className="btn primary" onClick={() => run(signIn)}>
@@ -293,8 +296,66 @@ function SyncCard() {
             Signing out keeps your progress on this device. Deleting all progress or restoring a backup also replaces
             the synced copy.
           </p>
+          <DeleteAccount />
         </>
       )}
+      {error && (
+        <div className="small" style={{ color: 'var(--bad)' }}>
+          {error}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/**
+ * Two steps on the page rather than window.confirm: Google's sign-in popup must open straight from a click,
+ * and browsers can block it if a confirm dialog sat open first.
+ */
+function DeleteAccount() {
+  const [confirming, setConfirming] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
+
+  async function handleDelete() {
+    setBusy(true)
+    setError('')
+    try {
+      await deleteAccount()
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : String(caught))
+      setBusy(false)
+    }
+  }
+
+  if (!confirming)
+    return (
+      <div>
+        <button className="btn ghost small" onClick={() => setConfirming(true)} style={{ color: 'var(--bad)' }}>
+          Delete my account and data
+        </button>
+      </div>
+    )
+
+  return (
+    <div className="stack" style={{ gap: 8 }}>
+      <p className="small" style={{ margin: 0 }}>
+        Deletes your account, the synced copy and everything on this device. Download a backup first if you want to keep
+        your progress. Google will ask you to sign in once more.
+      </p>
+      <div className="row">
+        <button
+          className="btn"
+          onClick={handleDelete}
+          disabled={busy}
+          style={{ background: 'var(--bad)', borderColor: 'var(--bad)', color: 'var(--surface)' }}
+        >
+          {busy ? 'Deleting…' : 'Yes, delete everything'}
+        </button>
+        <button className="btn ghost" onClick={() => setConfirming(false)} disabled={busy}>
+          Cancel
+        </button>
+      </div>
       {error && (
         <div className="small" style={{ color: 'var(--bad)' }}>
           {error}

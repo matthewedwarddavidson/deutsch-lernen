@@ -209,6 +209,17 @@ export function update(updater: (current: AppState) => AppState) {
   listeners.forEach((listener) => listener())
 }
 
+/** Forgets everything stored on this device, settings included. */
+export function clearLocalData() {
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch {
+    // Nothing stored to remove.
+  }
+  state = initialState()
+  listeners.forEach((listener) => listener())
+}
+
 /** Replaces the state with one merged from another device, keeping its timestamps. */
 export function applySynced(synced: AppState) {
   state = synced

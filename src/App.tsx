@@ -11,6 +11,7 @@ import { GrammarLesson, GrammarList } from './pages/Grammar'
 import { Learn } from './pages/Learn'
 import { Dictation, ListeningList, ListeningPage } from './pages/Listening'
 import { MatchingPage } from './pages/Matching'
+import { Privacy } from './pages/Privacy'
 import { Progress } from './pages/Progress'
 import { ReadingList, ReadingPage } from './pages/Reading'
 import { Reference } from './pages/Reference'
@@ -129,6 +130,7 @@ export default function App() {
             <Route path="/exam/lesen/:setId" element={<LesenPaper />} />
             <Route path="/exam/hoeren/:setId" element={<HoerenPaper />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<Today />} />
           </Routes>
         </main>

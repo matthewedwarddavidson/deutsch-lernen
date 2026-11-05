@@ -1,5 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+// Fonts are bundled with the site rather than loaded from Google Fonts, so visitors' IP addresses aren't sent there.
+import '@fontsource-variable/inter'
+import '@fontsource-variable/literata/opsz.css'
+import '@fontsource-variable/literata/opsz-italic.css'
 import './index.css'
 import App from './App.tsx'
 import { addMissingCards } from './lib/actions'
