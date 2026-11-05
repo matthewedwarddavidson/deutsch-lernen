@@ -1,6 +1,6 @@
 # Deutsch lernen 🇩🇪
 
-A German course you can do in your browser, from A1 up to C1.
+A German course I built for myself, from A1 up to C1, that runs in the browser.
 
 [![Deploy](https://github.com/matthewedwarddavidson/deutsch-lernen/actions/workflows/pages.yml/badge.svg)](https://github.com/matthewedwarddavidson/deutsch-lernen/actions/workflows/pages.yml)
 
@@ -13,13 +13,13 @@ A German course you can do in your browser, from A1 up to C1.
 
 ## Why I made it
 
-I'm learning German: I'm at A2 and have just started a B1 course. The apps I tried were either endless flashcards or games built around keeping a streak going. Neither did much for my reading or writing, so I built something closer to what a course does.
+I'm learning German. I'm at A2 atm and doing a B1 course. The apps I tried were either endless flashcards or games built around keeping a streak going, and neither did much for my reading or writing. So I built something closer to what a course actually does.
 
-Each day it suggests a mix: review what's due, learn a few new words, then read, listen or write something. Grammar is explained in English with tables and examples, and the exercises come back later as reviews. Answers are typed rather than ticked, so you find out whether you can actually produce *der Termin* or just recognise it.
+Each day it suggests a mix: review what's due, learn a few new words, then read, listen or write something. Grammar is explained in English with tables and examples, and the exercises come back later as reviews. I made answers typed rather than ticked, because I wanted to know whether I could actually produce *der Termin* or just recognise it.
 
-The voices are recordings rather than the browser's robot voice. There are four of them, made with an open-source model and checked with speech recognition. There's no AI tutor and nothing to pay for. Your progress stays in your browser unless you sign in to sync between devices.
+I also wanted the listening to sound like real people rather than the browser's robot voice. The recordings use four voices made with an open-source model, and every sentence is checked with speech recognition. There's no AI tutor and nothing to pay for. Your progress stays in your browser unless you sign in to sync between devices.
 
-The research behind the design, with sources, is in [docs/research.md](docs/research.md).
+I read a fair bit about how people actually learn languages before designing it. The research, with sources, is in [docs/research.md](docs/research.md).
 
 ## A look around
 
@@ -79,15 +79,15 @@ Built-in words, examples, grammar sentences, texts and dialogues come with recor
 
 ## Privacy
 
-The hosted app is a static site. Progress, writing and your own words are stored in your browser's localStorage, so nobody else visiting the site can see them. Nothing leaves the browser unless you sign in.
+The app is a static site, so your progress, writing and your own words live in your browser's localStorage and nobody else visiting the site can see them. Nothing leaves the browser unless you sign in. The [privacy note](https://matthewedwarddavidson.github.io/deutsch-lernen/#/privacy) in the app has the full detail, and Settings has a button to delete your account and everything stored about you.
 
-Signing in with Google (Settings → Sync across devices) keeps a copy in Firestore under `users/{uid}/deutsch-lernen/`, readable only by your account, and merges progress from each device. It needs `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID` and `VITE_FIREBASE_APP_ID`: in `.env.local` for development and as repository secrets for the deploy. Without them, sign-in is hidden. The Firestore rules must allow `users/{uid}/{document=**}` only for that `uid`, and the Pages domain must be an authorised domain in Firebase Authentication.
+If you sign in with Google (Settings → Sync across devices), a copy is kept in Firestore under `users/{uid}/deutsch-lernen/`, readable only by your account, and progress from each device is merged. It needs `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID` and `VITE_FIREBASE_APP_ID`: in `.env.local` for development and as repository secrets for the deploy. Without them, sign-in is hidden. The Firestore rules must allow `users/{uid}/{document=**}` only for that `uid`, and the Pages domain must be an authorised domain in Firebase Authentication.
 
 Storage is per browser and per address, so the hosted app and a local copy keep separate progress. Use Settings → Download backup / Restore to move between them.
 
 ## Recorded voices
 
-Recordings are made offline with [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) and stored in `public/audio/` as AAC. Lena, Katrin, Jonas and Markus are cloned from short excerpts of public-domain [LibriVox](https://librivox.org) recordings in `scripts/voices/`. Chatterbox sometimes garbles short or unusual input, so the build transcribes every sentence with [Whisper](https://github.com/SYSTRAN/faster-whisper) (MIT) and regenerates it if the words don't match. After five failures it uses [Piper](https://github.com/rhasspy/piper) (CC0 voices Thorsten and Kerstin) instead, listing the sentence in `audio-build/fallbacks.txt`.
+I make the recordings offline with [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) and stored in `public/audio/` as AAC. Lena, Katrin, Jonas and Markus are cloned from short excerpts of public-domain [LibriVox](https://librivox.org) recordings in `scripts/voices/`. Chatterbox sometimes garbles short or unusual input, which is a bit annoying, so the build transcribes every sentence with [Whisper](https://github.com/SYSTRAN/faster-whisper) (MIT) and regenerates it if the words don't match. After five failures it uses [Piper](https://github.com/rhasspy/piper) (CC0 voices Thorsten and Kerstin) instead, listing the sentence in `audio-build/fallbacks.txt`.
 
 After changing built-in content, record the new sentences (macOS with Apple silicon; needs `afconvert` and Python 3.11):
 
@@ -103,7 +103,7 @@ npx tsx scripts/collect-speech.ts > audio-build/requests.json
 scripts/record_all.sh
 ```
 
-Only missing sentences are recorded; a full rebuild takes several hours. Anything without a recording falls back to the browser voice.
+Only missing sentences are recorded. A full rebuild takes several hours, so I run it overnight. Anything without a recording falls back to the browser voice.
 
 ## Word frequency
 
