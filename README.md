@@ -13,7 +13,7 @@ A German course I built for myself, from A1 up to C1, that runs in the browser.
 
 ## Why I made it
 
-I'm learning German. I'm at A2 atm and doing a B1 course. The apps I tried were either endless flashcards or games built around keeping a streak going, and neither did much for my reading or writing. So I built something closer to what a course actually does.
+I'm learning German. I'm at A2 and doing a B1 course. The apps I tried were either endless flashcards or games built around keeping a streak going, and neither did much for my reading or writing. So I built something closer to what a course actually does.
 
 Each day it suggests a mix: review what's due, learn a few new words, then read, listen or write something. Grammar is explained in English with tables and examples, and the exercises come back later as reviews. I made answers typed rather than ticked, because I wanted to know whether I could actually produce *der Termin* or just recognise it.
 
@@ -87,7 +87,7 @@ Storage is per browser and per address, so the hosted app and a local copy keep 
 
 ## Recorded voices
 
-I make the recordings offline with [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) and stored in `public/audio/` as AAC. Lena, Katrin, Jonas and Markus are cloned from short excerpts of public-domain [LibriVox](https://librivox.org) recordings in `scripts/voices/`. Chatterbox sometimes garbles short or unusual input, which is a bit annoying, so the build transcribes every sentence with [Whisper](https://github.com/SYSTRAN/faster-whisper) (MIT) and regenerates it if the words don't match. After five failures it uses [Piper](https://github.com/rhasspy/piper) (CC0 voices Thorsten and Kerstin) instead, listing the sentence in `audio-build/fallbacks.txt`.
+I make the recordings offline with [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) and stored in `public/audio/` as AAC. Lena, Katrin, Jonas and Markus are cloned from short excerpts of public-domain [LibriVox](https://librivox.org) recordings in `scripts/voices/`. Chatterbox sometimes garbles short or unusual input, so the build transcribes every sentence with [Whisper](https://github.com/SYSTRAN/faster-whisper) (MIT) and regenerates it if the words don't match. After five failures it uses [Piper](https://github.com/rhasspy/piper) (CC0 voices Thorsten and Kerstin) instead, listing the sentence in `audio-build/fallbacks.txt`.
 
 After changing built-in content, record the new sentences (macOS with Apple silicon; needs `afconvert` and Python 3.11):
 
