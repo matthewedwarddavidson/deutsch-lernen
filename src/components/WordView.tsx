@@ -1,3 +1,4 @@
+import { ipaFor } from '../content/ipa'
 import { displayGerman, plainExample } from '../content/parseWords'
 import { themeById } from '../content/themes'
 import type { Word } from '../content/types'
@@ -27,6 +28,7 @@ export function GermanWord({ word, size = 'normal' }: { word: Word; size?: 'norm
 /** Everything known about a word: forms, usage, example with audio. */
 export function WordView({ word, showEnglish = true }: { word: Word; showEnglish?: boolean }) {
   const example = plainExample(word.example)
+  const ipa = ipaFor(word)
   return (
     <div className="stack" style={{ gap: 14 }}>
       <div className="row between">
@@ -39,6 +41,11 @@ export function WordView({ word, showEnglish = true }: { word: Word; showEnglish
           <span className="pill accent">{word.level}</span>
         </div>
       </div>
+      {ipa && (
+        <div className="ipa muted" title="Pronunciation in IPA, from German Wiktionary (CC BY-SA)">
+          {ipa}
+        </div>
+      )}
       {showEnglish && <div style={{ fontSize: '1.15rem' }}>{word.english}</div>}
       <WordGrammar word={word} />
       <div className="example">

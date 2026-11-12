@@ -85,6 +85,10 @@ If you sign in with Google (Settings → Sync across devices), a copy is kept in
 
 Storage is per browser and per address, so the hosted app and a local copy keep separate progress. Use Settings → Download backup / Restore to move between them.
 
+## Pronunciation
+
+Word cards show each word's pronunciation in IPA, taken from [German Wiktionary](https://de.wiktionary.org) (CC BY-SA 4.0) via [kaikki.org](https://kaikki.org). `src/content/ipa.json` is derived from it and shares that licence. After adding words, download [kaikki.org-dictionary-Deutsch.jsonl.gz](https://kaikki.org/dewiktionary/Deutsch/kaikki.org-dictionary-Deutsch.jsonl.gz) (about 300 MB) and run `npx tsx scripts/build-ipa.ts <path to the .jsonl.gz>`.
+
 ## Recorded voices
 
 I make the recordings offline with [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) and stored in `public/audio/` as AAC. Lena, Katrin, Jonas and Markus are cloned from short excerpts of public-domain [LibriVox](https://librivox.org) recordings in `scripts/voices/`. Chatterbox sometimes garbles short or unusual input, so the build transcribes every sentence with [Whisper](https://github.com/SYSTRAN/faster-whisper) (MIT) and regenerates it if the words don't match. After five failures it uses [Piper](https://github.com/rhasspy/piper) (CC0 voices Thorsten and Kerstin) instead, listing the sentence in `audio-build/fallbacks.txt`.

@@ -1435,6 +1435,11 @@ table.grammar-table {
   position: relative;
 }
 
+.ipa {
+  margin-top: -8px;
+  font-family: 'Charis SIL', 'Doulos SIL', 'Gentium Plus', 'Segoe UI', 'Noto Sans', sans-serif;
+}
+
 .token.ok {
   color: var(--good);
 }

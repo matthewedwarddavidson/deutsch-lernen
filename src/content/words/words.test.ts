@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { clozeParts } from '../parseWords'
 import { BUILT_IN_WORDS } from './index'
+import ipaById from '../ipa.json'
 
 describe('built-in word lists', () => {
   it('have unique ids', () => {
@@ -11,6 +12,11 @@ describe('built-in word lists', () => {
       seen.set(word.id, word.theme)
     }
     expect(duplicates).toEqual([])
+  })
+
+  it('only have IPA for words that exist (rebuild with scripts/build-ipa.ts after renaming)', () => {
+    const ids = new Set(BUILT_IN_WORDS.map((word) => word.id))
+    expect(Object.keys(ipaById).filter((id) => !ids.has(id))).toEqual([])
   })
 
   it('give every noun a valid article', () => {
