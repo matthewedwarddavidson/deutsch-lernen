@@ -149,7 +149,7 @@ function ItemView({
   onAnswer: (answer: boolean | number) => void
 }) {
   const state = (value: boolean | number) => {
-    if (!checked) return answer === value ? 'selected' : ''
+    if (!checked) return answer === value ? 'chosen' : ''
     if (value === item.answer) return 'correct'
     return answer === value ? 'wrong' : ''
   }
