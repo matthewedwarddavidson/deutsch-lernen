@@ -82,6 +82,13 @@ export interface Activity {
   seconds: number
 }
 
+/** The most one entry counts for. Before idle time stopped counting, a page left open logged hours. */
+const MAX_ACTIVITY_SECONDS = 30 * 60
+
+export function countedSeconds(entry: Activity): number {
+  return Math.min(entry.seconds, MAX_ACTIVITY_SECONDS)
+}
+
 export interface Settings {
   /** The level being worked towards. New material comes from this level and below: this level and the one below first. */
   level: Level

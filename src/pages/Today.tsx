@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { useNow } from '../lib/hooks'
 import { useSyncStatus, wasSignedIn } from '../lib/sync'
 import { LEVELS, type Level } from '../content/types'
-import { useAppState, type ActivityKind, type AppState } from '../lib/store'
+import { countedSeconds, useAppState, type ActivityKind, type AppState } from '../lib/store'
 import { nextTopic } from '../lib/grading'
 
 const STRANDS: { id: string; label: string; description: string; kinds: ActivityKind[]; color: string }[] = [
@@ -50,7 +50,7 @@ function minutesThisWeek(state: AppState, kinds: ActivityKind[]): number {
   const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000
   const seconds = state.activity
     .filter((entry) => kinds.includes(entry.kind) && new Date(entry.at).getTime() > weekAgo)
-    .reduce((total, entry) => total + entry.seconds, 0)
+    .reduce((total, entry) => total + countedSeconds(entry), 0)
   return Math.round(seconds / 60)
 }
 

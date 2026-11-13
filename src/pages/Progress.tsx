@@ -6,7 +6,7 @@ import { READING_TEXTS } from '../content/reading'
 import { LEVELS, type Level } from '../content/types'
 import { allWords, grammarCardId, isWordLearned, recogniseId } from '../lib/cards'
 import { isMature, Rating } from '../lib/srs'
-import { MISTAKE_CATEGORIES, useAppState, type AppState } from '../lib/store'
+import { countedSeconds, MISTAKE_CATEGORIES, useAppState, type AppState } from '../lib/store'
 
 const DAY = 24 * 60 * 60 * 1000
 
@@ -47,7 +47,7 @@ function minutesPerDay(state: AppState, days: number): number[] {
   const minutes = new Array<number>(days).fill(0)
   for (const entry of state.activity) {
     const offset = Math.floor((today - startOfDay(new Date(entry.at))) / DAY)
-    if (offset >= 0 && offset < days) minutes[days - 1 - offset] += entry.seconds / 60
+    if (offset >= 0 && offset < days) minutes[days - 1 - offset] += countedSeconds(entry) / 60
   }
   return minutes.map(Math.round)
 }
@@ -72,7 +72,7 @@ export function Progress() {
   const upcoming = forecast(state, 14)
   const activity = minutesPerDay(state, 28)
   const retention = recentRetention(state)
-  const totalMinutes = Math.round(state.activity.reduce((total, entry) => total + entry.seconds, 0) / 60)
+  const totalMinutes = Math.round(state.activity.reduce((total, entry) => total + countedSeconds(entry), 0) / 60)
   const knownWords = levels.reduce((total, row) => total + row.known, 0)
   const learningWords = levels.reduce((total, row) => total + row.learning, 0)
   const topicsStudied = GRAMMAR_TOPICS.filter((topic) => topic.id in state.grammar)

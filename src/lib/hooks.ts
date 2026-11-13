@@ -27,15 +27,47 @@ export function useKeyHandler(active: boolean, handler: (key: string) => boolean
   }, [active])
 }
 
-/** Records how long a page was open, in seconds, when it closes. */
+/** After this long without a key press, click, scroll or touch, time stops counting. */
+const IDLE_MS = 3 * 60 * 1000
+const INPUT_EVENTS = ['pointerdown', 'pointermove', 'keydown', 'wheel', 'scroll', 'touchstart']
+
+/**
+ * Records how long a page was in active use, in seconds, when it closes. Time counts only while the
+ * tab is visible and until IDLE_MS after the last input, so a tab left open doesn't count as study.
+ */
 export function useTimeOnPage(onLeave: (seconds: number) => void) {
   const onLeaveRef = useRef(onLeave)
   useEffect(() => {
     onLeaveRef.current = onLeave
   })
   useEffect(() => {
-    const started = Date.now()
-    return () => onLeaveRef.current((Date.now() - started) / 1000)
+    let activeMs = 0
+    let lastInput: number | undefined = Date.now()
+    // Adds the time since the last input, up to the idle limit.
+    const settle = () => {
+      const now = Date.now()
+      if (lastInput !== undefined) activeMs += Math.min(now - lastInput, IDLE_MS)
+      return now
+    }
+    const onInput = () => {
+      lastInput = settle()
+    }
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        lastInput = Date.now()
+      } else {
+        settle()
+        lastInput = undefined
+      }
+    }
+    for (const name of INPUT_EVENTS) window.addEventListener(name, onInput, { capture: true, passive: true })
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => {
+      for (const name of INPUT_EVENTS) window.removeEventListener(name, onInput, { capture: true })
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      settle()
+      onLeaveRef.current(activeMs / 1000)
+    }
   }, [])
 }
 
